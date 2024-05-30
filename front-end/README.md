@@ -2,6 +2,19 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Docker scripts
+
+### 'docker image build -t <image_name>:<tag> <path>'
+
+Builds docker image into container, example command: 'docker image build -t front-end-image:first .'
+
+### 'docker run -p 3000:3000 <image_name>:<tag>'
+
+Runs docker container , example command: 'docker run -p 3000:3000 front-end-image:first'
+
+check http://localhost:3000
+control c to close
+
 ## Available Scripts
 
 In the project directory, you can run:
