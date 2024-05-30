@@ -1,22 +1,19 @@
-import duke from "./images/duke.png";
-import "./App.css";
+import duke from './images/duke.png';
+import './App.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        Duke IT Security Advisory Dashboard
         <img
           src={duke}
-          className="Duke Logo"
+          className="Duke-logo"
           alt="logo"
-          style={{
-            width: 150,
-            position: "absolute",
-            top: 10,
-            left: 10,
-          }}
         />
+
+        <div className="title">Duke IT Security Advisory Dashboard</div>
+        <div className="subtitle">Duke’s database for open source vulnerabilities and cloud misconfigurations</div>
+        <a href="#" className="button">Get Started</a>
       </header>
     </div>
   );
