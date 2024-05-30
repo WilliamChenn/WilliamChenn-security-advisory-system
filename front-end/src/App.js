@@ -1,22 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import duke from "./images/duke.png";
+import "./App.css";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        Duke IT Security Advisory Dashboard
+        <img
+          src={duke}
+          className="Duke Logo"
+          alt="logo"
+          style={{
+            width: 150,
+            position: "absolute",
+            top: 10,
+            left: 10,
+          }}
+        />
       </header>
     </div>
   );
