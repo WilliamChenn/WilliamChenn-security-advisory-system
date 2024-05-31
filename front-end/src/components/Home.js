@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import duke from './images/duke.png';
+import duke from '../images/duke.png';
 import './Home.css';
 
 function Home() {

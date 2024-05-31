@@ -38,4 +38,4 @@ function Vulnerabilities() {
     );
 }
 
-export default App;
+export default Vulnerabilities;
