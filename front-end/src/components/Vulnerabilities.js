@@ -17,8 +17,6 @@ function getSeverityClass(severity) {
             return "high-severity";
         case "Critical":
             return "critical-severity";
-        default:
-            return "";
     }
 }
 
