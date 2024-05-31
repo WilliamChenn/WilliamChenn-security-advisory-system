@@ -1,6 +1,8 @@
 import React from 'react';
 import duke from './images/duke.png';
 import './App.css';
+import TableComponent from './TableComponent';
+
 
 function App() {
   return (
@@ -39,8 +41,9 @@ function App() {
             <a href="#" className="learn-more">Learn More </a>
           </div>
         </div>
-        <a href="#" className="view-all">View all</a>
+        <a href="#" className="view-all">View all </a>  
       </div>
+      <TableComponent />
     </div>
   );
 }
