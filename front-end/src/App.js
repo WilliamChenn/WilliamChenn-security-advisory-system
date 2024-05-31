@@ -15,27 +15,28 @@ function App() {
       </header>
       
       
-      
+
+
       <div className="content">
-        <h2>Vulnerabilities in the last week</h2>
+        <h2>Vulnerabilities in the last week </h2>
         <div className="cards">
           <div className="card">
-            <div className="score" style={{ color: '#ffa500' }}>6.5</div>
-            <div className="notification-name">Notification Name</div>
+            <div className="score" style={{ color: '#ffa500' }}>6.5 </div>
+            <div className="notification-name">Notification Name </div>
             <p> Stuff</p>
-            <a href="#" className="learn-more">Learn More</a>
+            <a href="#" className="learn-more">Learn More </a>
           </div>
           <div className="card">
-            <div className="score" style={{ color: '#ff7f50' }}>5.3</div>
-            <div className="notification-name">Notification Name</div>
+            <div className="score" style={{ color: '#ff7f50' }}>5.3 </div>
+            <div className="notification-name">Notification Name </div>
             <p> Stuff </p>
-            <a href="#" className="learn-more">Learn More</a>
+            <a href="#" className="learn-more">Learn More </a>
           </div>
           <div className="card">
-            <div className="score" style={{ color: '#ff4500' }}>9.3</div>
-            <div className="notification-name">Notification Name</div>
+            <div className="score" style={{ color: '#ff4500' }}>9.3 </div>
+            <div className="notification-name">Notification Name </div>
             <p> Stuff </p>
-            <a href="#" className="learn-more">Learn More</a>
+            <a href="#" className="learn-more">Learn More </a>
           </div>
         </div>
         <a href="#" className="view-all">View all</a>
