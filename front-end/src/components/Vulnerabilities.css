@@ -52,3 +52,19 @@ body {
 .Table td {
     color: #333;
 }
+
+.low-severity {
+    color: green;
+}
+
+.medium-severity {
+    color: orange;
+}
+
+.high-severity {
+    color: red;
+}
+
+.criical-severity {
+    color: darkred;
+}

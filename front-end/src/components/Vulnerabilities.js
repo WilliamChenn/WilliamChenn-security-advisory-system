@@ -7,6 +7,21 @@ const data = [
     { title:"Uncontrolled Resource Consumption", date:"November 15 2023", severity:"Low", cve:"2024-29946"},
 ]
 
+function getSeverityClass(severity) {
+    switch (severity) {
+        case "Low":
+            return "low-severity";
+        case "Medium":
+            return "medium-severity";
+        case "High":
+            return "high-severity";
+        case "Critical":
+            return "critical-severity";
+        default:
+            return "";
+    }
+}
+
 function Vulnerabilities() {
     return (
         <div className="Vulnerabilities">
@@ -27,7 +42,7 @@ function Vulnerabilities() {
                             <tr key = {key}>
                                 <td>{val.title}</td>
                                 <td>{val.date}</td>
-                                <td>{val.severity}</td>
+                                <td className={getSeverityClass(val.severity)}>{val.severity}</td>
                                 <td>{val.cve}</td>
                             </tr>
                         )
