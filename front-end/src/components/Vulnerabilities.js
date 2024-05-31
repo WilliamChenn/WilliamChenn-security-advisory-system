@@ -5,7 +5,7 @@ const data = [
     { title: "Improper Input Validation", date: "May 22 2024", severity: "Low", cve: "2024-29946" },
     { title: "Authentication Bypass", date: "February 1 2024", severity: "Critical", cve: "2024-21222" },
     { title: "Uncontrolled Resource Consumption", date: "November 15 2023", severity: "Low", cve: "2024-29946" },
-]
+];
 
 function getSeverityClass(severity) {
     switch (severity) {
@@ -17,6 +17,8 @@ function getSeverityClass(severity) {
             return "high-severity";
         case "Critical":
             return "critical-severity";
+        default:
+            return "";
     }
 }
 
@@ -38,20 +40,18 @@ function Vulnerabilities() {
                         </tr>
                     </thead>
                     <tbody>
-                        {data.map((val, key) => {
-                            return (
-                                <tr key={key}>
-                                    <td className = "cve-title">{val.title}</td>
-                                    <td>{val.date}</td>
-                                    <td className={getSeverityClass}>{val.severity}</td>
-                                    <td>{val.cve}</td>
-                                </tr>
-                            )
-                        })}
+                        {data.map((val, key) => (
+                            <tr key={key}>
+                                <td className="cve-title"><a href="#">{val.title}</a></td>
+                                <td>{val.date}</td>
+                                <td className={getSeverityClass(val.severity)}>{val.severity}</td>
+                                <td>{val.cve}</td>
+                            </tr>
+                        ))}
                     </tbody>
                 </table>
             </div>
-        </div >
+        </div>
     );
 }
 
