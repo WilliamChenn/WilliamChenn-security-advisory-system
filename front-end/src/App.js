@@ -1,23 +1,46 @@
-import logo from './logo.svg';
+import React from 'react';
+import duke from './images/duke.png';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <img src={duke} className="Duke-logo" alt="logo" />
+        <div className="title">Duke IT Security Advisory Dashboard</div>
+        <div className="subtitle">
+          Duke’s database for open source vulnerabilities and cloud misconfigurations
+        </div>
+        <a href="#" className="button">Get Started</a>
       </header>
+      
+      
+
+
+      <div className="content">
+        <h2>Vulnerabilities in the last week </h2>
+        <div className="cards">
+          <div className="card">
+            <div className="score" style={{ color: '#ffa500' }}>6.5 </div>
+            <div className="notification-name">Notification Name </div>
+            <p> Stuff</p>
+            <a href="#" className="learn-more">Learn More </a>
+          </div>
+          <div className="card">
+            <div className="score" style={{ color: '#ff7f50' }}>5.3 </div>
+            <div className="notification-name">Notification Name </div>
+            <p> Stuff </p>
+            <a href="#" className="learn-more">Learn More </a>
+          </div>
+          <div className="card">
+            <div className="score" style={{ color: '#ff4500' }}>9.3 </div>
+            <div className="notification-name">Notification Name </div>
+            <p> Stuff </p>
+            <a href="#" className="learn-more">Learn More </a>
+          </div>
+        </div>
+        <a href="#" className="view-all">View all</a>
+      </div>
     </div>
   );
 }
