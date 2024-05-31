@@ -1,49 +1,105 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #f5f7fa;
   margin: 0;
   padding: 0;
+  background-color: #FFFFFF;
+  color: #333;
 }
 
 .App-header {
+  background-color: #FFFFFF;
+  padding: 20px;
   text-align: center;
-  padding: 50px;
-  background-color: #f5f7fa;
-  position: relative;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .Duke-logo {
-  width: 150px;
-  position: absolute;
-  top: 10px;
-  left: 10px;
+  max-width: 150px;
 }
 
 .title {
   font-size: 2.5em;
-  font-weight: bold;
-  margin-top: 20px;
-  margin-bottom: 10px;
+  margin: 20px 0 10px;
 }
 
 .subtitle {
-  font-size: 1em;
-  margin-bottom: 20px;
-  color: #555;
+  margin: 10px 0 20px;
+  color: #666;
 }
 
 .button {
-  display: inline-block;
+  background-color: #0033a0;
+  color: #fff;
   padding: 10px 20px;
-  font-size: 1em;
-  color: white;
-  background-color: #002d72;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
   text-decoration: none;
+  border-radius: 5px;
 }
 
 .button:hover {
-  background-color: #001a4d;
+  background-color: #002080;
+}
+
+.content {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.content h2 {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background-color: #FFFFFF;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 300px;
+  flex: 1;
+  text-align: center;
+}
+
+.card .score {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.card .notification-name {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.card p {
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.card .learn-more {
+  color: #0033a0;
+  text-decoration: none;
+}
+
+.card .learn-more:hover {
+  text-decoration: underline;
+}
+
+.view-all {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #0033a0;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.view-all:hover {
+  background-color: #002080;
 }
