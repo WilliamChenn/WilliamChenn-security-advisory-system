@@ -41,7 +41,7 @@ function Vulnerabilities() {
                         {data.map((val, key) => {
                             return (
                                 <tr key={key}>
-                                    <td>{val.title}</td>
+                                    <td className = "cve-title">{val.title}</td>
                                     <td>{val.date}</td>
                                     <td className={getSeverityClass}>{val.severity}</td>
                                     <td>{val.cve}</td>

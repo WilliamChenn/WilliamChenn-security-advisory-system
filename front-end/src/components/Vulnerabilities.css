@@ -68,3 +68,7 @@ body {
 .critical-severity {
     color: darkred;
 }
+
+.cve-title {
+    a:hover {text-decoration: underline;}
+}
