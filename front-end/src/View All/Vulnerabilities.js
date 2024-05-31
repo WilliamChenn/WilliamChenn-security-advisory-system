@@ -1,5 +1,4 @@
 import React from 'react';
-import duke from './images/duke.png';
 import './Vulnerabilities.css';
 
 const data = [
