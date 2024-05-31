@@ -1,7 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import duke from './images/duke.png';
 import './Home.css';
-import Vulnerabilities from './Vulnerabilities';
 
 function Home() {
   return (
