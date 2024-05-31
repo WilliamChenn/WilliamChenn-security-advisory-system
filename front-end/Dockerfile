@@ -1,10 +1,20 @@
 FROM node:18-alpine
 
-WORKDIR /front-end/
+# Set the working directory
+WORKDIR /app
 
-COPY public/ /front-end/public
-COPY src/ /front-end/src
-COPY package.json /front-end/
+# Copy package.json and package-lock.json to leverage Docker cache
+COPY package.json package-lock.json ./
 
+# Install dependencies
 RUN npm install
-CMD ["npm", "start"]
+
+# Copy the rest of the application files
+COPY . .
+
+# Expose the port your app runs on
+EXPOSE 3000
+
+# Command to run the application
+CMD ["npm", "run", "dev"]
+
