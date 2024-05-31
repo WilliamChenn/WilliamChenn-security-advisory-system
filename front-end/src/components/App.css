@@ -1,0 +1,98 @@
+/* App.css */
+.App {
+    text-align: center;
+  }
+  
+  .App-logo {
+    height: 40vmin;
+    pointer-events: none;
+  }
+  
+  .App-header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+  
+  .title {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  .subtitle {
+    font-size: 1.2rem;
+    margin: 10px 0;
+  }
+  
+  .button {
+    background-color: #61dafb;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    display: inline-block;
+  }
+  
+  .button:hover {
+    background-color: #21a1f1;
+  }
+  
+  .content {
+    padding: 20px;
+  }
+  
+  .cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .card {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    width: 200px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+  }
+  
+  .score {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .notification-name {
+    font-size: 1.2rem;
+    margin: 10px 0;
+  }
+  
+  .learn-more {
+    color: #61dafb;
+    text-decoration: none;
+  }
+  
+  .learn-more:hover {
+    text-decoration: underline;
+  }
+  
+  .view-all {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #61dafb;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  
+  .view-all:hover {
+    background-color: #21a1f1;
+  }
+  
