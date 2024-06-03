@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Open Sans", sans-serif;
     margin: 0;
     padding: 0;
     background-color: #FFFFFF;
@@ -53,20 +55,48 @@ body {
     color: #333;
 }
 
+.Table td.severityCell {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.Table td.severityCell button {
+    font-size: 14px;
+    width: 55px;
+    height: 30px;
+    margin-left: 8px;
+}
+
+#low-severity, #medium-severity, #high-severity, #critical-severity {
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
 #low-severity {
-    color: green;
+    background-color: rgb(106, 168, 106);
 }
 
 #medium-severity {
-    color: orange;
+    background-color: rgb(230, 166, 45);
 }
 
 #high-severity {
-    color: red;
+    background-color: rgb(216, 95, 95);
 }
 
 #critical-severity {
-    color: darkred;
+    background-color: rgb(133, 57, 57);
+}
+
+#n-a {
+    background-color:  lightgray
 }
 
 .cve-title a {
