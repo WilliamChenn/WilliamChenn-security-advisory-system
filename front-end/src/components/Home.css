@@ -103,3 +103,20 @@ body {
 .view-all:hover {
   background-color: #002080;
 }
+
+.rounded-image {
+  
+  width: 700px;
+  height: 500px;
+  left: 100 px;
+  padding: 10px 20px;
+  border-radius: 60px;
+  
+}
+
+
+
+
+
+
+
