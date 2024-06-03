@@ -30,7 +30,7 @@
   }
   
   .button {
-    background-color: #61dafb;
+    background-color: #142398;
     padding: 10px 20px;
     color: white;
     text-decoration: none;
@@ -86,13 +86,13 @@
     display: block;
     margin: 20px auto;
     padding: 10px 20px;
-    background-color: #61dafb;
+    background-color: hsl(241, 66%, 34%);
     color: white;
     text-decoration: none;
     border-radius: 5px;
   }
   
   .view-all:hover {
-    background-color: #21a1f1;
+    background-color: #1b1464;
   }
   
