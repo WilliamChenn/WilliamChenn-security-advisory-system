@@ -4,13 +4,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Docker scripts
 
-### 'docker image build -t <image_name>:<tag> <path>'
+### docker-compose build
 
-Builds docker image into container, example command: 'docker image build -t front-end-image:first .'
+Builds docker image into container, example '
 
-### 'docker run -p 3000:3000 <image_name>:<tag>'
-
-Runs docker container , example command: 'docker run -p 3000:3000 front-end-image:first'
+### docker-compose up
 
 check http://localhost:3000
 control c to close
