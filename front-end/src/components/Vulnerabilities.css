@@ -53,19 +53,19 @@ body {
     color: #333;
 }
 
-.low-severity {
+#low-severity {
     color: green;
 }
 
-.medium-severity {
+#medium-severity {
     color: orange;
 }
 
-.high-severity {
+#high-severity {
     color: red;
 }
 
-.critical-severity {
+#critical-severity {
     color: darkred;
 }
 

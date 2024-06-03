@@ -2,9 +2,9 @@ import React from 'react';
 import './Vulnerabilities.css';
 
 const data = [
-    { title: "Improper Input Validation", date: "May 22 2024", severity: "Low", cve: "2024-29946" },
-    { title: "Authentication Bypass", date: "February 1 2024", severity: "Critical", cve: "2024-21222" },
-    { title: "Uncontrolled Resource Consumption", date: "November 15 2023", severity: "Low", cve: "2024-29946" },
+    { title: "Improper Input Validation", date: "May 22th 2024", severity: "Low", cve: "2024-29946" },
+    { title: "Authentication Bypass", date: "February 1th 2024", severity: "Critical", cve: "2024-21222" },
+    { title: "Uncontrolled Resource Consumption", date: "November 15th 2023", severity: "Low", cve: "2024-29946" },
 ];
 
 function getSeverityClass(severity) {
@@ -44,7 +44,7 @@ function Vulnerabilities() {
                             <tr key={key}>
                                 <td className="cve-title"><a href="#">{val.title}</a></td>
                                 <td>{val.date}</td>
-                                <td className={getSeverityClass(val.severity)}>{val.severity}</td>
+                                <td> <button id= {getSeverityClass(val.severity)}>{val.severity}</button></td>
                                 <td>{val.cve}</td>
                             </tr>
                         ))}
