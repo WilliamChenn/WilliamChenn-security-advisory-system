@@ -26,7 +26,7 @@ function Vulnerabilities() {
     return (
         <div className="Vulnerabilities">
             <header className="Vulnerabilities-header">
-                <div className="title">Find out if you have vulnerabilities that put you at risk</div>
+                <div className="title">Find Out If You Have Vulnerabilities That Put You At Risk</div>
             </header>
 
             <div className="Table">
