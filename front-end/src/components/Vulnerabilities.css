@@ -1,0 +1,76 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #FFFFFF;
+    color: #333;
+}
+
+.Vulnerabilities-header {
+    background-color: #FFFFFF;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+    font-size: 2.5em;
+    margin: 20px 0 10px;
+}
+
+.Table {
+    margin: 20px auto;
+    width: 80%;
+}
+
+.Table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+}
+
+.Table th, .Table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.Table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.Table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.Table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.Table td {
+    color: #333;
+}
+
+#low-severity {
+    color: green;
+}
+
+#medium-severity {
+    color: orange;
+}
+
+#high-severity {
+    color: red;
+}
+
+#critical-severity {
+    color: darkred;
+}
+
+.cve-title a {
+    text-decoration: none;
+}
+.cve-title a:hover{
+    text-decoration: underline;}
