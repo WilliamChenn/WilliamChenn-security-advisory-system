@@ -52,3 +52,25 @@ body {
 .Table td {
     color: #333;
 }
+
+#low-severity {
+    color: green;
+}
+
+#medium-severity {
+    color: orange;
+}
+
+#high-severity {
+    color: red;
+}
+
+#critical-severity {
+    color: darkred;
+}
+
+.cve-title a {
+    text-decoration: none;
+}
+.cve-title a:hover{
+    text-decoration: underline;}
