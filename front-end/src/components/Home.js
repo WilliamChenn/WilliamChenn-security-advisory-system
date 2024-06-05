@@ -40,7 +40,7 @@ function Home() {
         
         <Link to="/vulnerabilities" className="view-all">View all</Link>
         <div>
-          <img className="rounded-image" src="https://e1.nmcdn.io/oswaldcompanies/wp-content/uploads/2022/08/Why-Implementing-the-Wrong-Technology-Can-Increase-Your-Vulnerability-for-Cyber-Attacks.jpg/v:-dynamic:1-aspect:1.8139534883721-fit:cover/Why-Implementing-the-Wrong-Technology-Can-Increase-Your-Vulnerability-for-Cyber-Attacks--1900.jpg" alt="Description of the image"/> 
+          
         </div>
       </div>
     </div>
