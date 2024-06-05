@@ -32,7 +32,8 @@ body {
     font-size: 18px;
 }
 
-.Table th, .Table td {
+.Table th,
+.Table td {
     padding: 12px 15px;
     border: 1px solid #ddd;
     text-align: left;
@@ -68,7 +69,17 @@ body {
     margin-left: 8px;
 }
 
-#low-severity, #medium-severity, #high-severity, #critical-severity {
+.tooltip-target {
+    cursor: pointer;
+}
+
+#Low-severity,
+#Medium-severity,
+#High-severity,
+#Critical-severity, #Low-probability,
+#Medium-probability,
+#High-probability,
+#Very-high-probability{
     border: none;
     padding: 5px 10px;
     cursor: pointer;
@@ -79,28 +90,30 @@ body {
     text-align: center;
 }
 
-#low-severity {
+#Low-severity, #Low-probability{
     background-color: rgb(106, 168, 106);
 }
 
-#medium-severity {
+#Medium-severity, #Medium-probability {
     background-color: rgb(230, 166, 45);
 }
 
-#high-severity {
+#High-severity, #High-probability {
     background-color: rgb(216, 95, 95);
 }
 
-#critical-severity {
+#Critical-severity, #Very-high-probability {
     background-color: rgb(133, 57, 57);
 }
 
 #n-a {
-    background-color:  lightgray
+    background-color: lightgray
 }
 
 .cve-title a {
     text-decoration: none;
 }
-.cve-title a:hover{
-    text-decoration: underline;}
+
+.cve-title a:hover {
+    text-decoration: underline;
+}
