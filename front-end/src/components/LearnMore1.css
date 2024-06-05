@@ -1,0 +1,41 @@
+body {
+    font-family: 'Open Sans', sans-serif; /* Ensure you have the font imported */
+    background-color: #f5f5f5; /* Set background color */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    display: flex; /* Use flexbox to center the content vertically */
+    justify-content: center; /* Center the content horizontally */
+    align-items: center; /* Center the content vertically */
+    min-height: 100vh; /* Set the body height to fill the viewport */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Open Sans Condensed', sans-serif;
+    color: #274C5B; /* Dark blue headings */
+}
+
+.center-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align text to the left */
+    text-align: left; /* Align text within elements to the left */
+    margin: 50px auto; /* Add margin for spacing from the top and center horizontally */
+    max-width: 800px; /* Maintain maximum width for content */
+    padding: 40px; /* Add padding for better spacing */
+    background-color: #fff; /* White background */
+    border-radius: 10px; /* Add border-radius for rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add box shadow for depth */
+}
+
+.remediation-container {
+    background-color: #f7f7f7; /* Lighter background for remediation */
+    padding: 20px; /* Add padding for better spacing */
+    border-radius: 10px; /* Add border-radius for rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add box shadow for depth */
+    margin-top: 20px; /* Adjust margin-top to separate from other content */
+}
+
+p {
+    font-size: 16px; /* Adjust the font size for paragraphs */
+    line-height: 1.6; /* Increase line height for better readability */
+}
