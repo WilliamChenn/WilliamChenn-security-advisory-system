@@ -1,0 +1,43 @@
+version: "3.8"
+
+services:
+  frontend:
+    build:
+      context: ./front-end
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./front-end:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    command: ["npm", "run", "dev"]
+  backend:
+    build:
+      context: ./back-end
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./back-end:/app
+    environment:
+      - DATABASE_URL=postgres://user:password@postgres:5432/mydatabase
+      - RAILS_ENV=development
+      - SECRET_KEY_BASE=your_generated_secret_key_base
+    depends_on:
+      - postgres
+    command: ["bundle", "exec", "rails", "server", "-b", "0.0.0.0", "-p", "3001"]
+
+  postgres:
+    image: postgres:13
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=mydatabase
+
+volumes:
+  postgres-data:

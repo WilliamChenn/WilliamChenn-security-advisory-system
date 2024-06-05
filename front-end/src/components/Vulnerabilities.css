@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
+
+body {
+    font-family: "Open Sans", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #FFFFFF;
+    color: #333;
+}
+
+.Vulnerabilities-header {
+    background-color: #FFFFFF;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+    font-size: 2.5em;
+    margin: 20px 0 10px;
+}
+
+.Table {
+    margin: 20px auto;
+    width: 80%;
+}
+
+.Table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+}
+
+.Table th, .Table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.Table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.Table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.Table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.Table td {
+    color: #333;
+}
+
+.Table td.severityCell {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.Table td.severityCell button {
+    font-size: 14px;
+    width: 55px;
+    height: 30px;
+    margin-left: 8px;
+}
+
+#low-severity, #medium-severity, #high-severity, #critical-severity {
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+#low-severity {
+    background-color: rgb(106, 168, 106);
+}
+
+#medium-severity {
+    background-color: rgb(230, 166, 45);
+}
+
+#high-severity {
+    background-color: rgb(216, 95, 95);
+}
+
+#critical-severity {
+    background-color: rgb(133, 57, 57);
+}
+
+#n-a {
+    background-color:  lightgray
+}
+
+.cve-title a {
+    text-decoration: none;
+}
+.cve-title a:hover{
+    text-decoration: underline;}
