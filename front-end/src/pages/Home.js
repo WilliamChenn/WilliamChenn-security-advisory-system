@@ -21,19 +21,19 @@ function Home() {
             <CircularProgress value={3.2} />
             <div className="notification-name">Notification Name</div>
             <p>Stuff</p>
-            <Link to="/learn-more" className="learn-more">Learn More</Link>
+            <Link to="/learn-more/1" className="learn-more">Learn More</Link>
           </div>
           <div className="card">
             <CircularProgress value={5.3} />
             <div className="notification-name">Notification Name</div>
             <p>Stuff</p>
-            <Link to="/learn-more" className="learn-more">Learn More</Link>
+            <Link to="/learn-more/2" className="learn-more">Learn More</Link>
           </div>
           <div className="card">
             <CircularProgress value={9.3} />
             <div className="notification-name">Notification Name</div>
             <p>Stuff</p>
-            <Link to="/learn-more" className="learn-more">Learn More</Link>
+            <Link to="/learn-more/3" className="learn-more">Learn More</Link>
           </div>
         </div>
         
