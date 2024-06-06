@@ -20,27 +20,27 @@ function Home() {
         <div className="cards">
           <div className="card">
             <div className="score" style={{ color: '#ffa500' }}>6.5</div>
-            <div className="notification-name">Notification Name</div>
+            <div className="notification-name">Notification Name 1</div>
             <p>Stuff</p>
-            <Link to="/learn-more" className="learn-more">Learn More</Link>
+            <Link to="/learn-more/1" className="learn-more">Learn More</Link>
           </div>
           <div className="card">
             <div className="score" style={{ color: '#ff7f50' }}>5.3</div>
-            <div className="notification-name">Notification Name</div>
+            <div className="notification-name">Notification Name 2</div>
             <p>Stuff</p>
-            <Link to="/learn-more" className="learn-more">Learn More</Link>
+            <Link to="/learn-more/2" className="learn-more">Learn More</Link>
           </div>
           <div className="card">
             <div className="score" style={{ color: '#ff4500' }}>9.3</div>
-            <div className="notification-name">Notification Name</div>
+            <div className="notification-name">Notification Name 3</div>
             <p>Stuff</p>
-            <Link to="/learn-more" className="learn-more">Learn More</Link>
+            <Link to="/learn-more/3" className="learn-more">Learn More</Link>
           </div>
         </div>
         
         <Link to="/vulnerabilities" className="view-all">View all</Link>
         <div>
-          <img className="rounded-image" src="https://e1.nmcdn.io/oswaldcompanies/wp-content/uploads/2022/08/Why-Implementing-the-Wrong-Technology-Can-Increase-Your-Vulnerability-for-Cyber-Attacks.jpg/v:-dynamic:1-aspect:1.8139534883721-fit:cover/Why-Implementing-the-Wrong-Technology-Can-Increase-Your-Vulnerability-for-Cyber-Attacks--1900.jpg" alt="Description of the image"/> 
+          
         </div>
       </div>
     </div>
@@ -48,6 +48,7 @@ function Home() {
 }
 
 export default Home;
+
 
 
 
