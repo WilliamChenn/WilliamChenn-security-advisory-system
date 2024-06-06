@@ -1,56 +1,74 @@
 body {
     font-family: 'Open Sans', sans-serif;
     background-color: #f5f5f5;
-    margin: 10px;
+    margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-}
-
-h1, h2, h3, h4, h5, h6 {
+    padding: 10px; /* Add padding for better spacing */
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
     font-family: 'Open Sans Condensed', sans-serif;
     color: #274C5B;
     font-size: 36px;
-    margin-left: -10px; /* Align with the remediation container */
-}
-
-.center-content {
+    margin: 0; /* Remove margin */
+  }
+  
+  .center-content {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     text-align: left;
-    margin: 50px 0 0 20px; /* Adjust the left margin */
-    max-width: 800px;
+    width: 100%; /* Make the container take the full width */
+    max-width: 1200px; /* Limit the maximum width for better readability */
     padding: 40px;
-}
-
-.remediation-container {
-    position: relative;
+    box-sizing: border-box; /* Include padding in the element's total width and height */
+  }
+  
+  .remediation-container {
     background-color: #F1EDEA;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
-    margin-left: -10px; /* Adjust the left margin */
-}
-
-.remediation-header {
-    position: absolute;
-    top: -20px;
-    left: -10px;
+    width: 100%; /* Make the container take the full width */
+    box-sizing: border-box; /* Include padding in the element's total width and height */
+  }
+  
+  .remediation-header {
     background-color: #f7f7f7;
     padding: 10px;
     border-radius: 5px;
-}
-
-p {
+    margin-bottom: 10px; /* Add margin to separate from content */
+  }
+  
+  p {
     font-size: 18px;
     line-height: 1.8;
-    margin-bottom: 20px;
-    margin-left: -10px; /* Align with the remediation container */
-}
+    margin: 0 0 20px; /* Adjust margin for spacing */
+    padding: 0 10px; /* Add padding for better readability */
+    box-sizing: border-box; /* Include padding in the element's total width and height */
+  }
+  
+  /* Media queries for responsiveness */
+  @media (max-width: 768px) {
+    .center-content {
+      padding: 20px; /* Reduce padding on smaller screens */
+    }
+  
+    h1, h2, h3, h4, h5, h6 {
+      font-size: 28px; /* Reduce font size on smaller screens */
+    }
+  
+    p {
+      font-size: 16px; /* Reduce font size on smaller screens */
+    }
+  }
+  
+
 
 
 
