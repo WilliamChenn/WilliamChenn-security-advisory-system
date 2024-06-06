@@ -9,8 +9,10 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - ./front-end:/app
-      - /app/node_modules
+    - ./front-end/src:/app/src
+    - ./front-end/public:/app/public
+    - ./front-end/package.json:/app/package.json
+    - ./front-end/package-lock.json:/app/package-lock.json
     environment:
       - NODE_ENV=development
     command: ["npm", "run", "dev"]
