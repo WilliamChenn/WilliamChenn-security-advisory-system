@@ -1,12 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './components/Home';
-import Vulnerabilities from './components/Vulnerabilities';
+import Home from './pages/Home';
+import Vulnerabilities from './pages/Vulnerabilities';
 import './App.css';
-import TableComponent from './TableComponent';
-import LearnMore1 from './components/LearnMore1';
-import LearnMore2 from './components/LearnMore2';
-import LearnMore3 from './components/LearnMore3';
+import LearnMore1 from './pages/LearnMore1';
+import LearnMore2 from './pages/LearnMore2';
+import LearnMore3 from './pages/LearnMore3';
 
 function App() {
   return (

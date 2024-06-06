@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
- 
+import CircularProgress from '../components/CircularProgress';
 import duke from '../images/duke.png';
 import './Home.css';
  
@@ -18,19 +18,19 @@ function Home() {
         
         <div className="cards">
           <div className="card">
-            <div className="score" style={{ color: '#ffa500' }}>6.5</div>
+            <CircularProgress value={3.2} />
             <div className="notification-name">Notification Name</div>
             <p>Stuff</p>
             <Link to="/learn-more" className="learn-more">Learn More</Link>
           </div>
           <div className="card">
-            <div className="score" style={{ color: '#ff7f50' }}>5.3</div>
+            <CircularProgress value={5.3} />
             <div className="notification-name">Notification Name</div>
             <p>Stuff</p>
             <Link to="/learn-more" className="learn-more">Learn More</Link>
           </div>
           <div className="card">
-            <div className="score" style={{ color: '#ff4500' }}>9.3</div>
+            <CircularProgress value={9.3} />
             <div className="notification-name">Notification Name</div>
             <p>Stuff</p>
             <Link to="/learn-more" className="learn-more">Learn More</Link>
