@@ -80,7 +80,7 @@ function Vulnerabilities() {
                                         <span className="tooltip-target">CVSS:</span></Tooltip>
                                     <button id={getSeverityClass(val.cvss)}>
                                         <Tooltip title= {getSeverityClass(val.cvss)} placement="top" arrow>
-                                            <span className="tooltip-target">{val.cvss}%</span></Tooltip>
+                                            <span className="tooltip-target">{val.cvss}</span></Tooltip>
                                         </button></td>
                                 <td className="severityCell">
                                     <Tooltip title="Likelihood of the vulnerability being exploited in the wild within the next 30 days" placement="top" arrow>
