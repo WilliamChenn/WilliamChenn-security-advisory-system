@@ -1,76 +1,67 @@
+
 body {
     font-family: 'Open Sans', sans-serif;
     background-color: #f5f5f5;
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
     min-height: 100vh;
-    padding: 10px; /* Add padding for better spacing */
+  }
+  
+  .center-content {
+    max-width: 800px;
+    width: 90%;
+    padding: 40px;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Open Sans Condensed', sans-serif;
-    color: #274C5B;
+    color: #0d3b66;
     font-size: 36px;
-    margin: 0; /* Remove margin */
-  }
-  
-  .center-content {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    text-align: left;
-    width: 100%; /* Make the container take the full width */
-    max-width: 1200px; /* Limit the maximum width for better readability */
-    padding: 40px;
-    box-sizing: border-box; /* Include padding in the element's total width and height */
+    margin: 0;
   }
   
   .remediation-container {
-    background-color: #F1EDEA;
+    background-color: #add8e6;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
-    width: 100%; /* Make the container take the full width */
-    box-sizing: border-box; /* Include padding in the element's total width and height */
   }
   
   .remediation-header {
-    background-color: #f7f7f7;
+    
+    color: #ffffff;
     padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 10px; /* Add margin to separate from content */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
   }
   
   p {
-    font-size: 18px;
-    line-height: 1.8;
-    margin: 0 0 20px; /* Adjust margin for spacing */
-    padding: 0 10px; /* Add padding for better readability */
-    box-sizing: border-box; /* Include padding in the element's total width and height */
+    font-size: 20px;
+    line-height: 1.6;
+    margin: 0;
   }
   
   /* Media queries for responsiveness */
   @media (max-width: 768px) {
     .center-content {
-      padding: 20px; /* Reduce padding on smaller screens */
+      padding: 20px;
     }
   
     h1, h2, h3, h4, h5, h6 {
-      font-size: 28px; /* Reduce font size on smaller screens */
+      font-size: 28px;
     }
   
     p {
-      font-size: 16px; /* Reduce font size on smaller screens */
+      font-size: 18px;
     }
   }
   
-
-
-
-
-
-
+  
