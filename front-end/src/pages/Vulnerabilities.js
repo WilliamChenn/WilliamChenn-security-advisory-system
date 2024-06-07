@@ -76,7 +76,7 @@ function Vulnerabilities() {
                                 <td>{val.updateDate}</td>
                                 <td>{val.product}</td>
                                 <td className="severityCell">
-                                    <Tooltip title="Rates severity of security vulnerabilities on a scale of 1-10" placement="top" arrow>
+                                    <Tooltip title="Severity of security vulnerabilities (scale of 1-10)" placement="top" arrow>
                                         <span className="tooltip-target">CVSS:</span></Tooltip>
                                     <button id={getSeverityClass(val.cvss)}>
                                         <Tooltip title= {getSeverityClass(val.cvss)} placement="top" arrow>
