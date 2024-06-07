@@ -1,4 +1,4 @@
-.circular-progress-container1 {
+.circular-progress-container {
   position: fixed;
   width: 300px;
   height: 300px;
@@ -7,21 +7,20 @@
   transform: translateY(-200%);
 }
 
-.circular-progress1 {
+.circular-progress {
   position: absolute;
   right: 0;
   top: 0;
 }
-
 .severity-text {
-  font-size: 1.5em; /* Smaller font size */
+  font-size: 1.5em;
 }
 
 .severity-text-box {
   border-radius: 10px;
   padding: 4px 8px;
   font-size: 0.8em;
-  background-color: rgba(255, 255, 255, 0.5); /* Transparent background */
+  background-color: rgba(255, 255, 255, 0.5);
   position: absolute;
   bottom: 6em;
   left: 50%;
@@ -29,40 +28,34 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Low severity style */
 .low-severity .CircularProgressbar-path {
-  stroke: rgb(106, 168, 106) !important; /* Green color */
+  stroke: rgb(106, 168, 106) !important;
 }
 
-/* Medium severity style */
 .medium-severity .CircularProgressbar-path {
-  stroke: orange !important; /* Orange color */
+  stroke: orange !important;
 }
 
-/* High severity style */
 .high-severity .CircularProgressbar-path {
-  stroke: red !important; /* Red color */
+  stroke: red !important;
 }
 
-/* Critical severity style */
 .critical-severity .CircularProgressbar-path {
-  stroke: darkred !important; /* Dark red color */
+  stroke: darkred !important;
 }
 
-/* N/A style */
 .n-a .CircularProgressbar-path {
-  stroke: lightgray !important; /* Light gray color */
+  stroke: lightgray !important;
 }
 
-/* Media query for responsiveness */
 @media (min-width: 400px) {
-  .circular-progress-container1 {
-    margin-top: 10px; /* Reduce margin for larger screens */
-    padding-left: 10px; /* Adjust padding-left for smaller screens */
-    padding-right: 5px; /* Add padding-right for consistency */
+  .circular-progress-container {
+    margin-top: 10px;
+    padding-left: 10px;
+    padding-right: 5px;
   }
 
-  .circular-progress1 {
-    margin-top: 5px; /* Reduce margin for larger screens */
+  .circular-progress {
+    margin-top: 5px;
   }
 }

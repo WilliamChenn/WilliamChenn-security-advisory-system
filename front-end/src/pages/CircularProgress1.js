@@ -1,11 +1,9 @@
 import React from 'react';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-import './CircularProgress1.css'; // Import the CSS file
 
-const CircularProgress1 = ({ value }) => {
-  // Define a function to determine the severity class based on the value
-  const getSeverityClass1 = (value) => {
+const CircularProgress1 = ({ value, variant }) => {
+  const getSeverityClass = (value) => {
     if (value < 4) {
       return "low-severity";
     } else if (value >= 4 && value < 7) {
@@ -19,7 +17,6 @@ const CircularProgress1 = ({ value }) => {
     }
   };
 
-  // Define a function to determine the severity text based on the value
   const getSeverityText = (value) => {
     if (value < 4) {
       return "Low";
@@ -34,37 +31,22 @@ const CircularProgress1 = ({ value }) => {
     }
   };
 
-  // Define a function to determine the severity text color based on the value
-  const getSeverityTextColor = (value) => {
-    if (value < 4) {
-      return "rgb(106, 168, 106)"; // Low severity color
-    } else if (value >= 4 && value < 7) {
-      return "orange"; // Medium severity color
-    } else if (value >= 7 && value < 9) {
-      return "red"; // High severity color
-    } else if (value >= 9 && value <= 10) {
-      return "darkred"; // Critical severity color
-    } else {
-      return "black"; // Default color
-    }
-  };
-
   return (
-    <div className="circular-progress-container1"> {/* Apply the container class */}
-      <div className={`circular-progress1 ${getSeverityClass1(value)}`}> {/* Apply the severity class */}
+    <div className={`circular-progress-container ${variant}`}>
+      <div className={`circular-progress ${getSeverityClass(value)}`}>
         <CircularProgressbar
           value={value}
           maxValue={10}
           text={`${value}`}
-          strokeWidth={10} // Set the stroke width for the progress bar
+          strokeWidth={10}
           styles={buildStyles({
             textColor: '#333',
             trailColor: '#d6d6d6',
-            rotation: 0, // Ensure the progress starts at the top
-            strokeLinecap: 'round', // Add rounded end caps to the path
+            rotation: 0,
+            strokeLinecap: 'round',
           })}
         />
-        <div className={`severity-text-box ${getSeverityClass1(value)}`} style={{ color: getSeverityTextColor(value) }}>
+        <div className={`severity-text-box ${getSeverityClass(value)}`}>
           <span className="severity-text">{getSeverityText(value)}</span>
         </div>
       </div>
@@ -73,6 +55,7 @@ const CircularProgress1 = ({ value }) => {
 };
 
 export default CircularProgress1;
+
 
 
 
