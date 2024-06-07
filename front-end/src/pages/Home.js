@@ -4,8 +4,8 @@ import CircularProgress from '../components/CircularProgress';
 import duke from '../images/duke.png';
 import './Home.css';
  
-function Home() {(
-
+function Home() {
+  return(
     <div className="Home">
       <img src={duke} className="Duke-logo" alt="logo" />
       <div className="title1">Duke IT Security</div>
@@ -41,6 +41,8 @@ function Home() {(
       </div>
     </div>
   );
+
+  
 }
  
 export default Home;
