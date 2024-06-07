@@ -6,7 +6,9 @@ Rails.application.routes.draw do
       resources :cves, only: [:index] do
         collection do
           get 'critical'
+           #/api/v1/cves/critical
           get 'recent'
+          #/api/v1/cves/recent
         end
       end
     end
