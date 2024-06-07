@@ -1,37 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
-.duke-banner {
-  background-color: #012169;
-  color: #ffffff;
-  padding: 10px;
-  width: 100vw;
-  height: auto;
-  display: flex;
-  align-items: center; /* Center items vertically */
-  justify-content: space-between; /* Space out the content */
-  position: absolute;
-  top: 0;
-  left: 0;
-}
- 
-.duke-container {
-  display: flex;
-  align-items: center;
-  margin-left: 20px;
-  width: 100vw;
-}
- 
-.duke-logo {
-  font-family: 'Garamond', serif;
-  font-size: 4em;
-  margin-right: 10px;
-}
- 
-.duke-entity-name {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 2.5em;
-  font-weight: 500;
-}
-has context menu
 
 .Header {
   background-color: #FFFFFF;
@@ -97,10 +64,11 @@ has context menu
 #Low-severity,
 #Medium-severity,
 #High-severity,
-#Critical-severity, #Low-probability,
+#Critical-severity, 
+#Low-probability,
 #Medium-probability,
 #High-probability,
-#Very-high-probability{
+#Very-high-probability {
     border: none;
     padding: 5px 10px;
     cursor: pointer;
@@ -111,7 +79,7 @@ has context menu
     text-align: center;
 }
 
-#Low-severity, #Low-probability{
+#Low-severity, #Low-probability {
     background-color: rgb(106, 168, 106);
 }
 
