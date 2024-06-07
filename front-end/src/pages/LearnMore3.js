@@ -1,7 +1,7 @@
 // LearnMore3.jsx
 import React from 'react';
-import './LearnMore1.css'; // Ensure the path is correct
-import CircularProgress3 from '../pages/CircularProgress2';
+import './LearnMore3.css'; // Ensure the path is correct
+import CircularProgress3 from '../pages/CircularProgress3';
 
 const LearnMore3 = () => {
   return (

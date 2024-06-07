@@ -25,17 +25,6 @@ const LearnMore1 = () => {
     </div>
   );
 } 
-
-
-
-
-
-
-
-
-
-
-
 export default LearnMore1;
 
 

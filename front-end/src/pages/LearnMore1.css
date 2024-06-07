@@ -2,7 +2,7 @@
 
 body {
   font-family: 'Open Sans', sans-serif;
-  background-color: #f5f5f5;
+  background-color: #F7FAFD;
   margin: 0;
   padding: 0;
   display: flex;
@@ -87,6 +87,7 @@ p {
 
   p {
     font-size: 16px; /* Reduce font size on smaller screens */
+    color:#274C5B;
   }
 }
 
