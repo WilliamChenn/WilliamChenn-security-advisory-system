@@ -3,6 +3,7 @@ import './Vulnerabilities.css';
 import Tooltip from '@mui/material/Tooltip';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min'; // This includes Popper.js
+import {useTable, useFilters} from 'react-table';
 
 
 
@@ -47,6 +48,119 @@ function getEpssClass(epss) {
         return "n-a";
     }
 }
+
+// function SeverityColumnFilter({
+//     column: {filterValue, setFilter,preFilteredRows, id}
+// }) {
+//     const options = React.useMemo(() => {
+//         const options = new Set();
+//         preFilteredRows.forEach(row => {
+//             options.add(row.values[id])
+//         });
+//         return [...options.values()];
+//     }, [id,preFilteredRows]);
+
+//     return (
+//         <select
+//           value={filterValue}
+//           onChange={e => {
+//             setFilter(e.target.value || undefined);
+//           }}
+//         >
+//           <option value="">All</option>
+//           {options.map((option, i) => (
+//             <option key={i} value={option}>
+//               {option}
+//             </option>
+//           ))}
+//         </select>
+//       );
+//     }
+
+//       function Vulnerabilities() {
+//         const defaultColumn = React.useMemo(
+//             () => ({
+//                 // No Filter property here to disable filtering by default
+//             }),
+//             []
+//         );
+
+//         const columns = React.useMemo(
+//             () => [
+//             {
+//               Header: 'Info',
+//               columns: [
+//                 { Header: 'CVE', accessor: 'cve' },
+//                 { Header: 'Summary', accessor: 'summary' },
+//                 { Header: 'Published', accessor: 'publishDate' },
+//                 { Header: 'Updated', accessor: 'updateDate' },
+//                 { Header: 'Affected Product', accessor: 'product' },
+//                 {
+//                   Header: 'Severity',
+//                   accessor: 'cvss',
+//                   Filter: SeverityColumnFilter,
+//                   filter: 'includes',
+//                 },
+//                 { Header: 'EPSS', accessor: 'epss' },
+//               ],
+//             },
+//           ],
+//           []
+//         );
+      
+//         const {
+//           getTableProps,
+//           getTableBodyProps,
+//           headerGroups,
+//           rows,
+//           prepareRow,
+//           state,
+//         } = useTable(
+//           {
+//             columns,
+//             data,
+//             defaultColumn,
+//           },
+//           useFilters
+//         );
+      
+//         return (
+//           <div className="Vulnerabilities">
+//             <header className="Vulnerabilities-header">
+//               <div className="title">Find Out If You Have Vulnerabilities That Put You at Risk</div>
+//             </header>
+//             <div className="Table">
+//               <table {...getTableProps()}>
+//                 <thead>
+//                   {headerGroups.map((headerGroup) => (
+//                     <tr {...headerGroup.getHeaderGroupProps()}>
+//                       {headerGroup.headers.map((column) => (
+//                         <th {...column.getHeaderProps()}>
+//                           {column.render('Header')}
+//                           <div>{column.canFilter ? column.render('Filter') : null}</div>
+//                         </th>
+//                       ))}
+//                     </tr>
+//                   ))}
+//                 </thead>
+//                 <tbody {...getTableBodyProps()}>
+//                   {rows.map((row) => {
+//                     prepareRow(row);
+//                     return (
+//                       <tr {...row.getRowProps()}>
+//                         {row.cells.map((cell) => (
+//                           <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+//                         ))}
+//                       </tr>
+//                     );
+//                   })}
+//                 </tbody>
+//               </table>
+//             </div>
+//           </div>
+//         );
+//       }
+      
 
 function Vulnerabilities() {
     return (

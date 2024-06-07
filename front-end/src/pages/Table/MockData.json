@@ -1,0 +1,29 @@
+[
+    {
+      "cve": "2024-29946",
+      "summary": "In onCreate of WifiDialogActivity.java, there is a possible way to bypass the DISALLOW_ADD_WIFI_CONFIG restriction due to a missing permission check.",
+      "publishDate": "2024-05-07",
+      "updateDate": "2024-05-29",
+      "product": "Roothub",
+      "cvss": 2.1,
+      "epss": "0.05"
+    },
+    {
+      "cve": "2024-28888",
+      "summary": "Roothub v2.6 was discovered to contain a SQL injection vulnerability via the 's' parameter in the search() function.",
+      "publishDate": "2024-03-12",
+      "updateDate": "2024-04-22",
+      "product": "Roothub",
+      "cvss": 7.1,
+      "epss": "0.02"
+    },
+    {
+      "cve": "2024-28753",
+      "summary": "LuckyFrameWeb v3.5.2 was discovered to contain an arbitrary read vulnerability via the fileDownload method in class com.luckyframe.project.common.CommonController.",
+      "publishDate": "2023-12-15",
+      "updateDate": "2024-02-15",
+      "product": "Luckyframe",
+      "cvss": 4.6,
+      "epss": "96.2"
+    }
+  ]
