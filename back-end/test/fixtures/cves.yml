@@ -1,0 +1,115 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  vendor: one
+  cve_id: MyString
+  vendor: MyString
+  assigner: MyString
+  assigner_source_name: MyString
+  cve_number: MyString
+  cve_year: MyString
+  publish_date: 2024-06-06 21:00:28
+  update_date: 2024-06-06 21:00:28
+  exploit_exists: false
+  exploit_existence_change_date: 2024-06-06 21:00:28
+  is_in_cisa_kev: false
+  assigner_id: MyString
+  nvd_vuln_status: MyString
+  summary: MyText
+  evaluator_comment: MyText
+  evaluator_solution: MyText
+  evaluator_impact: MyText
+  cisa_exploit_add: 2024-06-06 21:00:28
+  cisa_action_due: 2024-06-06 21:00:28
+  cisa_vulnerability_name: MyString
+  cisa_required_action: MyString
+  cisa_short_description: MyText
+  cisa_notes: MyText
+  epss_score: 1.5
+  epss_score_change_date: 2024-06-06 21:00:28
+  epss_percentile: 1.5
+  config_count: 1
+  config_condition_count: 1
+  vendor_comment_count: 1
+  reference_count: 1
+  metric_count: 1
+  weakness_count: 1
+  max_cvss_base_score: 1.5
+  max_cvss_base_score_v3: 1.5
+  max_cvss_base_score_change_date: 2024-06-06 21:00:28
+  max_cvss_exploitability_score: 1.5
+  max_cvss_impact_score: 1.5
+  is_overflow: false
+  is_memory_corruption: false
+  is_sql_injection: false
+  is_xss: false
+  is_directory_traversal: false
+  is_file_inclusion: false
+  is_csrf: false
+  is_xxe: false
+  is_ssrf: false
+  is_open_redirect: false
+  is_input_validation: false
+  is_code_execution: false
+  is_bypass_something: false
+  is_gain_privilege: false
+  is_denial_of_service: false
+  is_information_leak: false
+  is_used_for_ransomware: false
+
+two:
+  vendor: two
+  cve_id: MyString
+  vendor: MyString
+  assigner: MyString
+  assigner_source_name: MyString
+  cve_number: MyString
+  cve_year: MyString
+  publish_date: 2024-06-06 21:00:28
+  update_date: 2024-06-06 21:00:28
+  exploit_exists: false
+  exploit_existence_change_date: 2024-06-06 21:00:28
+  is_in_cisa_kev: false
+  assigner_id: MyString
+  nvd_vuln_status: MyString
+  summary: MyText
+  evaluator_comment: MyText
+  evaluator_solution: MyText
+  evaluator_impact: MyText
+  cisa_exploit_add: 2024-06-06 21:00:28
+  cisa_action_due: 2024-06-06 21:00:28
+  cisa_vulnerability_name: MyString
+  cisa_required_action: MyString
+  cisa_short_description: MyText
+  cisa_notes: MyText
+  epss_score: 1.5
+  epss_score_change_date: 2024-06-06 21:00:28
+  epss_percentile: 1.5
+  config_count: 1
+  config_condition_count: 1
+  vendor_comment_count: 1
+  reference_count: 1
+  metric_count: 1
+  weakness_count: 1
+  max_cvss_base_score: 1.5
+  max_cvss_base_score_v3: 1.5
+  max_cvss_base_score_change_date: 2024-06-06 21:00:28
+  max_cvss_exploitability_score: 1.5
+  max_cvss_impact_score: 1.5
+  is_overflow: false
+  is_memory_corruption: false
+  is_sql_injection: false
+  is_xss: false
+  is_directory_traversal: false
+  is_file_inclusion: false
+  is_csrf: false
+  is_xxe: false
+  is_ssrf: false
+  is_open_redirect: false
+  is_input_validation: false
+  is_code_execution: false
+  is_bypass_something: false
+  is_gain_privilege: false
+  is_denial_of_service: false
+  is_information_leak: false
+  is_used_for_ransomware: false
