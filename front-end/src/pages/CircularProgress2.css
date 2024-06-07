@@ -1,0 +1,38 @@
+.circular-progress-container2 {
+    position: fixed;
+    width: 300px;
+    height: 300px;
+    right: 200px;
+    top: 70%;
+    transform: translateY(-200%);
+  }
+  
+  .circular-progress2 {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  
+  
+ /* Medium severity style */
+.medium-severity .CircularProgressbar-path {
+    stroke: rgb(230, 166, 45) !important; /* Orange color */
+  }
+  
+  /* N/A style */
+  .n-a .CircularProgressbar-path {
+    stroke: lightgray !important; /* Light gray color */
+  }
+  
+  /* Media query for responsiveness */
+  @media (min-width: 400px) {
+    .circular-progress-container2 {
+      margin-top: 10px; /* Reduce margin for larger screens */
+      padding-left: 5px; /* Adjust padding-left for smaller screens */
+      padding-right: 5px; /* Add padding-right for consistency */
+    }
+  
+    .circular-progress2 {
+      margin-top: 5px; /* Reduce margin for larger screens */
+    }
+  }
