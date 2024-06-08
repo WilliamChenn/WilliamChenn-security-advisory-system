@@ -1,4 +1,3 @@
-# app/services/fetch_cve_data_service.rb
 require 'httparty'
 
 class FetchCVEDataService
@@ -14,10 +13,9 @@ class FetchCVEDataService
           v.name = vuln['vendor']
         end
 
-        cve = CVE.find_or_create_by(cve_id: vuln['cveId']) do |cve|
-          cve.assign_attributes(
+        CVE.find_or_create_by(cve_id: vuln['cveId']) do |cve|
+          cve.update(
             vendor: vendor,
-            vendor_name: vendor.name, # explicitly setting the vendor name
             assigner: vuln['assigner'],
             assigner_source_name: vuln['assignerSourceName'],
             cve_number: vuln['cveNumber'],
@@ -71,11 +69,22 @@ class FetchCVEDataService
             is_information_leak: convert_to_boolean(vuln['isInformationLeak']),
             is_used_for_ransomware: convert_to_boolean(vuln['isUsedForRansomware'])
           )
-          cve.save!
         end
       end
     else
       Rails.logger.error("Failed to fetch CVE data: #{response.body}")
+    end
+  end
+
+  def self.fetch_vendor(vendor_name)
+    url = "#{BASE_CVE_API_URL}&vendorName=#{vendor_name}&pageNumber=1&resultsPerPage=1"
+    token = "f63628992e62f5d6ac84bdb1ab93025173ce4755.eyJzdWIiOjQ3MjUsImlhdCI6MTcxNzUyMzYzOSwiZXhwIjoxNzIyMzg0MDAwLCJraWQiOjEsImMiOiI3RCt3MkZoTnZDdFZNeFByWUFyM0dEdDlaVWZDNGhZcUNqOUVXU0t1M3owd080bFZ3dVQyTm04V3ZiUlNoSjFrRkk5SGNzTksifQ=="
+    response = HTTParty.get(url, headers: { "Authorization" => "Bearer #{token}" })
+    if response.success? && response.parsed_response['results'].any?
+      vendor_data = response.parsed_response['results'].first
+      { name: vendor_data['vendor'], vendor_id: vendor_data['vendor_id'] }
+    else
+      nil
     end
   end
 
