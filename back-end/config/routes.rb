@@ -8,7 +8,7 @@ Rails.application.routes.draw do
           get 'critical'
           # /api/v1/cves/critical - to get the most critical CVEs
           get 'recent'
-          # /api/v1/cves/recent - to get the most recent CVEs
+          # /api/v1/cves/recent?time_range=day|week|two_weeks|month|year
         end
       end
       resources :vendors, only: [:index]

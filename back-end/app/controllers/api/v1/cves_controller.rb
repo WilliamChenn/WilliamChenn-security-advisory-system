@@ -12,9 +12,25 @@ module Api
         end
         #/api/v1/cves/recent
         def recent
-          cves = CVE.order(publish_date: :desc).limit(5)
-          render json: CVESerializer.new(cves, include: [:vendor]).serialized_json
-        end
+            time_range = params[:time_range] || 'week'
+            start_date = case time_range
+                         when 'day'
+                           1.day.ago
+                         when 'week'
+                           1.week.ago
+                         when 'two_weeks'
+                           2.weeks.ago
+                         when 'month'
+                           1.month.ago
+                         when 'year'
+                           1.year.ago
+                         else
+                           1.week.ago
+                         end
+    
+            cves = CVE.where('publish_date >= ?', start_date)
+            render json: cves
+          end
       end
     end
   end
