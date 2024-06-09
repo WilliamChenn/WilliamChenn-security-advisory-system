@@ -1,8 +1,13 @@
 #!/bin/bash -e
 
+# Print environment variables for debugging
+printenv
+
 # If running the rails server then create or migrate existing database
-if [ "${1}" == "./bin/rails" ] && [ "${2}" == "server" ]; then
-  ./bin/rails db:prepare
+if [ "${1}" == "bundle" ] && [ "${2}" == "exec" ] && [ "${3}" == "rails" ] && [ "${4}" == "server" ]; then
+  bundle exec rails db:prepare
+  bundle exec rails db:migrate
+  bundle exec rails db:seed
 fi
 
-exec "${@}"
+exec "$@"
