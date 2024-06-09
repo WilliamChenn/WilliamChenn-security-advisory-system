@@ -1,13 +1,16 @@
 #!/bin/bash -e
 
 # Print environment variables for debugging
+echo "Running docker-entrypoint script..."
 printenv
 
 # If running the rails server then create or migrate existing database
 if [ "${1}" == "bundle" ] && [ "${2}" == "exec" ] && [ "${3}" == "rails" ] && [ "${4}" == "server" ]; then
+  echo "Preparing the database..."
   bundle exec rails db:prepare
-  bundle exec rails db:migrate
+  echo "Seeding database..."
   bundle exec rails db:seed
 fi
 
+echo "Executing command: $@"
 exec "$@"
