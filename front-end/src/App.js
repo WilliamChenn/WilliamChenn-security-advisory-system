@@ -6,7 +6,9 @@ import './App.css';
 import LearnMore1 from './pages/LearnMore1';
 import LearnMore2 from './pages/LearnMore2';
 import LearnMore3 from './pages/LearnMore3';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+ 
+ 
 function App() {
   return (
     <Router>
@@ -20,6 +22,5 @@ function App() {
     </Router>
   );
 }
-
+ 
 export default App;
-
