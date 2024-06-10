@@ -1,13 +1,12 @@
 // LearnMore2.jsx
 import React from 'react';
 import './LearnMore1.css'; // Ensure the path is correct
-import CircularProgress2 from '../pages/CircularProgress2';
+
 
 const LearnMore2 = () => {
   return (
     <div>
 
-      <CircularProgress2 value={5.3} />
       <div className="center-content">
         <h1>Vulnerability Title /CVE 1</h1>
         <h2>Overview</h2>
