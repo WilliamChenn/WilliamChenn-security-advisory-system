@@ -1,13 +1,13 @@
 import React from 'react';
-import './LearnMore1.css'; // Ensure the path is correct
+import './LearnMore1.css';
 import CircularProgress1 from '../pages/CircularProgress1';
-import Footer from './Footer'; // Import the Footer component
+import Footer from './Footer';
 
 const LearnMore3 = () => {
   return (
-    <div className="learn-more-content">
-      <div className="text-content">
-        <div className="center-content">
+    <div className="page-container">
+      <div className="content-wrapper">
+        <div className="text-content">
           <h1>Vulnerability Title /CVE 1</h1>
           <h2>Overview</h2>
           <p>Affected versions of this package are vulnerable to URL Redirection to Untrusted Site ('Open Redirect') in the endpoint of the library. An attacker can redirect users to malicious sites by exploiting the open redirect vulnerability.</p>
@@ -22,15 +22,16 @@ const LearnMore3 = () => {
             </div>
           </div>
         </div>
+        <div className="circular-progress-container1">
+          <CircularProgress1 value={9.3} />
+        </div>
       </div>
-      <div className="circular-progress-container">
-        <CircularProgress1 value={9.3} />
-      </div>
-      <Footer /> {/* Include the Footer component here */}
+      <Footer />
     </div>
   );
 };
 
 export default LearnMore3;
+
 
 
