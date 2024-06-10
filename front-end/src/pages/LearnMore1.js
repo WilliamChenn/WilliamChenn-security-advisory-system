@@ -5,7 +5,7 @@ import Footer from './Footer';
 
 const LearnMore1 = () => {
   return (
-    <div className="page-container">
+    <div>
       <div className="content-wrapper">
         <div className="text-content">
           <h1>Vulnerability Title /CVE 1</h1>
