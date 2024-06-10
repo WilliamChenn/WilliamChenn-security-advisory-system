@@ -9,7 +9,7 @@
     display: block;
     cursor: pointer;
     margin: 1em 0 0 1em;
-    position: relative; /* Ensure the dropdown is positioned relative to this element */
+    position: relative; 
   }
   
   .nav div {
@@ -34,8 +34,8 @@
   
   .navbar-collapse {
     position: absolute;
-    top: 0px; /* Adjust this value to control the vertical positioning */
+    top: 0; /* Adjust this value to control the vertical positioning */
     right: 0;
     background-color: #ffffff;
-    width: 230px; /* Adjust this value to control the width of the dropdown */
+    width: 250px; /* Adjust this value to control the width of the dropdown */
   }

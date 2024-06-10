@@ -1,31 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './Home.css';
 import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
-import NavigationBar from '../components/NavigationBar';
 import CircularProgress from '../components/CircularProgress';
 import BarGraph from '../components/BarGraph';
-import './Home.css';
+import Header from '../components/Header.js';
 import Footer from '../components/Footer.js';
- 
+import Vendors from '../components/Vendors.js';
+
 function Home() {
-  return(
+  return (
     <div className="Home">
-      <header className="duke-banner">
-        <div className="duke-container">
-          <div className="duke-logo">Duke</div>
-          <div className="duke-entity-name">| IT Security Advisory Dashboard</div>
-          <div className="navbar-container">
-            <NavigationBar />
-          </div>
-        </div>
-      </header>
- 
+      <Header />
+      <Vendors />
       <main className="main-content">
         <div className="subtitle1">Duke’s database for open source vulnerabilities</div>
         <div className="subtitle2">and cloud misconfigurations</div>
-        
-        <BarGraph /> 
+
+        <BarGraph />
 
         <div className="content">
           <div className="subtitle3">Vulnerabilities in the last week</div>
@@ -46,7 +38,7 @@ function Home() {
                 </div>
               </Card.Body>
             </Card>
-            
+
             <Card style={{ width: '18rem' }}>
               <Card.Body>
                 <CircularProgress value={0.5} />
@@ -64,7 +56,7 @@ function Home() {
                 </div>
               </Card.Body>
             </Card>
-            
+
             <Card style={{ width: '18rem' }}>
               <Card.Body>
                 <CircularProgress value={2} />
@@ -85,12 +77,9 @@ function Home() {
           <Link to="/vulnerabilities" className="view">View all</Link>
         </div>
       </main>
-      
       <Footer />
     </div>
   );
-
-  
 }
- 
+
 export default Home;
