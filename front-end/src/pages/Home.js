@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import CircularProgress from '../components/CircularProgress';
 import duke from '../images/duke.png';
 import './Home.css';
+import Footer from './Footer.js'
  
 function Home() {
   return(
@@ -39,6 +40,8 @@ function Home() {
         
         <Link to="/vulnerabilities" className="view">View all</Link>
       </div>
+
+      <Footer />
     </div>
   );
 
