@@ -60,11 +60,10 @@ export const COLUMNS = [
         accessor: 'product'
     },
     {
-        Header: 'Criticality',
-        accessor: row => `${row.cvss} - ${row.epss}`, // Custom accessor to combine cvss and epss
+        Header: 'CVSS',
+        accessor: 'cvss',
         Cell: ({ row }) => {
             const cvss = row.original.cvss;
-            const epss = row.original.epss;
             return (
                 <div className="severityCell">
                     <Tooltip title="Severity of security vulnerabilities (scale of 1-10)" placement="top" arrow>
@@ -75,16 +74,55 @@ export const COLUMNS = [
                             <span className="tooltip-target">{cvss}</span>
                         </Tooltip>
                     </button>
+                </div>
+            );
+        },
+    },
+    {
+        Header: 'EPSS',
+        accessor: 'epss',
+        Cell: ({ row }) => {
+            const epss = row.original.epss;
+            return (
+                <div className="severityCell">
                     <Tooltip title="Likelihood of the vulnerability being exploited in the wild within the next 30 days" placement="top" arrow>
                         <span className="tooltip-target">EPSS:</span>
                     </Tooltip>
                     <button id={getEpssClass(epss)}>
                         <Tooltip title={getEpssClass(epss)} placement="top" arrow>
-                            <span className="tooltip-target">{epss}%</span>
+                            <span className="tooltip-target">{epss}</span>
                         </Tooltip>
                     </button>
                 </div>
             );
-        }
+        },
     }
+    // {
+    //     Header: 'Criticality',
+    //     accessor: row => `${row.cvss} - ${row.epss}`, // Custom accessor to combine cvss and epss
+    //     Cell: ({ row }) => {
+    //         const cvss = row.original.cvss;
+    //         const epss = row.original.epss;
+    //         return (
+    //             <div className="severityCell">
+    //                 <Tooltip title="Severity of security vulnerabilities (scale of 1-10)" placement="top" arrow>
+    //                     <span className="tooltip-target">CVSS:</span>
+    //                 </Tooltip>
+    //                 <button id={getSeverityClass(cvss)}>
+    //                     <Tooltip title={getSeverityClass(cvss)} placement="top" arrow>
+    //                         <span className="tooltip-target">{cvss}</span>
+    //                     </Tooltip>
+    //                 </button>
+    //                 <Tooltip title="Likelihood of the vulnerability being exploited in the wild within the next 30 days" placement="top" arrow>
+    //                     <span className="tooltip-target">EPSS:</span>
+    //                 </Tooltip>
+    //                 <button id={getEpssClass(epss)}>
+    //                     <Tooltip title={getEpssClass(epss)} placement="top" arrow>
+    //                         <span className="tooltip-target">{epss}%</span>
+    //                     </Tooltip>
+    //                 </button>
+    //             </div>
+    //         );
+    //     }
+    // }
 ];
