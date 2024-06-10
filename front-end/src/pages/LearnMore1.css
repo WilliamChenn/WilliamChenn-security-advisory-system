@@ -1,5 +1,3 @@
-/* LearnMore1.css */
-
 body {
   font-family: 'Open Sans', sans-serif;
   background-color: #F7FAFD;
@@ -13,22 +11,24 @@ body {
   position: relative; /* Needed for absolute positioning of the circle */
 }
 
-
-
 h1 {
   font-family: 'Open Sans Condensed', sans-serif;
-  color: #274C5B;
-  font-size: 36px;
+  color: #012169; /* Electric blue color */
+  font-size: 34px; /* Smaller font size */
   margin: 0 0 20px 0; /* Add margin bottom for spacing */
   font-weight: bold; /* Make headers bold */
 }
 
 h2, h3, h4, h5, h6 {
   font-family: 'Open Sans Condensed', sans-serif;
-  color: #274C5B;
-  font-size: 25px;
+  color: #012169; /* Electric blue color */
+  font-size: 25px; /* Smaller font size */
   margin: 0 0 20px 0; /* Add margin bottom for spacing */
   font-weight: bold; /* Make headers bold */
+}
+
+p {
+  font-size: 18px;
 }
 
 .center-content {
@@ -39,56 +39,30 @@ h2, h3, h4, h5, h6 {
   width: 100%;
   max-width: 800px; /* Set a fixed max-width */
   padding: 40px;
-  margin-left: 10px; /* Push content more to the left */
-  box-sizing: border-box;
+  margin-left: 10px; 
+}
+.remediation-container {
+  border: 1px solid #F1EDEA; /* Set the border color to match the background color */
+  border-radius: 8px; /* Add some border radius for rounded corners */
+  padding: 20px; /* Add some padding inside the container */
+  margin-top: 20px; /* Add some margin at the top */
+  background-color: #F1EDEA; /* Set the background color */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadowing */
 }
 
-.remediation-container {
-  background-color: #F1EDEA;
-  padding: 2px; /* Reduce padding to make the box less tall */
-  border-radius: 20px; /* Increase border-radius for more rounded corners */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-top: 20px;
-  width: 100%;
-  box-sizing: border-box;
-}
 
 .remediation-header {
-  padding: 10px;
-  border-radius: 5px;
-  margin-bottom: 20px; /* Add margin to separate from content */
+  margin-bottom: 10px; /* Add margin at the bottom of the header */
 }
 
-p {
-  font-size: 18px;
-  line-height: 1.8;
-  margin: 0 0 20px; /* Adjust margin for spacing */
-  padding: 0 10px; /* Add padding for better readability */
-  box-sizing: border-box; /* Include padding in the element's total width and height */
+
+
+
+
+.remediation-content {
+  text-align: justify; /* Justify the text inside the container */
 }
 
-/* Scaling the content */
-@media (min-width: 800px) {
-  .center-content {
-    transform: scale(1.2); /* Adjust scale as needed */
-    transform-origin: top left; /* Ensure scaling from the top left */
-  }
-}
 
-/* Media queries for responsiveness */
-@media (max-width: 768px) {
-  .center-content {
-    padding: 20px; /* Reduce padding on smaller screens */
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    font-size: 28px; /* Reduce font size on smaller screens */
-  }
-
-  p {
-    font-size: 16px; /* Reduce font size on smaller screens */
-    color:#274C5B;
-  }
-}
 
   
