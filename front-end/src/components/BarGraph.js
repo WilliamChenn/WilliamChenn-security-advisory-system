@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Cell, Label } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Cell, Label, ResponsiveContainer } from 'recharts';
 import './BarGraph.css';
 
 const BarGraph = () => {
@@ -61,19 +61,23 @@ const BarGraph = () => {
   }, []);
 
   return (
-    <BarChart width={800} height={400} data={data} className="bar-chart">
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="scoreRange">
-        <Label value="CVSS Score" offset={-5} position="insideBottom" />
-      </XAxis>
-      <YAxis />
-      <Tooltip />
-      <Bar dataKey="count">
-        {data.map((entry, index) => (
-          <Cell key={`cell-${index}`} fill={entry.fill} />
-        ))}
-      </Bar>
-    </BarChart>
+    <div className="bar-chart">
+      <ResponsiveContainer width="100%" height={400}>
+        <BarChart data={data}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="scoreRange">
+            <Label value="CVSS Score" offset={-5} position="insideBottom" />
+          </XAxis>
+          <YAxis />
+          <Tooltip />
+          <Bar dataKey="count">
+            {data.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={entry.fill} />
+            ))}
+          </Bar>
+        </BarChart>
+      </ResponsiveContainer>
+    </div>
   );
 };
 

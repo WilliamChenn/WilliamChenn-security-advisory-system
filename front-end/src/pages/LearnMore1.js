@@ -1,7 +1,7 @@
 import React from 'react';
 import './LearnMore1.css'; // Ensure the path is correct
 import CircularProgress1 from '../pages/CircularProgress1';
-import Footer from './Footer'; // Import the Footer component
+import Footer from '../components/Footer.js'; // Import the Footer component
 
 const LearnMore1 = () => {
   return (
