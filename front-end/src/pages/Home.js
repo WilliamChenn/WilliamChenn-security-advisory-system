@@ -4,6 +4,7 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import NavigationBar from '../components/NavigationBar';
 import CircularProgress from '../components/CircularProgress';
+import BarGraph from '../components/BarGraph';
 import './Home.css';
  
 function Home() {
@@ -23,6 +24,8 @@ function Home() {
         <div className="subtitle1">Duke’s database for open source vulnerabilities</div>
         <div className="subtitle2">and cloud misconfigurations</div>
         
+        <BarGraph /> 
+
         <div className="content">
           <div className="subtitle3">Vulnerabilities in the last week</div>
           <div className="cards">
