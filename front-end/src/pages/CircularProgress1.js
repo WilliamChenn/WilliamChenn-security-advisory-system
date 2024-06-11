@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-import './LearnMore1.css';
+import './CircularProgress1.css';
 
 const CircularProgress1 = ({ value }) => {
   const [isFullscreen, setIsFullscreen] = useState(false);
