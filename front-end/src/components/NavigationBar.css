@@ -1,0 +1,41 @@
+.navigation-bar {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+  }
+  
+  .nav {
+    width: 30px;
+    display: block;
+    cursor: pointer;
+    margin: 1em 0 0 1em;
+    position: relative; 
+  }
+  
+  .nav div {
+    height: 4px;
+    background-color: #ffffff;
+    margin: 5px 0;
+    border-radius: 25px;
+    transition: 0.3s;
+  }
+  
+  .one {
+    width: 30px;
+  }
+  
+  .two {
+    width: 20px;
+  }
+  
+  .three {
+    width: 25px;
+  }
+  
+  .navbar-collapse {
+    position: absolute;
+    top: 30px; /* Adjust this value to control the vertical positioning */
+    right: 25px;
+    width: 240px; /* Adjust this value to control the width of the dropdown */
+  }
+  
