@@ -67,10 +67,10 @@ const BarGraph = () => {
   return (
     <div className="bar-chart">
       <ResponsiveContainer width="100%" height={400}>
-        <BarChart layout="vertical" data={data} margin={{ left: 80 }}>
+        <BarChart layout="vertical" data={data} margin={{ top: 40, left: 80 }}>
           <XAxis type="number" hide />
           <YAxis type="category" dataKey="scoreRange">
-            <Label value="CVSS Score" position="insideLeft" angle={0} offset={-60} />
+            <Label value="CVSS Score" position="insideTop" offset={-17} />
           </YAxis>
           <Tooltip />
           <Bar dataKey="count" barSize={20}>
