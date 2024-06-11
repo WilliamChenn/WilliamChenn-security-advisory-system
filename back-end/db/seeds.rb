@@ -9,8 +9,8 @@
 #   end
 
 # Clear existing data
-#CVE.destroy_all
-#Vendor.destroy_all
+CVE.destroy_all
+Vendor.destroy_all
 
 defaultVendors = ["Microsoft", "Adobe", "Apple"]
 #Jetbrains
