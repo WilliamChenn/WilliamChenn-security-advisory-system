@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
-import Vulnerabilities from './pages/Table/Vulnerabilities';
+import Vulnerabilities from './pages/Old Table/Vulnerabilities';
 import NavigationBar from './components/NavigationBar'
 import './App.css';
 import LearnMore1 from './pages/LearnMore1';

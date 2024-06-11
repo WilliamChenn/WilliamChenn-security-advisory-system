@@ -28,11 +28,10 @@ services:
       - .env
     environment:
       - RAILS_ENV=development
-     # - DATABASE_URL=${DATABASE_URL}
-      - POSTGRES_HOST=codeplus-postgres-test-01.oit.duke.edu
-      - POSTGRES_USER=security_advisor
-      - POSTGRES_PASSWORD=f9Uqs4aEt4zJfVKCNhDi
-      - POSTGRES_DB=security_advisor
+      - POSTGRES_HOST=${POSTGRES_HOST}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
       
 
 
