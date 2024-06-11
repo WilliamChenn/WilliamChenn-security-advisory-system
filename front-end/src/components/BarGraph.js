@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Cell, Label } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, Tooltip, Cell, ResponsiveContainer, LabelList, Label } from 'recharts';
 import './BarGraph.css';
 
 const BarGraph = () => {
@@ -15,9 +15,7 @@ const BarGraph = () => {
         return response.json();
       })
       .then(parsedData => {
-        console.log("Fetched Data:", parsedData); // Debugging: Check fetched data
-
-        // Extract and format data with colors
+        console.log("Fetched Data:", parsedData);
         const scoreRanges = {
           '0-1': { count: 0, color: '#00FF00' }, // Green
           '1-2': { count: 0, color: '#7FFF00' }, // Light Green
@@ -60,21 +58,32 @@ const BarGraph = () => {
       .catch(error => console.error('Error fetching data:', error));
   }, []);
 
+  const CustomLabel = ({ x, y, width, value }) => (
+    <text x={x + width + 5} y={y + 5} fill="blue" dy={10} textAnchor="start">
+      {value}
+    </text>
+  );
+
   return (
-    <BarChart width={800} height={400} data={data} className="bar-chart">
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="scoreRange">
-        <Label value="CVSS Score" offset={-5} position="insideBottom" />
-      </XAxis>
-      <YAxis />
-      <Tooltip />
-      <Bar dataKey="count">
-        {data.map((entry, index) => (
-          <Cell key={`cell-${index}`} fill={entry.fill} />
-        ))}
-      </Bar>
-    </BarChart>
+    <div className="bar-chart">
+      <ResponsiveContainer width="100%" height={400}>
+        <BarChart layout="vertical" data={data} margin={{ top: 40, left: 80 }}>
+          <XAxis type="number" hide />
+          <YAxis type="category" dataKey="scoreRange">
+            <Label value="CVSS Score" position="insideTop" offset={-17} />
+          </YAxis>
+          <Tooltip />
+          <Bar dataKey="count" barSize={20}>
+            {data.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={entry.fill} />
+            ))}
+            <LabelList dataKey="count" position="right" content={CustomLabel} />
+          </Bar>
+        </BarChart>
+      </ResponsiveContainer>
+    </div>
   );
 };
 
 export default BarGraph;
+
