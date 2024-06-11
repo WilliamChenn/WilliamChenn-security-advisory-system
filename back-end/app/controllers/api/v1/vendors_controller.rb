@@ -18,9 +18,15 @@ module Api
           if vendor.persisted?
             # Fetch vendor logo
             logo_response = HTTParty.get("#{FetchCVEDataService::BASE_LOGO_API_URL}#{vendor_name}", headers: { "X-Api-Key" => FetchCVEDataService::API_KEY })
+
             if logo_response.success?
               logo_data = logo_response.parsed_response.first
-              vendor.update(vendor_url: logo_data['image'])
+            
+              if logo_data.present?
+                vendor.update(vendor_url: logo_data['image'])
+              else
+                Rails.logger.info("Logo data is empty for vendor: #{vendor_name}")
+              end
             else
               Rails.logger.error("Failed to fetch vendor logo: #{logo_response.body}")
             end
