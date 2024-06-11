@@ -1,7 +1,11 @@
 .navigation-bar {
     position: absolute;
     top: 20px;
+<<<<<<< HEAD
     right: 30px;
+=======
+    right: 50px;
+>>>>>>> origin/main
   }
   
   .nav {
@@ -9,7 +13,11 @@
     display: block;
     cursor: pointer;
     margin: 1em 0 0 1em;
+<<<<<<< HEAD
     position: relative; 
+=======
+    position: relative; /* Ensure the dropdown is positioned relative to this element */
+>>>>>>> origin/main
   }
   
   .nav div {
@@ -34,8 +42,16 @@
   
   .navbar-collapse {
     position: absolute;
+<<<<<<< HEAD
     top: 30px; /* Adjust this value to control the vertical positioning */
     right: 25px;
     width: 240px; /* Adjust this value to control the width of the dropdown */
   }
   
+=======
+    top: 0px; /* Adjust this value to control the vertical positioning */
+    right: 0;
+    background-color: #ffffff;
+    width: 230px; /* Adjust this value to control the width of the dropdown */
+  }
+>>>>>>> origin/main

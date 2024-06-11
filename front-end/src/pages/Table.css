@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
+
+.Header {
+  background-color: #f2f2f2;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 2.1em;
+  margin: 20px 0 10px;
+}
+.Table {
+  margin: 20px auto;
+  width: 80%;
+}
+
+.Table table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 18px;
+}
+
+.Table td, .Table th {
+    border: 1px solid #ddd;
+    padding: 15px;
+}
+
+.Table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.Table tr:hover {
+    background-color: #ddd;
+}
+
+.Table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #0417aa;
+    color: white;
+}
+
+.Table td.severityCell {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.Table td.severityCell button {
+  font-size: 14px;
+  width: 55px;
+  height: 30px;
+  margin-left: 8px;
+}
+
+.tooltip-target {
+  cursor: pointer;
+}
+
+#Low-severity,
+#Medium-severity,
+#High-severity,
+#Critical-severity, 
+#Low-probability,
+#Medium-probability,
+#High-probability,
+#Very-high-probability,
+#n-a{
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+#Low-severity, #Low-probability {
+    background-color: rgb(106, 168, 106);
+}
+
+#Medium-severity, #Medium-probability {
+    background-color: rgb(230, 166, 45);
+}
+
+#High-severity, #High-probability {
+    background-color: rgb(216, 95, 95);
+}
+
+#Critical-severity, #Very-high-probability {
+    background-color: rgb(133, 57, 57);
+}
+
+#n-a {
+  color: black;
+}
+
+.cve-title a {
+    text-decoration: none;
+}
+
+.cve-title a:hover {
+    text-decoration: underline;
+}
+
+.truncate-two-lines {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+}

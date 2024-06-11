@@ -7,3 +7,26 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+# Clear existing data
+#CVE.destroy_all
+#Vendor.destroy_all
+
+defaultVendors = ["Microsoft", "Adobe", "Apple"]
+#Jetbrains
+#Linux
+
+
+# Function to fetch CVE data for a given vendor
+def fetch_cve_data_for_vendor(vendor_name)
+    FetchCVEDataService.call(vendor_name)
+end
+  
+# Fetch and seed data for each default vendor
+defaultVendors.each do |vendor_name|
+    fetch_cve_data_for_vendor(vendor_name)
+end
+  
+
+
+puts "Seeding completed!"

@@ -1,0 +1,6 @@
+# config/initializers/database_url.rb
+
+if ENV['POSTGRES_USER'] && ENV['POSTGRES_PASSWORD'] && ENV['POSTGRES_DB'] && ENV['POSTGRES_HOST'] && ENV['POSTGRES_PORT']
+    ENV['DATABASE_URL'] = "postgres://#{ENV['POSTGRES_USER']}:#{ENV['POSTGRES_PASSWORD']}@#{ENV['POSTGRES_HOST']}:#{ENV['POSTGRES_PORT']}/#{ENV['POSTGRES_DB']}"
+  end
+  

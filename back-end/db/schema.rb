@@ -10,23 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_04_195142) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_08_162931) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "cves", force: :cascade do |t|
-    t.string "vendor_id"
+    t.bigint "vendor_id", null: false
+    t.string "cve_id"
     t.string "vendor"
     t.string "assigner"
     t.string "assigner_source_name"
     t.string "cve_number"
-    t.string "cve_id"
     t.string "cve_year"
     t.datetime "publish_date"
     t.datetime "update_date"
-    t.string "exploit_exists"
+    t.boolean "exploit_exists"
     t.datetime "exploit_existence_change_date"
-    t.string "is_in_cisa_kev"
+    t.boolean "is_in_cisa_kev"
     t.string "assigner_id"
     t.string "nvd_vuln_status"
     t.text "summary"
@@ -39,41 +39,48 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_04_195142) do
     t.string "cisa_required_action"
     t.text "cisa_short_description"
     t.text "cisa_notes"
-    t.string "epss_score"
+    t.float "epss_score"
     t.datetime "epss_score_change_date"
-    t.string "epss_percentile"
-    t.string "config_count"
-    t.string "config_condition_count"
-    t.string "vendor_comment_count"
-    t.string "reference_count"
-    t.string "metric_count"
-    t.string "weakness_count"
-    t.string "max_cvss_base_score"
-    t.string "max_cvss_base_score_v2"
-    t.string "max_cvss_base_score_v3"
-    t.string "max_cvss_base_score_v4"
+    t.float "epss_percentile"
+    t.integer "config_count"
+    t.integer "config_condition_count"
+    t.integer "vendor_comment_count"
+    t.integer "reference_count"
+    t.integer "metric_count"
+    t.integer "weakness_count"
+    t.float "max_cvss_base_score"
+    t.float "max_cvss_base_score_v3"
     t.datetime "max_cvss_base_score_change_date"
-    t.string "max_cvss_exploitability_score"
-    t.string "max_cvss_impact_score"
-    t.string "is_overflow"
-    t.string "is_memory_corruption"
-    t.string "is_sql_injection"
-    t.string "is_xss"
-    t.string "is_directory_traversal"
-    t.string "is_file_inclusion"
-    t.string "is_csrf"
-    t.string "is_xxe"
-    t.string "is_ssrf"
-    t.string "is_open_redirect"
-    t.string "is_input_validation"
-    t.string "is_code_execution"
-    t.string "is_bypass_something"
-    t.string "is_gain_privilege"
-    t.string "is_denial_of_service"
-    t.string "is_information_leak"
-    t.string "is_used_for_ransomware"
+    t.float "max_cvss_exploitability_score"
+    t.float "max_cvss_impact_score"
+    t.boolean "is_overflow"
+    t.boolean "is_memory_corruption"
+    t.boolean "is_sql_injection"
+    t.boolean "is_xss"
+    t.boolean "is_directory_traversal"
+    t.boolean "is_file_inclusion"
+    t.boolean "is_csrf"
+    t.boolean "is_xxe"
+    t.boolean "is_ssrf"
+    t.boolean "is_open_redirect"
+    t.boolean "is_input_validation"
+    t.boolean "is_code_execution"
+    t.boolean "is_bypass_something"
+    t.boolean "is_gain_privilege"
+    t.boolean "is_denial_of_service"
+    t.boolean "is_information_leak"
+    t.boolean "is_used_for_ransomware"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["vendor_id"], name: "index_cves_on_vendor_id"
+  end
+
+  create_table "vendors", force: :cascade do |t|
+    t.string "name"
+    t.string "vendor_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "cves", "vendors"
 end

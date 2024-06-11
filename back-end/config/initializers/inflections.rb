@@ -14,3 +14,12 @@
 # ActiveSupport::Inflector.inflections(:en) do |inflect|
 #   inflect.acronym "RESTful"
 # end
+
+
+  
+
+ActiveSupport::Inflector.inflections(:en) do |inflect|
+    inflect.acronym 'CVE'
+    inflect.irregular 'cve', 'cves'
+  end
+  
