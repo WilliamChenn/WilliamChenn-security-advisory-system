@@ -2,10 +2,11 @@ import React from 'react';
 import './LearnMore1.css';
 import CircularProgress1 from '../pages/CircularProgress1';
 import Footer from '../components/Footer';
-
+import Header from '../components/Header';
 const LearnMore1 = () => {
   return (
     <div className='page-container'>
+      <Header />
       <div className="content-wrapper">
         <div className="text-content">
           <h1>Vulnerability Title /CVE 1</h1>

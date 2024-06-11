@@ -2,18 +2,19 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Vulnerabilities from './pages/Table/Vulnerabilities';
+import NavigationBar from './components/NavigationBar'
 import './App.css';
 import LearnMore1 from './pages/LearnMore1';
 import LearnMore2 from './pages/LearnMore2';
 import LearnMore3 from './pages/LearnMore3';
 import SortingTable from './pages/Table/SortingTable';
-// import { Table } from '@mui/material';
 import 'bootstrap/dist/css/bootstrap.min.css';
  
  
 function App() {
   return (
     <Router>
+      <NavigationBar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/vulnerabilities" element={<Vulnerabilities />} />

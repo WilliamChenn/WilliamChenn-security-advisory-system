@@ -1,3 +1,4 @@
+/* General Styles */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -13,6 +14,7 @@ body {
   margin-top: 100px; /* Adjust for navbar height */
 }
 
+/* Title and Subtitle Styles */
 .title1, .title2 {
   font-size: 2.5em;
   font-weight: bold;
@@ -43,7 +45,7 @@ body {
   color: #000000c0;
   font-size: 1.5em;
   font-weight: bold;
-  font-family: "Cormorant Garamond";
+  font-family: "Open Sans";
   margin: 10px 0 20px;
 }
 
@@ -72,37 +74,24 @@ body {
 
 .cards {
   display: flex;
-  justify-content: center; /* Center cards */
+  justify-content: center; 
   gap: 20px;
   flex-wrap: wrap;
-  box-sizing: border-box; /* Ensure padding is included in width */
+  margin-bottom: 10px;
 }
 
 .card {
-  flex: 1 1 calc(33.333% - 20px); /* Adjust width to fit three cards with gap */
+  flex: 1 1 calc(30% - 20px); 
   text-align: center;
   box-sizing: border-box;
   margin-bottom: 20px;
-  max-width: 300px; /* Maximum width for each card */
-}
-
-@media (max-width: 768px) {
-  .card {
-    flex: 1 1 calc(50% - 20px); /* Adjust width for two cards in smaller screens */
-  }
-}
-
-@media (max-width: 480px) {
-  .card {
-    flex: 1 1 100%; /* Full width for single card in very small screens */
-  }
 }
 
 .card-content {
-  margin-top: 20px; /* Add spacing between circular progress and text */
+  margin-top: 20px; 
 }
 
-.view {
+.view, .learnMore {
   display: inline-block;
   padding: 15px 20px;
   font-size: 1.1em;
@@ -113,11 +102,26 @@ body {
 }
 
 .learnMore {
-  display: inline-block;
-  padding: 15px 20px;
-  font-size: .9em;
-  color: #ffffff;
-  background-color: #012169;
-  border-radius: 20px;
-  text-decoration: none;
+  font-size: 0.9em;
+  padding: 10px 15px;
+}
+
+.view:hover, .learnMore:hover {
+  background-color: #0a47b3; /* Darker shade on hover */
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.flex-container > * {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.flex-container > *:last-child {
+  margin-right: 0;
 }

@@ -1,4 +1,3 @@
-
 body {
   font-family: 'Open Sans', sans-serif;
   background-color: #F7FAFD;
@@ -76,6 +75,8 @@ p{
 .text-content {
   flex: 1;
   padding-right: 40px; /* Add padding to create space between text and circular progress */
+  position: absolute;
+  top: 120px;
 }
 
 .text-content {

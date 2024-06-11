@@ -1,0 +1,17 @@
+.custom-card {
+    width: 50vw;
+    margin: 5px;
+    font-size: 1em;
+  }
+  
+  .card-content {
+    text-align: center;
+    font-family: "Open Sans";
+    font-size: 1em;
+  }
+  
+  .learnMore {
+    color: white;
+    text-decoration: none;
+  }
+  
