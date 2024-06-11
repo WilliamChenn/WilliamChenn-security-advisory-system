@@ -148,3 +148,7 @@ export const COLUMNS = [
     //     }
     // }
 ];
+<<<<<<< HEAD
+=======
+
+>>>>>>> homePage
