@@ -1,18 +1,35 @@
-import React, { useMemo } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useTable, useSortBy } from 'react-table';
-import MOCK_DATA from '../Table/MockData.json';
-import { COLUMNS } from './columns';
+import { Link } from 'react-router-dom';
+import { COLUMNS } from './TableColumns';
 import Tooltip from '@mui/material/Tooltip';
-import '../Table/table.css';
+import './Table.css';
 
-export const SortingTable = () => {
+const Table = () => {
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        // Fetch JSON data from the API
+        fetch('http://localhost:3001/api/v1/cves/recent?time_range=month')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(parsedData => {
+                console.log("Fetched Data:", parsedData); // Debugging: Check fetched data
+                setData(parsedData); // Set the fetched data to state
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    }, []); // Empty dependency array means this useEffect runs once after initial render
+
     const columns = useMemo(() => COLUMNS, []);
-    const data = useMemo(() => MOCK_DATA, []);
 
     const initialState = {
         sortBy: [
             {
-                id: 'cvss',
+                id: 'max_cvss_base_score',
                 desc: true
             }
         ]
@@ -63,7 +80,11 @@ export const SortingTable = () => {
                             <tr {...row.getRowProps()}>
                                 {row.cells.map((cell) => (
                                     <td {...cell.getCellProps()}>
-                                        {cell.render('Cell')}
+                                        {cell.column.id === 'cve_number' ? (
+                                            <Link to={`/cve/${cell.value}`}>{cell.render('Cell')}</Link>
+                                        ) : (
+                                            cell.render('Cell')
+                                        )}
                                     </td>
                                 ))}
                             </tr>
@@ -75,4 +96,4 @@ export const SortingTable = () => {
     );
 };
 
-export default SortingTable;
+export default Table;

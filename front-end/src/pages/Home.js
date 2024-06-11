@@ -81,7 +81,7 @@ function Home() {
               </Card.Body>
             </Card>
           </div>
-          <Link to="/vulnerabilities" className="view">View all</Link>
+          <Link to="/table" className="view">View all</Link>
         </div>
       </main>
       
