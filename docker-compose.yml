@@ -27,7 +27,7 @@ services:
     env_file:
       - .env
     environment:
-      - RAILS_ENV=development
+      - RAILS_ENV=${RAILS_ENV}
       - POSTGRES_HOST=${POSTGRES_HOST}
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
