@@ -1,0 +1,14 @@
+.cve-page-content {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .cve-page-content h1 {
+    margin-bottom: 20px;
+  }
+  
+  .cve-page-content p {
+    margin-bottom: 10px;
+  }
+  

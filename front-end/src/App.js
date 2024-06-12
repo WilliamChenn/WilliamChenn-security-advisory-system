@@ -9,10 +9,9 @@ import LearnMore2 from './pages/LearnMore2';
 import LearnMore3 from './pages/LearnMore3';
 import Table from './pages/Table';
 import CveDetail from './pages/CveDetail';
+import CVEpage from './pages/CVEpage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
- 
- 
 function App() {
   return (
     <Router>
@@ -25,6 +24,7 @@ function App() {
         <Route path="/learn-more/3" element={<LearnMore3 />} />
         <Route path="/table" element={<Table />} />
         <Route path="/cve/:cveNumber" element={<CveDetail />} />
+        <Route path="/learn-more/:cveId" element={<CVEpage />} /> {/* Corrected here */}
       </Routes>
     </Router>
   );
