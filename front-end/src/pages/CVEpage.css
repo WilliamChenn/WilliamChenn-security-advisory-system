@@ -19,9 +19,27 @@
     flex-grow: 1; /* Allow this to grow to fill available space */
 }
 
-.cve-text-content {
+.cve-text-content h1{
     flex: 1;
     padding-top: 40px;
+    color: #012169;
+    font-weight: bold;
+    
+    
+}
+
+.cve-text-content h2 {
+    color: #012169
+
+
+}
+
+.cve-text-content h3{
+    color: #012169
+}
+
+.cve-text-content h4{
+    color: #012169
 }
 
 .cve-circular-progress-container {
@@ -29,6 +47,8 @@
     justify-content: flex-end;
     align-items: flex-start;
     padding-top: 40px;
+    
+
 }
 
 .remediation-container {
@@ -48,7 +68,7 @@
 }
 
 p {
-    font-size: 15px;
+    font-size: 18px;
     line-height: 1.8;
     margin: 0 0 20px; /* Adjust margin for spacing */
     padding: 0 10px; /* Add padding for better readability */
@@ -131,6 +151,7 @@ p {
 
     .cve-text-content h1 {
         font-size: 2rem; /* Adjust the font size as needed */
+
     }
 
     .cve-text-content h2 {
