@@ -2,17 +2,27 @@ require 'httparty'
 
 class FetchCVEDataService
   BASE_CVE_API_URL = 'https://www.cvedetails.com/api/v1/vulnerability/search?outputFormat=json'
+  BASE_LOGO_API_URL = 'https://api.api-ninjas.com/v1/logo?name='
+  API_KEY = 'htv2wRjglIpydDSbTr78ow==cZANkAKzusXCtvFN'
 
   def self.call(vendor_name)
     url = "#{BASE_CVE_API_URL}&vendorName=#{vendor_name}&pageNumber=1&resultsPerPage=20"
     token = "f63628992e62f5d6ac84bdb1ab93025173ce4755.eyJzdWIiOjQ3MjUsImlhdCI6MTcxNzUyMzYzOSwiZXhwIjoxNzIyMzg0MDAwLCJraWQiOjEsImMiOiI3RCt3MkZoTnZDdFZNeFByWUFyM0dEdDlaVWZDNGhZcUNqOUVXU0t1M3owd080bFZ3dVQyTm04V3ZiUlNoSjFrRkk5SGNzTksifQ=="
     response = HTTParty.get(url, headers: { "Authorization" => "Bearer #{token}" })
+    logo_response = HTTParty.get("#{BASE_LOGO_API_URL}#{vendor_name}", headers: { "X-Api-Key" => API_KEY })
+   
     if response.success?
       response.parsed_response['results'].each do |vuln|
         vendor = Vendor.find_or_create_by(vendor_id: vuln['vendor_id']) do |v|
+          if logo_response.success?
+            logo_data = logo_response.parsed_response.first
+            v.vendor_url = logo_data['image']
+          end
           v.name = vuln['vendor']
+          v.vendor_id = vuln['vendor_id']
         end
 
+        
         CVE.find_or_create_by(cve_id: vuln['cveId']) do |cve|
           cve.update(
             vendor: vendor,
@@ -88,7 +98,20 @@ class FetchCVEDataService
     end
   end
 
+
   def self.convert_to_boolean(value)
     value == "1"
   end
 end
+
+
+#          logo_response = HTTParty.get("#{BASE_LOGO_API_URL}#{vendor_name}", headers: { "X-Api-Key" => API_KEY })
+#if logo_response.success?
+#  logo_data = logo_response.parsed_response.first
+#  Vendor.find_or_create_by(name: vendor_id) do |vendor|
+#    vendor.vendor_url = logo_data['image']
+#  end
+#else
+#  Rails.logger.error("Failed to fetch vendor logo: #{logo_response.body}")
+#  Vendor.find_or_create_by(name: vendor_id)
+#end

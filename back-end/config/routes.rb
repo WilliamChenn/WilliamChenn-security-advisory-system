@@ -3,7 +3,8 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :cves, only: [:index] do
+      resources :cves, only: [:index, :show] do
+        #GET /api/v1/cves/CVE-2023-1234
         collection do
           get 'critical'
           # /api/v1/cves/critical - to get the most critical CVEs

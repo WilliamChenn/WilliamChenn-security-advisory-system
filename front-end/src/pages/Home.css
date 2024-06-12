@@ -1,3 +1,5 @@
+/* Home.css */
+
 /* General Styles */
 body {
   font-family: Arial, sans-serif;
@@ -74,10 +76,18 @@ body {
 
 .cards {
   display: flex;
-  justify-content: center; 
+  flex-direction: column; /* Stack cards vertically on small screens */
+  align-items: center; /* Center the cards */
   gap: 20px;
-  flex-wrap: wrap;
   margin-bottom: 10px;
+}
+
+@media (min-width: 769px) {
+  .cards {
+    flex-direction: row; /* Row layout for larger screens */
+    justify-content: center; 
+    align-items: stretch; /* Ensure all cards have the same height */
+  }
 }
 
 .card {
@@ -85,10 +95,16 @@ body {
   text-align: center;
   box-sizing: border-box;
   margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 .card-content {
-  margin-top: 20px; 
+  margin-top: 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .view, .learnMore {
