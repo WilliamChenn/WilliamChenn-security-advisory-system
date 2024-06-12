@@ -24,8 +24,7 @@ function Home() {
     <div className="Home">
       <Header />
       <main className="main-content">
-        <div className="subtitle1">Duke’s database for open source vulnerabilities</div>
-        <div className="subtitle2">and cloud misconfigurations</div>
+        <div className="subtitle1">Duke’s database for open source vulnerabilities and cloud misconfigurations</div>
 
         <div className="flex-container">
           <Vendors />
@@ -33,7 +32,7 @@ function Home() {
         </div>
 
         <div className="content">
-          <div className="subtitle3">Vulnerabilities in the last week</div>
+          <div className="subtitle3">Top Vulnerabilities in the past month</div>
           <div className="cards">
             {topVulnerabilities.map(vulnerability => (
               <VulnerabilityCard
@@ -42,6 +41,7 @@ function Home() {
                 text={vulnerability.summary}
                 link={`/learn-more/${vulnerability.id}`}
                 value={vulnerability.max_cvss_base_score}
+                image={vulnerability.vendor.vendor_url} // Pass the vendor image URL
               />
             ))}
           </div>

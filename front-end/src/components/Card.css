@@ -1,16 +1,100 @@
+/* Card.css */
+
 .custom-card {
-  width: 50vw;
-  margin: 5px;
-  font-size: 1em;
+  margin: 10px;
+  padding: 20px; /* Increase padding for a larger card */
+  border: 1px solid #ddd; /* Optional: add border for better visual separation */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional: add shadow for depth */
+  display: flex;
+  flex-direction: column;
+  text-align: center; /* Center the texts */
+}
+
+.top-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px; /* Increase bottom margin */
+}
+
+.card-logo {
+  width: 75px; /* Increase the width */
+  height: 75px; /* Ensure the logo is larger */
+  object-fit: contain; /* Ensure the image doesn't stretch */
+}
+
+.circular-progress {
+  width: 75px; /* Ensure CircularProgress is the same size */
+  height: 75px;
 }
 
 .card-content {
-  text-align: center;
-  font-family: "Open Sans";
+  margin-top: 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center; /* Center the button horizontally */
+}
+
+.card-title, .card-vendor, .card-summary {
+  margin: 0;
+}
+
+.card-title {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.card-vendor {
   font-size: 1em;
+  color: #555;
+  margin-bottom: 10px; /* Add margin between vendor name and summary text */
+}
+
+.card-summary {
+  margin-top: 20px; /* Add margin between summary and learn more button */
 }
 
 .learnMore {
   color: white;
   text-decoration: none;
+  padding: 12px 12px; /* Adjust padding for smaller button */
+  background-color: #012169;
+  border-radius: 20px;
+  margin-top: 20px;
+  display: inline-block;
+  width: auto;
+  text-align: center; /* Center the text horizontally */
+}
+
+.learnMore:hover {
+  background-color: #0a47b3; /* Darker shade on hover */
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 1500px) {
+  .top-section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card-logo,
+  .circular-progress {
+    width: 90px; /* Adjust size for smaller screens */
+    height: 60px;
+    margin-bottom: 10px; /* Add spacing between stacked elements */
+  }
+}
+
+@media (min-width: 1100px) {
+  .top-section {
+    flex-direction: row;
+  }
+
+  .card-logo,
+  .circular-progress {
+    width: 120px; /* Increase size for larger screens */
+    height: 120px;
+  }
 }
