@@ -24,7 +24,7 @@ function App() {
         <Route path="/learn-more/3" element={<LearnMore3 />} />
         <Route path="/table" element={<Table />} />
         <Route path="/cve/:cveNumber" element={<CveDetail />} />
-        <Route path="/learn-more/:cveId" element={<CVEpage />} /> {/* Corrected here */}
+        <Route path="/learn-more/:cveId" element={<CVEpage />} /> 
       </Routes>
     </Router>
   );

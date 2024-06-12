@@ -1,139 +1,61 @@
 import React, { useState, useEffect } from 'react';
-import './Vendors.css';
-import { FaPlus, FaTrash } from 'react-icons/fa';
+import { useParams } from 'react-router-dom';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import CircularProgress from '../components/CircularProgress';
+import './CVEpage.css';
 
-function Vendors() {
-  const [vendors, setVendors] = useState([]);
-  const [newVendor, setNewVendor] = useState({ name: '' });
-  const [showForm, setShowForm] = useState(false);
+function CVEpage() {
+  const { cveId } = useParams();
+  const [vulnerability, setVulnerability] = useState(null);
 
   useEffect(() => {
-    const fetchVendors = async () => {
+    const fetchVulnerability = async () => {
       try {
-        const response = await fetch('http://localhost:3001/api/v1/cves/recent?time_range=month');
+        const response = await fetch(`http://localhost:3001/api/v1/cves/${cveId}`);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
         const data = await response.json();
-        const formattedVendors = data
-          .map((item) => item.vendor)
-          .filter(vendor => vendor.name && vendor.vendor_url)
-          .map((vendor) => ({
-            id: vendor.id,
-            name: vendor.name,
-            logo: vendor.vendor_url,
-          }));
-        setVendors(formattedVendors);
-        saveToLocalStorage(formattedVendors);
+        setVulnerability(data.data.attributes);
       } catch (error) {
-        console.error('Error fetching vendors:', error);
+        console.error('Error fetching vulnerability:', error);
       }
     };
 
-    const storedVendors = JSON.parse(localStorage.getItem('vendors'));
-    if (storedVendors) {
-      setVendors(storedVendors);
-    } else {
-      fetchVendors();
-    }
-  }, []);
+    fetchVulnerability();
+  }, [cveId]);
 
-  const saveToLocalStorage = (vendors) => {
-    localStorage.setItem('vendors', JSON.stringify(vendors));
-  };
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setNewVendor((prevVendor) => ({
-      ...prevVendor,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log('New vendor to add:', newVendor.name); // Debug log
-
-    try {
-      const response = await fetch(`http://localhost:3001/api/v1/vendors/${newVendor.name}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-
-      const data = await response.json();
-      console.log('Vendor added:', data); // Debug log
-
-      if (data.data.vendor_url) {
-        const updatedVendors = [
-          ...vendors,
-          { id: data.data.id, name: data.data.name, logo: data.data.vendor_url },
-        ];
-
-        setVendors(updatedVendors);
-        saveToLocalStorage(updatedVendors);
-        setNewVendor({ name: '' });
-        setShowForm(false);
-      } else {
-        console.error('Vendor logo URL is missing:', data);
-        alert('Failed to add vendor. Vendor logo URL is missing.');
-      }
-    } catch (error) {
-      console.error('Error adding vendor:', error);
-    }
-  };
-
-  const handleDelete = async (vendorName) => {
-    try {
-      const response = await fetch(`http://localhost:3001/api/v1/vendors/${vendorName}`, {
-        method: 'DELETE',
-      });
-
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-
-      const updatedVendors = vendors.filter(vendor => vendor.name !== vendorName);
-      setVendors(updatedVendors);
-      saveToLocalStorage(updatedVendors);
-    } catch (error) {
-      console.error('Error deleting vendor:', error);
-    }
-  };
+  if (!vulnerability) {
+    return <div>Loading...</div>;
+  }
 
   return (
-    <div className="vendors">
-      <h2>Vendor Logos</h2>
-      <div className="vendor-grid">
-        {vendors.map((vendor) => (
-          <div key={vendor.id} className="vendor-card">
-            <img src={vendor.logo} alt={vendor.name} className="vendor-logo" />
-            <button className="delete-button" onClick={() => handleDelete(vendor.name)}>
-              <FaTrash />
-            </button>
+    <div className="cve-page-container">
+      <Header />
+      <div className="cve-content-wrapper">
+        <div className="cve-text-content">
+          <h1>{vulnerability.cve_id} - {vulnerability.assigner_source_name}</h1>
+          <h2>Overview</h2>
+          <p>{vulnerability.summary}</p>
+          <h3>Affected:</h3>
+          <p>{vulnerability.affected_versions}</p>
+          <div className="remediation-container">
+            <div className="remediation-header">
+              <h4>Remediation</h4>
+            </div>
+            <div className="remediation-content">
+              <p>{vulnerability.remediation || "No remediation information available."}</p>
+            </div>
           </div>
-        ))}
-        <div className="vendor-card add-vendor" onClick={() => setShowForm(!showForm)}>
-          <FaPlus size={40} />
+        </div>
+        <div className="cve-circular-progress-container">
+          <CircularProgress value={vulnerability.max_cvss_base_score} />
         </div>
       </div>
-      {showForm && (
-        <form onSubmit={handleSubmit} className="vendor-form">
-          <input
-            type="text"
-            name="name"
-            placeholder="Vendor Name"
-            value={newVendor.name}
-            onChange={handleChange}
-            required
-          />
-          <button type="submit">Add Vendor</button>
-        </form>
-      )}
+      <Footer />
     </div>
   );
 }
 
-export default Vendors;
+export default CVEpage;
