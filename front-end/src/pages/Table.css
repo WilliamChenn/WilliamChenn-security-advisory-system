@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
 
 .Header {
-  background-color: #FFFFFF;
+  background-color: #f2f2f2;
   padding: 20px;
   text-align: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -68,7 +68,8 @@
 #Low-probability,
 #Medium-probability,
 #High-probability,
-#Very-high-probability {
+#Very-high-probability,
+#n-a{
     border: none;
     padding: 5px 10px;
     cursor: pointer;
@@ -95,10 +96,23 @@
     background-color: rgb(133, 57, 57);
 }
 
+#n-a {
+  color: black;
+}
+
 .cve-title a {
     text-decoration: none;
 }
 
 .cve-title a:hover {
     text-decoration: underline;
+}
+
+.truncate-two-lines {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
 }

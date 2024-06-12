@@ -1,33 +1,59 @@
 .circular-progress-container {
-  width: 100px;
-  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: auto; /* Adjust width as needed */
 }
 
 .circular-progress {
-  display: inline-block;
+  position: relative;
+  width: 100px; /* Set specific width */
+  height: 100px; /* Set specific height */
 }
 
-/* Low severity style */
-.low-severity .CircularProgressbar-path {
-  stroke: rgb(106, 168, 106) !important; /* Green color */
+.severity-text-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1em;
+  font-weight: 600;
+  flex-direction: column; /* Stack the score and text vertically */
 }
 
-/* Medium severity style */
-.medium-severity .CircularProgressbar-path {
-  stroke: rgb(230, 166, 45) !important; /* Orange color */
+.severity-value {
+  font-size: 1.5em;
+  margin-bottom: 0.2em;
 }
 
-/* High severity style */
-.high-severity .CircularProgressbar-path {
-  stroke: rgb(216, 95, 95) !important; /* Red color */
+.low-severity .severity-text {
+  color: rgb(106, 168, 106);
 }
 
-/* Critical severity style */
-.critical-severity .CircularProgressbar-path {
-  stroke: rgb(133, 57, 57) !important; /* Dark red color */
+.medium-severity .severity-text {
+  color: rgb(230, 166, 45);
 }
 
-/* N/A style */
-.n-a .CircularProgressbar-path {
-  stroke: lightgray !important; /* Light gray color */
+.high-severity .severity-text {
+  color: rgb(230, 166, 45);
+}
+
+.critical-severity .severity-text {
+  color: darkred;
+}
+
+.na-value {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  font-size: 1em;
+  color: #888;
+  border: 2px solid #ccc;
+  border-radius: 50%;
 }

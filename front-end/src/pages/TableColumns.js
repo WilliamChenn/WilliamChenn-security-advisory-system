@@ -2,7 +2,7 @@ import { convertLength } from "@mui/material/styles/cssUtils";
 import Tooltip from '@mui/material/Tooltip';
 
 const getSeverityClass = (cvss) => {
-    if (cvss < 4) {
+    if (cvss > 0 && cvss < 4) {
         return "Low-severity";
     }
     else if (cvss >= 4 && cvss < 7) {
@@ -32,13 +32,16 @@ const getEpssClass = (epss) => {
     else if (epss >= 10 && epss <= 100) {
         return "Very-high-probability";
     }
+    else {
+        return "n-a";
+    }
 
 };
 
 export const COLUMNS = [
     {
         Header: 'CVE',
-        accessor: 'cve',
+        accessor: 'cve_id',
         Cell: ({ value }) => (
             <a href="#">{value}</a>
         )
@@ -46,24 +49,37 @@ export const COLUMNS = [
     {
         Header: 'Summary',
         accessor: 'summary',
+        Cell: ({ value }) => {
+            return <span className="truncate-two-lines">{value}</span>;
+        }
     },
     {
         Header: 'Published',
-        accessor: 'publishDate'
+        accessor: 'publish_date',
+        Cell: ({row}) => {
+            let rawDate =row.original.publish_date;
+            let publishDate = rawDate ? rawDate.substring(0, 10) : "N/A";
+            return publishDate;
+        }
     },
     {
         Header: 'Updated',
-        accessor: 'updateDate'
+        accessor: 'update_date',
+        Cell: ({row}) => {
+            let rawDate =row.original.update_date;
+            let updateDate = rawDate ? rawDate.substring(0, 10) : "N/A";
+            return updateDate;
+        }
     },
     {
-        Header: 'Affected Product',
-        accessor: 'product'
+        Header: 'Vendor',
+        accessor: 'vendor.name'
     },
     {
         Header: 'CVSS',
-        accessor: 'cvss',
+        accessor: 'max_cvss_base_score',
         Cell: ({ row }) => {
-            const cvss = row.original.cvss;
+            const cvss = row.original.max_cvss_base_score || "N/A";
             return (
                 <div className="severityCell">
                     <Tooltip title="Severity of security vulnerabilities (scale of 1-10)" placement="top" arrow>
@@ -80,9 +96,15 @@ export const COLUMNS = [
     },
     {
         Header: 'EPSS',
-        accessor: 'epss',
+        accessor: 'epss_percentile',
         Cell: ({ row }) => {
-            const epss = row.original.epss;
+            let epss = row.original.epss_percentile;
+            if (epss != null && epss != undefined && !isNaN(epss)) {
+                epss = parseFloat(epss).toFixed(2);
+            }
+            else {
+                epss = "N/A";
+            }
             return (
                 <div className="severityCell">
                     <Tooltip title="Likelihood of the vulnerability being exploited in the wild within the next 30 days" placement="top" arrow>
