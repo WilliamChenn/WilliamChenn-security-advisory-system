@@ -28,7 +28,7 @@ function NavigationBar() {
                 <Nav.Link as={Link} to="/">Home</Nav.Link>
                 <Nav.Link as={Link} to="/about">About</Nav.Link>
                 <Nav.Link as={Link} to="/table">Search</Nav.Link>
-                <Nav.Link as={Link} to="/search">Search</Nav.Link>
+                <Nav.Link as={Link} to="/login">Login</Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </Container>

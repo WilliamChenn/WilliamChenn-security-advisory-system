@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Vendors.css';
-import { FaPlus, FaTrash } from 'react-icons/fa'; // Using react-icons for the plus and trash icons
+import { FaPlus, FaTrash } from 'react-icons/fa';
 
 function Vendors() {
   const [vendors, setVendors] = useState([]);
@@ -8,10 +8,31 @@ function Vendors() {
   const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
-    // Load vendors from local storage on component mount
+    const fetchVendors = async () => {
+      try {
+        const response = await fetch('http://localhost:3001/api/v1/cves/recent?time_range=month');
+        const data = await response.json();
+        const formattedVendors = data
+          .map((item) => item.vendor)
+          .filter(vendor => vendor.name && vendor.vendor_url)
+          .map((vendor) => ({
+            id: vendor.id,
+            name: vendor.name,
+            logo: vendor.vendor_url,
+          }));
+        setVendors(formattedVendors);
+        saveToLocalStorage(formattedVendors);
+      } catch (error) {
+        console.error('Error fetching vendors:', error);
+      }
+    };
+
     const storedVendors = JSON.parse(localStorage.getItem('vendors'));
     if (storedVendors) {
-      setVendors(storedVendors);
+      const validVendors = storedVendors.filter(vendor => vendor.name && vendor.logo);
+      setVendors(validVendors);
+    } else {
+      fetchVendors();
     }
   }, []);
 
@@ -29,41 +50,59 @@ function Vendors() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('New vendor to add:', newVendor.name); // Debug log
+    console.log('New vendor to add:', newVendor.name);
 
     try {
-      const response = await fetch('http://localhost:3001/api/v1/cves/recent?time_range=month');
+      const response = await fetch(`http://localhost:3001/api/v1/vendors/${newVendor.name}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
-      const data = await response.json();
-      const matchingVendor = data
-        .map((item) => item.vendor)
-        .find(vendor => vendor.name.toLowerCase() === newVendor.name.toLowerCase());
 
-      if (matchingVendor) {
-        console.log('Matching vendor found:', matchingVendor); // Debug log
+      const result = await response.json();
+      const data = result.data;
+      console.log('Vendor added:', data);
+
+      if (data.vendor_url) {
         const updatedVendors = [
           ...vendors,
-          { id: vendors.length + 1, name: matchingVendor.name, logo: matchingVendor.vendor_url },
+          { id: data.id, name: data.name, logo: data.vendor_url },
         ];
+
         setVendors(updatedVendors);
         saveToLocalStorage(updatedVendors);
         setNewVendor({ name: '' });
         setShowForm(false);
       } else {
-        console.error('Vendor not found for name:', newVendor.name);
-        alert('Vendor not found. Please ensure the vendor name is correct and try again.');
+        console.error('Vendor logo URL is missing:', data);
+        alert('Failed to add vendor. Vendor logo URL is missing.');
       }
     } catch (error) {
-      console.error('Error fetching vendors:', error);
+      console.error('Error adding vendor:', error);
     }
   };
 
-  const handleDelete = (vendorId) => {
-    const updatedVendors = vendors.filter(vendor => vendor.id !== vendorId);
-    setVendors(updatedVendors);
-    saveToLocalStorage(updatedVendors);
+  const handleDelete = async (vendorName) => {
+    try {
+      const response = await fetch(`http://localhost:3001/api/v1/vendors/${vendorName}`, {
+        method: 'DELETE',
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const updatedVendors = vendors.filter(vendor => vendor.name !== vendorName);
+      setVendors(updatedVendors);
+      saveToLocalStorage(updatedVendors);
+    } catch (error) {
+      console.error('Error deleting vendor:', error);
+    }
   };
 
   return (
@@ -73,7 +112,7 @@ function Vendors() {
         {vendors.map((vendor) => (
           <div key={vendor.id} className="vendor-card">
             <img src={vendor.logo} alt={vendor.name} className="vendor-logo" />
-            <button className="delete-button" onClick={() => handleDelete(vendor.id)}>
+            <button className="delete-button" onClick={() => handleDelete(vendor.name)}>
               <FaTrash />
             </button>
           </div>
