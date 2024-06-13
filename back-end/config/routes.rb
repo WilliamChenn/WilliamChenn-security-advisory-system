@@ -1,3 +1,5 @@
+# config/routes.rb
+
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -6,8 +8,6 @@ Rails.application.routes.draw do
       resources :cves, only: [:index, :show] do
         #GET /api/v1/cves/CVE-2023-1234
         collection do
-          get 'critical'
-          # /api/v1/cves/critical - to get the most critical CVEs
           get 'recent'
           # /api/v1/cves/recent?time_range=day|week|two_weeks|month|year
         end
@@ -19,13 +19,13 @@ Rails.application.routes.draw do
       delete 'vendors/:name', to: 'vendors#destroy', as: 'delete_vendor_by_name'
       # /api/v1/vendors/Microsoft - to delete a vendor by name (DELETE request)
     end
+
+    namespace :v2 do
+      resources :criticality, only: [:index] 
+      # /api/v2/criticality?max_cvss_base_score=low|medium|high|critical - to get CVEs by criticality (GET request)
+    end
   end
 
-
-
-
-
-  
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
@@ -33,3 +33,5 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 end
+
+
