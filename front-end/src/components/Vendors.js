@@ -7,38 +7,30 @@ function Vendors() {
   const [newVendor, setNewVendor] = useState({ name: '' });
   const [showForm, setShowForm] = useState(false);
 
-  useEffect(() => {
-    const fetchVendors = async () => {
-      try {
-        const response = await fetch('http://localhost:3001/api/v1/cves/recent?time_range=month');
-        const data = await response.json();
-        const formattedVendors = data
-          .map((item) => item.vendor)
-          .filter(vendor => vendor.name && vendor.vendor_url)
-          .map((vendor) => ({
-            id: vendor.id,
-            name: vendor.name,
-            logo: vendor.vendor_url,
-          }));
-        setVendors(formattedVendors);
-        saveToLocalStorage(formattedVendors);
-      } catch (error) {
-        console.error('Error fetching vendors:', error);
-      }
-    };
-
-    const storedVendors = JSON.parse(localStorage.getItem('vendors'));
-    if (storedVendors) {
-      const validVendors = storedVendors.filter(vendor => vendor.name && vendor.logo);
-      setVendors(validVendors);
-    } else {
-      fetchVendors();
+  const fetchVendors = async () => {
+    try {
+      const response = await fetch('http://localhost:3001/api/v1/vendors');
+      const data = await response.json();
+      const formattedVendors = data
+        .filter(vendor => vendor.name && vendor.vendor_url)
+        .map((vendor) => ({
+          id: vendor.id,
+          name: vendor.name,
+          logo: vendor.vendor_url,
+        }));
+      setVendors(formattedVendors);
+    } catch (error) {
+      console.error('Error fetching vendors:', error);
     }
-  }, []);
-
-  const saveToLocalStorage = (vendors) => {
-    localStorage.setItem('vendors', JSON.stringify(vendors));
   };
+
+  useEffect(() => {
+    fetchVendors(); // Initial fetch
+
+    const interval = setInterval(fetchVendors, 1000); // Fetch every 5 seconds
+
+    return () => clearInterval(interval); // Cleanup on unmount
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -75,7 +67,6 @@ function Vendors() {
         ];
 
         setVendors(updatedVendors);
-        saveToLocalStorage(updatedVendors);
         setNewVendor({ name: '' });
         setShowForm(false);
       } else {
@@ -99,7 +90,6 @@ function Vendors() {
 
       const updatedVendors = vendors.filter(vendor => vendor.name !== vendorName);
       setVendors(updatedVendors);
-      saveToLocalStorage(updatedVendors);
     } catch (error) {
       console.error('Error deleting vendor:', error);
     }
