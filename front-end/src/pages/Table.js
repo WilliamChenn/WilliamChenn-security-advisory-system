@@ -28,6 +28,7 @@ const ContentWrapper = styled.div`
 const SidebarWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  width: 200px; /* Adjust width of the sidebar */
 `;
 
 const FilterButton = styled.button`
@@ -37,27 +38,34 @@ const FilterButton = styled.button`
   border: none;
   cursor: pointer;
   font-size: 16px;
-  margin-top
+  margin-bottom: 10px;
+  align-self: flex-start; /* Align button to the start of the container */
 `;
+
+
 const Table = () => {
     const [data, setData] = useState([]);
     const [sidebar, setSidebar] = useState(false);
+    const [filters, setFilters] = useState({
+        severity: 'all',
+        dateRange: 'month',
+        startDate: '',
+        endDate: '',
+    });
 
     useEffect(() => {
         // Fetch JSON data from the API
-        fetch('http://localhost:3001/api/v1/cves/recent?time_range=month')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(parsedData => {
-                console.log("Fetched Data:", parsedData); // Debugging: Check fetched data
-                setData(parsedData); // Set the fetched data to state
-            })
-            .catch(error => console.error('Error fetching data:', error));
-    }, []); // Empty dependency array means this useEffect runs once after initial render
+        const fetchData = async () => {
+            let url = `http://localhost:3001/api/v1/cves/recent?time_range=${filters.dateRange}`;
+            if (filters.dateRange === 'custom') {
+                url += `&start_date=${filters.startDate}&end_date=${filters.endDate}`;
+            }
+            const response = await fetch(url);
+            const parsedData = await response.json();
+            setData(parsedData);
+        };
+        fetchData();
+    }, [filters]); // Re-fetch data when filters change
 
     const columns = useMemo(() => COLUMNS, []);
 
@@ -65,26 +73,29 @@ const Table = () => {
         sortBy: [
             {
                 id: 'max_cvss_base_score',
-                desc: true
-            }
-        ]
+                desc: true,
+            },
+        ],
     };
 
-    const {
-        getTableProps,
-        getTableBodyProps,
-        headerGroups,
-        rows,
-        prepareRow,
-    } = useTable({
-        columns,
-        data,
-        initialState,
-    },
+    const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable(
+        {
+            columns,
+            data,
+            initialState,
+        },
         useSortBy
     );
 
     const showSidebar = () => setSidebar(!sidebar);
+
+    const handleFilterChange = (event) => {
+        const { name, value } = event.target;
+        setFilters((prevFilters) => ({
+            ...prevFilters,
+            [name]: value,
+        }));
+    };
 
     return (
         <Wrapper>
@@ -96,7 +107,12 @@ const Table = () => {
                     <FilterButton onClick={showSidebar} sidebar={sidebar}>
                         Filter Here
                     </FilterButton>
-                    <Sidebar sidebar={sidebar} showSidebar={showSidebar} />
+                    <Sidebar
+                        sidebar={sidebar}
+                        showSidebar={showSidebar}
+                        handleFilterChange={handleFilterChange}
+                        filters={filters}
+                    />
                 </SidebarWrapper>
                     <table {...getTableProps()} className="Table">
                         <thead>
