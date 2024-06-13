@@ -7,25 +7,29 @@ function Vendors() {
   const [newVendor, setNewVendor] = useState({ name: '' });
   const [showForm, setShowForm] = useState(false);
 
-  useEffect(() => {
-    const fetchVendors = async () => {
-      try {
-        const response = await fetch('http://localhost:3001/api/v1/vendors');
-        const data = await response.json();
-        const formattedVendors = data
-          .filter(vendor => vendor.name && vendor.vendor_url)
-          .map((vendor) => ({
-            id: vendor.id,
-            name: vendor.name,
-            logo: vendor.vendor_url,
-          }));
-        setVendors(formattedVendors);
-      } catch (error) {
-        console.error('Error fetching vendors:', error);
-      }
-    };
+  const fetchVendors = async () => {
+    try {
+      const response = await fetch('http://localhost:3001/api/v1/vendors');
+      const data = await response.json();
+      const formattedVendors = data
+        .filter(vendor => vendor.name && vendor.vendor_url)
+        .map((vendor) => ({
+          id: vendor.id,
+          name: vendor.name,
+          logo: vendor.vendor_url,
+        }));
+      setVendors(formattedVendors);
+    } catch (error) {
+      console.error('Error fetching vendors:', error);
+    }
+  };
 
-    fetchVendors();
+  useEffect(() => {
+    fetchVendors(); // Initial fetch
+
+    const interval = setInterval(fetchVendors, 1000); // Fetch every 5 seconds
+
+    return () => clearInterval(interval); // Cleanup on unmount
   }, []);
 
   const handleChange = (e) => {
