@@ -30,8 +30,9 @@
   margin-bottom: 0.2em;
 }
 
+
 .low-severity .severity-text {
-  color: rgb(106, 168, 106);
+  color: rgb(102, 206, 102);
 }
 
 .medium-severity .severity-text {
@@ -39,11 +40,11 @@
 }
 
 .high-severity .severity-text {
-  color: rgb(115, 83, 23);
+  color: rgb(233, 45, 27);
 }
 
 .critical-severity .severity-text {
-  color: darkred;
+  color: rgb(139, 0, 0);
 }
 
 .na-value {

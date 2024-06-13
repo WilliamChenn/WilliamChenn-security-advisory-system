@@ -37,13 +37,13 @@ const CircularProgress = ({ value }) => {
   // Define a function to get the severity color based on the value
   const getSeverityColor = (value) => {
     if (value < 4) {
-      return "rgb(106, 168, 106)";
+      return "rgb(102, 206, 102)";
     } else if (value >= 4 && value < 7) {
       return "rgb(230, 166, 45)";
     } else if (value >= 7 && value < 9) {
-      return "rgb(115, 83, 23)";
+      return "rgb(233, 45, 27)";
     } else if (value >= 9 && value <= 10) {
-      return "darkred";
+      return "rgb(139, 0, 0)";
     } else {
       return "#888";
     }
