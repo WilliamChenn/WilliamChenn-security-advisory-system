@@ -9,6 +9,7 @@ import styled from 'styled-components';
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%; /* Ensure the wrapper takes the full width */
 `;
 
 const HeaderContainer = styled.div`
@@ -19,13 +20,14 @@ const HeaderContainer = styled.div`
 
 const ContentWrapper = styled.div`
   display: flex;
-  align-items: flex-start; /* Align items at the start of the flex container */
+  flex-direction: row; /* Align items horizontally */
+  width: 100%; /* Ensure the content wrapper takes the full width */
+  align-items: flex-start; /* Align items to the top */
 `;
 
 const SidebarWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 250px; /* Width of the sidebar */
 `;
 
 const FilterButton = styled.button`
@@ -35,16 +37,8 @@ const FilterButton = styled.button`
   border: none;
   cursor: pointer;
   font-size: 16px;
-  display: ${({ sidebar }) => (sidebar ? "none" : "block")};
-  margin-bottom: 10px;
+  margin-top
 `;
-
-const TableContainer = styled.div`
-  flex: 1; /* This ensures the table container takes up the remaining space */
-  padding: 20px;
-  margin-right: 250px; /* Ensure the table content is centered */
-`;
-
 const Table = () => {
     const [data, setData] = useState([]);
     const [sidebar, setSidebar] = useState(false);
@@ -99,9 +93,11 @@ const Table = () => {
             </HeaderContainer>
             <ContentWrapper>
                 <SidebarWrapper>
-                    <Sidebar sidebar={sidebar} />
+                    <FilterButton onClick={showSidebar} sidebar={sidebar}>
+                        Filter Here
+                    </FilterButton>
+                    <Sidebar sidebar={sidebar} showSidebar={showSidebar} />
                 </SidebarWrapper>
-                <TableContainer>
                     <table {...getTableProps()} className="Table">
                         <thead>
                             {headerGroups.map((headerGroup) => (
@@ -133,7 +129,6 @@ const Table = () => {
                                                 ) : (
                                                     cell.render('Cell')
                                                 )}
-
                                             </td>
                                         ))}
                                     </tr>
@@ -141,7 +136,6 @@ const Table = () => {
                             })}
                         </tbody>
                     </table>
-                </TableContainer>
             </ContentWrapper>
         </Wrapper>
     );

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { SidebarData } from "../components/SidebarData";
 import SubMenu from "../components/SubMenu";
@@ -18,20 +18,6 @@ const SidebarNav = styled.nav`
 
 const SidebarWrap = styled.div`
 	width: 100%;
-`;
-
-const FilterButton = styled.button`
-	position: absolute;
-	top: 100px;
-	left: 10px;
-	z-index: 30; /* Ensure it's above the overlay and sidebar */
-	background-color: #0417aa; /* Green */
-	color: white;
-	padding: 10px 24px;
-	border: none;
-	cursor: pointer;
-	font-size: 16px;
-	display: ${({ sidebar }) => (sidebar ? "none" : "block")};
 `;
 
 const CloseIcon = styled(AiIcons.AiOutlineClose)`
@@ -54,17 +40,10 @@ const Overlay = styled.div`
 	z-index: 10; /* Ensure it's below the sidebar */
 `;
 
-const Sidebar = () => {
-	const [sidebar, setSidebar] = useState(false);
-
-	const showSidebar = () => setSidebar(!sidebar);
-
+const Sidebar = ({ sidebar, showSidebar }) => {
 	return (
 		<>
 			<IconContext.Provider value={{ color: "#fff" }}>
-				<FilterButton onClick={showSidebar} sidebar={sidebar}>
-					Filter Here
-				</FilterButton>
 				<Overlay sidebar={sidebar} onClick={showSidebar} />
 				<SidebarNav sidebar={sidebar}>
 					<SidebarWrap>

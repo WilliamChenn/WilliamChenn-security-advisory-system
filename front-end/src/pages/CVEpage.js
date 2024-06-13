@@ -53,7 +53,7 @@ function CVEpage() {
           <CircularProgress value={vulnerability.max_cvss_base_score} />
         </div>
       </div>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }
