@@ -51,47 +51,49 @@ const Table = () => {
 
     return (
         <div>
-            <header className="Vulnerabilities-header">
+            <header className="Header">
                 <div className="title">Find Out If You Have Vulnerabilities That Put You at Risk</div>
             </header>
-            <table {...getTableProps()} className="Table">
-                <thead>
-                    {headerGroups.map((headerGroup) => (
-                        <tr {...headerGroup.getHeaderGroupProps()}>
-                            {headerGroup.headers.map((column) => (
-                                <th {...column.getHeaderProps(column.getSortByToggleProps())}>
-                                    {column.render('Header')}
-                                    <span>
-                                        {column.isSorted ? (column.isSortedDesc ? (
-                                            <img src="https://cdn2.iconfinder.com/data/icons/arrows-236/14/Polygon-1-1024.png" alt="desc" style={{ width: '20px', marginLeft: '10px' }} />
-                                        ) : (
-                                            <img src="https://cdn2.iconfinder.com/data/icons/arrows-236/14/Polygon-1024.png" alt="asc" style={{ width: '20px', marginLeft: '10px' }} />
-                                        )) : ""}
-                                    </span>
-                                </th>
-                            ))}
-                        </tr>
-                    ))}
-                </thead>
-                <tbody {...getTableBodyProps()}>
-                    {rows.map((row) => {
-                        prepareRow(row);
-                        return (
-                            <tr {...row.getRowProps()}>
-                                {row.cells.map((cell) => (
-                                    <td {...cell.getCellProps()}>
-                                        {cell.column.id === 'cve_number' ? (
-                                            <Link to={`/cve/${cell.value}`}>{cell.render('Cell')}</Link>
-                                        ) : (
-                                            cell.render('Cell')
-                                        )}
-                                    </td>
+            <div className="Table-container">
+                <table {...getTableProps()} className="Table">
+                    <thead>
+                        {headerGroups.map((headerGroup) => (
+                            <tr {...headerGroup.getHeaderGroupProps()}>
+                                {headerGroup.headers.map((column) => (
+                                    <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+                                        {column.render('Header')}
+                                        <span>
+                                            {column.isSorted ? (column.isSortedDesc ? (
+                                                <img src="https://cdn2.iconfinder.com/data/icons/arrows-236/14/Polygon-1-1024.png" alt="desc" style={{ width: '20px', marginLeft: '10px' }} />
+                                            ) : (
+                                                <img src="https://cdn2.iconfinder.com/data/icons/arrows-236/14/Polygon-1024.png" alt="asc" style={{ width: '20px', marginLeft: '10px' }} />
+                                            )) : ""}
+                                        </span>
+                                    </th>
                                 ))}
                             </tr>
-                        );
-                    })}
-                </tbody>
-            </table>
+                        ))}
+                    </thead>
+                    <tbody {...getTableBodyProps()}>
+                        {rows.map((row) => {
+                            prepareRow(row);
+                            return (
+                                <tr {...row.getRowProps()}>
+                                    {row.cells.map((cell) => (
+                                        <td {...cell.getCellProps()}>
+                                            {cell.column.id === 'cve_number' ? (
+                                                <Link to={`/cve/${cell.value}`}>{cell.render('Cell')}</Link>
+                                            ) : (
+                                                cell.render('Cell')
+                                            )}
+                                        </td>
+                                    ))}
+                                </tr>
+                            );
+                        })}
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 };

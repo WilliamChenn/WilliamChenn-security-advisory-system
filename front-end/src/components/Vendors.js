@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './Vendors.css';
 import { FaPlus, FaTrash } from 'react-icons/fa';
+import LoadingSpinner from './LoadingSpinner'; // Import the LoadingSpinner component
 
 function Vendors() {
   const [vendors, setVendors] = useState([]);
   const [newVendor, setNewVendor] = useState({ name: '' });
   const [showForm, setShowForm] = useState(false);
+  const [loadingVendor, setLoadingVendor] = useState(null); // Track the specific vendor being added
 
   const fetchVendors = async () => {
     try {
@@ -42,6 +44,16 @@ function Vendors() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const tempId = `temp-${new Date().getTime()}`;
+    setLoadingVendor(tempId);
+
+    const tempVendor = {
+      id: tempId,
+      name: newVendor.name,
+      logo: null, // No logo initially
+    };
+    setVendors((prevVendors) => [...prevVendors, tempVendor]);
+
     console.log('New vendor to add:', newVendor.name);
 
     try {
@@ -61,12 +73,11 @@ function Vendors() {
       console.log('Vendor added:', data);
 
       if (data.vendor_url) {
-        const updatedVendors = [
-          ...vendors,
-          { id: data.id, name: data.name, logo: data.vendor_url },
-        ];
-
-        setVendors(updatedVendors);
+        setVendors((prevVendors) => prevVendors.map((vendor) =>
+          vendor.id === tempId
+            ? { id: data.id, name: data.name, logo: data.vendor_url }
+            : vendor
+        ));
         setNewVendor({ name: '' });
         setShowForm(false);
       } else {
@@ -75,6 +86,10 @@ function Vendors() {
       }
     } catch (error) {
       console.error('Error adding vendor:', error);
+    } finally {
+      setTimeout(() => {
+        setLoadingVendor(null); // Hide the spinner after a delay
+      }, 300); // Delay to match the CSS transition
     }
   };
 
@@ -100,8 +115,12 @@ function Vendors() {
       <h2>Vendor Logos</h2>
       <div className="vendor-grid">
         {vendors.map((vendor) => (
-          <div key={vendor.id} className="vendor-card">
-            <img src={vendor.logo} alt={vendor.name} className="vendor-logo" />
+          <div key={vendor.id} className={`vendor-card ${loadingVendor === vendor.id ? 'loading' : ''}`}>
+            {loadingVendor === vendor.id ? (
+              <LoadingSpinner />
+            ) : (
+              <img src={vendor.logo} alt={vendor.name} className="vendor-logo" />
+            )}
             <button className="delete-button" onClick={() => handleDelete(vendor.name)}>
               <FaTrash />
             </button>
