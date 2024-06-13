@@ -11,13 +11,17 @@ import { getTopVulnerabilities } from '../components/TopThree.js';
 function Home() {
   const [topVulnerabilities, setTopVulnerabilities] = useState([]);
 
-  useEffect(() => {
-    const fetchTopVulnerabilities = async () => {
-      const topVulns = await getTopVulnerabilities();
-      setTopVulnerabilities(topVulns);
-    };
+  const fetchAndSetTopVulnerabilities = async () => {
+    const topVulns = await getTopVulnerabilities();
+    setTopVulnerabilities(topVulns);
+  };
 
-    fetchTopVulnerabilities();
+  useEffect(() => {
+    fetchAndSetTopVulnerabilities(); // Initial fetch
+
+    const interval = setInterval(fetchAndSetTopVulnerabilities, 1000); // Fetch every 5 seconds
+
+    return () => clearInterval(interval); // Cleanup on unmount
   }, []);
 
   return (
@@ -37,7 +41,7 @@ function Home() {
             {topVulnerabilities.map(vulnerability => (
               <VulnerabilityCard
                 key={vulnerability.id}
-                title={`${vulnerability.cve_id}  ${vulnerability.vendor.name}`}
+                title={`${vulnerability.cve_id} ${vulnerability.vendor.name}`}
                 text={vulnerability.summary}
                 link={`/learn-more/${vulnerability.cve_id}`} // Pass the cve_id as a URL parameter
                 value={vulnerability.max_cvss_base_score}
