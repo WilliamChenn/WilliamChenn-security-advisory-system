@@ -8,6 +8,8 @@ import './CVEpage.css';
 function CVEpage() {
   const { cveId } = useParams();
   const [vulnerability, setVulnerability] = useState(null);
+  const [vendorName, setVendorName] = useState('');
+  const [vendorLogoUrl, setVendorLogoUrl] = useState('');
 
   useEffect(() => {
     const fetchVulnerability = async () => {
@@ -18,6 +20,12 @@ function CVEpage() {
         }
         const data = await response.json();
         setVulnerability(data.data.attributes);
+        
+        // Extract vendor name from included data
+        const includedVendor = data.included.find(item => item.type === 'vendor');
+        if (includedVendor) {
+          setVendorName(includedVendor.attributes.name);
+        }
       } catch (error) {
         console.error('Error fetching vulnerability:', error);
       }
@@ -26,7 +34,31 @@ function CVEpage() {
     fetchVulnerability();
   }, [cveId]);
 
-  if (!vulnerability) {
+  useEffect(() => {
+    const fetchVendorUrl = async () => {
+      try {
+        const response = await fetch('http://localhost:3001/api/v1/vendors');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        
+        // Find the vendor object with matching name
+        const matchedVendor = data.find(vendor => vendor.name === vendorName);
+        if (matchedVendor) {
+          setVendorLogoUrl(matchedVendor.vendor_url);
+        }
+      } catch (error) {
+        console.error('Error fetching vendor data:', error);
+      }
+    };
+
+    if (vendorName) {
+      fetchVendorUrl();
+    }
+  }, [vendorName]);
+
+  if (!vulnerability || !vendorLogoUrl) {
     return <div>Loading...</div>;
   }
 
@@ -35,7 +67,11 @@ function CVEpage() {
       <Header />
       <div className="cve-content-wrapper">
         <div className="cve-text-content">
-          <h1>{vulnerability.cve_id} - {vulnerability.assigner_source_name}</h1>
+          <div className="title-with-image">
+            {/* Display vendor logo if available */}
+            <img src={vendorLogoUrl} alt="Vendor Logo" className="vendor-logo" />
+            <h1>{vulnerability.cve_id} - {vulnerability.assigner_source_name}</h1>
+          </div>
           <h2>Overview</h2>
           <p>{vulnerability.summary}</p>
           <h3>Affected:</h3>
@@ -52,6 +88,8 @@ function CVEpage() {
         <div className="cve-circular-progress-container">
           <CircularProgress value={vulnerability.max_cvss_base_score} />
         </div>
+        {/* Move the vendor logo here for side-by-side placement */}
+        <img src={vendorLogoUrl} alt="Vendor Logo" className="vendor-logo" />
       </div>
       <Footer />
     </div>
@@ -59,3 +97,6 @@ function CVEpage() {
 }
 
 export default CVEpage;
+
+
+
