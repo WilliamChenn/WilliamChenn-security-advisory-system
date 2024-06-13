@@ -81,10 +81,11 @@ const Table = () => {
                                 {row.cells.map((cell) => (
                                     <td {...cell.getCellProps()}>
                                         {cell.column.id === 'cve_number' ? (
-                                            <Link to={`/cve/${cell.value}`}>{cell.render('Cell')}</Link>
+                                            <Link to={`/learn-more/${cell.cve_id}`}>{cell.render('Cell')}</Link>
                                         ) : (
                                             cell.render('Cell')
                                         )}
+
                                     </td>
                                 ))}
                             </tr>
