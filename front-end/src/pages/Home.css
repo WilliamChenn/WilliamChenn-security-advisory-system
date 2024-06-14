@@ -18,7 +18,7 @@ body {
 
 /* Title and Subtitle Styles */
 .title1, .title2 {
-  font-size: 2.5em;
+  font-size: 5em;
   font-weight: bold;
   font-family: "Open Sans";
   margin: 20px 0 10px;
@@ -26,20 +26,26 @@ body {
 
 @media (min-width: 768px) {
   .title1, .title2 {
-    font-size: 4em;
+    font-size: 2em;
   }
 }
 
 .subtitle1, .subtitle2 {
   color: #110f0fc0;
-  font-size: 1.2em;
-  font-family: "Mulish";
+  font-size: 4em;
+  font-family: "Garmond";
   margin: 10px 0 20px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 200px) {
   .subtitle1, .subtitle2 {
-    font-size: 1.5em;
+    font-size: 2.5em;
+    font-family: 'Open Sans';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 40px;
   }
 }
 

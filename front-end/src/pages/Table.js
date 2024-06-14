@@ -135,22 +135,11 @@ const Table = () => {
     };
 
     return (
-        <Wrapper>
-            <HeaderContainer>
+        <div>
+            <header className="Vulnerabilities-header">
                 <div className="title">Find Out If You Have Vulnerabilities That Put You at Risk</div>
-            </HeaderContainer>
-            <ContentWrapper>
-                <SidebarWrapper>
-                    <FilterButton onClick={showSidebar} sidebar={sidebar}>
-                        Filter Here
-                    </FilterButton>
-                    <Sidebar
-                        sidebar={sidebar}
-                        showSidebar={showSidebar}
-                        handleFilterChange={handleFilterChange}
-                        filters={filters}
-                    />
-                </SidebarWrapper>
+            </header>
+            <div className="Table-container">
                 <table {...getTableProps()} className="Table">
                     <thead>
                         {headerGroups.map((headerGroup) => (
@@ -178,7 +167,7 @@ const Table = () => {
                                     {row.cells.map((cell) => (
                                         <td {...cell.getCellProps()}>
                                             {cell.column.id === 'cve_number' ? (
-                                                <Link to={`/learn-more/${cell.cve_id}`}>{cell.render('Cell')}</Link>
+                                                <Link to={`/cve/${cell.value}`}>{cell.render('Cell')}</Link>
                                             ) : (
                                                 cell.render('Cell')
                                             )}
@@ -189,8 +178,8 @@ const Table = () => {
                         })}
                     </tbody>
                 </table>
-            </ContentWrapper>
-        </Wrapper>
+            </div>
+        </div>
     );
 };
 

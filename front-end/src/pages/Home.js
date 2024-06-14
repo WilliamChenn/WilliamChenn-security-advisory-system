@@ -43,6 +43,7 @@ function Home() {
                 key={vulnerability.id}
                 title={`${vulnerability.cve_id} ${vulnerability.vendor.name}`}
                 text={vulnerability.summary}
+                //link = {'a.mov'}
                 link={`/learn-more/${vulnerability.cve_id}`} // Pass the cve_id as a URL parameter
                 value={vulnerability.max_cvss_base_score}
                 image={vulnerability.vendor.vendor_url} // Pass the vendor image URL
