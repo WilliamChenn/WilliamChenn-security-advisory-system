@@ -15,12 +15,11 @@
 .Table {
   margin: 20px auto;
   width: 80%;
-  overflow-x: auto; /* Enable horizontal scroll */
+  margin-right: 150px;
 }
 
-.Table-container {
-  width: 100%;
-  overflow-x: auto; /* Enable horizontal scroll */
+.TableContainer {
+  overflow: scroll;
 }
 
 .Table table {
