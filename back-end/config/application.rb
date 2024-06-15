@@ -7,13 +7,9 @@ Bundler.require(*Rails.groups)
 #Dotenv::Railtie.load
 Dotenv::Rails.load
 
-
-
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
-
-raise "ENV['POSTGRES_HOST'] not loaded" unless ENV['POSTGRES_HOST']
 
 module BackEnd
   class Application < Rails::Application
