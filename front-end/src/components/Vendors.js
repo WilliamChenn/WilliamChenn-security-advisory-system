@@ -112,7 +112,7 @@ function Vendors() {
 
   return (
     <div className="vendors">
-      <h2>Vendor Logos</h2>
+      <h2>Vendors You Are Tracking</h2>
       <div className="vendor-grid">
         {vendors.map((vendor) => (
           <div key={vendor.id} className={`vendor-card ${loadingVendor === vendor.id ? 'loading' : ''}`}>
