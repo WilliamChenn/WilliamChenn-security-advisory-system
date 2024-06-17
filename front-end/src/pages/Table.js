@@ -32,15 +32,27 @@ const SidebarWrapper = styled.div`
 `;
 
 const FilterButton = styled.button`
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px 24px;
-  border: none;
+  background-color: white;
+  border-style: solid;
+  border-color: #0417aa;
+  border-width: thin;
+  color: #0417aa;
+  padding: 7px 20px;
   cursor: pointer;
   font-size: 16px;
-  margin-bottom: 10px;
   align-self: flex-start;
+  font-weight: bold;
+  margin-top: 35px;
+  margin-left: 15px;
 `;
+
+const matchesSearchQuery = (item, query) => {
+    if (!query) return true;
+    const lowerCaseQuery = query.toLowerCase();
+    return Object.values(item).some(value => 
+        value && value.toString().toLowerCase().includes(lowerCaseQuery)
+    );
+};
 
 const getSeverityClass = (cvss) => {
     if (cvss > 0 && cvss < 4) {
@@ -68,12 +80,13 @@ const Table = () => {
         dateRange: 'default',
         startDate: '',
         endDate: '',
+        searchQuery:'',
     });
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://localhost:3001/api/v1/cves/recent?time_range=month');
+                const response = await fetch('http://localhost:3001/api/v1/cves/recent?time_range=year');
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
@@ -124,9 +137,8 @@ const Table = () => {
             const severityMatch = filters.severity.length === 0 || filters.severity.includes(severityLevel);
             const itemDate = new Date(item.publish_date.substring(0, 10));
             const dateMatch = itemDate >= startDate && itemDate <= endDate;
-            console.log('Item:', item); // Debugging: Log each item
-            console.log('Severity match:', severityMatch, 'Date match:', dateMatch); // Debugging: Log match results
-            return severityMatch && dateMatch;
+            const searchMatch = matchesSearchQuery(item, filters.searchQuery);
+            return severityMatch && dateMatch && searchMatch;
         });
     }, [data, filters]);
 
@@ -173,7 +185,15 @@ const Table = () => {
             <ContentWrapper>
                 <SidebarWrapper>
                     <FilterButton onClick={showSidebar} sidebar={sidebar}>
-                        Filter Here
+                        Filter Here<img
+                            src="https://static.thenounproject.com/png/4800805-200.png"
+                            alt="desc"
+                            style={{
+                                width: '20px',
+                                marginLeft: '10px',
+                                filter: 'invert(6%) sepia(96%) saturate(7373%) hue-rotate(238deg) brightness(98%) contrast(100%)'
+                            }}
+                        />
                     </FilterButton>
                     <Sidebar
                         sidebar={sidebar}
