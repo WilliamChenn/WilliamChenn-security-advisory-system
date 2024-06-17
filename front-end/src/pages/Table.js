@@ -101,7 +101,6 @@ const Table = () => {
     }, []);
 
     const filteredData = useMemo(() => {
-        console.log('Applying filters:', filters); // Debugging: Log current filters
 
         const currentDate = new Date();
         let startDate;
@@ -130,8 +129,6 @@ const Table = () => {
             startDate.setDate(currentDate.getDate() - 14);
             endDate = currentDate;
         }
-
-        console.log('Date range:', startDate, endDate); // Debugging: Log date range
 
         return data.filter(item => {
             const severityLevel = getSeverityClass(item.max_cvss_base_score);
