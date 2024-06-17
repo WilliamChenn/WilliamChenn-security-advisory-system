@@ -5,6 +5,7 @@ require "rails/all"
 Bundler.require(*Rails.groups)
 
 #Dotenv::Railtie.load
+require 'dotenv-rails'
 Dotenv::Rails.load
 
 # Require the gems listed in Gemfile, including any gems
