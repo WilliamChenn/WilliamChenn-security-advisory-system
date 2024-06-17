@@ -19,11 +19,7 @@ function Home() {
   useEffect(() => {
     fetchAndSetTopVulnerabilities(); // Initial fetch
 
-<<<<<<< HEAD
-    const interval = setInterval(fetchAndSetTopVulnerabilities, 1000); // Fetch every 5 seconds
-=======
     const interval = setInterval(fetchAndSetTopVulnerabilities, 5000); // Fetch every 5 seconds
->>>>>>> main
 
     return () => clearInterval(interval); // Cleanup on unmount
   }, []);
