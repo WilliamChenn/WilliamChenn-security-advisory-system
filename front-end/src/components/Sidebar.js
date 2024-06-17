@@ -86,6 +86,7 @@ const Sidebar = ({ sidebar, showSidebar, handleFilterChange, filters }) => {
               <br />
               <label htmlFor="dateRange">Date Range</label>
               <select name="dateRange" id="dateRange" value={filters.dateRange}>
+                <option value="all">Default</option>
                 <option value="day">Day</option>
                 <option value="week">Week</option>
                 <option value="month">Month</option>
