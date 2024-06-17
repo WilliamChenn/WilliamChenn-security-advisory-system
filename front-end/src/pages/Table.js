@@ -114,6 +114,7 @@ const Table = () => {
             endDate = new Date(filters.endDate);
         } else {
             startDate = new Date(0); // For 'all' or any other unspecified ranges
+            startDate.setDate(currentDate.getDate() - 14);
             endDate = currentDate;
         }
 
