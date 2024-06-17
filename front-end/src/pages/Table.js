@@ -93,21 +93,28 @@ const Table = () => {
         const currentDate = new Date();
         let startDate;
         let endDate;
-        if (filters.dateRange === 'week') {
+        if (filters.dateRange === 'day') {
+            startDate = currentDate;
+            endDate = currentDate;
+        }
+        else if (filters.dateRange === 'week') {
             startDate = new Date();
             startDate.setDate(currentDate.getDate() - 7);
-            endDate = setDate(currentDate);
+            endDate = currentDate;
         } else if (filters.dateRange === 'month') {
             startDate = new Date();
             startDate.setMonth(currentDate.getMonth() - 1);
+            endDate = currentDate;
         } else if (filters.dateRange === 'year') {
             startDate = new Date();
             startDate.setFullYear(currentDate.getFullYear() - 1);
+            endDate = currentDate;
         } else if (filters.dateRange === 'custom') {
             startDate = new Date(filters.startDate);
             endDate = new Date(filters.endDate);
         } else {
             startDate = new Date(0); // For 'all' or any other unspecified ranges
+            endDate = currentDate;
         }
 
         console.log('Date range:', startDate, endDate); // Debugging: Log date range
