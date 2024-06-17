@@ -13,7 +13,7 @@ Rails.application.routes.draw do
         end
       end
       resources :vendors, only: [:index]
-      # /api/v1/vendors - to list all vendors (GET request)
+      # /api/v1/vendors/ - to list all vendors (GET request)
       post 'vendors/:name', to: 'vendors#create', as: 'create_vendor_by_name'
       # POST /api/v1/vendors/Adobe - to create a new vendor (POST request) (this will also load in cve's from the vendor to the table)
       delete 'vendors/:name', to: 'vendors#destroy', as: 'delete_vendor_by_name'

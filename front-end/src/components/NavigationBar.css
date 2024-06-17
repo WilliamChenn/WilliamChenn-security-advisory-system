@@ -17,7 +17,11 @@
   background-color: #ffffff;
   margin: 5px 0;
   border-radius: 25px;
-  transition: 0.3s;
+  transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
+}
+
+.nav div:hover {
+  background-color: #dddddd;
 }
 
 .one {
@@ -25,16 +29,58 @@
 }
 
 .two {
-  width: 20px;
+  width: 30px;
 }
 
 .three {
-  width: 25px;
+  width: 30px;
 }
 
-.navbar-collapse {
+.nav.open .one {
+  transform: rotate(45deg) translate(10px, 10px);
+}
+
+.nav.open .two {
+  opacity: 0;
+}
+
+.nav.open .three {
+  transform: rotate(-45deg) translate(10px, -10px);
+}
+
+.dropdown-box {
   position: absolute;
-  top: 30px; /* Adjust this value to control the vertical positioning */
-  right: 25px;
-  width: 240px; /* Adjust this value to control the width of the dropdown */
+  top: 60px;
+  right: 0;
+  width: 120px; /* Adjust this value to control the width of the dropdown */
+  background-color: #f8f9fa;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 5px 10px; /* Adjust the padding to make it skinnier vertically */
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-20px);
+  transition: transform 0.6s ease, opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.dropdown-box.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(10px); /* Adjust this value to move the dropdown further down */
+}
+
+.dropdown-box .nav-link {
+  margin: 3px 0; /* Adjust the margin to reduce gap */
+  padding: 10px 0; /* Adjust the padding for the links to make them skinnier vertically */
+  color: black; /* Set the text color to black */
+}
+
+.dropdown-box .nav-link:hover {
+  background-color: #eeeeee;
+  border-radius: 4px;
+}
+
+.dropdown-box .nav-link + .nav-link {
+  border-top: 1px solid #dddddd; /* Add a line between each dropdown option */
 }

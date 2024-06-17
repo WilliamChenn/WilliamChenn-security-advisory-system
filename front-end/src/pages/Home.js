@@ -19,7 +19,11 @@ function Home() {
   useEffect(() => {
     fetchAndSetTopVulnerabilities(); // Initial fetch
 
+<<<<<<< HEAD
     const interval = setInterval(fetchAndSetTopVulnerabilities, 1000); // Fetch every 5 seconds
+=======
+    const interval = setInterval(fetchAndSetTopVulnerabilities, 5000); // Fetch every 5 seconds
+>>>>>>> main
 
     return () => clearInterval(interval); // Cleanup on unmount
   }, []);
@@ -43,6 +47,7 @@ function Home() {
                 key={vulnerability.id}
                 title={`${vulnerability.cve_id} ${vulnerability.vendor.name}`}
                 text={vulnerability.summary}
+                //link = {'a.mov'}
                 link={`/learn-more/${vulnerability.cve_id}`} // Pass the cve_id as a URL parameter
                 value={vulnerability.max_cvss_base_score}
                 image={vulnerability.vendor.vendor_url} // Pass the vendor image URL

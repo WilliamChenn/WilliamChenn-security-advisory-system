@@ -11,15 +11,21 @@
   font-size: 2.1em;
   margin: 20px 0 10px;
 }
+
 .Table {
   margin: 20px auto;
   width: 80%;
+  margin-right: 150px;
+}
+
+.TableContainer {
+  overflow: scroll;
 }
 
 .Table table {
   width: 100%;
   border-collapse: collapse;
-  margin: 20px 0;
+  margin: 20px;
   font-size: 18px;
 }
 

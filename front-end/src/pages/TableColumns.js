@@ -1,5 +1,6 @@
 import { convertLength } from "@mui/material/styles/cssUtils";
 import Tooltip from '@mui/material/Tooltip';
+import { Link } from 'react-router-dom';
 
 const getSeverityClass = (cvss) => {
     if (cvss > 0 && cvss < 4) {
@@ -43,7 +44,7 @@ export const COLUMNS = [
         Header: 'CVE',
         accessor: 'cve_id',
         Cell: ({ value }) => (
-            <a href="#">{value}</a>
+            <Link to={`/learn-more/${value}`}>{value}</Link>
         )
     },
     {

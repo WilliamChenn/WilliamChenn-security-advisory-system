@@ -34,7 +34,23 @@ const CircularProgress = ({ value }) => {
     }
   };
 
+  // Define a function to get the severity color based on the value
+  const getSeverityColor = (value) => {
+    if (value < 4) {
+      return "rgb(102, 206, 102)";
+    } else if (value >= 4 && value < 7) {
+      return "rgb(230, 166, 45)";
+    } else if (value >= 7 && value < 9) {
+      return "rgb(233, 45, 27)";
+    } else if (value >= 9 && value <= 10) {
+      return "rgb(139, 0, 0)";
+    } else {
+      return "#888";
+    }
+  };
+
   const clampedValue = value !== null && value !== undefined ? Math.max(0, Math.min(value, 10)) : null;
+  const severityColor = clampedValue !== null ? getSeverityColor(clampedValue) : "#888";
 
   return (
     <div className="circular-progress-container">
@@ -46,15 +62,15 @@ const CircularProgress = ({ value }) => {
             text=""
             strokeWidth={10}
             styles={buildStyles({
-              pathColor: `rgb(106, 168, 106)`, // Default color (will be overridden by CSS)
-              textColor: '#333',
+              pathColor: severityColor,
+              textColor: severityColor,
               trailColor: '#d6d6d6',
               rotation: 0,
               strokeLinecap: 'round',
             })}
           />
           <div className="severity-text-box">
-            <div className="severity-value">{clampedValue}</div>
+            <div className="severity-value" style={{ color: severityColor }}>{clampedValue}</div>
             <div className={`severity-text ${getSeverityClass(clampedValue)}`}>
               {getSeverityText(clampedValue)}
             </div>
@@ -70,4 +86,3 @@ const CircularProgress = ({ value }) => {
 };
 
 export default CircularProgress;
-
