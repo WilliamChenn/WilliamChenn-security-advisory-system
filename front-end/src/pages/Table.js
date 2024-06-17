@@ -88,7 +88,6 @@ const Table = () => {
     }, []);
 
     const filteredData = useMemo(() => {
-        console.log('Applying filters:', filters); // Debugging: Log current filters
 
         const currentDate = new Date();
         let startDate;
@@ -118,15 +117,11 @@ const Table = () => {
             endDate = currentDate;
         }
 
-        console.log('Date range:', startDate, endDate); // Debugging: Log date range
-
         return data.filter(item => {
             const severityLevel = getSeverityClass(item.max_cvss_base_score);
             const severityMatch = filters.severity.length === 0 || filters.severity.includes(severityLevel);
             const itemDate = new Date(item.publish_date.substring(0, 10));
             const dateMatch = itemDate >= startDate && itemDate <= endDate;
-            console.log('Item:', item); // Debugging: Log each item
-            console.log('Severity match:', severityMatch, 'Date match:', dateMatch); // Debugging: Log match results
             return severityMatch && dateMatch;
         });
     }, [data, filters]);
