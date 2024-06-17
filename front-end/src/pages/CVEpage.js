@@ -76,7 +76,7 @@ function CVEpage() {
             </div>
             <div className="remediation-content">
               <p>{vulnerability.remediation || "No remediation information available."}</p>
-              <Chatbot cveDetail={vulnerability} />
+              <Chatbot cveDetail={vulnerability} />c m
             </div>
           </div>
         </div>
