@@ -15,6 +15,10 @@ services:
     - ./front-end/package-lock.json:/app/package-lock.json
     environment:
       - NODE_ENV=development
+      - REACT_APP_OPENAI_API_KEY=${REACT_APP_OPENAI_API_KEY}
+    env_file:
+      - .env
+
     command: ["npm", "run", "dev"]
   backend:
     build:

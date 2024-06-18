@@ -1,0 +1,13 @@
+
+
+.chatbot-button {
+  padding: 6px 10px;
+  background-color: #012169;
+  color: white;
+  border-radius: 4px;
+  
+}
+
+.chatbot-button:hover {
+  background-color: #0056b3;
+}

@@ -1,42 +1,45 @@
-// Chatbot.js
-import React, { useState } from 'react';
-import openai from 'openai';
+import React, { useState, useEffect } from 'react';
+import './Chatbot.css';
 
-openai.apiKey = 'sk-proj-F2DPEaOlGi671ax1UH2XT3BlbkFJWm6wlx8T5NoLvZTeoSlK';
+const Chatbot = ({ onSaveRemediation, cveId }) => {
+  const [input, setInput] = useState('');
 
-const Chatbot = ({ cveDetail }) => {
-    const [input, setInput] = useState('');
-    const [response, setResponse] = useState('');
+  useEffect(() => {
+    // Load comment from localStorage on component mount
+    const savedRemediation = localStorage.getItem(`savedRemediation_${cveId}`);
+    if (savedRemediation) {
+      setInput(savedRemediation);
+    }
+  }, [cveId]);
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            const chatResponse = await openai.Completion.create({
-                engine: "text-davinci-003",
-                prompt: `How can I remediate the vulnerability with CVE number ${cveDetail.cve_number}?`,
-                max_tokens: 150
-            });
-            setResponse(chatResponse.choices[0].text.trim());
-        } catch (error) {
-            console.error('Error fetching chatbot response:', error);
-            setResponse('There was an error getting the response.');
-        }
-    };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (input.trim()) {
+      onSaveRemediation(input);
+      // Save comment to localStorage
+      localStorage.setItem(`savedRemediation_${cveId}`, input);
+    }
+  };
 
-    return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    value={input}
-                    onChange={(e) => setInput(e.target.value)}
-                    placeholder="Ask about remediation..."
-                />
-                <button type="submit">Ask</button>
-            </form>
-            {response && <div><strong>Response:</strong> {response}</div>}
-        </div>
-    );
+  return (
+    <div className="chatbot-container">
+      <form onSubmit={handleSubmit} className="chatbot-form">
+        <input
+          type="text"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          placeholder="Enter remediation information..."
+          className="chatbot-input"
+        />
+        <button type="submit" className="chatbot-button">Submit</button>
+      </form>
+    </div>
+  );
 };
 
 export default Chatbot;
+
+
+
+
+
