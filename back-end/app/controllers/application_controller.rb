@@ -20,8 +20,6 @@ class ApplicationController < ActionController::API
         logger.info("VALID SAML: #{saml_response.is_valid?}")
         logger.info("SAML ERRORS: #{saml_response.errors}")
         if saml_response.is_valid?
-           
-
             redirect_to "http://localhost:3000"
         else
             raise StandardError
