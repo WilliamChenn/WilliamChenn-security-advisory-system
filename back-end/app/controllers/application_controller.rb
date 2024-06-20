@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::API
+    include ActionController::Cookies
 
     IDP_CERT = File.read('config/saml/idp.crt')
     SP_CERT = File.read('config/saml/certificate.crt')
@@ -7,8 +8,9 @@ class ApplicationController < ActionController::API
     SP_ACS = "http://localhost:3001/saml" # this is going to be where you want the IDP to send the data after the user logs in.
   
 
-    def saml_consume
-
+    def saml_auth
+        request = OneLogin::RubySaml::Authrequest.new
+        redirect_to request.create(saml_settings), allow_other_host: true
     end
 
     # get the saml response, and do with it as you will
@@ -20,6 +22,31 @@ class ApplicationController < ActionController::API
         logger.info("VALID SAML: #{saml_response.is_valid?}")
         logger.info("SAML ERRORS: #{saml_response.errors}")
         if saml_response.is_valid?
+            # Extract attributes
+            eduPersonPrincipalName = saml_response.attributes['eduPersonPrincipalName']
+            eduPersonScopedAffiliation = saml_response.attributes['eduPersonScopedAffiliation']
+            uid = saml_response.attributes['uid']
+            mail = saml_response.attributes['mail']
+            displayName = saml_response.attributes['displayName']
+
+            # Find or create the user
+            user = User.find_or_create_by(Uid: uid) do |user|
+                user.email = mail
+                user.name = displayName
+            end
+
+            # Generate and set auth token
+            token = SecureRandom.hex
+            user.update(auth_token: token)
+
+            cookies.signed[:auth_token] = {
+                value: token,
+                httponly: true,
+                #secure: Rails.env.production?, # Set to true in production for security
+                #same_site: :strict
+              }
+
+
             redirect_to "http://localhost:3000"
         else
             raise StandardError
