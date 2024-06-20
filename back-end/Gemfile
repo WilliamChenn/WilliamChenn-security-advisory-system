@@ -34,9 +34,6 @@ gem "bootsnap", require: false
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin Ajax possible
 gem "rack-cors"
-gem 'httparty'
-
-gem 'fast_jsonapi'
 
 gem 'dotenv-rails', groups: [:development, :test]
 
@@ -51,3 +48,7 @@ group :development do
   # gem "spring"
 end
 
+### custom gem
+gem 'httparty' 
+gem 'ruby-saml', '~> 1.12.1'
+gem 'fast_jsonapi'
