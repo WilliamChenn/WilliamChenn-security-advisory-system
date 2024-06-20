@@ -10,6 +10,7 @@ function CVEpage() {
   const { cveId } = useParams();
   const [vulnerability, setVulnerability] = useState(null);
   const [remediation, setRemediation] = useState('');
+  const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
     const fetchVulnerability = async () => {
@@ -30,10 +31,10 @@ function CVEpage() {
 
   const handleSaveRemediation = (newRemediation) => {
     setRemediation(newRemediation);
+    setIsEditing(false); // Close the chatbot after saving
   };
 
   useEffect(() => {
-    // Load comment from localStorage on component mount
     const savedRemediation = localStorage.getItem(`savedRemediation_${cveId}`);
     if (savedRemediation) {
       setRemediation(savedRemediation);
@@ -57,10 +58,16 @@ function CVEpage() {
           <div className="remediation-container">
             <div className="remediation-header">
               <h4>Remediation</h4>
+              <button 
+                onClick={() => setIsEditing(!isEditing)} 
+                className="edit-button"
+              >
+                {isEditing ? 'Cancel' : 'Edit'}
+              </button>
             </div>
             <div className="remediation-content">
               <p>{remediation || "No remediation information available."}</p>
-              <Chatbot onSaveRemediation={handleSaveRemediation} cveId={cveId} />
+              {isEditing && <Chatbot onSaveRemediation={handleSaveRemediation} cveId={cveId} />}
             </div>
           </div>
         </div>
@@ -74,6 +81,10 @@ function CVEpage() {
 }
 
 export default CVEpage;
+
+
+
+
 
 
 

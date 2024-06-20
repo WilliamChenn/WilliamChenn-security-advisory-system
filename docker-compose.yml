@@ -18,7 +18,6 @@ services:
       - REACT_APP_OPENAI_API_KEY=${REACT_APP_OPENAI_API_KEY}
     env_file:
       - .env
-
     command: ["npm", "run", "dev"]
   backend:
     build:

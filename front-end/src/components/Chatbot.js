@@ -5,7 +5,6 @@ const Chatbot = ({ onSaveRemediation, cveId }) => {
   const [input, setInput] = useState('');
 
   useEffect(() => {
-    // Load comment from localStorage on component mount
     const savedRemediation = localStorage.getItem(`savedRemediation_${cveId}`);
     if (savedRemediation) {
       setInput(savedRemediation);
@@ -16,7 +15,6 @@ const Chatbot = ({ onSaveRemediation, cveId }) => {
     e.preventDefault();
     if (input.trim()) {
       onSaveRemediation(input);
-      // Save comment to localStorage
       localStorage.setItem(`savedRemediation_${cveId}`, input);
     }
   };
@@ -38,6 +36,7 @@ const Chatbot = ({ onSaveRemediation, cveId }) => {
 };
 
 export default Chatbot;
+
 
 
 
