@@ -33,7 +33,7 @@ body {
 .subtitle1, .subtitle2 {
   color: #110f0fc0;
   font-size: 4em;
-  font-family: "Garmond";
+  font-family: "Garamond";
   margin: 10px 0 20px;
 }
 
@@ -132,18 +132,147 @@ body {
   background-color: #0a47b3; /* Darker shade on hover */
 }
 
+.vendors-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap; /* Allow wrapping */
+}
+
+.vendor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Adjust grid to fit as many items as possible */
+  gap: 20px;
+  justify-content: center; /* Center the grid items */
+}
+
+.vendor-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative; /* Ensure the spinner is positioned correctly */
+  height: 150px; /* Fixed height for all cards */
+  width: 150px; /* Fixed width for all cards */
+}
+
+.vendor-card.loading {
+  background-color: white; /* Turn the box white when loading */
+}
+
+.vendor-logo {
+  max-width: 100%;
+  max-height: 80%; /* Adjust as needed */
+  object-fit: contain; /* Ensure the image fits within the box without distortion */
+}
+
+.add-vendor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  background-color: #f0f0f0;
+  cursor: pointer;
+  height: 150px; /* Fixed height for add vendor card */
+  width: 150px; /* Fixed width for add vendor card */
+}
+
+.vendor-form {
+  margin-top: 20px;
+}
+
+.vendor-form input {
+  margin: 0 10px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.vendor-form button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #012169;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.vendor-form button:hover {
+  background-color: #ffcc00;
+  color: #012169;
+}
+
+.delete-button {
+  position: absolute;
+  top: 5px; /* Adjust the position to be more to the top right */
+  right: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: red;
+  display: none; /* Initially hide the delete button */
+}
+
+.vendor-card:hover .delete-button {
+  display: block; /* Show the delete button on hover */
+}
+
+.delete-button:hover {
+  color: darkred;
+}
+
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.9); /* White background with slight opacity */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
 .flex-container {
   display: flex;
+  flex-wrap: wrap; /* Allow wrapping for smaller screens */
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 20px;
 }
 
 .flex-container > * {
-  flex: 1;
+  flex: 1 1 45%; /* Flex items to take up approximately half the container width */
   margin-right: 20px;
 }
 
 .flex-container > *:last-child {
-  margin-right: 0;
+  margin-left: 0;
+}
+
+/* Ensure graphs are properly sized */
+.dot-plot,
+.bar-chart {
+  width: 100%;
+  height: 400px; /* Ensure both graphs have the same height */
+}
+
+@media (max-width: 768px) {
+  .flex-container {
+    flex-direction: column; /* Stack graphs vertically on small screens */
+  }
+
+  .flex-container > * {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .flex-container > *:last-child {
+    margin-bottom: 0;
+  }
 }

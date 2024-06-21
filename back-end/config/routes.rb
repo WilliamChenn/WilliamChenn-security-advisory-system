@@ -3,6 +3,10 @@
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
+  get '/auth/saml', to: 'application#saml_auth', as: :saml_auth
+  post '/saml', to: 'application#saml_consume', as: :saml_consume
+
+
   namespace :api do
     namespace :v1 do
       resources :cves, only: [:index, :show] do

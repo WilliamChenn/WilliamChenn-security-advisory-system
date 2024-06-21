@@ -9,9 +9,10 @@ h2 {
 
 .vendor-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); /* Smaller min width for each card */
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Adjust grid to fit as many items as possible */
   gap: 20px;
   padding: 20px;
+  justify-content: center; /* Center the grid items */
 }
 
 .vendor-card {
@@ -24,7 +25,7 @@ h2 {
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   position: relative; /* Ensure the spinner is positioned correctly */
-  height: 150px; /* Smaller fixed height for all cards */
+  height: 150px; /* Fixed height for all cards */
 }
 
 .vendor-card.loading {
@@ -44,7 +45,7 @@ h2 {
   font-size: 24px;
   background-color: #f0f0f0;
   cursor: pointer;
-  height: 150px; /* Smaller fixed height for add vendor card */
+  height: 150px; /* Fixed height for add vendor card */
 }
 
 .vendor-form {

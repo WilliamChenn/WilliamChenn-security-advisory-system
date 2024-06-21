@@ -16,6 +16,7 @@ services:
     environment:
       - NODE_ENV=development
     command: ["npm", "run", "dev"]
+    
   backend:
     build:
       context: ./back-end
