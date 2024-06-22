@@ -115,3 +115,22 @@ end
 #  Rails.logger.error("Failed to fetch vendor logo: #{logo_response.body}")
 #  Vendor.find_or_create_by(name: vendor_id)
 #end
+
+
+# app/services/microsoft_msrc_service.rb
+require 'httparty'
+
+class MicrosoftMsrcService
+  include HTTParty
+  base_uri 'https://api.msrc.microsoft.com'
+
+  def fetch_vulnerability_description(cve_number)
+    response = self.class.get("/cvrf/v2.0/cvrf/2021/#{cve_number}")
+    if response.success?
+      response['Vulnerability'][0]['Notes'][0]['Text']
+    else
+      nil
+    end
+  end
+end
+
