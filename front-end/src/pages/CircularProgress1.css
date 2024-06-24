@@ -5,6 +5,7 @@
   align-items: center;
   width: 220px; /* Set a fixed width for the container */
   position: relative; /* Ensure positioning context for the severity text */
+  z-index: 1;
 }
 
 /* Update the circular progress styles */
