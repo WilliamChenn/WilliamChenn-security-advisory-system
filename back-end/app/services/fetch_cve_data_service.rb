@@ -6,11 +6,16 @@ class FetchCVEDataService
   API_KEY = 'htv2wRjglIpydDSbTr78ow==cZANkAKzusXCtvFN'
 
   def self.call(vendor_name)
+    fetch_and_store_cvedetails_data(vendor_name)
+    fetch_and_store_nvd_data
+  end
+
+  def self.fetch_and_store_cvedetails_data(vendor_name)
     url = "#{BASE_CVE_API_URL}&vendorName=#{vendor_name}&pageNumber=1&resultsPerPage=20"
     token = "f63628992e62f5d6ac84bdb1ab93025173ce4755.eyJzdWIiOjQ3MjUsImlhdCI6MTcxNzUyMzYzOSwiZXhwIjoxNzIyMzg0MDAwLCJraWQiOjEsImMiOiI3RCt3MkZoTnZDdFZNeFByWUFyM0dEdDlaVWZDNGhZcUNqOUVXU0t1M3owd080bFZ3dVQyTm04V3ZiUlNoSjFrRkk5SGNzTksifQ=="
     response = HTTParty.get(url, headers: { "Authorization" => "Bearer #{token}" })
     logo_response = HTTParty.get("#{BASE_LOGO_API_URL}#{vendor_name}", headers: { "X-Api-Key" => API_KEY })
-   
+  
     if response.success?
       response.parsed_response['results'].each do |vuln|
         vendor = Vendor.find_or_create_by(vendor_id: vuln['vendor_id']) do |v|
@@ -21,8 +26,7 @@ class FetchCVEDataService
           v.name = vuln['vendor']
           v.vendor_id = vuln['vendor_id']
         end
-
-        
+  
         CVE.find_or_create_by(cve_id: vuln['cveId']) do |cve|
           cve.update(
             vendor: vendor,
@@ -64,7 +68,7 @@ class FetchCVEDataService
             is_overflow: convert_to_boolean(vuln['isOverflow']),
             is_memory_corruption: convert_to_boolean(vuln['isMemoryCorruption']),
             is_sql_injection: convert_to_boolean(vuln['isSqlInjection']),
-            is_xss: convert_to_boolean(vuln['isXss']),
+            is_xss: convert_to_boolean(vn['isXss']),
             is_directory_traversal: convert_to_boolean(vuln['isDirectoryTraversal']),
             is_file_inclusion: convert_to_boolean(vuln['isFileInclusion']),
             is_csrf: convert_to_boolean(vuln['isCsrf']),
@@ -77,7 +81,8 @@ class FetchCVEDataService
             is_gain_privilege: convert_to_boolean(vuln['isGainPrivilege']),
             is_denial_of_service: convert_to_boolean(vuln['isDenialOfService']),
             is_information_leak: convert_to_boolean(vuln['isInformationLeak']),
-            is_used_for_ransomware: convert_to_boolean(vuln['isUsedForRansomware'])
+            is_used_for_ransomware: convert_to_boolean(vuln['isUsedForRansomware']),
+            source: 'cvedetails' # Set the source to 'cvedetails'
           )
         end
       end
@@ -85,33 +90,29 @@ class FetchCVEDataService
       Rails.logger.error("Failed to fetch CVE data: #{response.body}")
     end
   end
+  
 
-  def self.fetch_vendor(vendor_name)
-    url = "#{BASE_CVE_API_URL}&vendorName=#{vendor_name}&pageNumber=1&resultsPerPage=1"
-    token = "f63628992e62f5d6ac84bdb1ab93025173ce4755.eyJzdWIiOjQ3MjUsImlhdCI6MTcxNzUyMzYzOSwiZXhwIjoxNzIyMzg0MDAwLCJraWQiOjEsImMiOiI3RCt3MkZoTnZDdFZNeFByWUFyM0dEdDlaVWZDNGhZcUNqOUVXU0t1M3owd080bFZ3dVQyTm04V3ZiUlNoSjFrRkk5SGNzTksifQ=="
-    response = HTTParty.get(url, headers: { "Authorization" => "Bearer #{token}" })
-    if response.success? && response.parsed_response['results'].any?
-      vendor_data = response.parsed_response['results'].first
-      { name: vendor_data['vendor'], vendor_id: vendor_data['vendor_id'] }
-    else
-      nil
+  def self.fetch_and_store_nvd_data
+    nvd_data = NvdApiService.fetch_recent_cves
+  
+    nvd_data['result']['CVE_Items'].each do |item|
+      cve_id = item['cve']['CVE_data_meta']['ID']
+      summary = item['cve']['description']['description_data'][0]['value']
+      publish_date = item['publishedDate']
+      max_cvss_base_score = item['impact']['baseMetricV3']['cvssV3']['baseScore']
+  
+      CVE.find_or_create_by(cve_id: cve_id) do |cve|
+        cve.update(
+          summary: summary,
+          publish_date: publish_date,
+          max_cvss_base_score: max_cvss_base_score,
+          source: 'nvd' # Set the source to 'nvd'
+        )
+      end
     end
-  end
-
+  end  
 
   def self.convert_to_boolean(value)
     value == "1"
   end
 end
-
-
-#          logo_response = HTTParty.get("#{BASE_LOGO_API_URL}#{vendor_name}", headers: { "X-Api-Key" => API_KEY })
-#if logo_response.success?
-#  logo_data = logo_response.parsed_response.first
-#  Vendor.find_or_create_by(name: vendor_id) do |vendor|
-#    vendor.vendor_url = logo_data['image']
-#  end
-#else
-#  Rails.logger.error("Failed to fetch vendor logo: #{logo_response.body}")
-#  Vendor.find_or_create_by(name: vendor_id)
-#end
