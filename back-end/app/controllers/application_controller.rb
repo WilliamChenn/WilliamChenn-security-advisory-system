@@ -38,6 +38,14 @@ class ApplicationController < ActionController::API
             # Generate and set auth token
             token = SecureRandom.hex
             user.update(auth_token: token)
+        
+            #reset migrations, get rid of all users and stuff
+            #islogged in will take the token from the cookie and verify that the user is logged in, 
+                #get token from cookie
+                #return user
+            #def whoami -->routable from front end
+                #return isloggedin
+            #axios.get(BASE_URL + '/isloggedin', { withCredentials: true });
 
             cookies.signed[:auth_token] = {
                 value: token,

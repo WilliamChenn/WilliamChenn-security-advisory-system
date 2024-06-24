@@ -14,10 +14,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
   const isAuthenticated = Cookies.get('auth_token'); // Check if the auth token cookie is set
 
+  
   if (!isAuthenticated) {
-    isAuthenticated = !isAuthenticated;
     return <Auth />; // Render Auth component to redirect to IdP
   }
+  //create endpoint to return user data
+  //
 
   return (
     <Router>
