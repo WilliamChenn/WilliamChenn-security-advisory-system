@@ -10411,3 +10411,267 @@ Processing by Api::V1::VendorsController#index as HTML
 Completed 200 OK in 17ms (Views: 5.3ms | ActiveRecord: 11.4ms | Allocations: 569)
 
 
+  [1m[35m (5.7ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4005883968536855685)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (6.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (6.9ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Update (6.2ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = 'development', "updated_at" = '2024-06-21 19:58:36.455812' WHERE "ar_internal_metadata"."key" = 'environment'[0m
+  [1m[35m (5.8ms)[0m  [1m[34mSELECT pg_advisory_unlock(4005883968536855685)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (6.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (6.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4005883968536855685)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (7.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (6.6ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Update (6.8ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = 'test', "updated_at" = '2024-06-21 19:58:37.012331' WHERE "ar_internal_metadata"."key" = 'environment'[0m
+  [1m[35m (5.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(4005883968536855685)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (5.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (6.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mVendor Load (6.4ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (8.1ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-38093"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (6.1ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-38083"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (5.6ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-38082"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (6.6ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-37325"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (7.2ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-37304"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (7.3ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-35265"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (58.2ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-35263"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (4.8ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-35255"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (4.6ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-35254"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (4.2ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-35253"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (5.0ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-35252"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (5.6ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-35250"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (5.2ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-35249"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (5.3ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-35248"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (5.1ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-30104"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (5.3ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-30103"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (5.4ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-30102"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (5.2ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-30101"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (4.9ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-30100"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (5.3ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-30099"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mVendor Load (6.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "53"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (6.8ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-36239"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "53"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (6.7ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-36238"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "53"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (5.7ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-36236"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "53"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (6.0ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-36235"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "53"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (5.9ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-36234"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "53"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (9.8ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-36233"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "53"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (5.6ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-36232"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "53"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (5.9ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-36231"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "53"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (5.4ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-36230"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "53"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (5.7ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-36229"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "53"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (5.3ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-36228"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "53"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (5.8ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-36227"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "53"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (11.0ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-36226"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "53"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (7.8ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-36225"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "53"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (6.2ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-36224"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "53"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (5.8ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-36222"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "53"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (5.2ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-36221"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "53"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (7.3ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-36220"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "53"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (5.5ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-36219"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "53"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (5.1ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-36218"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mVendor Load (5.9ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "49"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (4.8ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-27885"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "49"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (6.0ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-27857"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "49"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (5.6ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-27855"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "49"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (4.8ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-27852"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "49"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (4.0ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-27851"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "49"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (4.8ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-27850"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "49"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (4.8ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-27848"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "49"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (5.1ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-27847"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "49"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (5.4ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-27845"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "49"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (5.0ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-27844"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "49"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (96.4ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-27843"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "49"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (5.3ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-27842"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "49"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (5.2ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-27841"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "49"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (5.2ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-27840"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "49"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (6.0ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-27839"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "49"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (4.8ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-27838"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "49"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (16.8ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-27837"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "49"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (5.9ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-27836"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "49"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (5.7ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-27835"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "49"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:16:in `block in call'
+  [1m[36mCVE Load (165.1ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-27834"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:26:in `block in call'
+  [1m[35m (6.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4005883968536855685)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (5.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (6.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Update (6.0ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = 'development', "updated_at" = '2024-06-21 20:01:49.188387' WHERE "ar_internal_metadata"."key" = 'environment'[0m
+Migrating to CreateCorgis (20240621200108)
+  [1m[36mTRANSACTION (5.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (11.2ms)[0m  [1m[35mCREATE TABLE "corgis" ("id" bigserial primary key, "name" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (9.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20240621200108') RETURNING "version"[0m
+  [1m[36mTRANSACTION (7.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (4.8ms)[0m  [1m[34mSELECT pg_advisory_unlock(4005883968536855685)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (6.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
