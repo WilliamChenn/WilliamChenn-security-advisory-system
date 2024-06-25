@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   get '/auth/saml', to: 'application#saml_auth', as: :saml_auth
   post '/saml', to: 'application#saml_consume', as: :saml_consume
-
+  get '/is_logged_in', to: 'application#is_logged_in'
 
   namespace :api do
     namespace :v1 do
