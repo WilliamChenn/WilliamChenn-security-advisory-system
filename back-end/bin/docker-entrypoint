@@ -1,4 +1,5 @@
 #!/bin/bash -e
+rm -f /app/tmp/pids/server.pid
 
 # Print environment variables for debugging
 echo "Running docker-entrypoint script..."

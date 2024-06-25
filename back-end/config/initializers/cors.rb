@@ -9,7 +9,8 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
     allow do
-      origins 'localhost:3000' # Update this with your frontend's URL
+      origins 'http://localhost:3000' # Allow only localhost:3000
+
       resource '*',
                headers: :any,
                methods: [:get, :post, :options, :put, :patch, :delete],

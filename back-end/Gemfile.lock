@@ -216,14 +216,6 @@ GEM
       psych (>= 4.0.0)
     reline (0.5.8)
       io-console (~> 0.5)
-    responders (3.1.1)
-      actionpack (>= 5.2)
-      railties (>= 5.2)
-    rexml (3.3.0)
-      strscan
-    ruby-saml (1.12.2)
-      nokogiri (>= 1.10.5)
-      rexml
     rexml (3.3.0)
       strscan
     ruby-saml (1.12.2)
@@ -258,8 +250,6 @@ DEPENDENCIES
   dotenv-rails
   fast_jsonapi
   httparty
-  omniauth
-  omniauth-saml
   jwt
   pg (~> 1.1)
   puma (>= 5.0)
