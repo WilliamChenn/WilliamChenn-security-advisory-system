@@ -9,7 +9,7 @@
 #   end
 
 # Clear existing data
-User.destroy_all
+#User.destroy_all
 #Vendor.destroy_all
 
 defaultVendors = ["Microsoft", "Adobe", "Apple"]
