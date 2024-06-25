@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Label } from 'recharts';
-import './DotPlot.css';
 
 const DotPlot = () => {
   const [data, setData] = useState([]);

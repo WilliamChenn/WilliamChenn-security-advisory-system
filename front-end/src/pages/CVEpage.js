@@ -3,11 +3,31 @@ import { useParams } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import CircularProgress from '../components/CircularProgress';
+import Chatbot from '../components/Chatbot';
 import './CVEpage.css';
 
 function CVEpage() {
   const { cveId } = useParams();
   const [vulnerability, setVulnerability] = useState(null);
+  const [remediation, setRemediation] = useState('');
+  const [isEditing, setIsEditing] = useState(false);
+  const [vendor, setVendor] = useState(null);
+
+  const fetchVendors = async () => {
+    try {
+      const response = await fetch('http://localhost:3001/api/v1/vendors');
+      const data = await response.json();
+      const vendorData = data.find(vendor => vendor.id === vulnerability.vendor_id);
+      if (vendorData) {
+        setVendor({
+          name: vendorData.name,
+          logo: vendorData.vendor_url,
+        });
+      }
+    } catch (error) {
+      console.error('Error fetching vendors:', error);
+    }
+  };
 
   useEffect(() => {
     const fetchVulnerability = async () => {
@@ -24,6 +44,24 @@ function CVEpage() {
     };
 
     fetchVulnerability();
+  }, [cveId]);
+
+  useEffect(() => {
+    if (vulnerability) {
+      fetchVendors();
+    }
+  }, [vulnerability]);
+
+  const handleSaveRemediation = (newRemediation) => {
+    setRemediation(newRemediation);
+    setIsEditing(false); // Close the chatbot after saving
+  };
+
+  useEffect(() => {
+    const savedRemediation = localStorage.getItem(`savedRemediation_${cveId}`);
+    if (savedRemediation) {
+      setRemediation(savedRemediation);
+    }
   }, [cveId]);
 
   if (!vulnerability) {
@@ -43,14 +81,28 @@ function CVEpage() {
           <div className="remediation-container">
             <div className="remediation-header">
               <h4>Remediation</h4>
+              <button 
+                onClick={() => setIsEditing(!isEditing)} 
+                className="edit-button"
+              >
+                {isEditing ? 'Cancel' : 'Edit'}
+              </button>
             </div>
             <div className="remediation-content">
-              <p>{vulnerability.remediation || "No remediation information available."}</p>
+              <p>{remediation || "No remediation information available."}</p>
+              {isEditing && <Chatbot onSaveRemediation={handleSaveRemediation} cveId={cveId} />}
             </div>
           </div>
         </div>
         <div className="cve-circular-progress-container">
           <CircularProgress value={vulnerability.max_cvss_base_score} />
+          {vendor && (
+            <img 
+              src={vendor.logo} 
+              alt={`${vendor.name} logo`} 
+              className="vendor-logo" 
+            />
+          )}
         </div>
       </div>
       <Footer />
@@ -59,3 +111,4 @@ function CVEpage() {
 }
 
 export default CVEpage;
+

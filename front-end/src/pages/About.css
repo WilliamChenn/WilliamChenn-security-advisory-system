@@ -1,0 +1,13 @@
+.about-container {
+    background-image: url('./capybara.jpeg'); /* Path to your image */
+    height: 100vh; /* Full height of the viewport */
+    background-size: cover; /* Cover the entire container */
+    background-position: center; /* Center the background image */
+    color: white; /* Text color */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+  }
+  

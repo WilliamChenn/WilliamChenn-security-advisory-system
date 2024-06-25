@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Cell, ResponsiveContainer, LabelList, Label } from 'recharts';
-import './BarGraph.css';
 
 const BarGraph = () => {
   const [data, setData] = useState([]);

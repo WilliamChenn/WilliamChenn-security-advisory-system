@@ -8,22 +8,18 @@ import './App.css';
 import Table from './pages/Table';
 import CveDetail from './pages/CveDetail';
 import CVEpage from './pages/CVEpage';
+import About from './pages/About';
 import Auth from './components/Auth'; // Import the Auth component
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
-  const isAuthenticated = Cookies.get('auth_token'); // Check if the auth token cookie is set
-
-  if (!isAuthenticated) {
-    isAuthenticated = !isAuthenticated;
-    return <Auth />; // Render Auth component to redirect to IdP
-  }
 
   return (
     <Router>
       <NavigationBar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
         <Route path="/vulnerabilities" element={<Vulnerabilities />} />
         <Route path="/table" element={<Table />} />
         <Route path="/cve/:cveNumber" element={<CveDetail />} />
