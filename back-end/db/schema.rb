@@ -77,20 +77,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_25_192912) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "users_vendors", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "vendor_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_users_vendors_on_user_id"
-    t.index ["vendor_id"], name: "index_users_vendors_on_vendor_id"
-  end
-
-  create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "uid"
     t.string "email"
@@ -110,11 +96,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_25_192912) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "vendor_url"
-    t.string "vendor_url"
     t.string "remediation_url"
   end
 
   add_foreign_key "cves", "vendors"
-  add_foreign_key "users_vendors", "users"
-  add_foreign_key "users_vendors", "vendors"
 end
