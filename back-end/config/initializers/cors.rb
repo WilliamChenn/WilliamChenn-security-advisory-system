@@ -9,13 +9,11 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
     allow do
-      origins '*' # Allow all origins
-  
+      origins 'localhost:3000' # Update this with your frontend's URL
       resource '*',
-        headers: :any,
-        methods: [:get, :post, :put, :patch, :delete, :options, :head],
-        expose: ['access-token', 'expiry', 'token-type', 'uid', 'client'],
-        max_age: 600
+               headers: :any,
+               methods: [:get, :post, :options, :put, :patch, :delete],
+               credentials: true
     end
 end
   
