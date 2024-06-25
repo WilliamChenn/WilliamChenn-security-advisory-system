@@ -52,3 +52,4 @@ end
 gem 'httparty' 
 gem 'ruby-saml', '~> 1.12.1'
 gem 'fast_jsonapi'
+gem 'jwt'

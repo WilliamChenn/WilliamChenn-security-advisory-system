@@ -25,42 +25,53 @@ class ApplicationController < ActionController::API
             # Extract attributes
             eduPersonPrincipalName = saml_response.attributes['eduPersonPrincipalName']
             eduPersonScopedAffiliation = saml_response.attributes['eduPersonScopedAffiliation']
-            uid = saml_response.attributes['uid']
-            mail = saml_response.attributes['mail']
-            displayName = saml_response.attributes['displayName']
-
+            uid = saml_response.attributes['urn:oid:0.9.2342.19200300.100.1.1']
+            mail = saml_response.attributes['urn:oid:0.9.2342.19200300.100.1.3']
+            displayName = saml_response.attributes['urn:oid:2.16.840.1.113730.3.1.241']
             # Find or create the user
-            user = User.find_or_create_by(Uid: uid) do |user|
+            user = User.find_or_create_by(uid: uid) do |user|
                 user.email = mail
                 user.name = displayName
             end
-
             # Generate and set auth token
             token = SecureRandom.hex
             user.update(auth_token: token)
-        
-            #reset migrations, get rid of all users and stuff
             #islogged in will take the token from the cookie and verify that the user is logged in, 
                 #get token from cookie
                 #return user
-            #def whoami -->routable from front end
-                #return isloggedin
             #axios.get(BASE_URL + '/isloggedin', { withCredentials: true });
-
             cookies.signed[:auth_token] = {
                 value: token,
                 httponly: true,
                 #secure: Rails.env.production?, # Set to true in production for security
                 #same_site: :strict
               }
-
-
             redirect_to "http://localhost:3000"
         else
             raise StandardError
         end
     end
 
+    def is_logged_in
+        token = cookies.signed[:auth_token]
+        logger.info("Auth token from cookies: #{token}")
+        
+        if token
+            user = User.find_by(auth_token: token)
+            if user
+                logger.info("User found: ID=#{user.id}, Email=#{user.email}, Name=#{user.name}")
+                render json: { logged_in: true, user: { id: user.id, email: user.email, name: user.name } }, status: :ok
+            else
+                logger.error("No user found with auth token: #{token}")
+                render json: { logged_in: false, message: "DOESNT WORK: No user found" }, status: :unauthorized
+            end
+        else
+            logger.error("No auth token present in cookies")
+            render json: { logged_in: false, message: "DOESNT WORK: No token present" }, status: :unauthorized
+        end
+    end
+
+#ce947e6a938bb72ff9773eb02c71a39d
 
     private
 
