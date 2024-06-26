@@ -1,2 +1,2 @@
-class Kev < ApplicationRecord
+class KEV < ApplicationRecord
 end
