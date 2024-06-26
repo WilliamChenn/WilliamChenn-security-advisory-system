@@ -4,9 +4,13 @@ Rails.application.routes.draw do
   post '/saml', to: 'application#saml_consume', as: :saml_consume
   get '/is_logged_in', to: 'application#is_logged_in'
 
+  
+
   # API v1 routes
   namespace :api do
     namespace :v1 do
+        # Route for fetching KEV data (outside of the api namespace)
+      get '/fetch_kev_data', to: 'kevs#fetch_kev_data'
       resources :cves, only: [:index, :show] do
         collection do
           get 'recent'
@@ -24,9 +28,6 @@ Rails.application.routes.draw do
       resources :criticality, only: [:index]
     end
   end
-
-  # Route for fetching KEV data (outside of the api namespace)
-  get '/fetch_kev_data', to: 'kevs#fetch_kev_data'
 
   # Health check route
   get "up" => "rails/health#show", as: :rails_health_check
