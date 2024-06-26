@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cve_id: MyString
+  vendor_project: MyString
+  product: MyString
+  vulnerability_name: MyString
+  date_added: 2024-06-26 17:54:02
+  short_description: MyText
+  required_action: MyText
+  due_date: 2024-06-26 17:54:02
+  notes: MyText
+
+two:
+  cve_id: MyString
+  vendor_project: MyString
+  product: MyString
+  vulnerability_name: MyString
+  date_added: 2024-06-26 17:54:02
+  short_description: MyText
+  required_action: MyText
+  due_date: 2024-06-26 17:54:02
+  notes: MyText
