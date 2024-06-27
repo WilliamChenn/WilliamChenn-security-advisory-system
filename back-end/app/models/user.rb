@@ -1,3 +1,5 @@
 class User < ApplicationRecord
-    has_and_belongs_to_many :vendors
-end
+    has_many :users_vendors
+    has_many :vendors, through: :users_vendors
+  end
+  

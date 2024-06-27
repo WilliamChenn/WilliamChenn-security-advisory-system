@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_27_181156) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_15_182215) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -77,28 +77,18 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_27_181156) do
     t.index ["vendor_id"], name: "index_cves_on_vendor_id"
   end
 
-  create_table "kevs", force: :cascade do |t|
-    t.string "cve_id"
-    t.string "vendor_project"
-    t.string "product"
-    t.string "vulnerability_name"
-    t.date "date_added"
-    t.text "short_description"
-    t.text "required_action"
-    t.date "due_date"
-    t.string "known_ransomware_campaign_use"
-    t.text "notes"
+  create_table "users", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "uid"
-    t.string "email"
-    t.string "auth_token"
+  create_table "users_vendors", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "vendor_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_users_vendors_on_user_id"
+    t.index ["vendor_id"], name: "index_users_vendors_on_vendor_id"
   end
 
   create_table "vendors", force: :cascade do |t|
@@ -108,7 +98,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_27_181156) do
     t.datetime "updated_at", null: false
     t.string "vendor_url"
     t.string "remediation_url"
+    t.string "vendor_url"
   end
 
   add_foreign_key "cves", "vendors"
+  add_foreign_key "users_vendors", "users"
+  add_foreign_key "users_vendors", "vendors"
 end
