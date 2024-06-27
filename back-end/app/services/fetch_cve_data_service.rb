@@ -7,11 +7,12 @@ class FetchCVEDataService
 
   def self.call(vendor_name)
     url = "#{BASE_CVE_API_URL}&vendorName=#{vendor_name}&pageNumber=1&resultsPerPage=20"
-    token = "f63628992e62f5d6ac84bdb1ab93025173ce4755.eyJzdWIiOjQ3MjUsImlhdCI6MTcxNzUyMzYzOSwiZXhwIjoxNzIyMzg0MDAwLCJraWQiOjEsImMiOiI3RCt3MkZoTnZDdFZNeFByWUFyM0dEdDlaVWZDNGhZcUNqOUVXU0t1M3owd080bFZ3dVQyTm04V3ZiUlNoSjFrRkk5SGNzTksifQ=="
+    token = "18cb1603c8ffc3ac612b5e198da700dd10868f8e.eyJzdWIiOjQ3MzEsImlhdCI6MTcxOTM0MzczMCwiZXhwIjoxNzI0NzE2ODAwLCJraWQiOjEsImMiOiIyMElsM0hQXC9ia25cL2VCQ21Cb0lreWJxdDVLVnN6dFR3bUxuVlZDVVJ4NUVzc0R5SnE5dXBaTDh6RmRqMXJvMEhoUmtiVHF0eSJ9"
     response = HTTParty.get(url, headers: { "Authorization" => "Bearer #{token}" })
     logo_response = HTTParty.get("#{BASE_LOGO_API_URL}#{vendor_name}", headers: { "X-Api-Key" => API_KEY })
-   
+
     if response.success?
+      
       response.parsed_response['results'].each do |vuln|
         vendor = Vendor.find_or_create_by(vendor_id: vuln['vendor_id']) do |v|
           if logo_response.success?
@@ -20,12 +21,17 @@ class FetchCVEDataService
           end
           v.name = vuln['vendor']
           v.vendor_id = vuln['vendor_id']
+          v.remediation_url = vuln['remediationUrl'] # Associate remediation_url with Vendor
         end
-
+        remediation = FetchRemediationUrlService.call(vuln['cveId'])
         
-        CVE.find_or_create_by(cve_id: vuln['cveId']) do |cve|
+
+
+        cve=CVE.find_or_create_by(cve_id: vuln['cveId'])
+        #CVE.find_or_create_by(cve_id: vuln['cveId']) do |cve|
           cve.update(
-            vendor: vendor,
+            vendor: vendor, # Associate CVE with the correct Vendor
+            remediation_url: remediation,
             assigner: vuln['assigner'],
             assigner_source_name: vuln['assignerSourceName'],
             cve_number: vuln['cveNumber'],
@@ -77,32 +83,23 @@ class FetchCVEDataService
             is_gain_privilege: convert_to_boolean(vuln['isGainPrivilege']),
             is_denial_of_service: convert_to_boolean(vuln['isDenialOfService']),
             is_information_leak: convert_to_boolean(vuln['isInformationLeak']),
-            is_used_for_ransomware: convert_to_boolean(vuln['isUsedForRansomware'])
+            is_used_for_ransomware: convert_to_boolean(vuln['isUsedForRansomware']),
+            
+            
           )
-        end
+          
+        #end
       end
     else
       Rails.logger.error("Failed to fetch CVE data: #{response.body}")
     end
   end
 
-  def self.fetch_vendor(vendor_name)
-    url = "#{BASE_CVE_API_URL}&vendorName=#{vendor_name}&pageNumber=1&resultsPerPage=1"
-    token = "f63628992e62f5d6ac84bdb1ab93025173ce4755.eyJzdWIiOjQ3MjUsImlhdCI6MTcxNzUyMzYzOSwiZXhwIjoxNzIyMzg0MDAwLCJraWQiOjEsImMiOiI3RCt3MkZoTnZDdFZNeFByWUFyM0dEdDlaVWZDNGhZcUNqOUVXU0t1M3owd080bFZ3dVQyTm04V3ZiUlNoSjFrRkk5SGNzTksifQ=="
-    response = HTTParty.get(url, headers: { "Authorization" => "Bearer #{token}" })
-    if response.success? && response.parsed_response['results'].any?
-      vendor_data = response.parsed_response['results'].first
-      { name: vendor_data['vendor'], vendor_id: vendor_data['vendor_id'] }
-    else
-      nil
-    end
-  end
-
-
   def self.convert_to_boolean(value)
     value == "1"
   end
 end
+
 
 
 #          logo_response = HTTParty.get("#{BASE_LOGO_API_URL}#{vendor_name}", headers: { "X-Api-Key" => API_KEY })
@@ -118,19 +115,5 @@ end
 
 
 # app/services/microsoft_msrc_service.rb
-require 'httparty'
 
-class MicrosoftMsrcService
-  include HTTParty
-  base_uri 'https://api.msrc.microsoft.com'
-
-  def fetch_vulnerability_description(cve_number)
-    response = self.class.get("/cvrf/v2.0/cvrf/2021/#{cve_number}")
-    if response.success?
-      response['Vulnerability'][0]['Notes'][0]['Text']
-    else
-      nil
-    end
-  end
-end
 
