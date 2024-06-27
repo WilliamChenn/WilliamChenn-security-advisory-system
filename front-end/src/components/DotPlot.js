@@ -56,4 +56,7 @@ const DotPlot = () => {
 };
 
 export default DotPlot;
+<<<<<<< HEAD
 
+=======
+>>>>>>> homePage

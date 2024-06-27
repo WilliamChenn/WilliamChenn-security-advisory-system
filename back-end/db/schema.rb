@@ -97,6 +97,26 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_27_181721) do
     t.bigint "vendor_id", null: false
   end
 
+  create_table "kevs", force: :cascade do |t|
+    t.string "cve_id"
+    t.string "vendor_project"
+    t.string "product"
+    t.string "vulnerability_name"
+    t.date "date_added"
+    t.text "short_description"
+    t.text "required_action"
+    t.date "due_date"
+    t.string "known_ransomware_campaign_use"
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "uids_vendors", id: false, force: :cascade do |t|
+    t.bigint "uid_id", null: false
+    t.bigint "vendor_id", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "uid"
@@ -104,6 +124,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_27_181721) do
     t.string "auth_token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["uid"], name: "index_users_on_uid", unique: true
     t.index ["uid"], name: "index_users_on_uid", unique: true
   end
 
