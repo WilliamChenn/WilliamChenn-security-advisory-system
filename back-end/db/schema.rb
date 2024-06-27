@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_26_193924) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_27_181156) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -78,7 +78,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_26_193924) do
   end
 
   create_table "kevs", force: :cascade do |t|
-    t.string "column_name"
+    t.string "cve_id"
+    t.string "vendor_project"
+    t.string "product"
+    t.string "vulnerability_name"
+    t.date "date_added"
+    t.text "short_description"
+    t.text "required_action"
+    t.date "due_date"
+    t.string "known_ransomware_campaign_use"
+    t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

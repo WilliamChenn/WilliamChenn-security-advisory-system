@@ -5,8 +5,8 @@ module Api
       class KevsController < ApplicationController
         def fetch_kev_data
           FetchKevDataService.call
-          kevs = KEV.all
-          render json: KEVSerializer.new(kevs).serialized_json
+          kevs = Kev.all
+          render json: KevSerializer.new(kevs).serialized_json
         end
       end
     end

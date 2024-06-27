@@ -5,7 +5,8 @@ class FetchKevDataService
 BASE_KEV_API_URL = 'https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json'
     
   def self.call
-      vulnerabilities.each do |vuln|
+    puts vulnerabilities
+      vulnerabilities(30).each do |vuln|
         kev = Kev.find_or_create_by(cve_id: vuln['cveID']) do |kev|
           kev.vendor_project = vuln['vendorProject']
           kev.product = vuln['product']
@@ -24,10 +25,14 @@ BASE_KEV_API_URL = 'https://www.cisa.gov/sites/default/files/feeds/known_exploit
   
   
 
-  def self.vulnerabilities
-    response = HTTParty.get("#{BASE_KEV_API_URL}")
+  def self.vulnerabilities_since(number_of_days = nil)
+    if number_of_days.nil?
+        response = HTTParty.get("#{BASE_KEV_API_URL}")
+    else
+        response = HTTParty.get("#{BASE_KEV_API_URL}&field_date_added_wrapper=#{number_of_days}")
+    end
     if response.success? && response.parsed_response['vulnerabilities'].any?
-      return response.parsed_response['vulnerabilities'].first
+      return response.parsed_response['vulnerabilities']
     else
       nil
     end
