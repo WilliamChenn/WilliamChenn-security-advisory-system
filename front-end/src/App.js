@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import axios from 'axios';
 import Home from './pages/Home';
-import Vulnerabilities from './pages/Old Table/Vulnerabilities';
 import NavigationBar from './components/NavigationBar';
 import './App.css';
 import Table from './pages/Table';
@@ -44,7 +43,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="/vulnerabilities" element={<Vulnerabilities />} />
         <Route path="/table" element={<Table />} />
         <Route path="/cve/:cveNumber" element={<CveDetail />} />
         <Route path="/learn-more/:cveId" element={<CVEpage />} /> 
