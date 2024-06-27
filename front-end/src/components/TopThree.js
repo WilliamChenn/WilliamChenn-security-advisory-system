@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 export const getTopVulnerabilities = async () => {
   try {
-    const response = await fetch('http://localhost:3001/api/v1/cves/recent?time_range=month');
+    const response = await fetch('http://localhost:3001/api/v1/cves/recent?time_range=month');//name==wzc
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }
