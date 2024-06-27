@@ -7,7 +7,6 @@ class FetchCVEDataService
 
   def self.call(vendor_name)
     fetch_and_store_cvedetails_data(vendor_name)
-    fetch_and_store_nvd_data
   end
 
   def self.fetch_and_store_cvedetails_data(vendor_name)
@@ -68,7 +67,7 @@ class FetchCVEDataService
             is_overflow: convert_to_boolean(vuln['isOverflow']),
             is_memory_corruption: convert_to_boolean(vuln['isMemoryCorruption']),
             is_sql_injection: convert_to_boolean(vuln['isSqlInjection']),
-            is_xss: convert_to_boolean(vn['isXss']),
+            is_xss: convert_to_boolean(vuln['isXss']),
             is_directory_traversal: convert_to_boolean(vuln['isDirectoryTraversal']),
             is_file_inclusion: convert_to_boolean(vuln['isFileInclusion']),
             is_csrf: convert_to_boolean(vuln['isCsrf']),
@@ -92,25 +91,6 @@ class FetchCVEDataService
   end
   
 
-  def self.fetch_and_store_nvd_data
-    nvd_data = NvdApiService.fetch_recent_cves
-  
-    nvd_data['result']['CVE_Items'].each do |item|
-      cve_id = item['cve']['CVE_data_meta']['ID']
-      summary = item['cve']['description']['description_data'][0]['value']
-      publish_date = item['publishedDate']
-      max_cvss_base_score = item['impact']['baseMetricV3']['cvssV3']['baseScore']
-  
-      CVE.find_or_create_by(cve_id: cve_id) do |cve|
-        cve.update(
-          summary: summary,
-          publish_date: publish_date,
-          max_cvss_base_score: max_cvss_base_score,
-          source: 'nvd' # Set the source to 'nvd'
-        )
-      end
-    end
-  end  
 
   def self.convert_to_boolean(value)
     value == "1"
