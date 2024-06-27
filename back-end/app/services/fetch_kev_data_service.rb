@@ -1,9 +1,12 @@
 # app/services/fetch_kev_data_service.rb
 
-class FetchKEVDataService
-    def self.call
+class FetchKevDataService
+
+BASE_KEV_API_URL = 'https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json'
+    
+  def self.call
       vulnerabilities.each do |vuln|
-        kev = KEV.find_or_create_by(cve_id: vuln['cveID']) do |kev|
+        kev = Kev.find_or_create_by(cve_id: vuln['cveID']) do |kev|
           kev.vendor_project = vuln['vendorProject']
           kev.product = vuln['product']
           kev.vulnerability_name = vuln['vulnerabilityName']
@@ -19,13 +22,15 @@ class FetchKEVDataService
       end
     end
   
-    private
   
-    def self.vulnerabilities
-      # Implement your logic to fetch vulnerabilities here
-      # Example: fetching from a JSON file (replace with your actual API call)
-      json_data = File.read(Rails.root.join('lib', 'data', 'kev.json'))
-      JSON.parse(json_data)['vulnerabilities']
+
+  def self.vulnerabilities
+    response = HTTParty.get("#{BASE_KEV_API_URL}")
+    if response.success? && response.parsed_response['vulnerabilities'].any?
+      return response.parsed_response['vulnerabilities'].first
+    else
+      nil
     end
-  end
+end
+end
   
