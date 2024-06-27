@@ -1,41 +1,47 @@
 .duke-banner {
-    background-color: #012169;
-    color: #ffffff;
-    padding: 10px;
-    width: 100%;
-    height: auto;
-    display: flex;
-    align-items: center; /* Center items vertically */
-    justify-content: space-between; /* Space out the content */
-    position: absolute;
-    top: 0;
-    left: 0;
-    box-sizing: border-box; /* Ensure padding is included in width */
-  }
-  
-  .duke-container {
-    display: flex;
-    align-items: center;
-    margin-left: 20px;
-    width: 100%;
-    box-sizing: border-box; /* Ensure padding is included in width */
-  }
-  
-  .duke-logo {
-    font-family: 'Garamond', serif;
-    font-size: 4em;
-    margin-right: 10px;
-  }
-  
-  .duke-entity-name {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 2.5em;
-    font-weight: 500;
-  }
-  
-  .navbar-container {
-    display: flex;
-    align-items: center;
-    margin-left: auto;
-  }
-  
+  background-color: #012169;
+  color: #ffffff;
+  padding: 10px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center; /* Center items vertically */
+  justify-content: space-between; /* Space out the content */
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box; /* Ensure padding is included in width */
+}
+
+.duke-container {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+  width: 100%;
+  box-sizing: border-box; /* Ensure padding is included in width */
+}
+
+.duke-logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit; /* Inherit color from parent */
+}
+
+.duke-logo {
+  font-family: 'Garamond', serif;
+  font-size: 4em;
+  margin-right: 10px;
+}
+
+.duke-entity-name {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 2.5em;
+  font-weight: 500;
+}
+
+.navbar-container {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
