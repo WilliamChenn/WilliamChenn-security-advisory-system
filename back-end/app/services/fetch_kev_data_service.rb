@@ -1,5 +1,3 @@
-# app/services/fetch_kev_data_service.rb
-
 class FetchKevDataService
 
 BASE_KEV_API_URL = 'https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json'
