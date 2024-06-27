@@ -92,6 +92,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_27_181721) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "uids_vendors", id: false, force: :cascade do |t|
+    t.bigint "uid_id", null: false
+    t.bigint "vendor_id", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "uid"
@@ -99,9 +104,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_27_181721) do
     t.string "auth_token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "users_vendors", id: false, force: :cascade do |t|
+    t.index ["uid"], name: "index_users_on_uid", unique: true
   end
 
   create_table "vendors", force: :cascade do |t|
