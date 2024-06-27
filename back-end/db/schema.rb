@@ -101,9 +101,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_27_181156) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "users_vendors", id: false, force: :cascade do |t|
-  end
-
   create_table "vendors", force: :cascade do |t|
     t.string "name"
     t.string "vendor_id"
