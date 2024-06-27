@@ -11,6 +11,9 @@
 # Clear existing data
 #User.destroy_all
 #Vendor.destroy_all
+# Reset the sequence for the Vendor and User tables to start at 1
+#ActiveRecord::Base.connection.execute("ALTER SEQUENCE vendors_id_seq RESTART WITH 1;")
+#ActiveRecord::Base.connection.execute("ALTER SEQUENCE users_id_seq RESTART WITH 1;")
 
 defaultVendors = ["Microsoft", "Adobe", "Apple"]
 #Jetbrains
