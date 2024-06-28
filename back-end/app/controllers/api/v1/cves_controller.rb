@@ -5,24 +5,20 @@ module Api
         cves = CVE.includes(:vendor).order(publish_date: :desc)
         render json: CVESerializer.new(cves, include: [:vendor]).serialized_json
       end
+      #/api/v1/cves/critical
+      def critical
+        cves = CVE.where('max_cvss_base_score >= ?', 7.0).order(publish_date: :desc).limit(5)
+        render json: CVESerializer.new(cves, include: [:vendor]).serialized_json
+      end
       # /api/v1/cves/:id
-      # def show
-      #   cve = CVE.find_by(cve_id: params[:id])
-      #   if cve
-      #     render json: CVESerializer.new(cve, include: [:vendor]).serialized_json
-      #   else
-      #     render json: { error: 'CVE not found' }, status: :not_found
-      #   end
-      # end
-        # /api/v1/cves/:id
-        def show
-          cve = CVE.find_by(cve_id: params[:id])
-          if cve
-            render json: CVESerializer.new(cve, include: [:vendor]).serialized_json
-          else
-            render json: { error: 'CVE not found' }, status: :not_found
-          end
+      def show
+        cve = CVE.find_by(cve_id: params[:id])
+        if cve
+          render json: CVESerializer.new(cve, include: [:vendor]).serialized_json
+        else
+          render json: { error: 'CVE not found' }, status: :not_found
         end
+      end
       #/api/v1/cves/recent
       def recent
           time_range = params[:time_range] || 'week'
@@ -47,3 +43,6 @@ module Api
     end
   end
 end
+
+
+
