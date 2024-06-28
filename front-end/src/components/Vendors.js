@@ -11,7 +11,9 @@ function Vendors() {
 
   const fetchVendors = async () => {
     try {
-      const response = await fetch('http://localhost:3001/api/v1/vendors');
+      const response = await fetch('http://localhost:3001/api/v3/vendors', {
+        credentials: 'include',
+      });
       const data = await response.json();
       const formattedVendors = data
         .filter(vendor => vendor.name && vendor.vendor_url)
@@ -57,11 +59,49 @@ function Vendors() {
     console.log('New vendor to add:', newVendor.name);
 
     try {
-      const response = await fetch(`http://localhost:3001/api/v1/vendors/${newVendor.name}`, {
+      // Attempt to fetch the vendor ID from the backend
+      let vendorResponse = await fetch(`http://localhost:3001/api/v3/vendors?name=${newVendor.name}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+      });
+
+      let vendorData = await vendorResponse.json();
+
+      if (vendorResponse.status === 404 || !vendorData.id) {
+        // If vendor not found, create the vendor first
+        vendorResponse = await fetch(`http://localhost:3001/api/v1/vendors/${newVendor.name}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+
+        if (!vendorResponse.ok) {
+          throw new Error('Failed to create vendor');
+        }else {
+          vendorResponse = await fetch(`http://localhost:3001/api/v3/vendors?name=${newVendor.name}`, {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            credentials: 'include',
+          });
+        }
+        vendorData = await vendorResponse.json();
+      }
+
+      const vendorId = vendorData.id; // Assuming the response contains the vendor ID
+
+      // Add the user-vendor association using the fetched vendor ID
+      const response = await fetch(`http://localhost:3001/api/v3/vendors/${vendorId}/add_user`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
+        credentials: 'include',
       });
 
       if (!response.ok) {
@@ -69,15 +109,11 @@ function Vendors() {
       }
 
       const result = await response.json();
-      const data = result.data;
+      const data = result.vendor;
       console.log('Vendor added:', data);
 
       if (data.vendor_url) {
-        setVendors((prevVendors) => prevVendors.map((vendor) =>
-          vendor.id === tempId
-            ? { id: data.id, name: data.name, logo: data.vendor_url }
-            : vendor
-        ));
+        setVendors((prevVendors) => [...prevVendors, { id: vendorId, name: data.name, logo: data.vendor_url }]);
         setNewVendor({ name: '' });
         setShowForm(false);
       } else {
@@ -87,23 +123,22 @@ function Vendors() {
     } catch (error) {
       console.error('Error adding vendor:', error);
     } finally {
-      setTimeout(() => {
-        setLoadingVendor(null); // Hide the spinner after a delay
-      }, 300); // Delay to match the CSS transition
+      setLoadingVendor(null); // Hide the spinner
     }
   };
 
-  const handleDelete = async (vendorName) => {
+  const handleDelete = async (vendorId) => {
     try {
-      const response = await fetch(`http://localhost:3001/api/v1/vendors/${vendorName}`, {
+      const response = await fetch(`http://localhost:3001/api/v3/vendors/${vendorId}/remove_user`, {
         method: 'DELETE',
+        credentials: 'include',
       });
 
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
 
-      const updatedVendors = vendors.filter(vendor => vendor.name !== vendorName);
+      const updatedVendors = vendors.filter(vendor => vendor.id !== vendorId);
       setVendors(updatedVendors);
     } catch (error) {
       console.error('Error deleting vendor:', error);
@@ -121,7 +156,7 @@ function Vendors() {
             ) : (
               <img src={vendor.logo} alt={vendor.name} className="vendor-logo" />
             )}
-            <button className="delete-button" onClick={() => handleDelete(vendor.name)}>
+            <button className="delete-button" onClick={() => handleDelete(vendor.id)}>
               <FaTrash />
             </button>
           </div>

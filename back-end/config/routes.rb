@@ -28,6 +28,24 @@ Rails.application.routes.draw do
       resources :criticality, only: [:index] 
       # /api/v2/criticality?max_cvss_base_score=low|medium|high|critical - to get CVEs by criticality (GET request)
     end
+
+
+    namespace :v3 do
+      resources :vendors, only: [:index] do
+        member do
+          post 'add_user'
+          delete 'remove_user'
+        end
+      end
+
+      resources :cves, only: [:index] do
+        collection do
+          get 'critical'
+          get 'recent'
+        end
+      end
+    end
+
   end
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

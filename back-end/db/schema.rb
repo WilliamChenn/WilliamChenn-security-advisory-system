@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_27_185659) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_27_233731) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -74,15 +74,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_27_185659) do
     t.datetime "updated_at", null: false
     t.string "source"
     t.string "remediation_url"
-    t.string "vendor_project"
-    t.string "product"
-    t.string "vulnerability_name"
-    t.date "date_added"
-    t.text "short_description"
-    t.text "required_action"
-    t.date "due_date"
-    t.boolean "known_ransomware_campaign_use"
-    t.text "notes"
     t.index ["vendor_id"], name: "index_cves_on_vendor_id"
   end
 
@@ -101,11 +92,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_27_185659) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "uids_vendors", id: false, force: :cascade do |t|
-    t.bigint "uid_id", null: false
-    t.bigint "vendor_id", null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "uid"
@@ -114,6 +100,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_27_185659) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["uid"], name: "index_users_on_uid", unique: true
+  end
+
+  create_table "users_vendors", id: false, force: :cascade do |t|
+    t.string "uid", null: false
+    t.bigint "vendor_id", null: false
+    t.index ["uid", "vendor_id"], name: "index_users_vendors_on_uid_and_vendor_id", unique: true
+    t.index ["vendor_id"], name: "index_users_vendors_on_vendor_id"
   end
 
   create_table "vendors", force: :cascade do |t|
@@ -126,4 +119,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_27_185659) do
   end
 
   add_foreign_key "cves", "vendors"
+  add_foreign_key "users_vendors", "users", column: "uid", primary_key: "uid"
+  add_foreign_key "users_vendors", "vendors"
 end
