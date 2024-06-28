@@ -3,13 +3,14 @@ import { useParams } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import CircularProgress from '../components/CircularProgress';
-import Chatbot from '../components/Chatbot';
 import './CVEpage.css';
+import Chatbot from '../components/Chatbot';
 
 function CVEpage() {
   const { cveId } = useParams();
   const [vulnerability, setVulnerability] = useState(null);
   const [remediation, setRemediation] = useState('');
+  const [remediationUrl, setRemediationUrl] = useState('');
   const [isEditing, setIsEditing] = useState(false);
   const [vendor, setVendor] = useState(null);
 
@@ -37,7 +38,11 @@ function CVEpage() {
           throw new Error('Network response was not ok');
         }
         const data = await response.json();
+        console.log('API response:', data); // Debug statement
         setVulnerability(data.data.attributes);
+        if (data.data.attributes.remediation_url) { // Ensure correct path
+          setRemediationUrl(data.data.attributes.remediation_url);
+        }
       } catch (error) {
         console.error('Error fetching vulnerability:', error);
       }
@@ -55,6 +60,7 @@ function CVEpage() {
   const handleSaveRemediation = (newRemediation) => {
     setRemediation(newRemediation);
     setIsEditing(false); // Close the chatbot after saving
+    localStorage.setItem(`savedRemediation_${cveId}`, newRemediation);
   };
 
   useEffect(() => {
@@ -67,6 +73,8 @@ function CVEpage() {
   if (!vulnerability) {
     return <div>Loading...</div>;
   }
+
+  console.log('Remediation URL:', remediationUrl); // Debug statement
 
   return (
     <div className="cve-page-container">
@@ -89,7 +97,13 @@ function CVEpage() {
               </button>
             </div>
             <div className="remediation-content">
-              <p>{remediation || "No remediation information available."}</p>
+              {remediation && <p>{remediation}</p>}
+              {remediationUrl && (
+                <p>For more information about remediation, visit <a href={remediationUrl} target="_blank" rel="noopener noreferrer">{remediationUrl}</a></p>
+              )}
+              {!remediation && !remediationUrl && (
+                <p>No remediation information available.</p>
+              )}
               {isEditing && <Chatbot onSaveRemediation={handleSaveRemediation} cveId={cveId} />}
             </div>
           </div>
@@ -111,4 +125,3 @@ function CVEpage() {
 }
 
 export default CVEpage;
-

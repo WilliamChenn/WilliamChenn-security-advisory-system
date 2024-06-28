@@ -10,7 +10,7 @@ class CVESerializer
              :max_cvss_impact_score, :is_overflow, :is_memory_corruption, :is_sql_injection, :is_xss,
              :is_directory_traversal, :is_file_inclusion, :is_csrf, :is_xxe, :is_ssrf, :is_open_redirect,
              :is_input_validation, :is_code_execution, :is_bypass_something, :is_gain_privilege, :is_denial_of_service,
-             :is_information_leak, :is_used_for_ransomware
+             :is_information_leak, :is_used_for_ransomware, :remediation_url
 
   belongs_to :vendor 
 end
