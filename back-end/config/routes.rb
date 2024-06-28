@@ -37,6 +37,13 @@ Rails.application.routes.draw do
           delete 'remove_user'
         end
       end
+
+      resources :cves, only: [:index] do
+        collection do
+          get 'critical'
+          get 'recent'
+        end
+      end
     end
 
   end

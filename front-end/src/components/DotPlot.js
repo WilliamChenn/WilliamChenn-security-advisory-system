@@ -6,7 +6,9 @@ const DotPlot = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch('http://localhost:3001/api/v1/cves/recent?time_range=year');
+      const response = await fetch('http://localhost:3001/api/v3/cves/recent?time_range=month', {
+        credentials: 'include',
+      });
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
