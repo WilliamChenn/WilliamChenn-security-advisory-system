@@ -1,0 +1,37 @@
+.sidebar-nav {
+    background: white; /* Changed to white background */
+    width: 250px;
+    height: calc(100vh - 400px); /* Adjust height to not cover the header */
+    position: fixed;
+    top: 10px; /* Adjusted to ensure it does not cover the header */
+    left: -250px; /* Changed to -250px to ensure it is hidden initially */
+    transition: 350ms;
+    z-index: 20; /* Ensure it's above the table */
+    padding: 20px;
+  }
+  
+  .sidebar-nav.active {
+    left: 0; /* Changed to 0 to make it visible */
+  }
+  
+  .sidebar-wrap {
+    width: 100%;
+  }
+  
+  .filter-form {
+    display: flex;
+    flex-direction: column;
+    color: #333; /* Changed text color to black to match the new white background */
+  }
+  
+  .filter-form label {
+    margin: 15px 0 15px;
+  }
+  
+  .filter-form select, .filter-form input[type="date"], .filter-form input[type="checkbox"] {
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd; /* Add border to inputs for better visibility on white background */
+    border-radius: 4px;
+  }
+  

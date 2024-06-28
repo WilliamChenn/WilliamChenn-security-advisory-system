@@ -1,48 +1,27 @@
 import React from 'react';
 import styled from 'styled-components';
 import { IconContext } from 'react-icons/lib';
-import * as AiIcons from 'react-icons/ai';
 
 const SidebarNav = styled.nav`
-  background: #15171c;
-  width: 250px;
-  height: 100vh;
+  background: white; /* Changed to white background */
+  width: 180px;
+  height: calc(100vh - 670px); /* Adjust height to not cover the header */
   position: fixed;
-  top: 0;
-  left: ${({ sidebar }) => (sidebar ? '0' : '-100%')};
+  top: 150px; /* Adjusted to ensure it does not cover the header */
+  left: ${({ sidebar }) => (sidebar ? '0' : '-250px')}; /* Slide-in effect */
   transition: 350ms;
-  z-index: 20; /* Ensure it's above the overlay */
-  padding: 20px;
+  z-index: 20; /* Ensure it's above the table */
+  padding: 25px;
 `;
 
 const SidebarWrap = styled.div`
   width: 100%;
 `;
 
-const CloseIcon = styled(AiIcons.AiOutlineClose)`
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  cursor: pointer;
-`;
-
-const Overlay = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  opacity: ${({ sidebar }) => (sidebar ? '1' : '0')};
-  visibility: ${({ sidebar }) => (sidebar ? 'visible' : 'hidden')};
-  transition: opacity 350ms, visibility 350ms;
-  z-index: 10; /* Ensure it's below the sidebar */
-`;
-
 const FilterForm = styled.form`
   display: flex;
   flex-direction: column;
-  color: #fff;
+  color: #333; /* Changed text color to black to match the new white background */
 
   label {
     margin: 10px 0 5px;
@@ -51,7 +30,7 @@ const FilterForm = styled.form`
   select, input[type="date"], input[type="checkbox"] {
     padding: 8px;
     margin-bottom: 15px;
-    border: none;
+    border: 1px solid #ddd; /* Add border to inputs for better visibility on white background */
     border-radius: 4px;
   }
 `;
@@ -60,10 +39,8 @@ const Sidebar = ({ sidebar, showSidebar, handleFilterChange, filters }) => {
   return (
     <>
       <IconContext.Provider value={{ color: '#fff' }}>
-        <Overlay sidebar={sidebar} onClick={showSidebar} />
         <SidebarNav sidebar={sidebar}>
           <SidebarWrap>
-            <CloseIcon onClick={showSidebar} />
             <FilterForm onChange={handleFilterChange}>
               <label>Severity Levels</label>
               <label>
@@ -120,4 +97,3 @@ const Sidebar = ({ sidebar, showSidebar, handleFilterChange, filters }) => {
 };
 
 export default Sidebar;
-

@@ -15,17 +15,18 @@
 }
 
 .Table {
-  margin: 20px auto;
-  width: 90%; /* Adjust to full width */
+  margin: 0px auto;
+  width: 97%; /* Adjust to full width */
 }
 
 .TableContainer {
   width: 100%;
+  margin-top: 0;
   transition: margin-left 0.3s ease; /* Add transition for smooth resizing */
 }
 
 .TableContainer.with-sidebar {
-  margin-left: 250px; /* Adjust margin when sidebar is visible */
+  margin-left: 100px; /* Adjust margin when sidebar is visible */
 }
 
 .Table table {
@@ -132,7 +133,7 @@
 .pagination {
   display: flex;
   justify-content: flex-end;
-  margin: 30px 50px;
+  margin: 30px 30px;
 }
 
 .pagination button {
@@ -140,7 +141,7 @@
   border: none;
   color: white;
   padding: 10px 20px;
-  margin: 0 5px;
+  margin: 0 3px;
   cursor: pointer;
   font-size: 16px;
   border-radius: 5px;

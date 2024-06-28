@@ -8,6 +8,12 @@ import styled from 'styled-components';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
+const TableContainer = styled.div`
+  margin: 20px;
+  transition: margin-left 0.3s ease;
+  margin-left: ${({ sidebar }) => (sidebar ? '270px' : '20px')}; /* Adjusted margin to accommodate the sidebar */
+`;
+
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -18,27 +24,32 @@ const HeaderContainer = styled.div`
   padding: 20px;
   text-align: center;
   background: #f8f8f8;
+  z-index: 100; /* Ensure the header is above other elements */
 `;
 
 const FilterButtonWrapper = styled.div`
   display: flex;
-  justify-content: center;
-  margin-bottom: 20px; /* Add margin to create space between the button and the table */
+  justify-content: flex-end; /* Align to the right */
+  margin: 0px 0px 0px; /* Margin to position below the header and add spacing */
+  margin-top: 130px;
+  margin-right: 50px;
+  z-index: 101; /* Ensure the button is above other elements */
 `;
 
 const FilterButton = styled.button`
   background-color: white;
   border: none;
   color: #0417aa;
-  padding: 10px 20px;
+  padding: 10px 10px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: bold;
   border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: background-color 0.3s ease;
+  z-index: 102; /* Ensure the button is above other elements */
 
   &:hover {
     background-color: #ddd;
@@ -195,9 +206,6 @@ const Table = () => {
   return (
     <Wrapper>
       <Header />
-      <HeaderContainer>
-        <div className="title">Find Out If You Have Vulnerabilities That Put You at Risk</div>
-      </HeaderContainer>
       <FilterButtonWrapper>
         <FilterButton onClick={showSidebar} sidebar={sidebar}>
           Filter Here
@@ -207,13 +215,16 @@ const Table = () => {
           />
         </FilterButton>
       </FilterButtonWrapper>
-      <div className={`TableContainer ${sidebar ? 'with-sidebar' : ''}`}>
+      <TableContainer sidebar={sidebar}>
         <table {...getTableProps()} className="Table">
           <thead>
             {headerGroups.map((headerGroup) => (
               <tr {...headerGroup.getHeaderGroupProps()}>
                 {headerGroup.headers.map((column) => (
-                  <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+                  <th
+                    {...column.getHeaderProps(column.getSortByToggleProps())}
+                    style={column.id === 'cve_id' ? { width: column.width } : {}}
+                  >
                     {column.render('Header')}
                     <span>
                       {column.isSorted ? (column.isSortedDesc ? (
@@ -233,8 +244,11 @@ const Table = () => {
               return (
                 <tr {...row.getRowProps()}>
                   {row.cells.map((cell) => (
-                    <td {...cell.getCellProps()}>
-                      {cell.column.id === 'cve_number' ? (
+                    <td
+                      {...cell.getCellProps()}
+                      style={cell.column.id === 'cve_id' ? { width: cell.column.width } : {}}
+                    >
+                      {cell.column.id === 'cve_id' ? (
                         <Link to={`/learn-more/${cell.row.original.cve_id}`}>{cell.render('Cell')}</Link>
                       ) : (
                         cell.render('Cell')
@@ -263,16 +277,16 @@ const Table = () => {
             Next
           </button>
         </div>
-      </div>
+      </TableContainer>
+      <Footer />
       <Sidebar
         sidebar={sidebar}
         showSidebar={showSidebar}
         handleFilterChange={handleFilterChange}
         filters={filters}
       />
-      <Footer />
     </Wrapper>
-  );
+  );  
 };
 
 export default Table;
