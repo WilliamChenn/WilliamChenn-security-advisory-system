@@ -7,6 +7,7 @@ import Sidebar from '../components/Sidebar';
 import styled from 'styled-components';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+  
 
 const TableContainer = styled.div`
   margin: 20px;
@@ -92,6 +93,7 @@ const Table = () => {
     startDate: '',
     endDate: '',
     searchQuery: '',
+    vendors: [], 
   });
 
   useEffect(() => {
@@ -140,14 +142,15 @@ const Table = () => {
       startDate.setDate(currentDate.getDate() - 14);
       endDate = currentDate;
     }
-
+  
     return data.filter(item => {
       const severityLevel = getSeverityClass(item.max_cvss_base_score);
       const severityMatch = filters.severity.length === 0 || filters.severity.includes(severityLevel);
       const itemDate = new Date(item.publish_date.substring(0, 10));
       const dateMatch = itemDate >= startDate && itemDate <= endDate;
       const searchMatch = matchesSearchQuery(item, filters.searchQuery);
-      return severityMatch && dateMatch && searchMatch;
+      const vendorMatch = filters.vendors.length === 0 || filters.vendors.includes(item.vendor.name);
+      return severityMatch && dateMatch && searchMatch && vendorMatch;
     });
   }, [data, filters]);
 
@@ -192,14 +195,23 @@ const Table = () => {
     const { name, value, type, checked } = event.target;
     setFilters((prevFilters) => {
       if (type === 'checkbox') {
-        const updatedSeverity = checked
-          ? [...prevFilters.severity, value]
-          : prevFilters.severity.filter(severity => severity !== value);
-        return { ...prevFilters, severity: updatedSeverity };
+        if (name === 'severity') {
+          const updatedSeverity = checked
+            ? [...prevFilters.severity, value]
+            : prevFilters.severity.filter(severity => severity !== value);
+          return { ...prevFilters, severity: updatedSeverity };
+        }
+        if (name === 'vendors') {
+          const updatedVendors = checked
+            ? [...prevFilters.vendors, value]
+            : prevFilters.vendors.filter(vendor => vendor !== value);
+          return { ...prevFilters, vendors: updatedVendors };
+        }
       }
       return { ...prevFilters, [name]: value };
     });
   };
+  
 
   useEffect(() => {
     window.scrollTo(0, 0);
