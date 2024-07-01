@@ -35,11 +35,6 @@ function Home() {
           <BarGraph />
           <DotPlot />
         </div>
-
-        <div className="vendors-container">
-          <Vendors />
-        </div>
-
         <div className="content">
           <div className="subtitle3">Top Vulnerabilities in the past month</div>
           <div className="cards">
