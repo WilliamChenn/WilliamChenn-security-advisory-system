@@ -30,6 +30,9 @@ module Api
             render json: { error: 'CVE not found' }, status: :not_found
           end
         end
+
+      
+
   
         def recent
           user = current_user

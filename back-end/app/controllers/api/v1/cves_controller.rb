@@ -19,6 +19,33 @@ module Api
             render json: { error: 'CVE not found' }, status: :not_found
           end
         end
+        #http://localhost:3001/api/v1/remediation_url/CVE-2024-27885
+        def remediation_url
+          cve = CVE.find_by(cve_id: params[:id])
+          
+          if cve.nil?
+            render json: { error: 'CVE not found' }, status: :not_found
+            return
+          end
+  
+          
+  
+          if cve.remediation_url.present? && cve.remediation_url.start_with?('http')
+            render json: { remediation_url: cve.remediation_url }
+          else
+            # Fetch remediation URL using the service
+            remediation_url = FetchRemediationUrlService.call(cve.cve_id)
+            
+            if remediation_url.present?
+              # Update the CVE record with the fetched remediation URL
+              cve.update(remediation_url: remediation_url)
+              render json: { remediation_url: remediation_url }
+            else
+              render json: { error: 'Remediation URL not found' }, status: :unprocessable_entity
+            end
+          end
+        end
+
         #/api/v1/cves/recent
         def recent
             time_range = params[:time_range] || 'week'
