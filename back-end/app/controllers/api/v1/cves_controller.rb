@@ -10,6 +10,30 @@ module Api
           cves = CVE.where('max_cvss_base_score >= ?', 7.0).order(publish_date: :desc).limit(5)
           render json: CVESerializer.new(cves, include: [:vendor]).serialized_json
         end
+
+        def save_remediation
+          cve = CVE.find_by(cve_id: params[:id])
+          if cve
+            if cve.update(remediation: params[:remediation])
+              render json: { message: 'Remediation updated successfully', remediation: cve.remediation }, status: :ok
+            else
+              render json: { error: 'Failed to update remediation', details: cve.errors.full_messages }, status: :unprocessable_entity
+            end
+          else
+            render json: { error: 'CVE not found' }, status: :not_found
+          end
+        end
+  
+        def get_remediation
+          cve = CVE.find_by(cve_id: params[:id])
+          if cve
+            render json: { remediation: cve.remediation }, status: :ok
+          else
+            render json: { error: 'CVE not found' }, status: :not_found
+          end
+        end
+
+
         # /api/v1/cves/:id
         def show
           cve = CVE.find_by(cve_id: params[:id])
@@ -67,6 +91,11 @@ module Api
             cves = CVE.where('publish_date >= ?', start_date)
             render json: cves
           end
+
+        def remediation_params
+          params.require(:remediation).permit(:remediation)
+        end
+
       end
     end
   end

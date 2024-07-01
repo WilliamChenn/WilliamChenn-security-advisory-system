@@ -3,11 +3,9 @@ import './Vendors.css';
 import { FaPlus, FaTrash } from 'react-icons/fa';
 import LoadingSpinner from './LoadingSpinner'; // Import the LoadingSpinner component
 
-function Vendors() {
-  const [vendors, setVendors] = useState([]);
+function Vendors({ vendors, setVendors, loadingVendor, setLoadingVendor }) {
   const [newVendor, setNewVendor] = useState({ name: '' });
   const [showForm, setShowForm] = useState(false);
-  const [loadingVendor, setLoadingVendor] = useState(null); // Track the specific vendor being added
 
   const fetchVendors = async () => {
     try {
@@ -22,7 +20,13 @@ function Vendors() {
           name: vendor.name,
           logo: vendor.vendor_url,
         }));
-      setVendors(formattedVendors);
+
+      // Merge the fetched vendors with the current state, avoiding duplicates
+      setVendors((prevVendors) => {
+        const vendorIds = prevVendors.map(vendor => vendor.id);
+        const newVendors = formattedVendors.filter(vendor => !vendorIds.includes(vendor.id));
+        return [...prevVendors, ...newVendors];
+      });
     } catch (error) {
       console.error('Error fetching vendors:', error);
     }
@@ -81,7 +85,7 @@ function Vendors() {
 
         if (!vendorResponse.ok) {
           throw new Error('Failed to create vendor');
-        }else {
+        } else {
           vendorResponse = await fetch(`http://localhost:3001/api/v3/vendors?name=${newVendor.name}`, {
             method: 'GET',
             headers: {
@@ -113,7 +117,10 @@ function Vendors() {
       console.log('Vendor added:', data);
 
       if (data.vendor_url) {
-        setVendors((prevVendors) => [...prevVendors, { id: vendorId, name: data.name, logo: data.vendor_url }]);
+        setVendors((prevVendors) => [
+          ...prevVendors.filter(v => v.id !== tempId),
+          { id: vendorId, name: data.name, logo: data.vendor_url }
+        ]);
         setNewVendor({ name: '' });
         setShowForm(false);
       } else {

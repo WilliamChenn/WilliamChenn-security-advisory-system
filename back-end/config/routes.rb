@@ -11,6 +11,11 @@ Rails.application.routes.draw do
     namespace :v1 do
       get '/remediation_url/:id', to: 'cves#remediation_url' 
       #/api/v1/remediation_url/CVE-2024-35249
+
+      post '/remediation/:id', to: 'cves#save_remediation'
+      get '/remediation/:id', to: 'cves#get_remediation'
+      #/api/v1/remediation/CVE-2024-35249
+
       resources :cves, only: [:index, :show] do
         #GET /api/v1/cves/CVE-2023-1234
         collection do
@@ -24,6 +29,8 @@ Rails.application.routes.draw do
       # POST /api/v1/vendors/Adobe - to create a new vendor (POST request) (this will also load in cve's from the vendor to the table)
       delete 'vendors/:name', to: 'vendors#destroy', as: 'delete_vendor_by_name'
       # /api/v1/vendors/Microsoft - to delete a vendor by name (DELETE request)
+
+
     end
 
     namespace :v2 do
@@ -47,11 +54,21 @@ Rails.application.routes.draw do
         end
       end
 
+      resources :users, only: [] do
+        member do
+          post 'upload_png'
+          get 'get_png'
+        end
+      end
+      #/api/v3//api/v3/user/upload_png
+      #/api/v3/user/get_png
+
+
 
     end
 
   end
-
+  
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check

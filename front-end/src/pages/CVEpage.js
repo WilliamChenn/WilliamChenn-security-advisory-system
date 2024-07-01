@@ -34,6 +34,16 @@ function CVEpage() {
         if (remediationData.remediation_url) {
           setRemediationUrl(remediationData.remediation_url);
         }
+
+        // Fetch remediation from the new route
+        const remediationGetResponse = await fetch(`http://localhost:3001/api/v1/remediation/${cveId}`);
+        if (!remediationGetResponse.ok) {
+          throw new Error('Failed to fetch remediation');
+        }
+        const remediationGetData = await remediationGetResponse.json();
+        if (remediationGetData.remediation) {
+          setRemediation(remediationGetData.remediation);
+        }
       } catch (error) {
         console.error('Error fetching vulnerability:', error);
       }
@@ -66,14 +76,14 @@ function CVEpage() {
 
   const handleSaveRemediation = async (newRemediation) => {
     try {
-      const response = await fetch(`http://localhost:3001/api/v1/cves/${cveId}/remediation`, {
+      const response = await fetch(`http://localhost:3001/api/v1/remediation/${cveId}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ remediation: newRemediation }),
       });
-      
+
       if (!response.ok) {
         throw new Error('Failed to save remediation');
       }
@@ -111,10 +121,8 @@ function CVEpage() {
               </button>
             </div>
             <div className="remediation-content">
-              {remediation ? (
+              {remediation && (
                 <p>{remediation}</p>
-              ) : (
-                <p>No remediation information available.</p>
               )}
               {remediationUrl && (
                 <p>For more information about remediation, visit <a href={remediationUrl} target="_blank" rel="noopener noreferrer">{remediationUrl}</a></p>
@@ -140,7 +148,3 @@ function CVEpage() {
 }
 
 export default CVEpage;
-
-
-
-

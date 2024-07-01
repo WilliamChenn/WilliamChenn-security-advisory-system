@@ -1,0 +1,52 @@
+.settings-page {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin-top: 70px; /* Adjust to move content down from under the header */
+  }
+  
+  .settings-container {
+    display: flex;
+    padding: 20px;
+    height: calc(100% - 70px); /* Adjust height to account for header */
+  }
+  
+  .vendor-selection {
+    flex: 1;
+    margin-right: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    max-height: calc(100vh - 150px); /* Adjust to allow scrolling */
+  }
+  
+  .vendor-selection h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .vendor-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .vendor-list li {
+    margin-bottom: 10px;
+  }
+  
+  .vendors-section {
+    flex: 2;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .vendors-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
