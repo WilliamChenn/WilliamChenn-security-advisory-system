@@ -10,6 +10,7 @@ import CVEpage from './pages/CVEpage';
 import Auth from './components/Auth'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import About from './pages/About';
+import Settings from './pages/Settings';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(null);//default changed
@@ -44,6 +45,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/table" element={<Table />} />
+        <Route path="/settings" element={<Settings />} />
         <Route path="/cve/:cveNumber" element={<CveDetail />} />
         <Route path="/learn-more/:cveId" element={<CVEpage />} /> 
       </Routes>
