@@ -40,8 +40,15 @@ function CVEpage() {
         const data = await response.json();
         console.log('API response:', data); // Debug statement
         setVulnerability(data.data.attributes);
-        if (data.data.attributes.remediation_url) { // Ensure correct path
-          setRemediationUrl(data.data.attributes.remediation_url);
+
+        // Fetch remediation URL from the new route
+        const remediationResponse = await fetch(`http://localhost:3001/api/v1/remediation_url/${cveId}`);
+        if (!remediationResponse.ok) {
+          throw new Error('Failed to fetch remediation URL');
+        }
+        const remediationData = await remediationResponse.json();
+        if (remediationData.remediation_url) {
+          setRemediationUrl(remediationData.remediation_url);
         }
       } catch (error) {
         console.error('Error fetching vulnerability:', error);

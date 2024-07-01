@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
+      get '/remediation_url/:id', to: 'cves#remediation_url' 
+      #/api/v1/remediation_url/CVE-2024-35249
       resources :cves, only: [:index, :show] do
         #GET /api/v1/cves/CVE-2023-1234
         collection do
@@ -44,6 +46,8 @@ Rails.application.routes.draw do
           get 'recent'
         end
       end
+
+
     end
 
   end
