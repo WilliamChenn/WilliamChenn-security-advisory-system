@@ -6,7 +6,7 @@ class FetchRemediationUrlService
   BASE_REMEDIATION_API_URL = 'https://www.cvedetails.com/api/v1/vulnerability/mentions?cveId='
 
   def self.call(cve_id)
-    token = "f63628992e62f5d6ac84bdb1ab93025173ce4755.eyJzdWIiOjQ3MjUsImlhdCI6MTcxNzUyMzYzOSwiZXhwIjoxNzIyMzg0MDAwLCJraWQiOjEsImMiOiI3RCt3MkZoTnZDdFZNeFByWUFyM0dEdDlaVWZDNGhZcUNqOUVXU0t1M3owd080bFZ3dVQyTm04V3ZiUlNoSjFrRkk5SGNzTksifQ=="
+    token = "18cb1603c8ffc3ac612b5e198da700dd10868f8e.eyJzdWIiOjQ3MzEsImlhdCI6MTcxOTM0MzczMCwiZXhwIjoxNzI0NzE2ODAwLCJraWQiOjEsImMiOiIyMElsM0hQXC9ia25cL2VCQ21Cb0lreWJxdDVLVnN6dFR3bUxuVlZDVVJ4NUVzc0R5SnE5dXBaTDh6RmRqMXJvMEhoUmtiVHF0eSJ9"
     
     url = "#{BASE_REMEDIATION_API_URL}#{cve_id}"
     
