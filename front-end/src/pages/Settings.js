@@ -4,8 +4,6 @@ import Vendors from '../components/Vendors'; // Import the Vendors component
 import './Settings.css';
 
 function Settings() {
-  const [displayName, setDisplayName] = useState('');
-  const [profilePicture, setProfilePicture] = useState(null);
   const [availableVendors, setAvailableVendors] = useState([]);
   const [userVendors, setUserVendors] = useState([]);
   const [loadingVendor, setLoadingVendor] = useState(null); // Track the specific vendor being added
@@ -49,24 +47,6 @@ function Settings() {
 
     fetchUserVendors();
   }, []);
-
-  const handleDisplayNameChange = (e) => {
-    setDisplayName(e.target.value);
-  };
-
-  const handleProfilePictureChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setProfilePicture(URL.createObjectURL(file));
-    }
-  };
-
-  const handleSubmitProfile = (e) => {
-    e.preventDefault();
-    // Handle form submission logic here (e.g., API call)
-    console.log('Display Name:', displayName);
-    console.log('Profile Picture:', profilePicture);
-  };
 
   const handleVendorCheck = async (event) => {
     const { value, checked } = event.target;
@@ -125,37 +105,6 @@ function Settings() {
     <div className="settings-page">
       <Header />
       <div className="settings-container">
-        <div className="settings-form">
-          <h2>Settings</h2>
-          <form onSubmit={handleSubmitProfile}>
-            <div className="form-group">
-              <label htmlFor="displayName">Display Name:</label>
-              <input
-                type="text"
-                id="displayName"
-                value={displayName}
-                onChange={handleDisplayNameChange}
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="profilePicture">Profile Picture:</label>
-              <input
-                type="file"
-                id="profilePicture"
-                accept="image/*"
-                onChange={handleProfilePictureChange}
-              />
-              {profilePicture && (
-                <div className="profile-picture-preview">
-                  <img src={profilePicture} alt="Profile Preview" />
-                </div>
-              )}
-            </div>
-
-            <button type="submit">Save Changes</button>
-          </form>
-        </div>
         <div className="vendor-selection">
           <h2>Available Vendors</h2>
           <ul className="vendor-list">
