@@ -14,22 +14,6 @@ function CVEpage() {
   const [isEditing, setIsEditing] = useState(false);
   const [vendor, setVendor] = useState(null);
 
-  const fetchVendors = async () => {
-    try {
-      const response = await fetch('http://localhost:3001/api/v1/vendors');
-      const data = await response.json();
-      const vendorData = data.find(vendor => vendor.id === vulnerability.vendor_id);
-      if (vendorData) {
-        setVendor({
-          name: vendorData.name,
-          logo: vendorData.vendor_url,
-        });
-      }
-    } catch (error) {
-      console.error('Error fetching vendors:', error);
-    }
-  };
-
   useEffect(() => {
     const fetchVulnerability = async () => {
       try {
@@ -59,29 +43,52 @@ function CVEpage() {
   }, [cveId]);
 
   useEffect(() => {
+    const fetchVendors = async () => {
+      try {
+        const response = await fetch('http://localhost:3001/api/v1/vendors');
+        const data = await response.json();
+        const vendorData = data.find(vendor => vendor.id === vulnerability.vendor_id);
+        if (vendorData) {
+          setVendor({
+            name: vendorData.name,
+            logo: vendorData.vendor_url,
+          });
+        }
+      } catch (error) {
+        console.error('Error fetching vendors:', error);
+      }
+    };
+
     if (vulnerability) {
       fetchVendors();
     }
   }, [vulnerability]);
 
-  const handleSaveRemediation = (newRemediation) => {
-    setRemediation(newRemediation);
-    setIsEditing(false); // Close the chatbot after saving
-    localStorage.setItem(`savedRemediation_${cveId}`, newRemediation);
-  };
+  const handleSaveRemediation = async (newRemediation) => {
+    try {
+      const response = await fetch(`http://localhost:3001/api/v1/cves/${cveId}/remediation`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ remediation: newRemediation }),
+      });
+      
+      if (!response.ok) {
+        throw new Error('Failed to save remediation');
+      }
 
-  useEffect(() => {
-    const savedRemediation = localStorage.getItem(`savedRemediation_${cveId}`);
-    if (savedRemediation) {
-      setRemediation(savedRemediation);
+      // Update state with new remediation
+      setRemediation(newRemediation);
+      setIsEditing(false); // Close the chatbot after saving
+    } catch (error) {
+      console.error('Error saving remediation:', error);
     }
-  }, [cveId]);
+  };
 
   if (!vulnerability) {
     return <div>Loading...</div>;
   }
-
-  console.log('Remediation URL:', remediationUrl); // Debug statement
 
   return (
     <div className="cve-page-container">
@@ -104,12 +111,13 @@ function CVEpage() {
               </button>
             </div>
             <div className="remediation-content">
-              {remediation && <p>{remediation}</p>}
+              {remediation ? (
+                <p>{remediation}</p>
+              ) : (
+                <p>No remediation information available.</p>
+              )}
               {remediationUrl && (
                 <p>For more information about remediation, visit <a href={remediationUrl} target="_blank" rel="noopener noreferrer">{remediationUrl}</a></p>
-              )}
-              {!remediation && !remediationUrl && (
-                <p>No remediation information available.</p>
               )}
               {isEditing && <Chatbot onSaveRemediation={handleSaveRemediation} cveId={cveId} />}
             </div>
@@ -132,3 +140,7 @@ function CVEpage() {
 }
 
 export default CVEpage;
+
+
+
+
