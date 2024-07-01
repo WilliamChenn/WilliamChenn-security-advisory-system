@@ -3,14 +3,14 @@ import styled from 'styled-components';
 import { IconContext } from 'react-icons/lib';
 
 const SidebarNav = styled.nav`
-  background: white; /* Changed to white background */
+  background: white;
   width: 180px;
-  height: calc(100vh - 670px); /* Adjust height to not cover the header */
-  position: fixed;
-  top: 150px; /* Adjusted to ensure it does not cover the header */
-  left: ${({ sidebar }) => (sidebar ? '0' : '-250px')}; /* Slide-in effect */
+  height: calc(100vh - 670px);
+  position: absolute; /* Changed from fixed to absolute */
+  top: 150px; /* Adjust this as necessary for your layout */
+  left: ${({ sidebar }) => (sidebar ? '0' : '-250px')};
   transition: 350ms;
-  z-index: 20; /* Ensure it's above the table */
+  z-index: 20;
   padding: 25px;
 `;
 
@@ -21,7 +21,7 @@ const SidebarWrap = styled.div`
 const FilterForm = styled.form`
   display: flex;
   flex-direction: column;
-  color: #333; /* Changed text color to black to match the new white background */
+  color: #333;
 
   label {
     margin: 10px 0 5px;
@@ -30,7 +30,7 @@ const FilterForm = styled.form`
   select, input[type="date"], input[type="checkbox"] {
     padding: 8px;
     margin-bottom: 15px;
-    border: 1px solid #ddd; /* Add border to inputs for better visibility on white background */
+    border: 1px solid #ddd;
     border-radius: 4px;
   }
 `;
