@@ -6311,3 +6311,355 @@ Processing by Api::V3::CvesController#recent as */*
 Completed 200 OK in 42ms (Views: 10.6ms | ActiveRecord: 22.0ms | Allocations: 4391)
 
 
+Started GET "/api/v3/cves/recent?time_range=month" for 192.168.65.1 at 2024-07-02 16:17:46 +0000
+Processing by Api::V3::CvesController#recent as */*
+  Parameters: {"time_range"=>"month"}
+  [1m[36mUser Load (7.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:65:in `authenticate_user!'
+  [1m[36mCVE Load (8.7ms)[0m  [1m[34mSELECT "cves".* FROM "cves" INNER JOIN "vendors" ON "vendors"."id" = "cves"."vendor_id" WHERE "vendors"."id" IN (SELECT "vendors"."id" FROM "vendors" INNER JOIN "users_vendors" ON "vendors"."id" = "users_vendors"."vendor_id" WHERE "users_vendors"."uid" = $1) AND (publish_date >= '2024-06-02 16:17:46.202750')[0m  [["uid", "wzc2"]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mVendor Load (6.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+Completed 200 OK in 60ms (Views: 20.8ms | ActiveRecord: 22.6ms | Allocations: 4391)
+
+
+Started GET "/api/v3/cves/recent?time_range=month" for 192.168.65.1 at 2024-07-02 16:17:46 +0000
+Processing by Api::V3::CvesController#recent as */*
+  Parameters: {"time_range"=>"month"}
+  [1m[36mUser Load (6.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:65:in `authenticate_user!'
+  [1m[36mCVE Load (6.7ms)[0m  [1m[34mSELECT "cves".* FROM "cves" INNER JOIN "vendors" ON "vendors"."id" = "cves"."vendor_id" WHERE "vendors"."id" IN (SELECT "vendors"."id" FROM "vendors" INNER JOIN "users_vendors" ON "vendors"."id" = "users_vendors"."vendor_id" WHERE "users_vendors"."uid" = $1) AND (publish_date >= '2024-06-02 16:17:46.300536')[0m  [["uid", "wzc2"]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mVendor Load (6.5ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+Completed 200 OK in 43ms (Views: 13.8ms | ActiveRecord: 19.8ms | Allocations: 4391)
+
+
+Started GET "/api/v3/cves/recent?time_range=month" for 192.168.65.1 at 2024-07-02 16:17:47 +0000
+Processing by Api::V3::CvesController#recent as */*
+  Parameters: {"time_range"=>"month"}
+  [1m[36mUser Load (6.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:65:in `authenticate_user!'
+  [1m[36mCVE Load (9.5ms)[0m  [1m[34mSELECT "cves".* FROM "cves" INNER JOIN "vendors" ON "vendors"."id" = "cves"."vendor_id" WHERE "vendors"."id" IN (SELECT "vendors"."id" FROM "vendors" INNER JOIN "users_vendors" ON "vendors"."id" = "users_vendors"."vendor_id" WHERE "users_vendors"."uid" = $1) AND (publish_date >= '2024-06-02 16:17:47.251815')[0m  [["uid", "wzc2"]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mVendor Load (7.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+Completed 200 OK in 117ms (Views: 25.5ms | ActiveRecord: 23.4ms | Allocations: 4391)
+
+
+Started GET "/api/v3/cves/recent?time_range=month" for 192.168.65.1 at 2024-07-02 16:17:49 +0000
+Processing by Api::V3::CvesController#recent as */*
+  Parameters: {"time_range"=>"month"}
+  [1m[36mUser Load (4.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:65:in `authenticate_user!'
+  [1m[36mCVE Load (8.2ms)[0m  [1m[34mSELECT "cves".* FROM "cves" INNER JOIN "vendors" ON "vendors"."id" = "cves"."vendor_id" WHERE "vendors"."id" IN (SELECT "vendors"."id" FROM "vendors" INNER JOIN "users_vendors" ON "vendors"."id" = "users_vendors"."vendor_id" WHERE "users_vendors"."uid" = $1) AND (publish_date >= '2024-06-02 16:17:49.194750')[0m  [["uid", "wzc2"]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mVendor Load (6.6ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+Completed 200 OK in 46ms (Views: 11.0ms | ActiveRecord: 19.6ms | Allocations: 4391)
+
+
+Started GET "/api/v3/cves/recent?time_range=month" for 192.168.65.1 at 2024-07-02 16:17:49 +0000
+Processing by Api::V3::CvesController#recent as */*
+  Parameters: {"time_range"=>"month"}
+  [1m[36mUser Load (7.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:65:in `authenticate_user!'
+  [1m[36mCVE Load (9.7ms)[0m  [1m[34mSELECT "cves".* FROM "cves" INNER JOIN "vendors" ON "vendors"."id" = "cves"."vendor_id" WHERE "vendors"."id" IN (SELECT "vendors"."id" FROM "vendors" INNER JOIN "users_vendors" ON "vendors"."id" = "users_vendors"."vendor_id" WHERE "users_vendors"."uid" = $1) AND (publish_date >= '2024-06-02 16:17:49.346780')[0m  [["uid", "wzc2"]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mVendor Load (7.9ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+Completed 200 OK in 120ms (Views: 16.3ms | ActiveRecord: 24.6ms | Allocations: 4391)
+
+
+Started GET "/api/v3/cves/recent?time_range=month" for 192.168.65.1 at 2024-07-02 16:17:52 +0000
+Processing by Api::V3::CvesController#recent as */*
+  Parameters: {"time_range"=>"month"}
+  [1m[36mUser Load (6.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:65:in `authenticate_user!'
+  [1m[36mCVE Load (9.3ms)[0m  [1m[34mSELECT "cves".* FROM "cves" INNER JOIN "vendors" ON "vendors"."id" = "cves"."vendor_id" WHERE "vendors"."id" IN (SELECT "vendors"."id" FROM "vendors" INNER JOIN "users_vendors" ON "vendors"."id" = "users_vendors"."vendor_id" WHERE "users_vendors"."uid" = $1) AND (publish_date >= '2024-06-02 16:17:52.224565')[0m  [["uid", "wzc2"]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mVendor Load (7.2ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+Completed 200 OK in 50ms (Views: 14.1ms | ActiveRecord: 23.1ms | Allocations: 4391)
+
+
+Started GET "/api/v3/cves/recent?time_range=month" for 192.168.65.1 at 2024-07-02 16:17:52 +0000
+Processing by Api::V3::CvesController#recent as */*
+  Parameters: {"time_range"=>"month"}
+  [1m[36mUser Load (10.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:65:in `authenticate_user!'
+  [1m[36mCVE Load (8.4ms)[0m  [1m[34mSELECT "cves".* FROM "cves" INNER JOIN "vendors" ON "vendors"."id" = "cves"."vendor_id" WHERE "vendors"."id" IN (SELECT "vendors"."id" FROM "vendors" INNER JOIN "users_vendors" ON "vendors"."id" = "users_vendors"."vendor_id" WHERE "users_vendors"."uid" = $1) AND (publish_date >= '2024-06-02 16:17:52.293151')[0m  [["uid", "wzc2"]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mVendor Load (5.4ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+Completed 200 OK in 42ms (Views: 7.9ms | ActiveRecord: 24.1ms | Allocations: 4391)
+
+
+Started GET "/api/v3/cves/recent?time_range=month" for 192.168.65.1 at 2024-07-02 16:17:52 +0000
+Processing by Api::V3::CvesController#recent as */*
+  Parameters: {"time_range"=>"month"}
+  [1m[36mUser Load (6.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:65:in `authenticate_user!'
+  [1m[36mCVE Load (8.6ms)[0m  [1m[34mSELECT "cves".* FROM "cves" INNER JOIN "vendors" ON "vendors"."id" = "cves"."vendor_id" WHERE "vendors"."id" IN (SELECT "vendors"."id" FROM "vendors" INNER JOIN "users_vendors" ON "vendors"."id" = "users_vendors"."vendor_id" WHERE "users_vendors"."uid" = $1) AND (publish_date >= '2024-06-02 16:17:52.345448')[0m  [["uid", "wzc2"]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mVendor Load (7.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+Completed 200 OK in 42ms (Views: 10.4ms | ActiveRecord: 22.6ms | Allocations: 4391)
+
+
+Started GET "/api/v3/cves/recent?time_range=month" for 192.168.65.1 at 2024-07-02 16:17:55 +0000
+Processing by Api::V3::CvesController#recent as */*
+  Parameters: {"time_range"=>"month"}
+  [1m[36mUser Load (7.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:65:in `authenticate_user!'
+  [1m[36mCVE Load (9.8ms)[0m  [1m[34mSELECT "cves".* FROM "cves" INNER JOIN "vendors" ON "vendors"."id" = "cves"."vendor_id" WHERE "vendors"."id" IN (SELECT "vendors"."id" FROM "vendors" INNER JOIN "users_vendors" ON "vendors"."id" = "users_vendors"."vendor_id" WHERE "users_vendors"."uid" = $1) AND (publish_date >= '2024-06-02 16:17:55.195339')[0m  [["uid", "wzc2"]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mVendor Load (6.7ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+Completed 200 OK in 50ms (Views: 16.6ms | ActiveRecord: 23.5ms | Allocations: 4391)
+
+
+Started GET "/api/v3/cves/recent?time_range=month" for 192.168.65.1 at 2024-07-02 16:17:55 +0000
+Processing by Api::V3::CvesController#recent as */*
+  Parameters: {"time_range"=>"month"}
+  [1m[36mUser Load (6.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:65:in `authenticate_user!'
+  [1m[36mCVE Load (10.3ms)[0m  [1m[34mSELECT "cves".* FROM "cves" INNER JOIN "vendors" ON "vendors"."id" = "cves"."vendor_id" WHERE "vendors"."id" IN (SELECT "vendors"."id" FROM "vendors" INNER JOIN "users_vendors" ON "vendors"."id" = "users_vendors"."vendor_id" WHERE "users_vendors"."uid" = $1) AND (publish_date >= '2024-06-02 16:17:55.253186')[0m  [["uid", "wzc2"]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mVendor Load (8.3ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+Completed 200 OK in 50ms (Views: 17.1ms | ActiveRecord: 25.4ms | Allocations: 4391)
+
+
+Started GET "/api/v3/cves/recent?time_range=month" for 192.168.65.1 at 2024-07-02 16:17:57 +0000
+Processing by Api::V3::CvesController#recent as */*
+  Parameters: {"time_range"=>"month"}
+  [1m[36mUser Load (6.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:65:in `authenticate_user!'
+  [1m[36mCVE Load (8.1ms)[0m  [1m[34mSELECT "cves".* FROM "cves" INNER JOIN "vendors" ON "vendors"."id" = "cves"."vendor_id" WHERE "vendors"."id" IN (SELECT "vendors"."id" FROM "vendors" INNER JOIN "users_vendors" ON "vendors"."id" = "users_vendors"."vendor_id" WHERE "users_vendors"."uid" = $1) AND (publish_date >= '2024-06-02 16:17:57.211351')[0m  [["uid", "wzc2"]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mVendor Load (7.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+Completed 200 OK in 79ms (Views: 24.3ms | ActiveRecord: 21.2ms | Allocations: 4391)
+
+
+Started GET "/api/v3/cves/recent?time_range=month" for 192.168.65.1 at 2024-07-02 16:17:58 +0000
+Processing by Api::V3::CvesController#recent as */*
+  Parameters: {"time_range"=>"month"}
+  [1m[36mUser Load (5.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:65:in `authenticate_user!'
+  [1m[36mCVE Load (9.6ms)[0m  [1m[34mSELECT "cves".* FROM "cves" INNER JOIN "vendors" ON "vendors"."id" = "cves"."vendor_id" WHERE "vendors"."id" IN (SELECT "vendors"."id" FROM "vendors" INNER JOIN "users_vendors" ON "vendors"."id" = "users_vendors"."vendor_id" WHERE "users_vendors"."uid" = $1) AND (publish_date >= '2024-06-02 16:17:58.255521')[0m  [["uid", "wzc2"]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mVendor Load (7.5ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+Completed 200 OK in 127ms (Views: 26.9ms | ActiveRecord: 22.4ms | Allocations: 4391)
+
+
+Started GET "/api/v3/cves/recent?time_range=month" for 192.168.65.1 at 2024-07-02 16:17:58 +0000
+Processing by Api::V3::CvesController#recent as */*
+  Parameters: {"time_range"=>"month"}
+  [1m[36mUser Load (6.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:65:in `authenticate_user!'
+  [1m[36mCVE Load (9.4ms)[0m  [1m[34mSELECT "cves".* FROM "cves" INNER JOIN "vendors" ON "vendors"."id" = "cves"."vendor_id" WHERE "vendors"."id" IN (SELECT "vendors"."id" FROM "vendors" INNER JOIN "users_vendors" ON "vendors"."id" = "users_vendors"."vendor_id" WHERE "users_vendors"."uid" = $1) AND (publish_date >= '2024-06-02 16:17:58.346975')[0m  [["uid", "wzc2"]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mVendor Load (6.7ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+Completed 200 OK in 44ms (Views: 10.6ms | ActiveRecord: 22.3ms | Allocations: 4391)
+
+
+Started GET "/api/v3/cves/recent?time_range=month" for 192.168.65.1 at 2024-07-02 16:18:01 +0000
+Processing by Api::V3::CvesController#recent as */*
+  Parameters: {"time_range"=>"month"}
+  [1m[36mUser Load (8.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:65:in `authenticate_user!'
+  [1m[36mCVE Load (9.1ms)[0m  [1m[34mSELECT "cves".* FROM "cves" INNER JOIN "vendors" ON "vendors"."id" = "cves"."vendor_id" WHERE "vendors"."id" IN (SELECT "vendors"."id" FROM "vendors" INNER JOIN "users_vendors" ON "vendors"."id" = "users_vendors"."vendor_id" WHERE "users_vendors"."uid" = $1) AND (publish_date >= '2024-06-02 16:18:01.219414')[0m  [["uid", "wzc2"]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mVendor Load (6.3ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+Completed 200 OK in 52ms (Views: 16.5ms | ActiveRecord: 23.4ms | Allocations: 4391)
+
+
+Started GET "/api/v3/cves/recent?time_range=month" for 192.168.65.1 at 2024-07-02 16:18:01 +0000
+Processing by Api::V3::CvesController#recent as */*
+  Parameters: {"time_range"=>"month"}
+  [1m[36mUser Load (6.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:65:in `authenticate_user!'
+  [1m[36mCVE Load (8.7ms)[0m  [1m[34mSELECT "cves".* FROM "cves" INNER JOIN "vendors" ON "vendors"."id" = "cves"."vendor_id" WHERE "vendors"."id" IN (SELECT "vendors"."id" FROM "vendors" INNER JOIN "users_vendors" ON "vendors"."id" = "users_vendors"."vendor_id" WHERE "users_vendors"."uid" = $1) AND (publish_date >= '2024-06-02 16:18:01.290456')[0m  [["uid", "wzc2"]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mVendor Load (87.2ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+Completed 200 OK in 137ms (Views: 24.1ms | ActiveRecord: 102.0ms | Allocations: 4391)
+
+
+Started GET "/api/v3/cves/recent?time_range=month" for 192.168.65.1 at 2024-07-02 16:18:02 +0000
+Processing by Api::V3::CvesController#recent as */*
+  Parameters: {"time_range"=>"month"}
+  [1m[36mUser Load (6.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:65:in `authenticate_user!'
+  [1m[36mCVE Load (10.3ms)[0m  [1m[34mSELECT "cves".* FROM "cves" INNER JOIN "vendors" ON "vendors"."id" = "cves"."vendor_id" WHERE "vendors"."id" IN (SELECT "vendors"."id" FROM "vendors" INNER JOIN "users_vendors" ON "vendors"."id" = "users_vendors"."vendor_id" WHERE "users_vendors"."uid" = $1) AND (publish_date >= '2024-06-02 16:18:02.191288')[0m  [["uid", "wzc2"]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mVendor Load (6.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+Completed 200 OK in 52ms (Views: 17.8ms | ActiveRecord: 22.7ms | Allocations: 4391)
+
+
+Started GET "/api/v3/cves/recent?time_range=month" for 192.168.65.1 at 2024-07-02 16:18:29 +0000
+Processing by Api::V3::CvesController#recent as */*
+  Parameters: {"time_range"=>"month"}
+  [1m[36mUser Load (6.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:65:in `authenticate_user!'
+  [1m[36mCVE Load (10.0ms)[0m  [1m[34mSELECT "cves".* FROM "cves" INNER JOIN "vendors" ON "vendors"."id" = "cves"."vendor_id" WHERE "vendors"."id" IN (SELECT "vendors"."id" FROM "vendors" INNER JOIN "users_vendors" ON "vendors"."id" = "users_vendors"."vendor_id" WHERE "users_vendors"."uid" = $1) AND (publish_date >= '2024-06-02 16:18:29.247199')[0m  [["uid", "wzc2"]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mVendor Load (6.2ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+Completed 200 OK in 58ms (Views: 12.2ms | ActiveRecord: 22.3ms | Allocations: 4391)
+
+
+Started GET "/api/v3/cves/recent?time_range=month" for 192.168.65.1 at 2024-07-02 16:18:29 +0000
+Processing by Api::V3::CvesController#recent as */*
+  Parameters: {"time_range"=>"month"}
+  [1m[36mUser Load (6.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:65:in `authenticate_user!'
+  [1m[36mCVE Load (7.4ms)[0m  [1m[34mSELECT "cves".* FROM "cves" INNER JOIN "vendors" ON "vendors"."id" = "cves"."vendor_id" WHERE "vendors"."id" IN (SELECT "vendors"."id" FROM "vendors" INNER JOIN "users_vendors" ON "vendors"."id" = "users_vendors"."vendor_id" WHERE "users_vendors"."uid" = $1) AND (publish_date >= '2024-06-02 16:18:29.306839')[0m  [["uid", "wzc2"]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mVendor Load (5.9ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+Completed 200 OK in 42ms (Views: 11.7ms | ActiveRecord: 20.0ms | Allocations: 4391)
+
+
+Started GET "/api/v3/cves/recent?time_range=month" for 192.168.65.1 at 2024-07-02 16:18:29 +0000
+Processing by Api::V3::CvesController#recent as */*
+  Parameters: {"time_range"=>"month"}
+  [1m[36mUser Load (6.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:65:in `authenticate_user!'
+  [1m[36mCVE Load (8.6ms)[0m  [1m[34mSELECT "cves".* FROM "cves" INNER JOIN "vendors" ON "vendors"."id" = "cves"."vendor_id" WHERE "vendors"."id" IN (SELECT "vendors"."id" FROM "vendors" INNER JOIN "users_vendors" ON "vendors"."id" = "users_vendors"."vendor_id" WHERE "users_vendors"."uid" = $1) AND (publish_date >= '2024-06-02 16:18:29.359689')[0m  [["uid", "wzc2"]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mVendor Load (6.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+Completed 200 OK in 40ms (Views: 9.2ms | ActiveRecord: 21.1ms | Allocations: 4391)
+
+
+Started GET "/api/v3/cves/recent?time_range=month" for 192.168.65.1 at 2024-07-02 16:19:29 +0000
+Processing by Api::V3::CvesController#recent as */*
+  Parameters: {"time_range"=>"month"}
+  [1m[36mUser Load (6.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:65:in `authenticate_user!'
+  [1m[36mCVE Load (11.1ms)[0m  [1m[34mSELECT "cves".* FROM "cves" INNER JOIN "vendors" ON "vendors"."id" = "cves"."vendor_id" WHERE "vendors"."id" IN (SELECT "vendors"."id" FROM "vendors" INNER JOIN "users_vendors" ON "vendors"."id" = "users_vendors"."vendor_id" WHERE "users_vendors"."uid" = $1) AND (publish_date >= '2024-06-02 16:19:29.261539')[0m  [["uid", "wzc2"]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mVendor Load (5.9ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+Completed 200 OK in 61ms (Views: 11.5ms | ActiveRecord: 23.9ms | Allocations: 4391)
+
+
+Started GET "/api/v3/cves/recent?time_range=month" for 192.168.65.1 at 2024-07-02 16:19:29 +0000
+Processing by Api::V3::CvesController#recent as */*
+  Parameters: {"time_range"=>"month"}
+  [1m[36mUser Load (6.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:65:in `authenticate_user!'
+  [1m[36mCVE Load (9.4ms)[0m  [1m[34mSELECT "cves".* FROM "cves" INNER JOIN "vendors" ON "vendors"."id" = "cves"."vendor_id" WHERE "vendors"."id" IN (SELECT "vendors"."id" FROM "vendors" INNER JOIN "users_vendors" ON "vendors"."id" = "users_vendors"."vendor_id" WHERE "users_vendors"."uid" = $1) AND (publish_date >= '2024-06-02 16:19:29.328270')[0m  [["uid", "wzc2"]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mVendor Load (6.4ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+Completed 200 OK in 43ms (Views: 7.7ms | ActiveRecord: 22.4ms | Allocations: 4391)
+
+
+Started GET "/api/v3/cves/recent?time_range=month" for 192.168.65.1 at 2024-07-02 16:19:29 +0000
+Processing by Api::V3::CvesController#recent as */*
+  Parameters: {"time_range"=>"month"}
+  [1m[36mUser Load (6.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:65:in `authenticate_user!'
+  [1m[36mCVE Load (8.6ms)[0m  [1m[34mSELECT "cves".* FROM "cves" INNER JOIN "vendors" ON "vendors"."id" = "cves"."vendor_id" WHERE "vendors"."id" IN (SELECT "vendors"."id" FROM "vendors" INNER JOIN "users_vendors" ON "vendors"."id" = "users_vendors"."vendor_id" WHERE "users_vendors"."uid" = $1) AND (publish_date >= '2024-06-02 16:19:29.379638')[0m  [["uid", "wzc2"]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mVendor Load (6.4ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+Completed 200 OK in 36ms (Views: 6.1ms | ActiveRecord: 21.7ms | Allocations: 4391)
+
+
