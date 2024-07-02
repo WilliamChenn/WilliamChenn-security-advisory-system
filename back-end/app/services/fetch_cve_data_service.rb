@@ -17,7 +17,7 @@ class FetchCVEDataService
         vendor = Vendor.find_or_create_by(vendor_id: vuln['vendor_id']) do |v|
           if logo_response.success?
             logo_data = logo_response.parsed_response.first
-            v.vendor_url = logo_data['image']
+            v.vendor_url = logo_data['image'] if logo_data && logo_data['image']
           end
           v.name = vuln['vendor']
           v.vendor_id = vuln['vendor_id']
