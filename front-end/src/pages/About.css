@@ -32,6 +32,8 @@
   color: #012169;
   font-weight: bold;
   margin: 20px 0; /* Add margin for spacing */
+  
+  
 }
 
 .content-wrapper p {
@@ -74,7 +76,7 @@
 .paragraph__twocolumn .heading::after {
   content: '';
   display: block;
-  width: 30%;
+  width: 45%;
   height: 2px;
   background-color: #4a90e2; /* Underline color */
   margin-top: 5px; /* Space between heading and underline */
@@ -101,7 +103,7 @@
   flex: 1;
   min-width: 200px;
   height: 100%;
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  box-shadow: 0 30px 36px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
 }
 
 @media (max-width: 768px) {
