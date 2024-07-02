@@ -21,7 +21,6 @@ class FetchCVEDataService
           end
           v.name = vuln['vendor']
           v.vendor_id = vuln['vendor_id']
-          v.remediation_url = vuln['remediationUrl'] # Associate remediation_url with Vendor
         end
         remediation = FetchRemediationUrlService.call(vuln['cveId'])
         
