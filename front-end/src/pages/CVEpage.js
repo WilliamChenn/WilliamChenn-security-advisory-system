@@ -108,7 +108,9 @@ function CVEpage() {
           <h1>{vulnerability.cve_id} - {vulnerability.assigner_source_name}</h1>
           <h2>Overview</h2>
           <p>{vulnerability.summary}</p>
-          <h3>Affected:</h3>
+          
+          
+
           <p>{vulnerability.affected_versions}</p>
           <div className="remediation-container">
             <div className="remediation-header">
@@ -125,7 +127,7 @@ function CVEpage() {
                 <p>{remediation}</p>
               )}
               {remediationUrl && (
-                <p>For more information about remediation, visit <a href={remediationUrl} target="_blank" rel="noopener noreferrer">{remediationUrl}</a></p>
+                <p>For more information about remediation and affected products, visit <a href={remediationUrl} target="_blank" rel="noopener noreferrer">{remediationUrl}</a></p>
               )}
               {isEditing && <Chatbot onSaveRemediation={handleSaveRemediation} cveId={cveId} />}
             </div>
