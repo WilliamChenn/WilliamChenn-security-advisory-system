@@ -85,6 +85,26 @@
     margin: 0;
 }
 
+.remediation-content p {
+    font-size: 18px;
+    line-height: 1.6; /* Adjust line height for better spacing */
+    margin: 0 0 10px; /* Adjust margin for better spacing */
+    padding: 0 10px; /* Add padding for better readability */
+    box-sizing: border-box; /* Ensure padding is included in total width and height */
+    text-align: left; /* Change to left-align if justified spacing is too spread out */
+}
+
+.remediation-content a {
+    color: #007bff; /* Adjust link color as needed */
+    text-decoration: none;
+    padding: 0 10px; /* Add padding for better readability */
+}
+
+.remediation-content a:hover {
+    text-decoration: underline; /* Add underline on hover */
+}
+
+
 p {
     font-size: 18px;
     line-height: 1.8;
