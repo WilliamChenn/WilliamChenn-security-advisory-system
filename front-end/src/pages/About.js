@@ -83,6 +83,11 @@ function About() {
           </div>
         </section>
         
+        <div className="sidebar">
+          <h2>Ask for Help</h2>
+          <p>If you need help, visit <a href="https://oit.duke.edu/help/">https://oit.duke.edu/help/</a></p>
+        </div>
+        
       </div>
       
       <Footer />
@@ -91,6 +96,7 @@ function About() {
 }
 
 export default About;
+
 
 
 
