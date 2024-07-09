@@ -23821,3 +23821,1403 @@ Completed 200 OK in 278ms (Views: 233.3ms | ActiveRecord: 34.8ms | Allocations: 
   [1m[36mCVE Load (95.3ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-30101"], ["LIMIT", 1]]
   [1m[36mVendor Load (7.3ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
   [1m[36mCVE Load (11.7ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-30100"], ["LIMIT", 1]]
+DEPRECATION WARNING: `Rails.application.secrets` is deprecated in favor of `Rails.application.credentials` and will be removed in Rails 7.2. (called from <main> at /app/config/environment.rb:5)
+  [1m[35m (5.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4005883968536855685)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (7.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (5.7ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Update (5.6ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = 'development', "updated_at" = '2024-07-09 18:24:38.101835' WHERE "ar_internal_metadata"."key" = 'environment'[0m
+  [1m[35m (6.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(4005883968536855685)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (5.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (5.8ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4005883968536855685)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (5.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (6.7ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Update (6.2ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = 'test', "updated_at" = '2024-07-09 18:24:38.770038' WHERE "ar_internal_metadata"."key" = 'environment'[0m
+  [1m[35m (5.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(4005883968536855685)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (5.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+DEPRECATION WARNING: `Rails.application.secrets` is deprecated in favor of `Rails.application.credentials` and will be removed in Rails 7.2. (called from <main> at /app/config/environment.rb:5)
+  [1m[36mActiveRecord::SchemaMigration Load (6.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mVendor Load (7.2ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:17:in `block in call'
+  [1m[36mCVE Load (7.1ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-38112"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:29:in `block in call'
+  [1m[36mTRANSACTION (4.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/fetch_cve_data_service.rb:31:in `block in call'
+  [1m[36mCVE Update (10.9ms)[0m  [1m[33mUPDATE "cves" SET "metric_count" = $1, "max_cvss_base_score_v3" = $2, "updated_at" = $3, "remediation_url" = $4 WHERE "cves"."id" = $5[0m  [["metric_count", 2], ["max_cvss_base_score_v3", 7.5], ["updated_at", "2024-07-09 18:24:43.817633"], ["remediation_url", "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2024-38112"], ["id", 1508]]
+  ↳ app/services/fetch_cve_data_service.rb:31:in `block in call'
+  [1m[36mTRANSACTION (5.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/fetch_cve_data_service.rb:31:in `block in call'
+  [1m[36mVendor Load (5.3ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:17:in `block in call'
+  [1m[36mCVE Load (11.2ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-38105"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:29:in `block in call'
+  [1m[36mTRANSACTION (5.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/fetch_cve_data_service.rb:31:in `block in call'
+  [1m[36mCVE Update (35.5ms)[0m  [1m[33mUPDATE "cves" SET "metric_count" = $1, "max_cvss_base_score_v3" = $2, "updated_at" = $3, "remediation_url" = $4 WHERE "cves"."id" = $5[0m  [["metric_count", 2], ["max_cvss_base_score_v3", 6.5], ["updated_at", "2024-07-09 18:24:44.196488"], ["remediation_url", "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2024-38105"], ["id", 1509]]
+  ↳ app/services/fetch_cve_data_service.rb:31:in `block in call'
+  [1m[36mTRANSACTION (5.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/fetch_cve_data_service.rb:31:in `block in call'
+  [1m[36mVendor Load (4.9ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:17:in `block in call'
+  [1m[36mCVE Load (9.8ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-38104"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:29:in `block in call'
+  [1m[36mTRANSACTION (5.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/fetch_cve_data_service.rb:31:in `block in call'
+  [1m[36mCVE Update (11.5ms)[0m  [1m[33mUPDATE "cves" SET "metric_count" = $1, "max_cvss_base_score_v3" = $2, "updated_at" = $3, "remediation_url" = $4 WHERE "cves"."id" = $5[0m  [["metric_count", 2], ["max_cvss_base_score_v3", 8.8], ["updated_at", "2024-07-09 18:24:44.652082"], ["remediation_url", "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2024-38104"], ["id", 1510]]
+  ↳ app/services/fetch_cve_data_service.rb:31:in `block in call'
+  [1m[36mTRANSACTION (5.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/fetch_cve_data_service.rb:31:in `block in call'
+  [1m[36mVendor Load (5.6ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:17:in `block in call'
+  [1m[36mCVE Load (6.6ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-38102"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:29:in `block in call'
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/fetch_cve_data_service.rb:31:in `block in call'
+  [1m[36mCVE Update (10.1ms)[0m  [1m[33mUPDATE "cves" SET "metric_count" = $1, "max_cvss_base_score_v3" = $2, "updated_at" = $3, "remediation_url" = $4 WHERE "cves"."id" = $5[0m  [["metric_count", 2], ["max_cvss_base_score_v3", 6.5], ["updated_at", "2024-07-09 18:24:45.034924"], ["remediation_url", "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2024-38102"], ["id", 1511]]
+  ↳ app/services/fetch_cve_data_service.rb:31:in `block in call'
+  [1m[36mTRANSACTION (4.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/fetch_cve_data_service.rb:31:in `block in call'
+  [1m[36mVendor Load (4.6ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:17:in `block in call'
+  [1m[36mCVE Load (5.8ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-38101"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:29:in `block in call'
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/fetch_cve_data_service.rb:31:in `block in call'
+  [1m[36mCVE Update (10.3ms)[0m  [1m[33mUPDATE "cves" SET "metric_count" = $1, "max_cvss_base_score_v3" = $2, "updated_at" = $3, "remediation_url" = $4 WHERE "cves"."id" = $5[0m  [["metric_count", 2], ["max_cvss_base_score_v3", 6.5], ["updated_at", "2024-07-09 18:24:45.466592"], ["remediation_url", "{:status=>429, :message=>\"Too Many Requests\", :body=>\"{\\\"errors\\\":{\\\"error\\\":\\\"Rate limit exceeded\\\",\\\"error_description\\\":\\\"We received too many requests from your account within the current minute. You can retry in a minute\\\"}}\"}"], ["id", 1512]]
+  ↳ app/services/fetch_cve_data_service.rb:31:in `block in call'
+  [1m[36mTRANSACTION (5.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/fetch_cve_data_service.rb:31:in `block in call'
+  [1m[36mVendor Load (5.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:17:in `block in call'
+  [1m[36mCVE Load (7.4ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-38100"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:29:in `block in call'
+  [1m[36mTRANSACTION (5.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/fetch_cve_data_service.rb:31:in `block in call'
+  [1m[36mCVE Update (11.1ms)[0m  [1m[33mUPDATE "cves" SET "metric_count" = $1, "max_cvss_base_score_v3" = $2, "updated_at" = $3 WHERE "cves"."id" = $4[0m  [["metric_count", 2], ["max_cvss_base_score_v3", 7.8], ["updated_at", "2024-07-09 18:24:45.689629"], ["id", 1513]]
+  ↳ app/services/fetch_cve_data_service.rb:31:in `block in call'
+  [1m[36mTRANSACTION (6.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/fetch_cve_data_service.rb:31:in `block in call'
+  [1m[36mVendor Load (4.7ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:17:in `block in call'
+  [1m[36mCVE Load (9.8ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-38099"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:29:in `block in call'
+  [1m[36mTRANSACTION (5.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/fetch_cve_data_service.rb:31:in `block in call'
+  [1m[36mCVE Update (16.1ms)[0m  [1m[33mUPDATE "cves" SET "metric_count" = $1, "max_cvss_base_score_v3" = $2, "updated_at" = $3 WHERE "cves"."id" = $4[0m  [["metric_count", 2], ["max_cvss_base_score_v3", 5.9], ["updated_at", "2024-07-09 18:24:46.086330"], ["id", 1514]]
+  ↳ app/services/fetch_cve_data_service.rb:31:in `block in call'
+  [1m[36mTRANSACTION (5.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/fetch_cve_data_service.rb:31:in `block in call'
+  [1m[36mVendor Load (5.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:17:in `block in call'
+  [1m[36mCVE Load (6.0ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-38095"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:29:in `block in call'
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/fetch_cve_data_service.rb:31:in `block in call'
+  [1m[36mCVE Update (11.3ms)[0m  [1m[33mUPDATE "cves" SET "metric_count" = $1, "max_cvss_base_score_v3" = $2, "updated_at" = $3 WHERE "cves"."id" = $4[0m  [["metric_count", 2], ["max_cvss_base_score_v3", 7.5], ["updated_at", "2024-07-09 18:24:46.466571"], ["id", 1515]]
+  ↳ app/services/fetch_cve_data_service.rb:31:in `block in call'
+  [1m[36mTRANSACTION (5.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/fetch_cve_data_service.rb:31:in `block in call'
+  [1m[36mVendor Load (5.2ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:17:in `block in call'
+  [1m[36mCVE Load (18.3ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-38094"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:29:in `block in call'
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/fetch_cve_data_service.rb:31:in `block in call'
+  [1m[36mCVE Update (11.8ms)[0m  [1m[33mUPDATE "cves" SET "metric_count" = $1, "max_cvss_base_score_v3" = $2, "updated_at" = $3 WHERE "cves"."id" = $4[0m  [["metric_count", 2], ["max_cvss_base_score_v3", 7.2], ["updated_at", "2024-07-09 18:24:46.846868"], ["id", 1516]]
+  ↳ app/services/fetch_cve_data_service.rb:31:in `block in call'
+  [1m[36mTRANSACTION (6.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/fetch_cve_data_service.rb:31:in `block in call'
+  [1m[36mVendor Load (5.8ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:17:in `block in call'
+  [1m[36mCVE Load (6.8ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-38093"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:29:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:17:in `block in call'
+  [1m[36mCVE Load (6.0ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-38092"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:29:in `block in call'
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/fetch_cve_data_service.rb:31:in `block in call'
+  [1m[36mCVE Update (10.8ms)[0m  [1m[33mUPDATE "cves" SET "metric_count" = $1, "max_cvss_base_score_v3" = $2, "updated_at" = $3 WHERE "cves"."id" = $4[0m  [["metric_count", 2], ["max_cvss_base_score_v3", 8.8], ["updated_at", "2024-07-09 18:24:47.708234"], ["id", 1517]]
+  ↳ app/services/fetch_cve_data_service.rb:31:in `block in call'
+  [1m[36mTRANSACTION (5.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/fetch_cve_data_service.rb:31:in `block in call'
+  [1m[36mVendor Load (4.5ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:17:in `block in call'
+  [1m[36mCVE Load (7.0ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-38091"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:29:in `block in call'
+  [1m[36mTRANSACTION (5.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/fetch_cve_data_service.rb:31:in `block in call'
+  [1m[36mCVE Update (12.6ms)[0m  [1m[33mUPDATE "cves" SET "metric_count" = $1, "max_cvss_base_score_v3" = $2, "updated_at" = $3 WHERE "cves"."id" = $4[0m  [["metric_count", 2], ["max_cvss_base_score_v3", 7.5], ["updated_at", "2024-07-09 18:24:48.137885"], ["id", 1518]]
+  ↳ app/services/fetch_cve_data_service.rb:31:in `block in call'
+  [1m[36mTRANSACTION (5.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/fetch_cve_data_service.rb:31:in `block in call'
+  [1m[36mVendor Load (4.9ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:17:in `block in call'
+  [1m[36mCVE Load (7.0ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-38089"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:29:in `block in call'
+  [1m[36mTRANSACTION (5.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/fetch_cve_data_service.rb:31:in `block in call'
+  [1m[36mCVE Update (11.5ms)[0m  [1m[33mUPDATE "cves" SET "metric_count" = $1, "max_cvss_base_score_v3" = $2, "updated_at" = $3 WHERE "cves"."id" = $4[0m  [["metric_count", 2], ["max_cvss_base_score_v3", 9.1], ["updated_at", "2024-07-09 18:24:48.374217"], ["id", 1519]]
+  ↳ app/services/fetch_cve_data_service.rb:31:in `block in call'
+  [1m[36mTRANSACTION (6.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/fetch_cve_data_service.rb:31:in `block in call'
+  [1m[36mVendor Load (6.2ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:17:in `block in call'
+  [1m[36mCVE Load (6.3ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-38088"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:29:in `block in call'
+  [1m[36mTRANSACTION (7.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/fetch_cve_data_service.rb:31:in `block in call'
+  [1m[36mCVE Update (17.1ms)[0m  [1m[33mUPDATE "cves" SET "metric_count" = $1, "max_cvss_base_score_v3" = $2, "updated_at" = $3 WHERE "cves"."id" = $4[0m  [["metric_count", 2], ["max_cvss_base_score_v3", 8.8], ["updated_at", "2024-07-09 18:24:48.774292"], ["id", 1520]]
+  ↳ app/services/fetch_cve_data_service.rb:31:in `block in call'
+  [1m[36mTRANSACTION (7.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/fetch_cve_data_service.rb:31:in `block in call'
+  [1m[36mVendor Load (5.5ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:17:in `block in call'
+  [1m[36mCVE Load (17.8ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-38087"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:29:in `block in call'
+  [1m[36mTRANSACTION (25.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/fetch_cve_data_service.rb:31:in `block in call'
+  [1m[36mCVE Update (39.9ms)[0m  [1m[33mUPDATE "cves" SET "metric_count" = $1, "max_cvss_base_score_v3" = $2, "updated_at" = $3 WHERE "cves"."id" = $4[0m  [["metric_count", 2], ["max_cvss_base_score_v3", 8.8], ["updated_at", "2024-07-09 18:24:49.052639"], ["id", 1521]]
+  ↳ app/services/fetch_cve_data_service.rb:31:in `block in call'
+  [1m[36mTRANSACTION (30.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/fetch_cve_data_service.rb:31:in `block in call'
+  [1m[36mVendor Load (5.8ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:17:in `block in call'
+  [1m[36mCVE Load (26.1ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-38086"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:29:in `block in call'
+  [1m[36mTRANSACTION (16.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/fetch_cve_data_service.rb:31:in `block in call'
+  [1m[36mCVE Update (37.9ms)[0m  [1m[33mUPDATE "cves" SET "metric_count" = $1, "max_cvss_base_score_v3" = $2, "updated_at" = $3 WHERE "cves"."id" = $4[0m  [["metric_count", 2], ["max_cvss_base_score_v3", 6.4], ["updated_at", "2024-07-09 18:24:49.512753"], ["id", 1522]]
+  ↳ app/services/fetch_cve_data_service.rb:31:in `block in call'
+  [1m[36mTRANSACTION (16.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/fetch_cve_data_service.rb:31:in `block in call'
+  [1m[36mVendor Load (31.3ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:17:in `block in call'
+  [1m[36mCVE Load (17.0ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-38085"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:29:in `block in call'
+  [1m[36mTRANSACTION (27.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/fetch_cve_data_service.rb:31:in `block in call'
+  [1m[36mCVE Update (43.6ms)[0m  [1m[33mUPDATE "cves" SET "metric_count" = $1, "max_cvss_base_score_v3" = $2, "updated_at" = $3 WHERE "cves"."id" = $4[0m  [["metric_count", 2], ["max_cvss_base_score_v3", 7.8], ["updated_at", "2024-07-09 18:24:50.023154"], ["id", 1523]]
+  ↳ app/services/fetch_cve_data_service.rb:31:in `block in call'
+  [1m[36mTRANSACTION (15.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/fetch_cve_data_service.rb:31:in `block in call'
+  [1m[36mVendor Load (24.9ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:17:in `block in call'
+  [1m[36mCVE Load (8.3ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-38083"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:29:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:17:in `block in call'
+  [1m[36mCVE Load (8.3ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-38082"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:29:in `block in call'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:17:in `block in call'
+  [1m[36mCVE Load (7.7ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-38081"], ["LIMIT", 1]]
+  ↳ app/services/fetch_cve_data_service.rb:29:in `block in call'
+  [1m[36mTRANSACTION (6.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/fetch_cve_data_service.rb:31:in `block in call'
+  [1m[36mCVE Update (31.9ms)[0m  [1m[33mUPDATE "cves" SET "metric_count" = $1, "max_cvss_base_score_v3" = $2, "updated_at" = $3 WHERE "cves"."id" = $4[0m  [["metric_count", 2], ["max_cvss_base_score_v3", 7.3], ["updated_at", "2024-07-09 18:24:51.112667"], ["id", 1524]]
+  ↳ app/services/fetch_cve_data_service.rb:31:in `block in call'
+  [1m[36mTRANSACTION (7.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/fetch_cve_data_service.rb:31:in `block in call'
+Failed to fetch CVE data: {"errors":{"error":"Rate limit exceeded","error_description":"We received too many requests from your account within the current minute. You can retry in a minute"}}
+Failed to fetch CVE data: {"errors":{"error":"Rate limit exceeded","error_description":"We received too many requests from your account within the current minute. You can retry in a minute"}}
+DEPRECATION WARNING: `Rails.application.secrets` is deprecated in favor of `Rails.application.credentials` and will be removed in Rails 7.2. (called from <main> at /app/config/environment.rb:5)
+Started GET "/is_logged_in" for 192.168.65.1 at 2024-07-09 18:24:57 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (31.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ApplicationController#is_logged_in as HTML
+Auth token from cookies: ffff8ae71066655664827b866d214b74
+  [1m[36mUser Load (6.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:60:in `is_logged_in'
+User found: ID=3, Email=kelly.shahu@duke.edu, Name=Kelly Shahu
+Completed 200 OK in 594ms (Views: 0.6ms | ActiveRecord: 305.4ms | Allocations: 28479)
+
+
+Started GET "/api/v3/cves/recent?time_range=month" for 192.168.65.1 at 2024-07-09 18:24:58 +0000
+Processing by Api::V3::CvesController#recent as */*
+  Parameters: {"time_range"=>"month"}
+Started GET "/api/v3/cves/recent?time_range=month" for 192.168.65.1 at 2024-07-09 18:24:58 +0000
+  [1m[36mUser Load (5.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:65:in `authenticate_user!'
+Started GET "/api/v3/cves/recent?time_range=month" for 192.168.65.1 at 2024-07-09 18:24:58 +0000
+Started GET "/api/v3/cves/recent?time_range=month" for 192.168.65.1 at 2024-07-09 18:24:58 +0000
+Started GET "/api/v3/cves/recent?time_range=month" for 192.168.65.1 at 2024-07-09 18:24:58 +0000
+Processing by Api::V3::CvesController#recent as */*
+  Parameters: {"time_range"=>"month"}
+Processing by Api::V3::CvesController#recent as */*
+  Parameters: {"time_range"=>"month"}
+Processing by Api::V3::CvesController#recent as */*
+  Parameters: {"time_range"=>"month"}
+Processing by Api::V3::CvesController#recent as */*
+  Parameters: {"time_range"=>"month"}
+  [1m[36mCVE Load (24.1ms)[0m  [1m[34mSELECT "cves".* FROM "cves" INNER JOIN "vendors" ON "vendors"."id" = "cves"."vendor_id" WHERE "vendors"."id" IN (SELECT "vendors"."id" FROM "vendors" INNER JOIN "users_vendors" ON "vendors"."id" = "users_vendors"."vendor_id" WHERE "users_vendors"."uid" = $1) AND (publish_date >= '2024-06-09 18:24:58.936707')[0m  [["uid", "ks756"]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mUser Load (8.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Load (8.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mVendor Load (7.2ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:65:in `authenticate_user!'
+  ↳ app/controllers/api/v3/cves_controller.rb:65:in `authenticate_user!'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mUser Load (12.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Load (10.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:65:in `authenticate_user!'
+  ↳ app/controllers/api/v3/cves_controller.rb:65:in `authenticate_user!'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCVE Load (38.2ms)[0m  [1m[34mSELECT "cves".* FROM "cves" INNER JOIN "vendors" ON "vendors"."id" = "cves"."vendor_id" WHERE "vendors"."id" IN (SELECT "vendors"."id" FROM "vendors" INNER JOIN "users_vendors" ON "vendors"."id" = "users_vendors"."vendor_id" WHERE "users_vendors"."uid" = $1) AND (publish_date >= '2024-06-09 18:24:59.168552')[0m  [["uid", "ks756"]]
+  [1m[36mCVE Load (37.9ms)[0m  [1m[34mSELECT "cves".* FROM "cves" INNER JOIN "vendors" ON "vendors"."id" = "cves"."vendor_id" WHERE "vendors"."id" IN (SELECT "vendors"."id" FROM "vendors" INNER JOIN "users_vendors" ON "vendors"."id" = "users_vendors"."vendor_id" WHERE "users_vendors"."uid" = $1) AND (publish_date >= '2024-06-09 18:24:59.169699')[0m  [["uid", "ks756"]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCVE Load (21.1ms)[0m  [1m[34mSELECT "cves".* FROM "cves" INNER JOIN "vendors" ON "vendors"."id" = "cves"."vendor_id" WHERE "vendors"."id" IN (SELECT "vendors"."id" FROM "vendors" INNER JOIN "users_vendors" ON "vendors"."id" = "users_vendors"."vendor_id" WHERE "users_vendors"."uid" = $1) AND (publish_date >= '2024-06-09 18:24:59.200057')[0m  [["uid", "ks756"]]
+  [1m[36mVendor Load (6.7ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCVE Load (23.9ms)[0m  [1m[34mSELECT "cves".* FROM "cves" INNER JOIN "vendors" ON "vendors"."id" = "cves"."vendor_id" WHERE "vendors"."id" IN (SELECT "vendors"."id" FROM "vendors" INNER JOIN "users_vendors" ON "vendors"."id" = "users_vendors"."vendor_id" WHERE "users_vendors"."uid" = $1) AND (publish_date >= '2024-06-09 18:24:59.196310')[0m  [["uid", "ks756"]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mVendor Load (6.7ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mVendor Load (7.2ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mVendor Load (5.7ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mVendor Load (6.8ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mVendor Load (8.7ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mVendor Load (9.7ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mVendor Load (5.3ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mVendor Load (4.4ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mVendor Load (5.3ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mVendor Load (7.4ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mVendor Load (5.8ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mVendor Load (8.5ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mVendor Load (10.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 404ms (Views: 246.7ms | ActiveRecord: 85.9ms | Allocations: 202790)
+
+
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+Completed 200 OK in 364ms (Views: 141.5ms | ActiveRecord: 127.9ms | Allocations: 220156)
+
+
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 378ms (Views: 153.2ms | ActiveRecord: 131.2ms | Allocations: 225937)
+
+
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+Completed 200 OK in 382ms (Views: 150.0ms | ActiveRecord: 116.8ms | Allocations: 229176)
+
+
+Completed 200 OK in 389ms (Views: 153.7ms | ActiveRecord: 113.4ms | Allocations: 231183)
+
+
+Started GET "/api/v3/cves/recent?time_range=month" for 192.168.65.1 at 2024-07-09 18:24:59 +0000
+Processing by Api::V3::CvesController#recent as */*
+  Parameters: {"time_range"=>"month"}
+  [1m[36mUser Load (6.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:65:in `authenticate_user!'
+  [1m[36mCVE Load (15.0ms)[0m  [1m[34mSELECT "cves".* FROM "cves" INNER JOIN "vendors" ON "vendors"."id" = "cves"."vendor_id" WHERE "vendors"."id" IN (SELECT "vendors"."id" FROM "vendors" INNER JOIN "users_vendors" ON "vendors"."id" = "users_vendors"."vendor_id" WHERE "users_vendors"."uid" = $1) AND (publish_date >= '2024-06-09 18:24:59.554403')[0m  [["uid", "ks756"]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mVendor Load (5.5ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mVendor Load (5.9ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mVendor Load (4.9ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+Completed 200 OK in 84ms (Views: 38.2ms | ActiveRecord: 37.8ms | Allocations: 28665)
+
+
+Started GET "/api/v3/cves/recent?time_range=month" for 192.168.65.1 at 2024-07-09 18:25:01 +0000
+Started GET "/api/v3/cves/recent?time_range=month" for 192.168.65.1 at 2024-07-09 18:25:01 +0000
+Processing by Api::V3::CvesController#recent as */*
+  Parameters: {"time_range"=>"month"}
+Processing by Api::V3::CvesController#recent as */*
+  Parameters: {"time_range"=>"month"}
+  [1m[36mUser Load (6.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Load (6.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:65:in `authenticate_user!'
+  ↳ app/controllers/api/v3/cves_controller.rb:65:in `authenticate_user!'
+  [1m[36mCVE Load (24.8ms)[0m  [1m[34mSELECT "cves".* FROM "cves" INNER JOIN "vendors" ON "vendors"."id" = "cves"."vendor_id" WHERE "vendors"."id" IN (SELECT "vendors"."id" FROM "vendors" INNER JOIN "users_vendors" ON "vendors"."id" = "users_vendors"."vendor_id" WHERE "users_vendors"."uid" = $1) AND (publish_date >= '2024-06-09 18:25:01.976175')[0m  [["uid", "ks756"]]
+  [1m[36mCVE Load (24.3ms)[0m  [1m[34mSELECT "cves".* FROM "cves" INNER JOIN "vendors" ON "vendors"."id" = "cves"."vendor_id" WHERE "vendors"."id" IN (SELECT "vendors"."id" FROM "vendors" INNER JOIN "users_vendors" ON "vendors"."id" = "users_vendors"."vendor_id" WHERE "users_vendors"."uid" = $1) AND (publish_date >= '2024-06-09 18:25:01.978586')[0m  [["uid", "ks756"]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mVendor Load (5.3ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mVendor Load (5.2ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mVendor Load (9.4ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mVendor Load (9.8ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mVendor Load (8.6ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mVendor Load (4.9ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+Completed 200 OK in 161ms (Views: 92.8ms | ActiveRecord: 54.9ms | Allocations: 55233)
+
+
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+Completed 200 OK in 163ms (Views: 100.4ms | ActiveRecord: 50.5ms | Allocations: 57448)
+
+
+Started GET "/api/v1/cves/CVE-2024-36234" for 192.168.65.1 at 2024-07-09 18:25:02 +0000
+Started GET "/api/v1/cves/CVE-2024-36234" for 192.168.65.1 at 2024-07-09 18:25:02 +0000
+Processing by Api::V1::CvesController#show as */*
+Processing by Api::V1::CvesController#show as */*
+  Parameters: {"id"=>"CVE-2024-36234"}
+  Parameters: {"id"=>"CVE-2024-36234"}
+  [1m[36mCVE Load (16.6ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-36234"], ["LIMIT", 1]]
+  [1m[36mCVE Load (17.0ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-36234"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/cves_controller.rb:39:in `show'
+  ↳ app/controllers/api/v1/cves_controller.rb:39:in `show'
+  [1m[36mVendor Load (5.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/cves_controller.rb:41:in `show'
+  [1m[36mVendor Load (6.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/cves_controller.rb:41:in `show'
+  [1m[36mCVE Pluck (7.4ms)[0m  [1m[34mSELECT "cves"."id" FROM "cves" WHERE "cves"."vendor_id" = $1[0m  [["vendor_id", 2]]
+  [1m[36mCVE Pluck (7.4ms)[0m  [1m[34mSELECT "cves"."id" FROM "cves" WHERE "cves"."vendor_id" = $1[0m  [["vendor_id", 2]]
+  ↳ app/controllers/api/v1/cves_controller.rb:41:in `show'
+  ↳ app/controllers/api/v1/cves_controller.rb:41:in `show'
+Completed 200 OK in 58ms (Views: 0.1ms | ActiveRecord: 29.1ms | Allocations: 5895)
+
+
+Completed 200 OK in 57ms (Views: 0.0ms | ActiveRecord: 30.6ms | Allocations: 6609)
+
+
+Started GET "/api/v1/remediation_url/CVE-2024-36234" for 192.168.65.1 at 2024-07-09 18:25:02 +0000
+Started GET "/api/v1/remediation_url/CVE-2024-36234" for 192.168.65.1 at 2024-07-09 18:25:02 +0000
+Started GET "/api/v1/vendors" for 192.168.65.1 at 2024-07-09 18:25:02 +0000
+Processing by Api::V1::CvesController#remediation_url as */*
+  Parameters: {"id"=>"CVE-2024-36234"}
+Processing by Api::V1::CvesController#remediation_url as */*
+  Parameters: {"id"=>"CVE-2024-36234"}
+Processing by Api::V1::VendorsController#index as */*
+  [1m[36mCVE Load (7.0ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-36234"], ["LIMIT", 1]]
+  [1m[36mCVE Load (7.2ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-36234"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/cves_controller.rb:48:in `remediation_url'
+  ↳ app/controllers/api/v1/cves_controller.rb:48:in `remediation_url'
+Completed 200 OK in 20ms (Views: 0.1ms | ActiveRecord: 7.0ms | Allocations: 2400)
+
+
+Completed 200 OK in 18ms (Views: 0.0ms | ActiveRecord: 7.2ms | Allocations: 2080)
+
+
+Started GET "/api/v1/remediation/CVE-2024-36234" for 192.168.65.1 at 2024-07-09 18:25:02 +0000
+Started GET "/api/v1/remediation/CVE-2024-36234" for 192.168.65.1 at 2024-07-09 18:25:02 +0000
+  [1m[36mVendor Load (22.2ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors"[0m
+  ↳ app/controllers/api/v1/vendors_controller.rb:6:in `index'
+Completed 200 OK in 37ms (Views: 14.5ms | ActiveRecord: 22.2ms | Allocations: 12896)
+
+
+Processing by Api::V1::CvesController#get_remediation as */*
+  Parameters: {"id"=>"CVE-2024-36234"}
+Processing by Api::V1::CvesController#get_remediation as */*
+  Parameters: {"id"=>"CVE-2024-36234"}
+  [1m[36mCVE Load (6.8ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-36234"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/cves_controller.rb:28:in `get_remediation'
+Completed 200 OK in 13ms (Views: 0.2ms | ActiveRecord: 6.8ms | Allocations: 613)
+
+
+  [1m[36mCVE Load (5.6ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-36234"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/cves_controller.rb:28:in `get_remediation'
+Completed 200 OK in 20ms (Views: 0.1ms | ActiveRecord: 5.6ms | Allocations: 1498)
+
+
+Started GET "/api/v3/cves/recent?time_range=month" for 192.168.65.1 at 2024-07-09 18:25:17 +0000
+Started GET "/api/v3/cves/recent?time_range=month" for 192.168.65.1 at 2024-07-09 18:25:17 +0000
+Started GET "/api/v3/cves/recent?time_range=month" for 192.168.65.1 at 2024-07-09 18:25:17 +0000
+Started GET "/api/v3/cves/recent?time_range=month" for 192.168.65.1 at 2024-07-09 18:25:17 +0000
+Started GET "/api/v3/cves/recent?time_range=month" for 192.168.65.1 at 2024-07-09 18:25:17 +0000
+Processing by Api::V3::CvesController#recent as */*
+  Parameters: {"time_range"=>"month"}
+Processing by Api::V3::CvesController#recent as */*
+  Parameters: {"time_range"=>"month"}
+Processing by Api::V3::CvesController#recent as */*
+  Parameters: {"time_range"=>"month"}
+Processing by Api::V3::CvesController#recent as */*
+  Parameters: {"time_range"=>"month"}
+Processing by Api::V3::CvesController#recent as */*
+  Parameters: {"time_range"=>"month"}
+  [1m[36mUser Load (5.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:65:in `authenticate_user!'
+  [1m[36mUser Load (41.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Load (40.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Load (39.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Load (39.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:65:in `authenticate_user!'
+  ↳ app/controllers/api/v3/cves_controller.rb:65:in `authenticate_user!'
+  ↳ app/controllers/api/v3/cves_controller.rb:65:in `authenticate_user!'
+  ↳ app/controllers/api/v3/cves_controller.rb:65:in `authenticate_user!'
+  [1m[36mCVE Load (23.6ms)[0m  [1m[34mSELECT "cves".* FROM "cves" INNER JOIN "vendors" ON "vendors"."id" = "cves"."vendor_id" WHERE "vendors"."id" IN (SELECT "vendors"."id" FROM "vendors" INNER JOIN "users_vendors" ON "vendors"."id" = "users_vendors"."vendor_id" WHERE "users_vendors"."uid" = $1) AND (publish_date >= '2024-06-09 18:25:17.484611')[0m  [["uid", "ks756"]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCVE Load (23.0ms)[0m  [1m[34mSELECT "cves".* FROM "cves" INNER JOIN "vendors" ON "vendors"."id" = "cves"."vendor_id" WHERE "vendors"."id" IN (SELECT "vendors"."id" FROM "vendors" INNER JOIN "users_vendors" ON "vendors"."id" = "users_vendors"."vendor_id" WHERE "users_vendors"."uid" = $1) AND (publish_date >= '2024-06-09 18:25:17.515428')[0m  [["uid", "ks756"]]
+  [1m[36mCVE Load (22.4ms)[0m  [1m[34mSELECT "cves".* FROM "cves" INNER JOIN "vendors" ON "vendors"."id" = "cves"."vendor_id" WHERE "vendors"."id" IN (SELECT "vendors"."id" FROM "vendors" INNER JOIN "users_vendors" ON "vendors"."id" = "users_vendors"."vendor_id" WHERE "users_vendors"."uid" = $1) AND (publish_date >= '2024-06-09 18:25:17.516304')[0m  [["uid", "ks756"]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCVE Load (22.4ms)[0m  [1m[34mSELECT "cves".* FROM "cves" INNER JOIN "vendors" ON "vendors"."id" = "cves"."vendor_id" WHERE "vendors"."id" IN (SELECT "vendors"."id" FROM "vendors" INNER JOIN "users_vendors" ON "vendors"."id" = "users_vendors"."vendor_id" WHERE "users_vendors"."uid" = $1) AND (publish_date >= '2024-06-09 18:25:17.520122')[0m  [["uid", "ks756"]]
+  [1m[36mCVE Load (23.3ms)[0m  [1m[34mSELECT "cves".* FROM "cves" INNER JOIN "vendors" ON "vendors"."id" = "cves"."vendor_id" WHERE "vendors"."id" IN (SELECT "vendors"."id" FROM "vendors" INNER JOIN "users_vendors" ON "vendors"."id" = "users_vendors"."vendor_id" WHERE "users_vendors"."uid" = $1) AND (publish_date >= '2024-06-09 18:25:17.517107')[0m  [["uid", "ks756"]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mVendor Load (5.5ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mVendor Load (5.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mVendor Load (6.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mVendor Load (6.7ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mVendor Load (7.7ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mVendor Load (5.6ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mVendor Load (5.4ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mVendor Load (4.8ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mVendor Load (6.7ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mVendor Load (6.3ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mVendor Load (6.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mVendor Load (5.6ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mVendor Load (5.8ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mVendor Load (5.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mVendor Load (5.6ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+Completed 200 OK in 222ms (Views: 130.6ms | ActiveRecord: 47.2ms | Allocations: 135329)
+
+
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 223ms (Views: 134.0ms | ActiveRecord: 81.0ms | Allocations: 137583)
+
+
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 230ms (Views: 141.3ms | ActiveRecord: 79.9ms | Allocations: 142143)
+
+
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+Completed 200 OK in 232ms (Views: 138.3ms | ActiveRecord: 80.8ms | Allocations: 143215)
+
+
+Completed 200 OK in 233ms (Views: 140.4ms | ActiveRecord: 81.5ms | Allocations: 143609)
+
+
+Started GET "/api/v3/cves/recent?time_range=month" for 192.168.65.1 at 2024-07-09 18:25:17 +0000
+Processing by Api::V3::CvesController#recent as */*
+  Parameters: {"time_range"=>"month"}
+  [1m[36mUser Load (6.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:65:in `authenticate_user!'
+  [1m[36mCVE Load (16.1ms)[0m  [1m[34mSELECT "cves".* FROM "cves" INNER JOIN "vendors" ON "vendors"."id" = "cves"."vendor_id" WHERE "vendors"."id" IN (SELECT "vendors"."id" FROM "vendors" INNER JOIN "users_vendors" ON "vendors"."id" = "users_vendors"."vendor_id" WHERE "users_vendors"."uid" = $1) AND (publish_date >= '2024-06-09 18:25:17.913814')[0m  [["uid", "ks756"]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mVendor Load (4.3ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mVendor Load (5.3ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mVendor Load (5.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+  [1m[36mCACHE Vendor Load (0.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v3/cves_controller.rb:58:in `recent'
+Completed 200 OK in 93ms (Views: 46.8ms | ActiveRecord: 36.9ms | Allocations: 28648)
+
+
+Started GET "/api/v1/cves/CVE-2024-36234" for 192.168.65.1 at 2024-07-09 18:25:19 +0000
+Started GET "/api/v1/cves/CVE-2024-36234" for 192.168.65.1 at 2024-07-09 18:25:19 +0000
+Processing by Api::V1::CvesController#show as */*
+  Parameters: {"id"=>"CVE-2024-36234"}
+Processing by Api::V1::CvesController#show as */*
+  Parameters: {"id"=>"CVE-2024-36234"}
+  [1m[36mCVE Load (8.0ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-36234"], ["LIMIT", 1]]
+  [1m[36mCVE Load (8.1ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-36234"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/cves_controller.rb:39:in `show'
+  ↳ app/controllers/api/v1/cves_controller.rb:39:in `show'
+  [1m[36mVendor Load (5.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/cves_controller.rb:41:in `show'
+  [1m[36mVendor Load (5.2ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/cves_controller.rb:41:in `show'
+  [1m[36mCVE Pluck (7.7ms)[0m  [1m[34mSELECT "cves"."id" FROM "cves" WHERE "cves"."vendor_id" = $1[0m  [["vendor_id", 2]]
+  [1m[36mCVE Pluck (7.0ms)[0m  [1m[34mSELECT "cves"."id" FROM "cves" WHERE "cves"."vendor_id" = $1[0m  [["vendor_id", 2]]
+  ↳ app/controllers/api/v1/cves_controller.rb:41:in `show'
+  ↳ app/controllers/api/v1/cves_controller.rb:41:in `show'
+Completed 200 OK in 52ms (Views: 0.1ms | ActiveRecord: 20.8ms | Allocations: 4549)
+
+
+Completed 200 OK in 54ms (Views: 0.1ms | ActiveRecord: 20.3ms | Allocations: 5528)
+
+
+Started GET "/api/v1/remediation_url/CVE-2024-36234" for 192.168.65.1 at 2024-07-09 18:25:19 +0000
+Started GET "/api/v1/remediation_url/CVE-2024-36234" for 192.168.65.1 at 2024-07-09 18:25:19 +0000
+Started GET "/api/v1/vendors" for 192.168.65.1 at 2024-07-09 18:25:19 +0000
+Processing by Api::V1::CvesController#remediation_url as */*
+  Parameters: {"id"=>"CVE-2024-36234"}
+Processing by Api::V1::CvesController#remediation_url as */*
+  Parameters: {"id"=>"CVE-2024-36234"}
+Processing by Api::V1::VendorsController#index as */*
+  [1m[36mCVE Load (6.0ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-36234"], ["LIMIT", 1]]
+  [1m[36mCVE Load (7.2ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-36234"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/cves_controller.rb:48:in `remediation_url'
+  ↳ app/controllers/api/v1/cves_controller.rb:48:in `remediation_url'
+Completed 200 OK in 12ms (Views: 0.1ms | ActiveRecord: 6.0ms | Allocations: 1304)
+
+
+Completed 200 OK in 13ms (Views: 0.0ms | ActiveRecord: 7.2ms | Allocations: 1957)
+
+
+Started GET "/api/v1/remediation/CVE-2024-36234" for 192.168.65.1 at 2024-07-09 18:25:19 +0000
+Started GET "/api/v1/remediation/CVE-2024-36234" for 192.168.65.1 at 2024-07-09 18:25:19 +0000
+  [1m[36mVendor Load (19.7ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors"[0m
+  ↳ app/controllers/api/v1/vendors_controller.rb:6:in `index'
+Completed 200 OK in 26ms (Views: 6.7ms | ActiveRecord: 19.7ms | Allocations: 12876)
+
+
+Processing by Api::V1::CvesController#get_remediation as */*
+  Parameters: {"id"=>"CVE-2024-36234"}
+Processing by Api::V1::CvesController#get_remediation as */*
+  Parameters: {"id"=>"CVE-2024-36234"}
+  [1m[36mCVE Load (8.7ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-36234"], ["LIMIT", 1]]
+  [1m[36mCVE Load (8.8ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-36234"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/cves_controller.rb:28:in `get_remediation'
+  ↳ app/controllers/api/v1/cves_controller.rb:28:in `get_remediation'
+Completed 200 OK in 18ms (Views: 0.1ms | ActiveRecord: 8.7ms | Allocations: 982)
+
+
+Completed 200 OK in 18ms (Views: 0.0ms | ActiveRecord: 8.8ms | Allocations: 1157)
+
+
