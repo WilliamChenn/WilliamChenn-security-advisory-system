@@ -5,128 +5,65 @@
     padding: 20px;
     position: relative;
     width: 100%;
-  }
+}
   
-  .settings-container {
+.settings-container {
     display: flex;
     width: 100%;
     height: calc(100vh - 40px); /* Full height minus padding */
-  }
+}
   
-  .left-section {
+.left-section {
     position: relative;
     flex: 0 0 20%; /* 30% width */
     margin-top: 140px; /* Move down */
     padding: 5px;
     overflow-y: auto;
-  }
+}
   
-  .middle-section {
+.middle-section {
     flex: 1; /* Take up remaining space */
     margin-top: 50px; /* Move down */
     padding: 10px;
     box-sizing: border-box;
     overflow-y: auto;
-  }
+}
   
-  .right-section {
-    position: relative;
-    flex: 0 0 20%; /* 10% width */
-    margin-top: 80px; /* Move down */
-    padding: 20px;
-    overflow-y: auto;
-  }
-  
-  .vendor-list {
+.vendor-list {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     max-height: 100%; /* Fill the available height */
     overflow-y: auto;
     padding: 10px;
-  }
+}
   
-  .vendor-list-item {
+.vendor-list-item {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
-  }
+}
   
-  .vendor-item-wrapper {
+.vendor-item-wrapper {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-  }
+}
   
-  .vendor-checkbox {
+.vendor-checkbox {
     margin-right: 10px;
-  }
+}
   
-  .vendor-label {
+.vendor-label {
     margin-right: 10px;
     flex-grow: 1;
-  }
+}
   
-  .vendor-logo-small {
+.vendor-logo-small {
     width: 55px;
     height: 35px;
     object-fit: contain;
     border-radius: 5px;
     margin-left: 10px;
-  }
-  
-  .vendor-logo-large {
-    width: 100px; /* Increased width */
-    height: 100px; /* Increased height */
-    object-fit: contain;
-    border-radius: 50%;
-    margin: 10px; /* Added margin for spacing */
-  }
-  
-  .vendor-logo-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .vendor-logo-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .profile-picture-section {
-    margin-top: 20px; /* Adjust as needed */
-  }
-  
-  .profile-picture {
-    width: 50px; /* Decreased width */
-    height: 50px; /* Decreased height */
-    border-radius: 50%;
-    object-fit: cover;
-  }
-  
-  .profile-picture-options {
-    margin-top: 10px;
-  }
-  
-  .profile-picture-thumbnails {
-    display: flex;
-    gap: 10px;
-  }
-  
-  .profile-thumbnail {
-    width: 50px; /* Decreased width */
-    height: 50px; /* Decreased height */
-    border-radius: 50%;
-    cursor: pointer;
-    object-fit: cover;
-    border: 2px solid transparent;
-  }
-  
-  .profile-thumbnail.selected {
-    border: 2px solid #007bff; /* Highlight selected thumbnail */
-  }
-  
+}

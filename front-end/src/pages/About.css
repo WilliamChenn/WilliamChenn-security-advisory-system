@@ -1,5 +1,4 @@
 .about-container {
-    background-image: url('./capybara.jpeg'); /* Path to your image */
     height: 100vh; /* Full height of the viewport */
     background-size: cover; /* Cover the entire container */
     background-position: center; /* Center the background image */

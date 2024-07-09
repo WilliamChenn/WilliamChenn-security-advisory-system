@@ -3,20 +3,15 @@ import Header from '../components/Header';
 import Vendors from '../components/Vendors'; // Import the Vendors component
 import './Settings.css';
 import { FaPlus } from 'react-icons/fa'; // Import icon for add button
-import dog from '../images/dog.png';
-import cat from '../images/cat.png';
-import capybara from '../images/capybara.png';
 import { useUserProfile } from '../App'; // Import the context
 
 function Settings() {
   const [availableVendors, setAvailableVendors] = useState([]);
   const [userVendors, setUserVendors] = useState([]);
   const [loadingVendor, setLoadingVendor] = useState(null); // Track the specific vendor being added
-  const { profilePicture, updateProfilePictureIndex } = useUserProfile();
+  const { profilePicture } = useUserProfile();
   const [showAddForm, setShowAddForm] = useState(false); // State to toggle add form
   const [newVendor, setNewVendor] = useState(''); // State to handle new vendor input
-
-   const profilePictures = [dog, cat, capybara]; // Add the imported images to an array
 
   useEffect(() => {
     // Fetch all vendors from the backend
@@ -114,10 +109,6 @@ function Settings() {
     }
   };
 
-  const handleProfilePictureSelect = async (index) => {
-    updateProfilePictureIndex(index);
-  };
-
   return (
     <div className="settings-page">
       <Header profilePicture={profilePicture} />
@@ -153,24 +144,6 @@ function Settings() {
           <div className="vendors-section vendors-page">
             <h2>Vendors You Are Tracking</h2>
             <Vendors vendors={userVendors} setVendors={setUserVendors} loadingVendor={loadingVendor} setLoadingVendor={setLoadingVendor} /> {/* Pass props to Vendors component */}
-          </div>
-        </div>
-        <div className="right-section">
-          <div className="profile-picture-section">
-            <div className="profile-picture-options">
-              <h3>Select a Profile Picture</h3>
-              <div className="profile-picture-thumbnails">
-                {profilePictures.map((picture, index) => (
-                  <img
-                    key={index}
-                    src={picture}
-                    alt={`Profile option ${index + 1}`}
-                    className={`profile-thumbnail ${profilePictures.indexOf(profilePicture) === index ? 'selected' : ''}`}
-                    onClick={() => handleProfilePictureSelect(index)}
-                  />
-                ))}
-              </div>
-            </div>
           </div>
         </div>
       </div>
