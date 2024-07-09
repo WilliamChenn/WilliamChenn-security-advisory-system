@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_02_154814) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_08_155400) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -96,6 +96,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_02_154814) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "user_notification_vendors", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "vendor_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_notification_vendors_on_user_id"
+    t.index ["vendor_id"], name: "index_user_notification_vendors_on_vendor_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "uid"
@@ -123,6 +132,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_02_154814) do
   end
 
   add_foreign_key "cves", "vendors"
+  add_foreign_key "user_notification_vendors", "users"
+  add_foreign_key "user_notification_vendors", "vendors"
   add_foreign_key "users_vendors", "users", column: "uid", primary_key: "uid"
   add_foreign_key "users_vendors", "vendors"
 end

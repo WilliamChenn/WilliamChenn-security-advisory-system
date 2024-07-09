@@ -58,6 +58,8 @@ Rails.application.routes.draw do
         member do
           post 'upload_png'
           get 'get_png'
+          put 'set_profile_picture_index'  # New route for setting profile picture index
+          get 'get_profile_picture_index'  # New route for getting profile picture index
         end
       end
       #/api/v3//api/v3/user/upload_png
