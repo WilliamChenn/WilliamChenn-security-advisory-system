@@ -13,12 +13,17 @@
   box-sizing: border-box; /* Ensure padding is included in width */
 }
 
-.duke-container {
+.navbar-container {
   display: flex;
   align-items: center;
-  margin-left: 20px;
-  width: 100%;
-  box-sizing: border-box; /* Ensure padding is included in width */
+  margin-right: 10px; /* Space between navbar and title */
+}
+
+.title-container {
+  display: flex;
+  align-items: center;
+  margin-left: 20px; /* Space from left edge */
+  flex-grow: 1; /* Allow the title to take up remaining space */
 }
 
 .duke-logo-link {
@@ -40,8 +45,28 @@
   font-weight: 500;
 }
 
-.navbar-container {
+.profile-picture-container {
   display: flex;
   align-items: center;
-  margin-left: auto;
+  margin-right: 50px; 
+}
+
+.profile-picture {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-placeholder {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  color: #012169;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1em;
+  font-weight: bold;
 }

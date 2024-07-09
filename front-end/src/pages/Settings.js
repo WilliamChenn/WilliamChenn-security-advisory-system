@@ -2,11 +2,21 @@ import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import Vendors from '../components/Vendors'; // Import the Vendors component
 import './Settings.css';
+import { FaPlus } from 'react-icons/fa'; // Import icon for add button
+import dog from '../images/dog.png';
+import cat from '../images/cat.png';
+import capybara from '../images/capybara.png';
+import { useUserProfile } from '../App'; // Import the context
 
 function Settings() {
   const [availableVendors, setAvailableVendors] = useState([]);
   const [userVendors, setUserVendors] = useState([]);
   const [loadingVendor, setLoadingVendor] = useState(null); // Track the specific vendor being added
+  const { profilePicture, updateProfilePictureIndex } = useUserProfile();
+  const [showAddForm, setShowAddForm] = useState(false); // State to toggle add form
+  const [newVendor, setNewVendor] = useState(''); // State to handle new vendor input
+
+   const profilePictures = [dog, cat, capybara]; // Add the imported images to an array
 
   useEffect(() => {
     // Fetch all vendors from the backend
@@ -19,7 +29,10 @@ function Settings() {
           throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        setAvailableVendors(data);
+        // Sort vendors alphabetically by name and filter those with a logo
+        const vendorsWithLogo = data.filter(vendor => vendor.vendor_url);
+        vendorsWithLogo.sort((a, b) => a.name.localeCompare(b.name));
+        setAvailableVendors(vendorsWithLogo);
       } catch (error) {
         console.error('Error fetching available vendors:', error);
       }
@@ -101,33 +114,64 @@ function Settings() {
     }
   };
 
+  const handleProfilePictureSelect = async (index) => {
+    updateProfilePictureIndex(index);
+  };
+
   return (
     <div className="settings-page">
-      <Header />
+      <Header profilePicture={profilePicture} />
       <div className="settings-container">
-        <div className="vendor-selection">
-          <h2>Available Vendors</h2>
-          <ul className="vendor-list">
-            {availableVendors.length > 0 ? (
-              availableVendors.map((vendor) => (
-                <li key={vendor.id}>
-                  <input
-                    type="checkbox"
-                    id={`vendor-${vendor.id}`}
-                    value={vendor.id}
-                    checked={userVendors.some((v) => v.id === vendor.id)}
-                    onChange={handleVendorCheck}
-                  />
-                  <label htmlFor={`vendor-${vendor.id}`}>{vendor.name}</label>
-                </li>
-              ))
-            ) : (
-              <li>No vendors available</li>
-            )}
-          </ul>
+        <div className="left-section">
+          <div className="vendor-selection">
+            <h2>Available Vendors</h2>
+            <ul className="vendor-list">
+              {availableVendors.length > 0 ? (
+                availableVendors.map((vendor) => (
+                  <li key={vendor.id} className="vendor-list-item">
+                    <div className="vendor-item-wrapper">
+                      <input
+                        type="checkbox"
+                        id={`vendor-${vendor.id}`}
+                        value={vendor.id}
+                        checked={userVendors.some((v) => v.id === vendor.id)}
+                        onChange={handleVendorCheck}
+                        className="vendor-checkbox"
+                      />
+                      <label htmlFor={`vendor-${vendor.id}`} className="vendor-label">{vendor.name}</label>
+                      <img src={vendor.vendor_url} alt={vendor.name} className="vendor-logo-small" />
+                    </div>
+                  </li>
+                ))
+              ) : (
+                <li>No vendors available</li>
+              )}
+            </ul>
+          </div>
         </div>
-        <div className="vendors-section">
-          <Vendors vendors={userVendors} setVendors={setUserVendors} loadingVendor={loadingVendor} setLoadingVendor={setLoadingVendor} /> {/* Pass props to Vendors component */}
+        <div className="middle-section">
+          <div className="vendors-section vendors-page">
+            <h2>Vendors You Are Tracking</h2>
+            <Vendors vendors={userVendors} setVendors={setUserVendors} loadingVendor={loadingVendor} setLoadingVendor={setLoadingVendor} /> {/* Pass props to Vendors component */}
+          </div>
+        </div>
+        <div className="right-section">
+          <div className="profile-picture-section">
+            <div className="profile-picture-options">
+              <h3>Select a Profile Picture</h3>
+              <div className="profile-picture-thumbnails">
+                {profilePictures.map((picture, index) => (
+                  <img
+                    key={index}
+                    src={picture}
+                    alt={`Profile option ${index + 1}`}
+                    className={`profile-thumbnail ${profilePictures.indexOf(profilePicture) === index ? 'selected' : ''}`}
+                    onClick={() => handleProfilePictureSelect(index)}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
