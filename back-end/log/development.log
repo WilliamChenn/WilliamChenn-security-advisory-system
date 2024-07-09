@@ -19890,264 +19890,43 @@ Processing by Api::V3::CvesController#recent as */*
 Completed 200 OK in 278ms (Views: 233.3ms | ActiveRecord: 34.8ms | Allocations: 35183)
 
 
-DEPRECATION WARNING: `Rails.application.secrets` is deprecated in favor of `Rails.application.credentials` and will be removed in Rails 7.2. (called from <main> at /app/config/environment.rb:5)
-  [1m[35m (7.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4005883968536855685)[0m
-  [1m[36mActiveRecord::SchemaMigration Load (8.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  [1m[36mActiveRecord::InternalMetadata Load (18.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
-  [1m[36mActiveRecord::InternalMetadata Update (14.4ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = 'development', "updated_at" = '2024-07-09 15:43:09.654025' WHERE "ar_internal_metadata"."key" = 'environment'[0m
-  [1m[35m (7.7ms)[0m  [1m[34mSELECT pg_advisory_unlock(4005883968536855685)[0m
-  [1m[36mActiveRecord::SchemaMigration Load (7.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  [1m[35m (6.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4005883968536855685)[0m
-  [1m[36mActiveRecord::SchemaMigration Load (5.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  [1m[36mActiveRecord::InternalMetadata Load (5.9ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
-  [1m[36mActiveRecord::InternalMetadata Update (7.2ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = 'test', "updated_at" = '2024-07-09 15:43:10.524932' WHERE "ar_internal_metadata"."key" = 'environment'[0m
-  [1m[35m (6.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(4005883968536855685)[0m
-  [1m[36mActiveRecord::SchemaMigration Load (6.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-DEPRECATION WARNING: `Rails.application.secrets` is deprecated in favor of `Rails.application.credentials` and will be removed in Rails 7.2. (called from <main> at /app/config/environment.rb:5)
-  [1m[36mActiveRecord::SchemaMigration Load (6.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Failed to fetch CVE data: {"errors":{"error":"Invalid request","error_description":"Invalid token"}}
-Failed to fetch CVE data: {"errors":{"error":"Invalid request","error_description":"Invalid token"}}
-Failed to fetch CVE data: {"errors":{"error":"Invalid request","error_description":"Invalid token"}}
-DEPRECATION WARNING: `Rails.application.secrets` is deprecated in favor of `Rails.application.credentials` and will be removed in Rails 7.2. (called from <main> at /app/config/environment.rb:5)
-Started GET "/api/v1/cves/recent?time_range=month" for 172.22.0.1 at 2024-07-09 15:43:21 +0000
-  [1m[36mActiveRecord::SchemaMigration Load (10.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  
-Errno::ENOENT (No such file or directory @ rb_sysopen - config/saml/privateKey.key):
-  
-app/controllers/application_controller.rb:6:in `read'
-app/controllers/application_controller.rb:6:in `<class:ApplicationController>'
-app/controllers/application_controller.rb:1:in `<main>'
-app/controllers/api/v1/cves_controller.rb:3:in `<module:V1>'
-app/controllers/api/v1/cves_controller.rb:2:in `<module:Api>'
-app/controllers/api/v1/cves_controller.rb:1:in `<main>'
-Started GET "/api/v1/cves/recent?time_range=month" for 172.22.0.1 at 2024-07-09 15:43:24 +0000
-  
-Errno::ENOENT (No such file or directory @ rb_sysopen - config/saml/privateKey.key):
-  
-app/controllers/application_controller.rb:6:in `read'
-app/controllers/application_controller.rb:6:in `<class:ApplicationController>'
-app/controllers/application_controller.rb:1:in `<main>'
-app/controllers/api/v1/cves_controller.rb:3:in `<module:V1>'
-app/controllers/api/v1/cves_controller.rb:2:in `<module:Api>'
-app/controllers/api/v1/cves_controller.rb:1:in `<main>'
-Started GET "/api/v1/vendors" for 172.22.0.1 at 2024-07-09 15:43:25 +0000
-Started GET "/api/v1/cves/recent?time_range=month" for 172.22.0.1 at 2024-07-09 15:43:25 +0000
-  
-Errno::ENOENT (No such file or directory @ rb_sysopen - config/saml/privateKey.key):
-  
-app/controllers/application_controller.rb:6:in `read'
-app/controllers/application_controller.rb:6:in `<class:ApplicationController>'
-app/controllers/application_controller.rb:1:in `<main>'
-app/controllers/api/v1/vendors_controller.rb:3:in `<module:V1>'
-app/controllers/api/v1/vendors_controller.rb:2:in `<module:Api>'
-app/controllers/api/v1/vendors_controller.rb:1:in `<main>'
-  
-Errno::ENOENT (No such file or directory @ rb_sysopen - config/saml/privateKey.key):
-  
-app/controllers/application_controller.rb:6:in `read'
-app/controllers/application_controller.rb:6:in `<class:ApplicationController>'
-app/controllers/application_controller.rb:1:in `<main>'
-app/controllers/api/v1/cves_controller.rb:3:in `<module:V1>'
-app/controllers/api/v1/cves_controller.rb:2:in `<module:Api>'
-app/controllers/api/v1/cves_controller.rb:1:in `<main>'
-Started GET "/api/v1/cves/recent?time_range=month" for 172.22.0.1 at 2024-07-09 15:43:27 +0000
-  
-Errno::ENOENT (No such file or directory @ rb_sysopen - config/saml/privateKey.key):
-  
-app/controllers/application_controller.rb:6:in `read'
-app/controllers/application_controller.rb:6:in `<class:ApplicationController>'
-app/controllers/application_controller.rb:1:in `<main>'
-app/controllers/api/v1/cves_controller.rb:3:in `<module:V1>'
-app/controllers/api/v1/cves_controller.rb:2:in `<module:Api>'
-app/controllers/api/v1/cves_controller.rb:1:in `<main>'
-Started GET "/api/v1/vendors" for 172.22.0.1 at 2024-07-09 15:43:30 +0000
-Started GET "/api/v1/cves/recent?time_range=month" for 172.22.0.1 at 2024-07-09 15:43:30 +0000
-  
-Errno::ENOENT (No such file or directory @ rb_sysopen - config/saml/privateKey.key):
-  
-app/controllers/application_controller.rb:6:in `read'
-app/controllers/application_controller.rb:6:in `<class:ApplicationController>'
-app/controllers/application_controller.rb:1:in `<main>'
-app/controllers/api/v1/vendors_controller.rb:3:in `<module:V1>'
-app/controllers/api/v1/vendors_controller.rb:2:in `<module:Api>'
-app/controllers/api/v1/vendors_controller.rb:1:in `<main>'
-  
-Errno::ENOENT (No such file or directory @ rb_sysopen - config/saml/privateKey.key):
-  
-app/controllers/application_controller.rb:6:in `read'
-app/controllers/application_controller.rb:6:in `<class:ApplicationController>'
-app/controllers/application_controller.rb:1:in `<main>'
-app/controllers/api/v1/cves_controller.rb:3:in `<module:V1>'
-app/controllers/api/v1/cves_controller.rb:2:in `<module:Api>'
-app/controllers/api/v1/cves_controller.rb:1:in `<main>'
-Started GET "/api/v1/cves/recent?time_range=month" for 172.22.0.1 at 2024-07-09 15:43:30 +0000
-  
-Errno::ENOENT (No such file or directory @ rb_sysopen - config/saml/privateKey.key):
-  
-app/controllers/application_controller.rb:6:in `read'
-app/controllers/application_controller.rb:6:in `<class:ApplicationController>'
-app/controllers/application_controller.rb:1:in `<main>'
-app/controllers/api/v1/cves_controller.rb:3:in `<module:V1>'
-app/controllers/api/v1/cves_controller.rb:2:in `<module:Api>'
-app/controllers/api/v1/cves_controller.rb:1:in `<main>'
-Started GET "/api/v1/cves/recent?time_range=month" for 172.22.0.1 at 2024-07-09 15:43:33 +0000
-  
-Errno::ENOENT (No such file or directory @ rb_sysopen - config/saml/privateKey.key):
-  
-app/controllers/application_controller.rb:6:in `read'
-app/controllers/application_controller.rb:6:in `<class:ApplicationController>'
-app/controllers/application_controller.rb:1:in `<main>'
-app/controllers/api/v1/cves_controller.rb:3:in `<module:V1>'
-app/controllers/api/v1/cves_controller.rb:2:in `<module:Api>'
-app/controllers/api/v1/cves_controller.rb:1:in `<main>'
-Started GET "/api/v1/vendors" for 172.22.0.1 at 2024-07-09 15:43:35 +0000
-Started GET "/api/v1/cves/recent?time_range=month" for 172.22.0.1 at 2024-07-09 15:43:35 +0000
-  
-Errno::ENOENT (No such file or directory @ rb_sysopen - config/saml/privateKey.key):
-  
-app/controllers/application_controller.rb:6:in `read'
-app/controllers/application_controller.rb:6:in `<class:ApplicationController>'
-app/controllers/application_controller.rb:1:in `<main>'
-app/controllers/api/v1/vendors_controller.rb:3:in `<module:V1>'
-app/controllers/api/v1/vendors_controller.rb:2:in `<module:Api>'
-app/controllers/api/v1/vendors_controller.rb:1:in `<main>'
-  
-Errno::ENOENT (No such file or directory @ rb_sysopen - config/saml/privateKey.key):
-  
-app/controllers/application_controller.rb:6:in `read'
-app/controllers/application_controller.rb:6:in `<class:ApplicationController>'
-app/controllers/application_controller.rb:1:in `<main>'
-app/controllers/api/v1/cves_controller.rb:3:in `<module:V1>'
-app/controllers/api/v1/cves_controller.rb:2:in `<module:Api>'
-app/controllers/api/v1/cves_controller.rb:1:in `<main>'
-Started GET "/api/v1/cves/recent?time_range=month" for 172.22.0.1 at 2024-07-09 15:43:36 +0000
-  
-Errno::ENOENT (No such file or directory @ rb_sysopen - config/saml/privateKey.key):
-  
-app/controllers/application_controller.rb:6:in `read'
-app/controllers/application_controller.rb:6:in `<class:ApplicationController>'
-app/controllers/application_controller.rb:1:in `<main>'
-app/controllers/api/v1/cves_controller.rb:3:in `<module:V1>'
-app/controllers/api/v1/cves_controller.rb:2:in `<module:Api>'
-app/controllers/api/v1/cves_controller.rb:1:in `<main>'
-Started GET "/api/v1/cves/recent?time_range=month" for 172.22.0.1 at 2024-07-09 15:43:39 +0000
-  
-Errno::ENOENT (No such file or directory @ rb_sysopen - config/saml/privateKey.key):
-  
-app/controllers/application_controller.rb:6:in `read'
-app/controllers/application_controller.rb:6:in `<class:ApplicationController>'
-app/controllers/application_controller.rb:1:in `<main>'
-app/controllers/api/v1/cves_controller.rb:3:in `<module:V1>'
-app/controllers/api/v1/cves_controller.rb:2:in `<module:Api>'
-app/controllers/api/v1/cves_controller.rb:1:in `<main>'
-Started GET "/api/v1/vendors" for 172.22.0.1 at 2024-07-09 15:43:40 +0000
-  
-Errno::ENOENT (No such file or directory @ rb_sysopen - config/saml/privateKey.key):
-  
-app/controllers/application_controller.rb:6:in `read'
-app/controllers/application_controller.rb:6:in `<class:ApplicationController>'
-app/controllers/application_controller.rb:1:in `<main>'
-app/controllers/api/v1/vendors_controller.rb:3:in `<module:V1>'
-app/controllers/api/v1/vendors_controller.rb:2:in `<module:Api>'
-app/controllers/api/v1/vendors_controller.rb:1:in `<main>'
-Started GET "/api/v1/cves/recent?time_range=month" for 172.22.0.1 at 2024-07-09 15:43:40 +0000
-  
-Errno::ENOENT (No such file or directory @ rb_sysopen - config/saml/privateKey.key):
-  
-app/controllers/application_controller.rb:6:in `read'
-app/controllers/application_controller.rb:6:in `<class:ApplicationController>'
-app/controllers/application_controller.rb:1:in `<main>'
-app/controllers/api/v1/cves_controller.rb:3:in `<module:V1>'
-app/controllers/api/v1/cves_controller.rb:2:in `<module:Api>'
-app/controllers/api/v1/cves_controller.rb:1:in `<main>'
-Started GET "/api/v1/cves/recent?time_range=month" for 172.22.0.1 at 2024-07-09 15:43:42 +0000
-  
-Errno::ENOENT (No such file or directory @ rb_sysopen - config/saml/privateKey.key):
-  
-app/controllers/application_controller.rb:6:in `read'
-app/controllers/application_controller.rb:6:in `<class:ApplicationController>'
-app/controllers/application_controller.rb:1:in `<main>'
-app/controllers/api/v1/cves_controller.rb:3:in `<module:V1>'
-app/controllers/api/v1/cves_controller.rb:2:in `<module:Api>'
-app/controllers/api/v1/cves_controller.rb:1:in `<main>'
-Started GET "/is_logged_in" for 172.22.0.1 at 2024-07-09 15:44:22 +0000
-  
-Errno::ENOENT (No such file or directory @ rb_sysopen - config/saml/privateKey.key):
-  
-app/controllers/application_controller.rb:6:in `read'
-app/controllers/application_controller.rb:6:in `<class:ApplicationController>'
-app/controllers/application_controller.rb:1:in `<main>'
-Started GET "/is_logged_in" for 172.22.0.1 at 2024-07-09 15:44:23 +0000
-  
-Errno::ENOENT (No such file or directory @ rb_sysopen - config/saml/privateKey.key):
-  
-app/controllers/application_controller.rb:6:in `read'
-app/controllers/application_controller.rb:6:in `<class:ApplicationController>'
-app/controllers/application_controller.rb:1:in `<main>'
-Started GET "/auth/saml" for 172.22.0.1 at 2024-07-09 15:44:23 +0000
-  
-Errno::ENOENT (No such file or directory @ rb_sysopen - config/saml/privateKey.key):
-  
-app/controllers/application_controller.rb:6:in `read'
-app/controllers/application_controller.rb:6:in `<class:ApplicationController>'
-app/controllers/application_controller.rb:1:in `<main>'
-Started GET "/favicon.ico" for 172.22.0.1 at 2024-07-09 15:44:23 +0000
-  
-ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
-  
-Started GET "/" for 172.22.0.1 at 2024-07-09 15:44:30 +0000
-Processing by Rails::WelcomeController#index as HTML
-  Rendering /usr/local/bundle/ruby/3.3.0/gems/railties-7.1.3.4/lib/rails/templates/rails/welcome/index.html.erb
-  Rendered /usr/local/bundle/ruby/3.3.0/gems/railties-7.1.3.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 10.8ms | Allocations: 263)
-Completed 200 OK in 46ms (Views: 14.9ms | ActiveRecord: 0.0ms | Allocations: 2463)
-
-
-Started GET "/is_logged_in" for 172.22.0.1 at 2024-07-09 15:44:36 +0000
-  
-Errno::ENOENT (No such file or directory @ rb_sysopen - config/saml/privateKey.key):
-  
-app/controllers/application_controller.rb:6:in `read'
-app/controllers/application_controller.rb:6:in `<class:ApplicationController>'
-app/controllers/application_controller.rb:1:in `<main>'
-Started GET "/is_logged_in" for 172.22.0.1 at 2024-07-09 15:44:37 +0000
-  
-Errno::ENOENT (No such file or directory @ rb_sysopen - config/saml/privateKey.key):
-  
-app/controllers/application_controller.rb:6:in `read'
-app/controllers/application_controller.rb:6:in `<class:ApplicationController>'
-app/controllers/application_controller.rb:1:in `<main>'
-Started GET "/auth/saml" for 172.22.0.1 at 2024-07-09 15:44:37 +0000
-  
-Errno::ENOENT (No such file or directory @ rb_sysopen - config/saml/privateKey.key):
-  
-app/controllers/application_controller.rb:6:in `read'
-app/controllers/application_controller.rb:6:in `<class:ApplicationController>'
-app/controllers/application_controller.rb:1:in `<main>'
-Started GET "/is_logged_in" for 172.22.0.1 at 2024-07-09 15:47:58 +0000
-  
-Errno::ENOENT (No such file or directory @ rb_sysopen - config/saml/privateKey.key):
-  
-app/controllers/application_controller.rb:6:in `read'
-app/controllers/application_controller.rb:6:in `<class:ApplicationController>'
-app/controllers/application_controller.rb:1:in `<main>'
-Started GET "/is_logged_in" for 172.22.0.1 at 2024-07-09 15:47:58 +0000
-  
-Errno::ENOENT (No such file or directory @ rb_sysopen - config/saml/privateKey.key):
-  
-app/controllers/application_controller.rb:6:in `read'
-app/controllers/application_controller.rb:6:in `<class:ApplicationController>'
-app/controllers/application_controller.rb:1:in `<main>'
-Started GET "/auth/saml" for 172.22.0.1 at 2024-07-09 15:47:58 +0000
-  
-Errno::ENOENT (No such file or directory @ rb_sysopen - config/saml/privateKey.key):
-  
-app/controllers/application_controller.rb:6:in `read'
-app/controllers/application_controller.rb:6:in `<class:ApplicationController>'
-app/controllers/application_controller.rb:1:in `<main>'
-Started GET "/auth/saml" for 172.22.0.1 at 2024-07-09 15:50:13 +0000
-  
-Errno::ENOENT (No such file or directory @ rb_sysopen - config/saml/privateKey.key):
-  
-app/controllers/application_controller.rb:6:in `read'
-app/controllers/application_controller.rb:6:in `<class:ApplicationController>'
-app/controllers/application_controller.rb:1:in `<main>'
+  [1m[36mVendor Load (7.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  [1m[36mCVE Load (30.5ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-38093"], ["LIMIT", 1]]
+  [1m[36mVendor Load (35.4ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  [1m[36mCVE Load (7.3ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-38083"], ["LIMIT", 1]]
+  [1m[36mVendor Load (7.9ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  [1m[36mCVE Load (7.3ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-38082"], ["LIMIT", 1]]
+  [1m[36mVendor Load (7.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  [1m[36mCVE Load (7.5ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-37325"], ["LIMIT", 1]]
+  [1m[36mVendor Load (7.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  [1m[36mCVE Load (8.3ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-37304"], ["LIMIT", 1]]
+  [1m[36mVendor Load (6.3ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  [1m[36mCVE Load (7.0ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-35265"], ["LIMIT", 1]]
+  [1m[36mVendor Load (6.9ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  [1m[36mCVE Load (7.1ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-35263"], ["LIMIT", 1]]
+  [1m[36mVendor Load (10.2ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  [1m[36mCVE Load (7.1ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-35260"], ["LIMIT", 1]]
+  [1m[36mVendor Load (9.9ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  [1m[36mCVE Load (7.9ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-35255"], ["LIMIT", 1]]
+  [1m[36mVendor Load (6.4ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  [1m[36mCVE Load (7.7ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-35254"], ["LIMIT", 1]]
+  [1m[36mVendor Load (7.4ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  [1m[36mCVE Load (7.4ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-35253"], ["LIMIT", 1]]
+  [1m[36mVendor Load (6.2ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  [1m[36mCVE Load (7.3ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-35252"], ["LIMIT", 1]]
+  [1m[36mVendor Load (7.1ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  [1m[36mCVE Load (7.2ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-35250"], ["LIMIT", 1]]
+  [1m[36mVendor Load (7.0ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  [1m[36mCVE Load (6.9ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-35249"], ["LIMIT", 1]]
+  [1m[36mVendor Load (7.5ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  [1m[36mCVE Load (7.3ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-35248"], ["LIMIT", 1]]
+  [1m[36mVendor Load (6.9ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  [1m[36mCVE Load (7.7ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-30104"], ["LIMIT", 1]]
+  [1m[36mVendor Load (7.9ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  [1m[36mCVE Load (6.8ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-30103"], ["LIMIT", 1]]
+  [1m[36mVendor Load (6.8ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  [1m[36mCVE Load (7.4ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-30102"], ["LIMIT", 1]]
+  [1m[36mVendor Load (6.6ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  [1m[36mCVE Load (95.3ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-30101"], ["LIMIT", 1]]
+  [1m[36mVendor Load (7.3ms)[0m  [1m[34mSELECT "vendors".* FROM "vendors" WHERE "vendors"."vendor_id" = $1 LIMIT $2[0m  [["vendor_id", "26"], ["LIMIT", 1]]
+  [1m[36mCVE Load (11.7ms)[0m  [1m[34mSELECT "cves".* FROM "cves" WHERE "cves"."cve_id" = $1 LIMIT $2[0m  [["cve_id", "CVE-2024-30100"], ["LIMIT", 1]]
