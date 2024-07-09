@@ -41,6 +41,7 @@ Rails.application.routes.draw do
         collection do
           post 'upload_png'
           get 'get_png'
+          post 'logout'
           put 'set_profile_picture_index'  # New route for setting profile picture index
           get 'get_profile_picture_index'  # New route for getting profile picture index
         end
