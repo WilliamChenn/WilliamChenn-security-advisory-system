@@ -129,6 +129,9 @@ body {
   background-color: #0a47b3; /* Darker shade on hover */
 }
 
+
+
+
 .flex-container {
   display: flex;
   justify-content: space-between;
@@ -144,3 +147,17 @@ body {
 .flex-container > *:last-child {
   margin-right: 0;
 }
+
+.graph-title {
+  font-size: 1.3em; /* Adjust the font size as needed */
+  margin-left: 80px;
+  
+}
+
+.graph-container {
+  margin-right: 20px; /* Adjust this value as needed */
+}
+
+
+
+

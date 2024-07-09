@@ -8,6 +8,7 @@
     min-height: 100vh;
     width: 100vw;
     overflow-x: hidden; /* Prevent horizontal scrolling */
+    
 }
 
 .cve-content-wrapper {
@@ -20,11 +21,18 @@
     margin-bottom: 100px; /* Add margin at the bottom for footer */
 }
 
+.cve-content-container {
+    flex: 1;
+    padding: 0 100px; /* Add padding to the left and right */
+}
+
 .cve-text-content h1 {
     flex: 1;
-    padding-top: 40px;
+    padding-top: 70px;
+    padding-bottom: 50px;
     color: #012169;
     font-weight: bold;
+    font-size: 20px;
 }
 
 .title-with-image {
@@ -42,14 +50,14 @@
 
 .cve-text-content h2 {
     color: #012169;
-}
-
-.cve-text-content h3 {
-    color: #012169;
+    font-size: 20px;
+    font-family: 'Open Sans';
 }
 
 .cve-text-content h4 {
     color: #012169;
+    font-size: 20px;
+    font-family: 'Open Sans';
 }
 
 .cve-circular-progress-container {
