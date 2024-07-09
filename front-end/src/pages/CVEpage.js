@@ -40,6 +40,8 @@ function CVEpage() {
         const remediationGetData = await remediationGetResponse.json();
         if (remediationGetData.remediation) {
           setRemediation(remediationGetData.remediation);
+        } else {
+          setRemediation(null); // Set to null instead of 'No remediation information available'
         }
       } catch (error) {
         console.error('Error fetching vulnerability:', error);
@@ -54,7 +56,7 @@ function CVEpage() {
       try {
         const response = await fetch('http://localhost:3001/api/v1/vendors');
         const data = await response.json();
-        const vendorData = data.find(vendor => vendor.id === vulnerability.vendor_id);
+        const vendorData = data.find(vendor => vendor.id === vulnerability?.vendor_id);
         if (vendorData) {
           setVendor({
             name: vendorData.name,
@@ -85,7 +87,7 @@ function CVEpage() {
         throw new Error('Failed to save remediation');
       }
 
-      setRemediation(newRemediation || 'No remediation information available');
+      setRemediation(newRemediation || ''); // Set to empty string instead of 'No remediation information available'
       setIsEditing(false);
     } catch (error) {
       console.error('Error saving remediation:', error);
@@ -114,7 +116,9 @@ function CVEpage() {
                 </button>
               </div>
               <div className="remediation-content">
-                {remediation ? <p>{remediation}</p> : <p>No remediation information available</p>}
+                {remediation && (
+                  <p>{remediation}</p>
+                )}
                 {remediationUrl && (
                   <p>For more information about remediation and affected products, visit <a href={remediationUrl} target="_blank" rel="noopener noreferrer">{remediationUrl}</a></p>
                 )}
@@ -136,4 +140,5 @@ function CVEpage() {
 }
 
 export default CVEpage;
+
 
