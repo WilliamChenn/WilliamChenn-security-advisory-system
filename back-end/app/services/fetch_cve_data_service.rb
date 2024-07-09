@@ -7,7 +7,7 @@ class FetchCVEDataService
 
   def self.call(vendor_name)
     url = "#{BASE_CVE_API_URL}&vendorName=#{vendor_name}&pageNumber=1&resultsPerPage=20"
-    token = "274cdceb8a11ea126d8dd9e3ce9d48d0fd668a03.eyJzdWIiOjU1MjksImlhdCI6MTcyMDUzODQwNCwiZXhwIjoxNzIzMTYxNjAwLCJraWQiOjEsImMiOiJybHJnd2pRMW9TeVFZOWdoMUlZUXBYSWpWeXZwYXB5ZkxMR3k1YWFuWm1xMFlwcTQzbG9EOHREOUcrVWZjZytic202TnlTNnQifQ=="
+    token =  ENV["CVEDETAILS_TOKEN"]
     response = HTTParty.get(url, headers: { "Authorization" => "Bearer #{token}" })
     logo_response = HTTParty.get("#{BASE_LOGO_API_URL}#{vendor_name}", headers: { "X-Api-Key" => API_KEY })
 
@@ -17,11 +17,10 @@ class FetchCVEDataService
         vendor = Vendor.find_or_create_by(vendor_id: vuln['vendor_id']) do |v|
           if logo_response.success?
             logo_data = logo_response.parsed_response.first
-            v.vendor_url = logo_data['image']
+            v.vendor_url = logo_data['image'] if logo_data && logo_data['image']
           end
           v.name = vuln['vendor']
           v.vendor_id = vuln['vendor_id']
-          v.remediation_url = vuln['remediationUrl'] # Associate remediation_url with Vendor
         end
         remediation = FetchRemediationUrlService.call(vuln['cveId'])
         
