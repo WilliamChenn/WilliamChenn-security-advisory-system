@@ -1,4 +1,3 @@
-# app/controllers/api/v3/users_controller.rb
 module Api
   module V3
     class UsersController < ApplicationController
@@ -28,10 +27,17 @@ module Api
 
       def logout
         if current_user
-          current_user.update(auth_token: nil)
+          Rails.logger.info("Logging out user: #{current_user.email}")
+          if current_user.update(auth_token: nil)
+            Rails.logger.info("Successfully cleared auth_token for user: #{current_user.email}")
+          else
+            Rails.logger.error("Failed to clear auth_token for user: #{current_user.email} - Errors: #{current_user.errors.full_messages}")
+          end
           cookies.delete(:auth_token)
+          reset_session # This clears the session
           render json: { message: 'Logged out successfully' }, status: :ok
         else
+          Rails.logger.error("Logout attempt with invalid token")
           render json: { error: 'Invalid token' }, status: :unauthorized
         end
       end
@@ -40,9 +46,13 @@ module Api
 
       def authenticate_user!
         token = cookies.signed[:auth_token]
+        Rails.logger.info("Authenticating with token: #{token}")
         @current_user = User.find_by(auth_token: token)
         unless @current_user
+          Rails.logger.error("Authentication failed with token: #{token}")
           render json: { error: 'Not Authorized' }, status: :unauthorized
+        else
+          Rails.logger.info("Authenticated user: #{@current_user.email}")
         end
       end
 
@@ -52,4 +62,3 @@ module Api
     end
   end
 end
-

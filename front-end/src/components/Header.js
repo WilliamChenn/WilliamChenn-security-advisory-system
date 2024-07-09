@@ -1,18 +1,67 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './Header.css'; // Assuming you have a separate CSS file for styling
-import NavigationBar from './NavigationBar.js'; // Ensure you have a NavigationBar component
+import './Header.css';
+import NavigationBar from './NavigationBar.js';
+import { useUserProfile } from '../App'; // Import the context
+import dog from '../images/dog.png';
+import cat from '../images/cat.png';
+import capybara from '../images/capybara.png';
 
 const Header = () => {
+  const { profilePicture, updateProfilePictureIndex } = useUserProfile();
+
+  const [dropdownVisible, setDropdownVisible] = useState(false);
+
+  const profilePictures = [dog, cat, capybara];
+
+  const handleProfilePictureClick = () => {
+    setDropdownVisible(!dropdownVisible);
+  };
+
+  const handleProfilePictureSelect = async (index) => {
+    try {
+      await updateProfilePictureIndex(index);
+      setDropdownVisible(false); // Close dropdown after selecting a picture
+    } catch (error) {
+      console.error('Error updating profile picture:', error);
+    }
+  };
+
   return (
     <header className="duke-banner">
-      <div className="duke-container">
+      <div className="navbar-container">
+        <NavigationBar />
+      </div>
+      <div className="title-container">
         <Link to="/" className="duke-logo-link">
           <div className="duke-logo">Duke</div>
           <div className="duke-entity-name">| IT Security Advisory Dashboard</div>
         </Link>
-        <div className="navbar-container">
-          <NavigationBar />
+      </div>
+      <div className="profile-picture-container">
+        <div
+          className="profile-picture-wrapper"
+          onClick={handleProfilePictureClick}
+        >
+          {profilePicture ? (
+            <img src={profilePicture} alt="Profile" className="profile-picture" />
+          ) : (
+            <div className="profile-placeholder">User</div>
+          )}
+          <div
+            className={`profile-dropdown ${dropdownVisible ? 'show' : ''}`}
+            onMouseLeave={() => setDropdownVisible(false)}
+          >
+            {profilePictures.map((picture, index) => (
+              <img
+                key={index}
+                src={picture}
+                alt={`Profile option ${index + 1}`}
+                className={`profile-thumbnail ${profilePicture === picture ? 'selected' : ''}`}
+                onClick={() => handleProfilePictureSelect(index)}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </header>
@@ -20,3 +69,4 @@ const Header = () => {
 };
 
 export default Header;
+

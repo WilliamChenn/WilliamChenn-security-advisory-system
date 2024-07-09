@@ -13,12 +13,17 @@
   box-sizing: border-box; /* Ensure padding is included in width */
 }
 
-.duke-container {
+.navbar-container {
   display: flex;
   align-items: center;
-  margin-left: 20px;
-  width: 100%;
-  box-sizing: border-box; /* Ensure padding is included in width */
+  margin-right: 10px; /* Space between navbar and title */
+}
+
+.title-container {
+  display: flex;
+  align-items: center;
+  margin-left: 20px; /* Space from left edge */
+  flex-grow: 1; /* Allow the title to take up remaining space */
 }
 
 .duke-logo-link {
@@ -40,8 +45,73 @@
   font-weight: 500;
 }
 
-.navbar-container {
+.profile-picture-container {
   display: flex;
   align-items: center;
-  margin-left: auto;
+  margin-right: 50px; 
 }
+
+.profile-picture {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer; /* Add cursor pointer to indicate clickability */
+}
+
+.profile-placeholder {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  color: #012169;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.profile-picture-wrapper,
+.profile-placeholder-wrapper {
+  position: relative;
+  cursor: pointer;
+}
+
+.profile-dropdown {
+  position: absolute;
+  top: 60px; /* Adjust to position below the profile picture */
+  right: -50px;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: row; /* Display images horizontally */
+  z-index: 1000; /* Ensure dropdown appears above other elements */
+  padding: 10px; /* Add padding for a better look */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-20px);
+  transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.profile-dropdown.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.profile-thumbnail {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  object-fit: cover;
+  border: 2px solid transparent;
+  margin: 0 5px; /* Adjust margin for horizontal spacing */
+}
+
+.profile-thumbnail.selected {
+  border: 2px solid #007bff; /* Highlight selected thumbnail */
+}
+

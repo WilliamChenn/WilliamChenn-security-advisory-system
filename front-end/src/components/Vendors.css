@@ -10,8 +10,9 @@ h2 {
 .vendor-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); /* Smaller min width for each card */
-  gap: 20px;
-  padding: 20px;
+  gap: 10px;
+  padding: 0px;
+  align-items: center;
 }
 
 .vendor-card {
@@ -19,12 +20,10 @@ h2 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 10px;
-  background-color: #fff;
-  border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   position: relative; /* Ensure the spinner is positioned correctly */
-  height: 150px; /* Smaller fixed height for all cards */
+  height: 100px; /* Smaller fixed height for all cards */
+  width: 100px; /* Fixed width for all cards */
 }
 
 .vendor-card.loading {
@@ -32,9 +31,15 @@ h2 {
 }
 
 .vendor-logo {
-  max-width: 100%;
-  max-height: 100%; /* Adjust as needed */
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Center vertically */
+  max-width: 90%;
+  max-height: 90%; /* Adjust as needed */
   object-fit: contain; /* Ensure the image fits within the box without distortion */
+  position: relative;
+  bottom: 21px;/* You can also use left, right, bottom to move the logo accordingly */
+  right: 10px;
 }
 
 .add-vendor {
@@ -44,7 +49,8 @@ h2 {
   font-size: 24px;
   background-color: #f0f0f0;
   cursor: pointer;
-  height: 150px; /* Smaller fixed height for add vendor card */
+  height: 100px; /* Smaller fixed height for add vendor card */
+  width: 100px; /* Fixed width for add vendor card */
 }
 
 .vendor-form {
@@ -102,4 +108,3 @@ h2 {
   justify-content: center;
   z-index: 10;
 }
-

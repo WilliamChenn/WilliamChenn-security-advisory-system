@@ -22,10 +22,8 @@ function CVEpage() {
           throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        console.log('API response:', data); // Debug statement
         setVulnerability(data.data.attributes);
 
-        // Fetch remediation URL from the new route
         const remediationResponse = await fetch(`http://localhost:3001/api/v1/remediation_url/${cveId}`);
         if (!remediationResponse.ok) {
           throw new Error('Failed to fetch remediation URL');
@@ -35,7 +33,6 @@ function CVEpage() {
           setRemediationUrl(remediationData.remediation_url);
         }
 
-        // Fetch remediation from the new route
         const remediationGetResponse = await fetch(`http://localhost:3001/api/v1/remediation/${cveId}`);
         if (!remediationGetResponse.ok) {
           throw new Error('Failed to fetch remediation');
@@ -43,6 +40,8 @@ function CVEpage() {
         const remediationGetData = await remediationGetResponse.json();
         if (remediationGetData.remediation) {
           setRemediation(remediationGetData.remediation);
+        } else {
+          setRemediation(null); // Set to null instead of 'No remediation information available'
         }
       } catch (error) {
         console.error('Error fetching vulnerability:', error);
@@ -57,7 +56,7 @@ function CVEpage() {
       try {
         const response = await fetch('http://localhost:3001/api/v1/vendors');
         const data = await response.json();
-        const vendorData = data.find(vendor => vendor.id === vulnerability.vendor_id);
+        const vendorData = data.find(vendor => vendor.id === vulnerability?.vendor_id);
         if (vendorData) {
           setVendor({
             name: vendorData.name,
@@ -88,9 +87,8 @@ function CVEpage() {
         throw new Error('Failed to save remediation');
       }
 
-      // Update state with new remediation
-      setRemediation(newRemediation);
-      setIsEditing(false); // Close the chatbot after saving
+      setRemediation(newRemediation || ''); // Set to empty string instead of 'No remediation information available'
+      setIsEditing(false);
     } catch (error) {
       console.error('Error saving remediation:', error);
     }
@@ -103,50 +101,44 @@ function CVEpage() {
   return (
     <div className="cve-page-container">
       <Header />
-      <div className="cve-content-wrapper">
-        <div className="cve-text-content">
-          <h1>{vulnerability.cve_id} - {vulnerability.assigner_source_name}</h1>
-          <h2>Overview</h2>
-          <p>{vulnerability.summary}</p>
-          
-          
-
-          <p>{vulnerability.affected_versions}</p>
-          <div className="remediation-container">
-            <div className="remediation-header">
-              <h4>Remediation</h4>
-              <button 
-                onClick={() => setIsEditing(!isEditing)} 
-                className="edit-button"
-              >
-                {isEditing ? 'Cancel' : 'Edit'}
-              </button>
-            </div>
-            <div className="remediation-content">
-              {remediation && (
-                <p>{remediation}</p>
-              )}
-              {remediationUrl && (
-                <p>For more information about remediation and affected products, visit <a href={remediationUrl} target="_blank" rel="noopener noreferrer">{remediationUrl}</a></p>
-              )}
-              {isEditing && <Chatbot onSaveRemediation={handleSaveRemediation} cveId={cveId} />}
+      <div className="cve-content-container">
+        <div className="cve-content-wrapper">
+          <div className="cve-text-content">
+            <h1>{vulnerability.cve_id} - {vulnerability.assigner_source_name}</h1>
+            <h2>Overview</h2>
+            <p>{vulnerability.summary}</p>
+            <p>{vulnerability.affected_versions}</p>
+            <div className="remediation-container">
+              <div className="remediation-header">
+                <h4>Remediation</h4>
+                <button onClick={() => setIsEditing(!isEditing)} className="edit-button">
+                  {isEditing ? 'Cancel' : 'Edit'}
+                </button>
+              </div>
+              <div className="remediation-content">
+                {remediation && (
+                  <p>{remediation}</p>
+                )}
+                {remediationUrl && (
+                  <p>For more information about remediation and affected products, visit <a href={remediationUrl} target="_blank" rel="noopener noreferrer">{remediationUrl}</a></p>
+                )}
+                {isEditing && <Chatbot onSaveRemediation={handleSaveRemediation} cveId={cveId} />}
+              </div>
             </div>
           </div>
-        </div>
-        <div className="cve-circular-progress-container">
-          <CircularProgress value={vulnerability.max_cvss_base_score} />
-          {vendor && (
-            <img 
-              src={vendor.logo} 
-              alt={`${vendor.name} logo`} 
-              className="vendor-logo" 
-            />
-          )}
+          <div className="cve-circular-progress-container">
+            <CircularProgress value={vulnerability.max_cvss_base_score} />
+            {vendor && (
+              <img src={vendor.logo} alt={`${vendor.name} logo`} className="vendor-logo" />
+            )}
+          </div>
         </div>
       </div>
-      <Footer />
+      <Footer className="footer" />
     </div>
   );
 }
 
 export default CVEpage;
+
+
