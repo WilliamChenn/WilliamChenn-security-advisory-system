@@ -1,20 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
-import Vendors from '../components/Vendors'; // Import the Vendors component
+import Vendors from '../components/Vendors';
+import SecurityAlerts from './SecurityAlerts';
 import './Settings.css';
-import { FaPlus } from 'react-icons/fa'; // Import icon for add button
-import { useUserProfile } from '../App'; // Import the context
+import { useUserProfile } from '../App';
 
 function Settings() {
+  const [activeSection, setActiveSection] = useState('vendors');
   const [availableVendors, setAvailableVendors] = useState([]);
   const [userVendors, setUserVendors] = useState([]);
-  const [loadingVendor, setLoadingVendor] = useState(null); // Track the specific vendor being added
+  const [loadingVendor, setLoadingVendor] = useState(null);
   const { profilePicture } = useUserProfile();
-  const [showAddForm, setShowAddForm] = useState(false); // State to toggle add form
-  const [newVendor, setNewVendor] = useState(''); // State to handle new vendor input
+  const [showSidebar, setShowSidebar] = useState(false);
 
   useEffect(() => {
-    // Fetch all vendors from the backend
     const fetchAvailableVendors = async () => {
       try {
         const response = await fetch('http://localhost:3001/api/v1/vendors', {
@@ -24,7 +23,6 @@ function Settings() {
           throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        // Sort vendors alphabetically by name and filter those with a logo
         const vendorsWithLogo = data.filter(vendor => vendor.vendor_url);
         vendorsWithLogo.sort((a, b) => a.name.localeCompare(b.name));
         setAvailableVendors(vendorsWithLogo);
@@ -37,7 +35,6 @@ function Settings() {
   }, []);
 
   useEffect(() => {
-    // Fetch user vendors from the backend
     const fetchUserVendors = async () => {
       try {
         const response = await fetch('http://localhost:3001/api/v1/user_vendors', {
@@ -61,7 +58,6 @@ function Settings() {
     const vendorId = parseInt(value);
 
     if (checked) {
-      // Add vendor
       try {
         const response = await fetch(`http://localhost:3001/api/v3/vendors/${vendorId}/add_user`, {
           method: 'POST',
@@ -91,7 +87,6 @@ function Settings() {
         console.error('Error adding vendor:', error);
       }
     } else {
-      // Remove vendor
       try {
         const response = await fetch(`http://localhost:3001/api/v3/vendors/${vendorId}/remove_user`, {
           method: 'DELETE',
@@ -109,43 +104,95 @@ function Settings() {
     }
   };
 
+  const handleLogout = async () => {
+    try {
+      const response = await fetch('http://localhost:3001/api/v3/users/logout', {
+        method: 'POST',
+        credentials: 'include', // Ensure cookies are included in the request
+      });
+
+      if (response.ok) {
+        // Clear any authentication tokens or user data stored on the client side
+        localStorage.removeItem('authToken'); // Example: removing a token from local storage
+        sessionStorage.removeItem('authToken'); // Example: removing a token from session storage
+        // Optionally, clear all local storage/session storage items
+        localStorage.clear();
+        sessionStorage.clear();
+
+        // Redirect to the Shibboleth logout URL
+        window.location.href = 'https://shib.oit.duke.edu/cgi-bin/logout.pl?logoutWithoutPrompt=1&returnto=http://www.oit.duke.edu';
+      } else {
+        console.error("Failed to logout");
+      }
+    } catch (error) {
+      console.error("Error during logout:", error);
+    }
+  };
+
+  const renderSection = () => {
+    switch (activeSection) {
+      case 'vendors':
+        return (
+          <div className="settings-container">
+            <div className="left-section">
+              <div className="vendor-selection">
+                <h2>Available Vendors</h2>
+                <ul className="vendor-list">
+                  {availableVendors.length > 0 ? (
+                    availableVendors.map((vendor) => (
+                      <li key={vendor.id} className="vendor-list-item">
+                        <div className="vendor-item-wrapper">
+                          <input
+                            type="checkbox"
+                            id={`vendor-${vendor.id}`}
+                            value={vendor.id}
+                            checked={userVendors.some((v) => v.id === vendor.id)}
+                            onChange={handleVendorCheck}
+                            className="vendor-checkbox"
+                          />
+                          <label htmlFor={`vendor-${vendor.id}`} className="vendor-label">{vendor.name}</label>
+                          <img src={vendor.vendor_url} alt={vendor.name} className="vendor-logo-small" />
+                        </div>
+                      </li>
+                    ))
+                  ) : (
+                    <li>No vendors available</li>
+                  )}
+                </ul>
+              </div>
+            </div>
+            <div className="middle-section">
+              <div className="vendors-section vendors-page">
+                <Vendors vendors={userVendors} setVendors={setUserVendors} loadingVendor={loadingVendor} setLoadingVendor={setLoadingVendor} /> {/* Pass props to Vendors component */}
+              </div>
+            </div>
+          </div>
+        );
+      case 'profile':
+        return <div>Profile Section (Placeholder)</div>;
+      case 'alerts':
+        return <SecurityAlerts />;
+      default:
+        return null;
+    }
+  };
+
   return (
     <div className="settings-page">
       <Header profilePicture={profilePicture} />
-      <div className="settings-container">
-        <div className="left-section">
-          <div className="vendor-selection">
-            <h2>Available Vendors</h2>
-            <ul className="vendor-list">
-              {availableVendors.length > 0 ? (
-                availableVendors.map((vendor) => (
-                  <li key={vendor.id} className="vendor-list-item">
-                    <div className="vendor-item-wrapper">
-                      <input
-                        type="checkbox"
-                        id={`vendor-${vendor.id}`}
-                        value={vendor.id}
-                        checked={userVendors.some((v) => v.id === vendor.id)}
-                        onChange={handleVendorCheck}
-                        className="vendor-checkbox"
-                      />
-                      <label htmlFor={`vendor-${vendor.id}`} className="vendor-label">{vendor.name}</label>
-                      <img src={vendor.vendor_url} alt={vendor.name} className="vendor-logo-small" />
-                    </div>
-                  </li>
-                ))
-              ) : (
-                <li>No vendors available</li>
-              )}
-            </ul>
-          </div>
-        </div>
-        <div className="middle-section">
-          <div className="vendors-section vendors-page">
-            <h2>Vendors You Are Tracking</h2>
-            <Vendors vendors={userVendors} setVendors={setUserVendors} loadingVendor={loadingVendor} setLoadingVendor={setLoadingVendor} /> {/* Pass props to Vendors component */}
-          </div>
-        </div>
+      <button className="sidebar-toggle" onClick={() => setShowSidebar(!showSidebar)}>
+        ☰
+      </button>
+      <div className={`sidebar ${showSidebar ? 'show' : ''}`}>
+        <ul>
+          <li onClick={() => setActiveSection('profile')}>Profile</li>
+          <li onClick={() => setActiveSection('vendors')}>Vendors</li>
+          <li onClick={() => setActiveSection('alerts')}>Security Alerts</li>
+          <li onClick={handleLogout}>Logout</li>
+        </ul>
+      </div>
+      <div className={`content ${showSidebar ? 'shifted' : ''}`}>
+        {renderSection()}
       </div>
     </div>
   );

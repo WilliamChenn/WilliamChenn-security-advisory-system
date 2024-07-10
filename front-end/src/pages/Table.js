@@ -7,7 +7,6 @@ import Sidebar from '../components/Sidebar';
 import styled from 'styled-components';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-  
 
 const TableContainer = styled.div`
   margin: 20px;
@@ -30,11 +29,11 @@ const HeaderContainer = styled.div`
 
 const FilterButtonWrapper = styled.div`
   display: flex;
-  justify-content: flex-end; /* Align to the right */
   margin: 0px 0px 0px; /* Margin to position below the header and add spacing */
   margin-top: 130px;
-  margin-right: 50px;
+  margin-left: ${({ sidebar }) => (sidebar ? '298px' : '48px')}; /* Adjusted margin to move with the sidebar */
   z-index: 101; /* Ensure the button is above other elements */
+  transition: margin-left 0.3s ease;
 `;
 
 const FilterButton = styled.button`
@@ -93,7 +92,7 @@ const Table = () => {
     startDate: '',
     endDate: '',
     searchQuery: '',
-    vendors: [], 
+    vendors: [],
   });
 
   useEffect(() => {
@@ -142,7 +141,7 @@ const Table = () => {
       startDate.setDate(currentDate.getDate() - 14);
       endDate = currentDate;
     }
-  
+
     return data.filter(item => {
       const severityLevel = getSeverityClass(item.max_cvss_base_score);
       const severityMatch = filters.severity.length === 0 || filters.severity.includes(severityLevel);
@@ -211,7 +210,6 @@ const Table = () => {
       return { ...prevFilters, [name]: value };
     });
   };
-  
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -220,7 +218,7 @@ const Table = () => {
   return (
     <Wrapper>
       <Header />
-      <FilterButtonWrapper>
+      <FilterButtonWrapper sidebar={sidebar}>
         <FilterButton onClick={showSidebar} sidebar={sidebar}>
           Filter Here
           <img
@@ -300,7 +298,7 @@ const Table = () => {
         filters={filters}
       />
     </Wrapper>
-  );  
+  );
 };
 
 export default Table;
