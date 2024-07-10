@@ -14,15 +14,16 @@ module Api
         def clear_remediation
           cve = CVE.find_by(cve_id: params[:id])
           if cve
-            if cve.(remediation: nil)
+            if cve.update(remediation: nil)
               render json: { message: 'Remediation cleared successfully' }, status: :ok
             else
-              render json: { error: 'Failed to clear remediation'}, status: :unprocessable_entity
+              render json: { error: 'Failed to clear remediation' }, status: :unprocessable_entity
             end
-
+          else
+            render json: { error: 'CVE not found' }, status: :not_found
           end
         end
-
+        
         def save_remediation
           cve = CVE.find_by(cve_id: params[:id])
           if cve
