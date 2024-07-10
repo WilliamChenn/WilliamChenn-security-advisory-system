@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
       post '/remediation/:id', to: 'cves#save_remediation'
       get '/remediation/:id', to: 'cves#get_remediation'
+      get '/remediation/:id', to: 'cves#clear_remediation'
       #/api/v1/remediation/CVE-2024-35249
 
       resources :cves, only: [:index, :show] do
