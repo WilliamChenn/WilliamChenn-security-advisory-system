@@ -17,7 +17,7 @@
 /back-end/tmp/*
 !/log/.keep
 !/tmp/.keep
-/tmp/*
+/tmp/cache/*
 
 # Ignore pidfiles, but keep the directory.
 /tmp/pids/*
