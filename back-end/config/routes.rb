@@ -7,7 +7,15 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      get '/remediation_url/:id', to: 'cves#remediation_url'
+      get '/remediation_url/:id', to: 'cves#remediation_url' 
+      #/api/v1/remediation_url/CVE-2024-35249
+
+      post '/remediation/:id', to: 'cves#save_remediation'
+      get '/remediation/:id', to: 'cves#get_remediation'
+      #/api/v1/remediation/CVE-2024-35249
+      delete '/remediation/:id', to: 'cves#clear_remediation'
+      #/api/v1/clear_remediation/CVE-2024-35249
+
       resources :cves, only: [:index, :show] do
         collection do
           get 'recent'
@@ -27,6 +35,10 @@ Rails.application.routes.draw do
         member do
           post 'add_user'
           delete 'remove_user'
+        end
+        collection do
+          post 'refresh_vendors'
+          #'http://localhost:3001/api/v3/vendors/refresh_vendors'
         end
       end
 
