@@ -22,7 +22,7 @@
 
 .cve-content-container {
     flex: 1;
-    padding: 0 120px 0 40px; /* Adjusted padding: left 20px, right 60px */
+    padding: 0 180px 0 40px; /* Adjusted padding: left 20px, right 60px */
     color: #012169;
     font-family: "Open Sans";
     font-size: 1.2em;
