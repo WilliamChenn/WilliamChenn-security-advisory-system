@@ -36,6 +36,10 @@ Rails.application.routes.draw do
           post 'add_user'
           delete 'remove_user'
         end
+        collection do
+          post 'refresh_vendors'
+          #'http://localhost:3001/api/v3/vendors/refresh_vendors'
+        end
       end
 
       resources :cves, only: [:index] do

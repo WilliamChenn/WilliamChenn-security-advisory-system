@@ -13,6 +13,7 @@ function CVEpage() {
   const [remediationUrl, setRemediationUrl] = useState('');
   const [isEditing, setIsEditing] = useState(false);
   const [vendor, setVendor] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchVulnerability = async () => {
@@ -45,6 +46,7 @@ function CVEpage() {
         }
       } catch (error) {
         console.error('Error fetching vulnerability:', error);
+        setError(error.message);
       }
     };
 
@@ -65,6 +67,7 @@ function CVEpage() {
         }
       } catch (error) {
         console.error('Error fetching vendors:', error);
+        setError(error.message);
       }
     };
 
@@ -91,6 +94,7 @@ function CVEpage() {
       setIsEditing(false);
     } catch (error) {
       console.error('Error saving remediation:', error);
+      setError(error.message);
     }
   };
 
@@ -110,8 +114,13 @@ function CVEpage() {
       setRemediation(''); // Clear remediation information
     } catch (error) {
       console.error('Error clearing remediation:', error);
+      setError(error.message);
     }
   };
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   if (!vulnerability) {
     return <div>Loading...</div>;
@@ -164,6 +173,3 @@ function CVEpage() {
 }
 
 export default CVEpage;
-
-
-
