@@ -175,9 +175,14 @@ p {
     background-color: #0056b3;
 }
 
+.clear-button {
+    margin-left: 10px; /* Add margin to separate from the Edit button */
+}
+
 .footer {
     margin-top: auto; /* Push the footer to the bottom of the page */
 }
+
 
 
   

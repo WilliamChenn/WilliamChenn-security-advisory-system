@@ -94,6 +94,25 @@ function CVEpage() {
     }
   };
 
+  const handleClearRemediation = async () => {
+    try {
+      const response = await fetch(`http://localhost:3001/api/v1/remediation/${cveId}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to clear remediation');
+      }
+
+      setRemediation(''); // Clear remediation information
+    } catch (error) {
+      console.error('Error clearing remediation:', error);
+    }
+  };
+
   if (!vulnerability) {
     return <div>Loading...</div>;
   }
@@ -111,9 +130,14 @@ function CVEpage() {
             <div className="remediation-container">
               <div className="remediation-header">
                 <h4>Remediation</h4>
-                <button onClick={() => setIsEditing(!isEditing)} className="edit-button">
-                  {isEditing ? 'Cancel' : 'Edit'}
-                </button>
+                <div>
+                  <button onClick={() => setIsEditing(!isEditing)} className="edit-button">
+                    {isEditing ? 'Cancel' : 'Edit'}
+                  </button>
+                  <button onClick={handleClearRemediation} className="edit-button clear-button">
+                    Clear
+                  </button>
+                </div>
               </div>
               <div className="remediation-content">
                 {remediation && (
@@ -140,5 +164,6 @@ function CVEpage() {
 }
 
 export default CVEpage;
+
 
 
