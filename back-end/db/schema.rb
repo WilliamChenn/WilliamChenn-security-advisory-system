@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_10_173454) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_11_273437) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -114,6 +114,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_10_173454) do
     t.index ["vendor_id"], name: "index_user_notification_vendors_on_vendor_id"
   end
 
+  create_table "user_severities", force: :cascade do |t|
+    t.string "severity"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_severities_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "uid"
@@ -122,6 +130,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_10_173454) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "user_png"
+    t.string "severity_level"
     t.index ["uid"], name: "index_users_on_uid", unique: true
   end
 
@@ -144,6 +153,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_10_173454) do
   add_foreign_key "user_frequencies", "users"
   add_foreign_key "user_notification_vendors", "users"
   add_foreign_key "user_notification_vendors", "vendors"
+  add_foreign_key "user_severities", "users"
   add_foreign_key "users_vendors", "users", column: "uid", primary_key: "uid"
   add_foreign_key "users_vendors", "vendors"
 end
+
