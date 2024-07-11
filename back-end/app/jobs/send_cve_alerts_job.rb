@@ -8,7 +8,8 @@ class SendCVEAlertsJob < ApplicationJob
       'Biweekly' => 2.weeks,
       'Monthly' => 1.month
     }
-
+    
+#For each value of frequency it refers to user_frequencies table to note the frequency for each user
     frequencies.each do |label, interval|
       users = User.joins(:user_frequency).where(user_frequencies: { frequency: label })
       send_emails_to_users(users)
