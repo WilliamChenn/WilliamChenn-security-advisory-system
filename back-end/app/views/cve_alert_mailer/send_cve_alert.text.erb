@@ -1,10 +1,18 @@
-<!-- app/views/notification_mailer/send_cve_alert.text.erb -->
-CVE Alerts
-==========
-Dear <%= @user.name %>,
+<!-- app/views/cve_alert_mailer/alert_email.text.erb -->
+Hi <%= @user.name %>,
 
-Here are the latest CVEs for your selected vendors:
+Here are the latest CVE alerts for your selected vendors:
 
-<% @cves.each do |cve| %>
-  - <%= cve.description %>
+<% @vendors.each do |vendor| %>
+Vendor: <%= vendor.name %>
+<% @cves.select { |cve| cve.vendor_id == vendor.id }.each do |cve| %>
+  - CVE ID: <%= cve.cve_id %>
+    Summary: <%= cve.summary %>
+    Publish Date: <%= cve.publish_date %>
+    Remediation URL: <%= cve.remediation_url %>
+
 <% end %>
+<% end %>
+
+Best regards,
+The CVE Alerts Team

@@ -1,21 +1,29 @@
-# app/jobs/send_cve_alerts_job.rb
 class SendCVEAlertsJob < ApplicationJob
   queue_as :default
 
   def perform
-    User.includes(:vendors, :user_notification_vendors).find_each do |user|
-      cves = fetch_cves_for_user(user)
-      NotificationMailer.send_cve_alert(user, cves).deliver_later if cves.any?
+    frequencies = {
+      'Daily' => 1.day,
+      'Weekly' => 1.week,
+      'Biweekly' => 2.weeks,
+      'Monthly' => 1.month
+    }
+
+    frequencies.each do |label, interval|
+      users = User.joins(:user_frequency).where(user_frequencies: { frequency: label })
+      send_emails_to_users(users)
     end
   end
 
   private
 
-  def fetch_cves_for_user(user)
-    vendors = user.vendors
-    # Fetch CVEs for the user's vendors from your CVE data source.
-    # Replace the following line with the actual logic to fetch CVEs.
-    CVE.where(vendor: vendors)
+  def send_emails_to_users(users)
+    users.each do |user|
+      vendors = user.vendors
+      # Fetch CVEs for vendors and prepare email content
+      cves = vendors.map { |vendor| FetchCVEDataService.call(vendor.name) }.flatten
+      CVEAlertMailer.alert_email(user, vendors).deliver_now
+    end
   end
 end
 

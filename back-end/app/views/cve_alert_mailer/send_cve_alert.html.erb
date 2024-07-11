@@ -1,9 +1,21 @@
-<!-- app/views/notification_mailer/send_cve_alert.html.erb -->
-<h1>CVE Alerts</h1>
-<p>Dear <%= @user.name %>,</p>
-<p>Here are the latest CVEs for your selected vendors:</p>
-<ul>
-  <% @cves.each do |cve| %>
-    <li><%= cve.description %></li>
+<!-- app/views/cve_alert_mailer/alert_email.html.erb -->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>CVE Alerts</title>
+</head>
+<body>
+  <h1>Hi <%= @user.name %>,</h1>
+  <p>Here are the latest CVE alerts for your selected vendors:</p>
+
+  <% @vendors.each do |vendor| %>
+    <h2><%= vendor.name %></h2>
+    <ul>
+      <% @cves.select { |cve| cve.vendor_id == vendor.id }.each do |cve| %>
+        <li><strong><%= cve.cve_id %></strong>: <%= cve.summary %></li>
+      <% end %>
+    </ul>
   <% end %>
-</ul>
+</body>
+</html>

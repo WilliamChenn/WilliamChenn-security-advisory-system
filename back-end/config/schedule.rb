@@ -20,5 +20,5 @@
 # end
 
 every 1.day, at: '12:00 am' do
-    runner "SendCVEAlertsJob.perform_later"
-  end
+  runner "SendCVEAlertsJob.perform_later"
+end

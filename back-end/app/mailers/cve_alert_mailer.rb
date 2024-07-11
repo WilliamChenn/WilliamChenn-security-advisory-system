@@ -1,9 +1,11 @@
+# app/mailers/cve_alert_mailer.rb
 class CVEAlertMailer < ApplicationMailer
-    default from: 'your_email@duke.edu'
+  def alert_email(user, vendors, cves)
+    @user = user
+    @vendors = vendors
+    @cves = cves
 
-    def send_cve_alert(user, cves)
-      @user = user
-      @cves = cves
-      mail(to: @user.email, subject: 'CVE Alerts for Your Selected Vendors')
-    end
+    mail(to: @user.email, subject: 'CVE Alerts')
+  end
 end
+
