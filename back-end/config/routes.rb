@@ -7,6 +7,12 @@ Rails.application.routes.draw do
     namespace :v1 do
       get '/remediation_url/:id', to: 'cves#remediation_url'
 
+      resource :user_frequencies, only: [:show, :create, :update, :destroy]
+      resource :user_severities, only: [:show, :create, :update, :destroy]
+
+      resources :user_notification_vendors
+      #post '/user_notification_vendors/:id', to: 'user_notification_vendors#create'
+
       post '/remediation/:id', to: 'cves#save_remediation'
       get '/remediation/:id', to: 'cves#get_remediation'
       delete '/remediation/:id', to: 'cves#clear_remediation'

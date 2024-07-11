@@ -2,206 +2,359 @@ import React, { useState, useEffect } from 'react';
 import './SecurityAlerts.css';
 
 function SecurityAlerts() {
-  const [showForm, setShowForm] = useState(false);
-  const [vendor, setVendor] = useState('');
-  const [frequency, setFrequency] = useState('daily'); // Default frequency
-  const [time, setTime] = useState('12:00 AM'); // Default time
-  const [alerts, setAlerts] = useState([]);
-  const [vendorList, setVendorList] = useState([]);
-  const [duplicateVendorWarning, setDuplicateVendorWarning] = useState(false); // State for showing duplicate vendor warning
-  const [isFrequencySubmitted, setIsFrequencySubmitted] = useState(false); // State for frequency submission
+    const [showForm, setShowForm] = useState(false);
+    const [vendor, setVendor] = useState('');
+    const [alerts, setAlerts] = useState([]);
+    const [vendorList, setVendorList] = useState([]);
+    const [duplicateVendorWarning, setDuplicateVendorWarning] = useState(false);
+    const [frequency, setFrequency] = useState('');
+    const [frequencyStatus, setFrequencyStatus] = useState('');
+    const [severity, setSeverity] = useState('');
+    const [severityStatus, setSeverityStatus] = useState('');
 
-  useEffect(() => {
-    // Fetch vendor list from API
-    const fetchVendors = async () => {
-      try {
-        const response = await fetch('http://localhost:3001/api/v1/vendors', {
-          credentials: 'include',
-        });
-        const data = await response.json();
-        const formattedVendors = data
-          .filter((vendor) => vendor.name && vendor.vendor_url)
-          .map((vendor) => ({
-            id: vendor.id,
-            name: vendor.name,
-            logo: vendor.vendor_url,
-          }));
-        setVendorList(formattedVendors);
-      } catch (error) {
-        console.error('Error fetching vendors:', error);
-      }
+    useEffect(() => {
+        const fetchVendors = async () => {
+            try {
+                const response = await fetch('http://localhost:3001/api/v1/vendors', {
+                    credentials: 'include',
+                });
+                const data = await response.json();
+                const formattedVendors = data
+                    .filter((vendor) => vendor.name && vendor.vendor_url)
+                    .map((vendor) => ({
+                        id: vendor.id,
+                        name: vendor.name,
+                        logo: vendor.vendor_url,
+                    }));
+                setVendorList(formattedVendors);
+            } catch (error) {
+                console.error('Error fetching vendors:', error);
+            }
+        };
+
+        const fetchUserNotificationVendors = async () => {
+            try {
+                const response = await fetch('http://localhost:3001/api/v1/user_notification_vendors', {
+                    credentials: 'include',
+                });
+                if (response.ok) {
+                    const data = await response.json();
+                    const formattedAlerts = data.map((alert) => ({
+                        id: alert.id,
+                        vendor: {
+                            id: alert.vendor_id,
+                            name: alert.vendor.name,
+                            logo: alert.vendor.vendor_url,
+                        },
+                    }));
+                    setAlerts(formattedAlerts);
+                } else {
+                    console.error('Failed to fetch user notification vendors:', response.statusText);
+                }
+            } catch (error) {
+                console.error('Error fetching user notification vendors:', error);
+            }
+        };
+
+        const fetchUserFrequency = async () => {
+            try {
+                const response = await fetch('http://localhost:3001/api/v1/user_frequencies', {
+                    credentials: 'include',
+                });
+                if (response.ok) {
+                    const data = await response.json();
+                    setFrequency(data.frequency);
+                    setFrequencyStatus(`${data.frequency}`);
+                } else {
+                    console.error('Failed to fetch user frequency:', response.statusText);
+                }
+            } catch (error) {
+                console.error('Error fetching user frequency:', error);
+            }
+        };
+
+        const fetchUserSeverity = async () => {
+            try {
+                const response = await fetch('http://localhost:3001/api/v1/user_severities', {
+                    credentials: 'include',
+                });
+                if (response.ok) {
+                    const data = await response.json();
+                    setSeverityStatus(data.severity);
+                    setSeverity(data.severity);
+                } else {
+                    console.error('Failed to fetch severity:', response.statusText);
+                }
+            } catch (error) {
+                console.error('Error fetching severity:', error);
+            }
+        };
+
+        fetchVendors();
+        fetchUserNotificationVendors();
+        fetchUserFrequency();
+        fetchUserSeverity();
+    }, []);
+
+    const getAuthToken = () => {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; auth_token=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
     };
 
-    fetchVendors();
-  }, []);
+    const handleFrequencyChange = async (selectedFrequency) => {
+        try {
+            // First delete existing frequency
+            await fetch('http://localhost:3001/api/v1/user_frequencies', {
+                method: 'DELETE',
+                headers: {
+                    Authorization: `Bearer ${getAuthToken()}`,
+                },
+                credentials: 'include',
+            });
 
-  const getAuthToken = () => {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; auth_token=`);
-    if (parts.length === 2) return parts.pop().split(';').shift();
-  }
+            // Then create new frequency
+            const response = await fetch('http://localhost:3001/api/v1/user_frequencies', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${getAuthToken()}`,
+                },
+                body: JSON.stringify({
+                    user_frequency: {
+                        frequency: selectedFrequency,
+                    },
+                }),
+                credentials: 'include',
+            });
 
-  const handleAddClick = () => {
-    setShowForm(true);
-    setDuplicateVendorWarning(false); // Reset duplicate vendor warning state
-  };
+            if (response.ok) {
+                setFrequency(selectedFrequency);
+                setFrequencyStatus(`${selectedFrequency}`);
+            } else {
+                console.error('Failed to update frequency:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Error updating frequency:', error);
+        }
+    };
 
-  const handleCancelClick = () => {
-    setShowForm(false);
-    resetForm();
-    setDuplicateVendorWarning(false); // Reset duplicate vendor warning state
-  };
+    const handleSeverityChange = async (selectedSeverity) => {
+        try {
+            // Check if there's an existing severity entry
+            const responseCheck = await fetch('http://localhost:3001/api/v1/user_severities', {
+                credentials: 'include',
+            });
+    
+            if (responseCheck.ok) {
+                // There is an existing severity entry, so delete it
+                await fetch('http://localhost:3001/api/v1/user_severities', {
+                    method: 'DELETE',
+                    headers: {
+                        Authorization: `Bearer ${getAuthToken()}`,
+                    },
+                    credentials: 'include',
+                });
+            } else if (responseCheck.status === 404) {
+                // No existing severity entry found, do nothing
+            } else {
+                console.error('Failed to check severity:', responseCheck.statusText);
+                return;
+            }
+    
+            // Create new severity entry
+            const response = await fetch('http://localhost:3001/api/v1/user_severities', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${getAuthToken()}`,
+                },
+                body: JSON.stringify({
+                    user_severity: { severity: selectedSeverity },
+                }),
+                credentials: 'include',
+            });
+    
+            if (response.ok) {
+                setSeverity(selectedSeverity);  // Update severity state
+                setSeverityStatus(selectedSeverity);  // Update severityStatus state if needed
+            } else {
+                console.error('Failed to update severity:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Error updating severity:', error);
+        }
+    };
+    
 
-  const handleSubmitFrequency = () => {
-    setIsFrequencySubmitted(true);
-  };
+    const handleAddClick = () => {
+        setShowForm(true);
+        setDuplicateVendorWarning(false);
+    };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    const selectedVendor = vendorList.find((v) => v.name === vendor);
-
-    // Check if the vendor already exists
-    const isVendorAlreadyAdded = alerts.some(alert => alert.vendor.name === selectedVendor.name);
-
-    if (isVendorAlreadyAdded) {
-      setDuplicateVendorWarning(true); // Show warning
-      return;
-    }
-
-    try {
-      const response = await fetch('http://localhost:3001/api/v1/user_notification_vendors', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${getAuthToken()}` // Include auth token
-        },
-        body: JSON.stringify({
-          vendor_id: selectedVendor.id, // Pass vendor_id to match backend parameter
-          frequency: frequency,
-          time: time
-        }),
-        credentials: 'include'
-      });
-
-      if (response.ok) {
-        const responseData = await response.json();
-        const newAlert = { vendor: selectedVendor, frequency, time };
-        setAlerts([...alerts, newAlert]);
-        resetForm();
+    const handleCancelClick = () => {
         setShowForm(false);
-      } else {
-        console.error('Failed to add vendor notification:', response.statusText);
-      }
-    } catch (error) {
-      console.error('Error adding vendor notification:', error);
-    }
-  };
+        resetForm();
+        setDuplicateVendorWarning(false);
+    };
 
-  const handleDeleteAlert = async (index, vendorId) => {
-    try {
-      const response = await fetch(`http://localhost:3001/api/v1/user_notification_vendors/${vendorId}`, {
-        method: 'DELETE',
-        headers: {
-          'Authorization': `Bearer ${getAuthToken()}` // Include auth token
-        },
-        credentials: 'include'
-      });
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const selectedVendor = vendorList.find((v) => v.name === vendor);
 
-      if (response.ok) {
-        const updatedAlerts = alerts.filter((_, idx) => idx !== index);
-        setAlerts(updatedAlerts);
-      } else {
-        console.error('Failed to delete vendor notification:', response.statusText);
-      }
-    } catch (error) {
-      console.error('Error deleting vendor notification:', error);
-    }
-  };
+        const isVendorAlreadyAdded = alerts.some((alert) => alert.vendor.name === selectedVendor.name);
 
-  const resetForm = () => {
-    setVendor('');
-  };
+        if (isVendorAlreadyAdded) {
+            setDuplicateVendorWarning(true);
+            return;
+        }
 
-  const handleDismissWarning = () => {
-    setDuplicateVendorWarning(false);
-  };
+        try {
+            const response = await fetch('http://localhost:3001/api/v1/user_notification_vendors', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${getAuthToken()}`,
+                },
+                body: JSON.stringify({
+                    vendor_id: selectedVendor.id,
+                }),
+                credentials: 'include',
+            });
 
-  return (
-    <div className="security-alerts-container">
-      <h2>Security Alert Preferences</h2>
-      <div>
-        <label>
-          Frequency:
-          <select value={frequency} onChange={(e) => setFrequency(e.target.value)} disabled={isFrequencySubmitted}>
-            <option value="daily">Daily</option>
-            <option value="weekly">Weekly</option>
-            <option value="bi-weekly">Bi-weekly</option>
-            <option value="monthly">Monthly</option>
-          </select>
-        </label>
-        <button onClick={handleSubmitFrequency} disabled={isFrequencySubmitted}>Submit Frequency</button>
-      </div>
+            if (response.ok) {
+                const responseData = await response.json();
+                const newAlert = {
+                    id: responseData.id,
+                    vendor: {
+                        id: selectedVendor.id,
+                        name: selectedVendor.name,
+                        logo: selectedVendor.logo,
+                    },
+                };
+                setAlerts([...alerts, newAlert]);
+                resetForm();
+                setShowForm(false);
+            } else {
+                console.error('Failed to add vendor notification:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Error adding vendor notification:', error);
+        }
+    };
 
-      {isFrequencySubmitted && (
-        <button onClick={handleAddClick} disabled={showForm}>Add Vendor</button>
-      )}
+    const handleDeleteAlert = async (index, vendorId) => {
+        try {
+            const response = await fetch(`http://localhost:3001/api/v1/user_notification_vendors/${vendorId}`, {
+                method: 'DELETE',
+                headers: {
+                    Authorization: `Bearer ${getAuthToken()}`,
+                },
+                credentials: 'include',
+            });
 
-      {showForm && (
-        <form onSubmit={handleSubmit}>
-          <label>
-            Vendor:
-            <select
-              value={vendor}
-              onChange={(e) => setVendor(e.target.value)}
-              required
-            >
-              <option value="">Select Vendor</option>
-              {vendorList.map((v) => (
-                <option key={v.id} value={v.name}>
-                  {v.name}
-                </option>
-              ))}
-            </select>
-          </label>
+            if (response.ok) {
+                const updatedAlerts = alerts.filter((alert) => alert.vendor.id !== vendorId);
+                setAlerts(updatedAlerts);
+            } else {
+                console.error('Failed to delete vendor notification:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Error deleting vendor notification:', error);
+        }
+    };
 
-          <div className="form-buttons">
-            <button type="submit">Submit</button>
-            <button type="button" onClick={handleCancelClick}>Cancel</button>
-          </div>
-        </form>
-      )}
+    const resetForm = () => {
+        setVendor('');
+    };
 
-      {duplicateVendorWarning && (
-        <div className="popup">
-          <p>Vendor has already been added.</p>
-          <button onClick={handleDismissWarning}>OK</button>
-        </div>
-      )}
+    const handleDismissWarning = () => {
+        setDuplicateVendorWarning(false);
+    };
 
-      <div className="alerts-list">
-        <h3>Current Alerts:</h3>
-        {alerts.length === 0 ? (
-          <p>No alerts configured.</p>
-        ) : (
-          <ul>
-            {alerts.map((alert, index) => (
-              <li key={index} className="alert-item">
-                <img src={alert.vendor.logo} alt={alert.vendor.name} className="vendor-logo" />
-                <div className="alert-details">
-                  <p><strong>Vendor:</strong> {alert.vendor.name}</p>
-                  <p><strong>Frequency:</strong> {alert.frequency}</p>
-                  <p><strong>Time:</strong> {alert.time}</p>
+    return (
+        <div className="security-alerts-container">
+            <h2>Email Notification Preferences</h2>
+            <div className="frequency-selection">
+                <br />
+                <h3>Frequency:</h3>
+                {frequencyStatus && <p className="frequency-status">Current frequency: <strong style={{ color: '#0417aa' }}>{frequencyStatus}</strong></p>}
+                <select value={frequency} onChange={(e) => handleFrequencyChange(e.target.value)}>
+                    <option value="daily">Daily</option>
+                    <option value="weekly">Weekly</option>
+                    <option value="biweekly">Biweekly</option>
+                    <option value="monthly">Monthly</option>
+                </select>
+            </div>
+
+            <div className="severity-selection">
+                <br />
+                <h3>CVE Severity:</h3>
+                {severityStatus && <p className="severity-status">Current severity: <strong style={{ color: '#0417aa' }}>{severityStatus}</strong></p>}
+                <select value={severity} onChange={(e) => handleSeverityChange(e.target.value)}>
+                    <option value="all">All (CVSS: 1-10)</option>
+                    <option value="medium">Medium and up (CVSS: 4-10)</option>
+                    <option value="high">High and up (CVSS: 7-10)</option>
+                    <option value="critical">Critical (CVSS: 9-10)</option>
+                </select>
+            </div>
+
+            <div className="alerts-list">
+                <h3>Vendors:</h3>
+                {alerts.length === 0 ? (
+                    <p>No Vendors Selected.</p>
+                ) : (
+                    <ul className="vendor-list">
+                        {alerts.map((alert, index) => (
+                            <li key={alert.id} className="alert-item">
+                                <div className="vendor-info">
+                                    <img src={alert.vendor.logo} alt={alert.vendor.name} className="vendor-logo" />
+                                    <p><strong>{alert.vendor.name}</strong></p>
+                                </div>
+                                <button id="delete-button" onClick={() => handleDeleteAlert(index, alert.vendor.id)}>Delete</button>
+                            </li>
+                        ))}
+                    </ul>
+                )}
+
+            </div>
+
+            <button className="add-vendor-button" onClick={handleAddClick}>Add Vendor</button>
+
+            {showForm && (
+                <form onSubmit={handleSubmit}>
+                    <label>
+                        <br />
+                        Vendor:
+                        <select value={vendor} onChange={(e) => setVendor(e.target.value)} required>
+                            <option value="">Select Vendor</option>
+                            {vendorList.map((v) => (
+                                <option key={v.id} value={v.name}>
+                                    {v.name}
+                                </option>
+                            ))}
+                        </select>
+                    </label>
+
+                    <div className="form-buttons">
+                        <button type="submit">Submit</button>
+                        <button type="button" onClick={handleCancelClick}>
+                            Cancel
+                        </button>
+                    </div>
+                </form>
+            )}
+
+            {duplicateVendorWarning && (
+                <div className="popup">
+                    <p>Vendor has already been added.</p>
+                    <button onClick={handleDismissWarning}>OK</button>
                 </div>
-                <button onClick={() => handleDeleteAlert(index, alert.vendor.id)} className="delete-button">
-                  Delete
-                </button>
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
-    </div>
-  );
+            )}
+        </div>
+    );
+
 }
 
 export default SecurityAlerts;
+
