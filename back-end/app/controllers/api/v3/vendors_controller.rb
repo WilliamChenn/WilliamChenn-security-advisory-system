@@ -20,7 +20,19 @@ class Api::V3::VendorsController < ApplicationController
         end
       end
     end
-  
+
+    def refresh_vendors
+      user = current_user
+      if user
+        user.vendors.find_each do |vendor|
+          FetchCVEDataService.call_with_limit(vendor.name)  # Call with limit
+        end
+        render json: { message: 'Vendors refreshed successfully' }, status: :ok
+      else
+        render json: { error: 'Not Authorized' }, status: :unauthorized
+      end
+    end
+
     def add_user
       user = current_user
       if user
@@ -52,6 +64,8 @@ class Api::V3::VendorsController < ApplicationController
         render json: { error: 'Not Authorized' }, status: :unauthorized
       end
     end
+
+    
   
     def current_user
       @current_user
