@@ -62,3 +62,6 @@ gem 'ruby-saml', '~> 1.12.1'
 gem 'fast_jsonapi'
 gem 'jwt'
 gem 'rake', '~> 13.2.1'
+
+
+gem 'whenever', require: false

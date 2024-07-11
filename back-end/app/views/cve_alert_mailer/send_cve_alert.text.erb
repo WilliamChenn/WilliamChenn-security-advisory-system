@@ -1,0 +1,10 @@
+<!-- app/views/notification_mailer/send_cve_alert.text.erb -->
+CVE Alerts
+==========
+Dear <%= @user.name %>,
+
+Here are the latest CVEs for your selected vendors:
+
+<% @cves.each do |cve| %>
+  - <%= cve.description %>
+<% end %>

@@ -1,9 +1,9 @@
 class CVEAlertMailer < ApplicationMailer
-    default from: 'alerts@example.com'
+    default from: 'your_email@duke.edu'
 
-    def cve_alert_email(user, cve_list)
+    def send_cve_alert(user, cves)
       @user = user
-      @cve_list = cve_list
-      mail(to: @user.email, subject: 'Your CVE Alerts')
+      @cves = cves
+      mail(to: @user.email, subject: 'CVE Alerts for Your Selected Vendors')
     end
 end

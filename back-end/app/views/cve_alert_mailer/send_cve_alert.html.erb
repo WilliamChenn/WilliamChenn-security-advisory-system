@@ -1,0 +1,9 @@
+<!-- app/views/notification_mailer/send_cve_alert.html.erb -->
+<h1>CVE Alerts</h1>
+<p>Dear <%= @user.name %>,</p>
+<p>Here are the latest CVEs for your selected vendors:</p>
+<ul>
+  <% @cves.each do |cve| %>
+    <li><%= cve.description %></li>
+  <% end %>
+</ul>
