@@ -1,20 +1,15 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
   get '/auth/saml', to: 'application#saml_auth', as: :saml_auth
   post '/saml', to: 'application#saml_consume', as: :saml_consume
   get '/is_logged_in', to: 'application#is_logged_in'
 
   namespace :api do
     namespace :v1 do
-      get '/remediation_url/:id', to: 'cves#remediation_url' 
-      #/api/v1/remediation_url/CVE-2024-35249
+      get '/remediation_url/:id', to: 'cves#remediation_url'
 
       post '/remediation/:id', to: 'cves#save_remediation'
       get '/remediation/:id', to: 'cves#get_remediation'
-      #/api/v1/remediation/CVE-2024-35249
       delete '/remediation/:id', to: 'cves#clear_remediation'
-      #/api/v1/clear_remediation/CVE-2024-35249
 
       resources :cves, only: [:index, :show] do
         collection do
@@ -24,6 +19,11 @@ Rails.application.routes.draw do
       resources :vendors, only: [:index]
       post 'vendors/:name', to: 'vendors#create', as: 'create_vendor_by_name'
       delete 'vendors/:name', to: 'vendors#destroy', as: 'delete_vendor_by_name'
+      resources :users, only: [] do
+        member do
+          get 'email_and_uid', to: 'users#show_email_and_uid'
+        end
+      end
     end
 
     namespace :v2 do
@@ -38,7 +38,6 @@ Rails.application.routes.draw do
         end
         collection do
           post 'refresh_vendors'
-          #'http://localhost:3001/api/v3/vendors/refresh_vendors'
         end
       end
 
@@ -54,8 +53,11 @@ Rails.application.routes.draw do
           post 'upload_png'
           get 'get_png'
           post 'logout'
-          put 'set_profile_picture_index'  # New route for setting profile picture index
-          get 'get_profile_picture_index'  # New route for getting profile picture index
+          put 'set_profile_picture_index'
+          get 'get_profile_picture_index'
+        end
+        member do
+          get 'email_and_uid_and_name', to: 'users#show_email_and_uid_and_name'
         end
       end
     end

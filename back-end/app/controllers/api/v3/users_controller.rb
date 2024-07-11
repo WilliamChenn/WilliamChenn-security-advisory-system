@@ -6,7 +6,7 @@ module Api
       def set_profile_picture_index
         profile_picture_index = params[:profile_picture_index].to_s
 
-        if ['0', '1', '2'].include?(profile_picture_index)
+        if ['0', '1', '2', '3', '4', '5', '6'].include?(profile_picture_index) # Include all indexes for your profile pictures
           if current_user.update(user_png: profile_picture_index)
             render json: { profile_picture_index: current_user.user_png.to_i }, status: :ok
           else
@@ -23,6 +23,13 @@ module Api
         else
           render json: { error: 'Profile picture index not found' }, status: :not_found
         end
+      end
+
+      def show_email_and_uid_and_name
+        user = User.find(params[:id])
+        render json: { email: user.email, uid: user.uid, name: user.name, profile_picture_index: user.user_png.to_i }
+      rescue ActiveRecord::RecordNotFound
+        render json: { error: 'User not found' }, status: :not_found
       end
 
       def logout

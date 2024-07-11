@@ -1,17 +1,88 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Header from '../components/Header';
 import Vendors from '../components/Vendors';
 import SecurityAlerts from './SecurityAlerts';
 import './Settings.css';
-import { useUserProfile } from '../App';
+import dog from '../images/dog.png';
+import cat from '../images/cat.png';
+import capybara from '../images/capybara.png';
+import kelly from '../images/kelly.png';
+import katherine from '../images/katherine.png';
+import unicorn from '../images/unicorn.png';
+import unicorn1 from '../images/unicorn1.png';
+import Footer from '../components/Footer';
+
+const profilePictures = [dog, cat, capybara, kelly, katherine, unicorn, unicorn1];
+
+const useUserProfile = (userId) => {
+  const [profile, setProfile] = useState({
+    profilePictureIndex: 0,
+    profilePicture: dog,
+    userName: '',
+    userEmail: '',
+    userNetID: ''
+  });
+
+  const fetchProfile = useCallback(async () => {
+    try {
+      const response = await fetch(`http://localhost:3001/api/v3/users/${userId}/email_and_uid_and_name`, {
+        credentials: 'include',
+      });
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+      setProfile({
+        profilePictureIndex: data.profile_picture_index || 0,
+        profilePicture: profilePictures[data.profile_picture_index] || dog,
+        userName: data.name,
+        userEmail: data.email,
+        userNetID: data.uid
+      });
+    } catch (error) {
+      console.error('Error fetching profile:', error);
+    }
+  }, [userId]);
+
+  const updateProfilePictureIndex = async (index) => {
+    try {
+      const response = await fetch(`http://localhost:3001/api/v3/users/set_profile_picture_index`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ profile_picture_index: index }),
+        credentials: 'include',
+      });
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      setProfile((prevProfile) => ({
+        ...prevProfile,
+        profilePictureIndex: index,
+        profilePicture: profilePictures[index]
+      }));
+    } catch (error) {
+      console.error('Error updating profile picture:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchProfile();
+  }, [fetchProfile]);
+
+  return { ...profile, updateProfilePictureIndex, fetchProfile };
+};
 
 function Settings() {
   const [activeSection, setActiveSection] = useState('vendors');
   const [availableVendors, setAvailableVendors] = useState([]);
   const [userVendors, setUserVendors] = useState([]);
   const [loadingVendor, setLoadingVendor] = useState(null);
-  const { profilePicture } = useUserProfile();
   const [showSidebar, setShowSidebar] = useState(false);
+  const userId = 1; // Replace this with the actual logic to get the current user's ID
+
+  const { profilePicture, userName, userEmail, userNetID, updateProfilePictureIndex, fetchProfile } = useUserProfile(userId);
 
   useEffect(() => {
     const fetchAvailableVendors = async () => {
@@ -169,7 +240,38 @@ function Settings() {
           </div>
         );
       case 'profile':
-        return <div>Profile Section (Placeholder)</div>;
+        return (
+          <div className="profile-container">
+            <div className="profile-sidebar">
+              <div className="profile-greeting">
+                <h2>Hello, {userName}!</h2>
+                <p>This is your profile page. You can see the vendors you have selected and want to receive notifications from.</p>
+                <button className="edit-profile-button">Edit Profile</button>
+              </div>
+            </div>
+
+            <div className="profile-info">
+              <div className="profile-details">
+                <h2>User Profile</h2>
+                <div className="profile-row">
+                  <h3>Username:</h3>
+                  <p>{userName}</p>
+                </div>
+                <div className="profile-row">
+                  <h3>Email: </h3>
+                  <p>{userEmail}</p>
+                </div>
+                <div className="profile-row">
+                  <h3>Net ID:</h3>
+                  <p>{userNetID}</p>
+                </div>
+              </div>
+              <div className="profile-picturepage-wrapper">
+                <img src={profilePicture} alt="Profile" className="profile-picturepage" />
+              </div>
+            </div>
+          </div>
+        );
       case 'alerts':
         return <SecurityAlerts />;
       default:
@@ -179,7 +281,7 @@ function Settings() {
 
   return (
     <div className="settings-page">
-      <Header profilePicture={profilePicture} />
+      <Header profilePicture={profilePicture} updateProfilePictureIndex={updateProfilePictureIndex} />
       <button className="sidebar-toggle" onClick={() => setShowSidebar(!showSidebar)}>
         ☰
       </button>
@@ -194,6 +296,7 @@ function Settings() {
       <div className={`content ${showSidebar ? 'shifted' : ''}`}>
         {renderSection()}
       </div>
+      <Footer />
     </div>
   );
 }
