@@ -23,10 +23,10 @@
 
 .sidebar {
   position: fixed;
-  top: 100px; /* Adjusted to start from the top of the viewport */
+  top: 0; /* Adjusted to start from the top of the viewport */
   left: 0;
   width: 250px;
-  height: calc(100vh - 110px); /* Takes full viewport height minus the header height */
+  height: 100vh; /* Takes full viewport height */
   background-color: #012169;
   padding-top: 20px;
   transition: 0.3s;
@@ -69,7 +69,7 @@
 }
 
 .content.shifted {
-  margin-left: 250px;
+  margin-left: 250px; /* Ensure the main content is pushed to the right when sidebar is visible */
 }
 
 .settings-container {
@@ -82,50 +82,6 @@
   padding: 0px;
   box-sizing: border-box;
   overflow-y: auto;
-}
-
-.vendor-selection {
-  max-height: 100%;
-  overflow-y: auto;
-  padding-left: 0px; /* Move the vendor selection to the right */
-  text-align: center; /* Center the items */
-}
-
-.vendor-list {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-.vendor-list-item {
-  display: flex;
-  align-items: center;
-  justify-content: center; /* Center items horizontally */
-  padding: 5px 0;
-  margin: 0 auto; /* Center items in the container */
-}
-
-.vendor-item-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center; /* Center items horizontally */
-  width: auto; /* Adjust width to auto to center items */
-}
-
-.vendor-checkbox {
-  margin-right: 5px; /* Reduced margin for smaller spacing */
-}
-
-.vendor-label {
-  margin-right: 5px; /* Reduced margin for smaller spacing */
-}
-
-.vendor-logo-small {
-  width: 50px; /* Adjusted width for a smaller size */
-  height: 50px; /* Adjusted height for a smaller size */
-  object-fit: contain;
-  border-radius: 5px;
-  margin-left: 5px; /* Reduced margin for smaller spacing */
 }
 
 .middle-section {
@@ -183,18 +139,6 @@
   margin-bottom: 5px;
 }
 
-.net-id {
-  display: flex;
-  align-items: center;
-  margin-bottom: 5px;
-}
-
-.net-id h3 {
-  margin: 0;
-  margin-right: 10px;
-  font-size: 1.2em;
-}
-
 .profile-row h3 {
   margin: 0;
   margin-right: 10px;
@@ -222,9 +166,5 @@
   .left-section {
     flex: 1; /* Allow full width for smaller screens */
     margin-left: 20px;
-  }
-
-  .vendor-list-item {
-    margin-left: 0; /* Reset left margin */
   }
 }
