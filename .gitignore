@@ -40,4 +40,5 @@
 
 #.env
 
-*.key
+*.key/back-end/log/development.log
+/back-end/tmp/cache/bootsnap/load-path-cache
