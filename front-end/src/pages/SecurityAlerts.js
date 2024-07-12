@@ -337,13 +337,11 @@ function SecurityAlerts() {
                     </label>
 
                     <div className="form-buttons">
-                        <button type="submit">Submit</button>
-                        <button type="button" onClick={handleCancelClick}>
-                            Cancel
-                        </button>
-                    </div>
-                </form>
-            )}
+                    <button type="submit" className="form-button">Submit</button>
+                    <button type="button" className="form-button" onClick={handleCancelClick}>Cancel</button>
+                    </div>    
+                    </form>
+                )}
 
             {duplicateVendorWarning && (
                 <div className="popup">

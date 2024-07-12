@@ -157,4 +157,3 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_11_273437) do
   add_foreign_key "users_vendors", "users", column: "uid", primary_key: "uid"
   add_foreign_key "users_vendors", "vendors"
 end
-
