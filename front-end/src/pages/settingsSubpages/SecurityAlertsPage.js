@@ -344,10 +344,11 @@ function SecurityAlerts() {
                 )}
 
             {duplicateVendorWarning && (
-                <div className="popup">
-                    <p>Vendor has already been added.</p>
-                    <button onClick={handleDismissWarning}>OK</button>
-                </div>
+             <div className="popup">
+             <p>Vendor has already been added.</p>
+             <button className="popup-ok-button" onClick={handleDismissWarning}>OK</button>
+         </div>
+         
             )}
         </div>
     );
