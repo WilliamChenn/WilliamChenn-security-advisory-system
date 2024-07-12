@@ -37,6 +37,12 @@
     font-size: 2em;
 }
 
+.cve-text-content h2 {
+    color: #012169;
+    text-align: left;
+    font-weight: normal;
+}
+
 .title-with-image {
     display: flex;
     align-items: center; /* Align items vertically in flex container */
@@ -182,6 +188,8 @@ p {
 .footer {
     margin-top: auto; /* Push the footer to the bottom of the page */
 }
+
+
 
 
 
