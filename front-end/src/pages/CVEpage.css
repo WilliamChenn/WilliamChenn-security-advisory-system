@@ -20,11 +20,21 @@
     margin-bottom: 100px; /* Add margin at the bottom for footer */
 }
 
+.cve-content-container {
+    flex: 1;
+    padding: 0 180px 0 40px; /* Adjusted padding: left 20px, right 60px */
+    color: #012169;
+    font-family: "Open Sans";
+    font-size: 1.2em;
+}
+
 .cve-text-content h1 {
     flex: 1;
-    padding-top: 40px;
+    padding-top: 70px;
+    padding-bottom: 50px;
     color: #012169;
     font-weight: bold;
+    font-size: 2em;
 }
 
 .title-with-image {
@@ -32,33 +42,34 @@
     align-items: center; /* Align items vertically in flex container */
     margin-bottom: 20px; /* Adjust margin as needed */
 }
-  
+
 .vendor-logo {
     width: 150px; /* Adjust the width of the vendor logo */
     height: auto; /* Adjust spacing between logo and title */
     margin-top: 40px;
-    padding-left: 20px;
+    padding-left: 10px; /* Decrease padding on the left */
+    margin-left: 20px; /* Decrease margin on the left */
 }
 
 .cve-text-content h2 {
     color: #012169;
-}
-
-.cve-text-content h3 {
-    color: #012169;
+    font-size: 1.6em;
+    font-family: 'Open Sans';
 }
 
 .cve-text-content h4 {
     color: #012169;
+    font-size: 1.6em;
+    font-family: 'Open Sans';
 }
 
 .cve-circular-progress-container {
     display: flex;
-    justify-content: flex-end;
-    align-items: flex-start;
+    justify-content: flex-start; /* Align circular progress to the left */
+    align-items: flex-start; /* Align circular progress to the top */
     padding-top: 40px;
     padding-right: 40px;
-    margin-left: 10px;
+    margin-left: 0px; /* Adjust margin to move closer to the left */
 }
 
 .remediation-container {
@@ -83,15 +94,18 @@
 
 .remediation-header h4 {
     margin: 0;
+    font-size: 1.6em;
 }
 
 .remediation-content p {
-    font-size: 18px;
+    font-size: 1.2em;
     line-height: 1.6; /* Adjust line height for better spacing */
     margin: 0 0 10px; /* Adjust margin for better spacing */
     padding: 0 10px; /* Add padding for better readability */
     box-sizing: border-box; /* Ensure padding is included in total width and height */
     text-align: left; /* Change to left-align if justified spacing is too spread out */
+    color: #012169;
+    font-family: "Open Sans";
 }
 
 .remediation-content a {
@@ -103,7 +117,6 @@
 .remediation-content a:hover {
     text-decoration: underline; /* Add underline on hover */
 }
-
 
 p {
     font-size: 18px;
@@ -129,7 +142,7 @@ p {
 
     .cve-circular-progress-container {
         flex: 1;
-        justify-content: flex-end; /* Align to the right */
+        justify-content: flex-start; /* Align to the left */
         align-items: flex-start; /* Align to the top */
     }
 
@@ -162,9 +175,15 @@ p {
     background-color: #0056b3;
 }
 
+.clear-button {
+    margin-left: 10px; /* Add margin to separate from the Edit button */
+}
+
 .footer {
     margin-top: auto; /* Push the footer to the bottom of the page */
 }
+
+
 
   
 

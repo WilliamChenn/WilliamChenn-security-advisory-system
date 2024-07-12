@@ -32,8 +32,14 @@ function Home() {
         <div className="subtitle1">Duke’s database for open source vulnerabilities and cloud misconfigurations</div>
 
         <div className="flex-container">
-          <BarGraph />
-          <DotPlot />
+          <div className="graph-container">
+            <h2 className="graph-title">Number of CVEs for CVSS score</h2>
+            <BarGraph />
+          </div>
+          <div className="graph-container">
+            <h2 className="graph-title">CVEs for CVSS and EPSS score</h2>
+            <DotPlot />
+          </div>
         </div>
         <div className="content">
           <div className="subtitle3">Top Vulnerabilities in the past month</div>
@@ -58,3 +64,4 @@ function Home() {
 }
 
 export default Home;
+

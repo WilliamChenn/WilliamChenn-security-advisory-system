@@ -23,10 +23,11 @@
   width: 100%;
   margin-top: 0;
   transition: margin-left 0.3s ease; /* Add transition for smooth resizing */
+  margin-left: 20px; /* Default margin */
 }
 
 .TableContainer.with-sidebar {
-  margin-left: 100px; /* Adjust margin when sidebar is visible */
+  margin-left: 270px; /* Adjust margin when sidebar is visible */
 }
 
 .Table table {
@@ -53,7 +54,7 @@
   padding-top: 8px;
   padding-bottom: 8px;
   text-align: center;
-  background-color: #0417aa;
+  background-color: #012169;
   color: white;
 }
 
@@ -159,4 +160,89 @@
 .pagination button:disabled {
   background-color: #012169;
   cursor: not-allowed;
+}
+
+.FilterButtonWrapper {
+  display: flex;
+  justify-content: flex-end; /* Align to the right */
+  margin: 0px 0px 0px; /* Margin to position below the header and add spacing */
+  margin-top: 130px;
+  margin-right: 50px;
+  z-index: 101; /* Ensure the button is above other elements */
+}
+
+.FilterButton, .RefreshButton {
+  background-color: white;
+  border: none;
+  color: #0417aa;
+  padding: 10px 10px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  z-index: 102; /* Ensure the button is above other elements */
+}
+
+.FilterButton:hover, .RefreshButton:hover {
+  background-color: #ddd;
+}
+
+.FilterButton img, .RefreshButton img {
+  width: 20px;
+  margin-left: 10px;
+}
+
+.RefreshButton {
+  margin-left: 10px; /* Space between the filter and refresh buttons */
+}
+
+.RefreshButton {
+  background-color: white;
+  border: none;
+  color: #0417aa;
+  padding: 10px 10px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  z-index: 102; /* Ensure the button is above other elements */
+  margin-left: 10px; /* Space between the filter and refresh buttons */
+}
+
+.FilterButtonWrapper {
+  display: flex;
+  justify-content: flex-end; /* Align to the right */
+  margin: 0px 0px 0px; /* Margin to position below the header and add spacing */
+  margin-top: 130px;
+  margin-right: 50px;
+  z-index: 101; /* Ensure the button is above other elements */
+}
+
+.RefreshButton img, .FilterButton img {
+  width: 20px;
+  margin-left: 10px;
+}
+
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #0417aa;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  animation: spin 1s linear infinite;
+  margin-left: 10px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }

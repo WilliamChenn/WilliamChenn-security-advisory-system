@@ -25,9 +25,9 @@ function About() {
           {/* Content inside the hero image */}
         </div>
       </div>
-
+      <div className="header-background"></div>
       <div className="content-wrapper">
-        <h1>Overview of Services and Tools</h1>
+        <h1>Overview of Services & Tools</h1>
         <p>The Security Advisory Ingestion And Notification System dashboard focuses on aggregating data sources from advisory dashboards and announcements from vendors or software that Duke utilizes. The aggregated data is presented in a unified output for end users to filter based on criticality and relevancy.</p>
         
         {/* Add more content as needed */}
@@ -83,6 +83,11 @@ function About() {
           </div>
         </section>
         
+        <div className="sidebar-about">
+          <h2>Ask for Help</h2>
+          <p>If you need help, visit <a href="https://oit.duke.edu/help/">https://oit.duke.edu/help/</a></p>
+        </div>
+        
       </div>
       
       <Footer />
@@ -91,6 +96,7 @@ function About() {
 }
 
 export default About;
+
 
 
 
