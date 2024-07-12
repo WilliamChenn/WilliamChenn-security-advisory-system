@@ -4,8 +4,64 @@ import { Link } from 'react-router-dom';
 import { COLUMNS } from './TableColumns';
 import './Table.css';
 import Sidebar from '../components/Sidebar';
+import styled from 'styled-components';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+  
+
+
+const TableContainer = styled.div`
+  margin: 20px;
+  transition: margin-left 0.3s ease;
+  margin-left: ${({ sidebar }) => (sidebar ? '270px' : '20px')}; /* Adjusted margin to accommodate the sidebar */
+`;
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
+
+const HeaderContainer = styled.div`
+  padding: 20px;
+  text-align: center;
+  background: #f8f8f8;
+  z-index: 100; /* Ensure the header is above other elements */
+`;
+
+const FilterButtonWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end; /* Align to the right */
+  margin: 0px 0px 0px; /* Margin to position below the header and add spacing */
+  margin-top: 130px;
+  margin-right: 50px;
+  z-index: 101; /* Ensure the button is above other elements */
+`;
+
+const FilterButton = styled.button`
+  background-color: white;
+  border: none;
+  color: #0417aa;
+  padding: 10px 10px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  z-index: 102; /* Ensure the button is above other elements */
+
+  &:hover {
+    background-color: #ddd;
+  }
+
+  img {
+    width: 20px;
+    margin-left: 10px;
+  }
+`;
 
 const matchesSearchQuery = (item, query) => {
   if (!query) return true;
@@ -38,9 +94,8 @@ const Table = () => {
     startDate: '',
     endDate: '',
     searchQuery: '',
-    vendors: [],
+    vendors: [], 
   });
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -88,7 +143,7 @@ const Table = () => {
       startDate.setDate(currentDate.getDate() - 14);
       endDate = currentDate;
     }
-
+  
     return data.filter(item => {
       const severityLevel = getSeverityClass(item.max_cvss_base_score);
       const severityMatch = filters.severity.length === 0 || filters.severity.includes(severityLevel);
@@ -157,68 +212,25 @@ const Table = () => {
       return { ...prevFilters, [name]: value };
     });
   };
-
-  const handleRefresh = async () => {
-    setLoading(true);
-    try {
-      const response = await fetch('http://localhost:3001/api/v3/vendors/refresh_vendors', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        credentials: 'include',
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to refresh vendors');
-      }
-
-      // Re-fetch data after refreshing vendors
-      const updatedDataResponse = await fetch('http://localhost:3001/api/v3/cves/recent?time_range=year', {
-        credentials: 'include',
-      });
-      if (!updatedDataResponse.ok) {
-        throw new Error('Network response was not ok');
-      }
-      const updatedData = await updatedDataResponse.json();
-      setData(updatedData);
-    } catch (error) {
-      console.error('Error refreshing vendors:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pageIndex]);
 
   return (
-    <div className="Wrapper">
+    <Wrapper>
       <Header />
-      <div className="FilterButtonWrapper">
-        <button className="RefreshButton" onClick={handleRefresh}>
-          {loading ? (
-            <div className="spinner"></div>
-          ) : (
-            <>
-              Refresh Vendors
-              <img
-                src="https://static.thenounproject.com/png/4800805-200.png"
-                alt="refresh"
-              />
-            </>
-          )}
-        </button>
-        <button className="FilterButton" onClick={showSidebar} sidebar={sidebar}>
+      <FilterButtonWrapper>
+        <FilterButton onClick={showSidebar} sidebar={sidebar}>
           Filter Here
           <img
             src="https://static.thenounproject.com/png/4800805-200.png"
             alt="desc"
           />
-        </button>
-      </div>
-      <div className={`TableContainer ${sidebar ? 'with-sidebar' : ''}`}>
+        </FilterButton>
+      </FilterButtonWrapper>
+      <TableContainer sidebar={sidebar}>
         <table {...getTableProps()} className="Table">
           <thead>
             {headerGroups.map((headerGroup) => (
@@ -280,7 +292,7 @@ const Table = () => {
             Next
           </button>
         </div>
-      </div>
+      </TableContainer>
       <Footer />
       <Sidebar
         sidebar={sidebar}
@@ -288,8 +300,9 @@ const Table = () => {
         handleFilterChange={handleFilterChange}
         filters={filters}
       />
-    </div>
+    </Wrapper>
   );  
 };
 
 export default Table;
+

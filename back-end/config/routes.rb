@@ -1,5 +1,4 @@
 # config/routes.rb
-
 Rails.application.routes.draw do
   get '/auth/saml', to: 'application#saml_auth', as: :saml_auth
   post '/saml', to: 'application#saml_consume', as: :saml_consume
@@ -66,9 +65,11 @@ Rails.application.routes.draw do
         member do
           post 'upload_png'
           get 'get_png'
-          post 'logout'
           put 'set_profile_picture_index'
           get 'get_profile_picture_index'
+        end
+        collection do
+          post 'logout'
         end
         member do
           get 'email_and_uid_and_name', to: 'users#show_email_and_uid_and_name'
