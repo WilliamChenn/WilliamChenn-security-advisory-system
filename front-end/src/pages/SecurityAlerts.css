@@ -6,10 +6,24 @@
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: center;
+  margin-top: 40px;
+  border-radius: 5px;
+  border: 1px solid #d9d9d9; /* Darker border color */
 }
 
 h2 {
   text-align: center;
+  color:#012169;
+  font-family: "Open Sans";
+  font-weight: bold;
+}
+
+h3{
+color:#012169;
+font-family: "Open Sans";
+font-weight: bold;
+
+
 }
 
 button {
@@ -47,6 +61,8 @@ select {
 ul {
   list-style-type: none;
   padding: 0;
+  
+
 }
 
 .vendor-list {
@@ -68,6 +84,8 @@ ul {
   display: flex;
   flex-direction: column;
   align-items: center;
+  color:#012169;
+  font-family: "Open Sans";
 }
 
 .vendor-logo {
@@ -93,6 +111,9 @@ ul {
 
 .frequency-selection {
   margin-bottom: 20px;
+  color:#012169;
+  font-family: "Open Sans";
+  
 }
 
 .frequency-status {
@@ -100,10 +121,15 @@ ul {
   font-size: 1.2em;
   font-weight: bold;
   text-align: center;
+  color:#012169;
+  font-family: "Open Sans";
 }
 
 .severity-selection {
   margin-bottom: 20px;
+  color:#012169;
+  font-family: "Open Sans";
+  
 }
 
 .severity-status {
@@ -111,10 +137,14 @@ ul {
   font-size: 1.2em;
   font-weight: bold;
   text-align: center;
+  color:#012169;
+  font-family: "Open Sans";
+  
+  
 }
 
 .blue-text {
-  color: blue;
+  color: #012169;
 }
 
 .vendor-list {
@@ -136,6 +166,7 @@ ul {
   display: flex;
   flex-direction: column;
   align-items: center;
+  
 }
 
 
@@ -143,9 +174,28 @@ ul {
   font-size:1.2em;
   margin-left: 5px;
   padding: 5px 10px;
-  background-color: #0417aa;
+  background-color: #012169;
   color: white;
   border-radius: 6px;
   cursor: pointer;
+}
+
+
+
+.form-buttons {
+    display: center;
+    gap: 10px;
+}
+
+.form-button {
+    background-color: #012169;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    gap: 5px;
 }
 
