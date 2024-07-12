@@ -134,7 +134,7 @@
 
 }
 
-.sidebar {
+.sidebar-about {
   position: absolute;
   right: 20px;
   top: 100px;
@@ -145,14 +145,14 @@
   border-radius: 8px;
 }
 
-.sidebar h2 {
+.sidebar-about h2 {
   color: #012169; /* Light blue color for headings */
   font-weight: bold;
   font-size: 1.3em;
   margin-bottom: 14px; /* Space below the heading */
 }
 
-.sidebar p {
+.sidebar-about p {
   font-size: 1em;
   color: #012169;
   margin: 0;
@@ -160,7 +160,7 @@
 
 @media (max-width: 768px) {
 
-  .sidebar {
+  .sidebar-about {
     position: relative; /* Change to relative positioning for smaller screens */
     right: 0;
     top: 0;
@@ -169,7 +169,7 @@
 }
 
 @media (min-width: 768px) {
-  .sidebar {
+  .sidebar-about {
     position: absolute; /* Revert to absolute positioning for larger screens */
     right: 20px;
     top: 100px;
