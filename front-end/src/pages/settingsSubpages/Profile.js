@@ -1,9 +1,19 @@
 // src/pages/settingsSubpages/Profile.js
 import React, { useState, useEffect, useCallback } from 'react';
 import './Profile.css';
-import dog from '../../images/dog.png'; // Default profile picture if needed
+import { useUserProfile } from '../../App';
+import dog from '../../images/dog.png';
+import cat from '../../images/cat.png';
+import capybara from '../../images/capybara.png';
+import kelly from '../../images/kelly.png';
+import katherine from '../../images/katherine.png';
+import unicorn from '../../images/unicorn.png';
+import unicorn1 from '../../images/unicorn1.png';
 
-const Profile = ({ userId, profilePictures }) => {
+const profilePictures = [dog, cat, capybara, kelly, katherine, unicorn, unicorn1];
+
+const Profile = ({ userId }) => {
+  const { profilePicture, updateProfilePictureIndex } = useUserProfile();
   const [profile, setProfile] = useState({
     profilePictureIndex: 0,
     profilePicture: dog,
@@ -11,6 +21,8 @@ const Profile = ({ userId, profilePictures }) => {
     userEmail: '',
     userNetID: ''
   });
+
+  const [dropdownVisible, setDropdownVisible] = useState(false);
 
   const fetchProfile = useCallback(async () => {
     try {
@@ -31,29 +43,20 @@ const Profile = ({ userId, profilePictures }) => {
     } catch (error) {
       console.error('Error fetching profile:', error);
     }
-  }, [userId, profilePictures]);
+  }, [userId]);
 
-  const updateProfilePictureIndex = async (index) => {
-    try {
-      const response = await fetch(`http://localhost:3001/api/v3/users/set_profile_picture_index`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ profile_picture_index: index }),
-        credentials: 'include',
-      });
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      setProfile((prevProfile) => ({
-        ...prevProfile,
-        profilePictureIndex: index,
-        profilePicture: profilePictures[index]
-      }));
-    } catch (error) {
-      console.error('Error updating profile picture:', error);
-    }
+  const handleProfilePictureClick = () => {
+    setDropdownVisible(!dropdownVisible);
+  };
+
+  const handleProfilePictureSelect = async (index) => {
+    await updateProfilePictureIndex(index);
+    setProfile((prevProfile) => ({
+      ...prevProfile,
+      profilePictureIndex: index,
+      profilePicture: profilePictures[index]
+    }));
+    setDropdownVisible(false);
   };
 
   useEffect(() => {
@@ -87,7 +90,22 @@ const Profile = ({ userId, profilePictures }) => {
           </div>
         </div>
         <div className="profile-picturepage-wrapper">
-          <img src={profile.profilePicture} alt="Profile" className="profile-picturepage" />
+          <div className="profile-picture-container" onClick={handleProfilePictureClick}>
+            <img src={profile.profilePicture} alt="Profile" className="profile-picturepage" />
+          </div>
+          {dropdownVisible && (
+            <div className="profile-dropdown" onMouseLeave={() => setDropdownVisible(false)}>
+              {profilePictures.map((picture, index) => (
+                <img
+                  key={index}
+                  src={picture}
+                  alt={`Profile option ${index + 1}`}
+                  className={`profile-thumbnail ${profile.profilePictureIndex === index ? 'selected' : ''}`}
+                  onClick={() => handleProfilePictureSelect(index)}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>

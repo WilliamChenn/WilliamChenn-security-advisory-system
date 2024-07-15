@@ -1,20 +1,11 @@
-// src/pages/Settings.js
 import React, { useState } from 'react';
 import Header from '../components/Header';
 import VendorsSection from './settingsSubpages/VendorsSection';
 import Profile from './settingsSubpages/Profile';
 import SecurityAlerts from './settingsSubpages/SecurityAlertsPage';
 import './Settings.css';
-import dog from '../images/dog.png';
-import cat from '../images/cat.png';
-import capybara from '../images/capybara.png';
-import kelly from '../images/kelly.png';
-import katherine from '../images/katherine.png';
-import unicorn from '../images/unicorn.png';
-import unicorn1 from '../images/unicorn1.png';
 import Footer from '../components/Footer';
-
-const profilePictures = [dog, cat, capybara, kelly, katherine, unicorn, unicorn1];
+import { useUserProfile } from '../App';
 
 const handleLogout = async () => {
   try {
@@ -38,10 +29,10 @@ const handleLogout = async () => {
   }
 };
 
-
 function Settings() {
   const [activeSection, setActiveSection] = useState('vendors');
   const [showSidebar, setShowSidebar] = useState(false);
+  const { profilePicture, updateProfilePictureIndex } = useUserProfile();
   const userId = 1; // Replace this with the actual logic to get the current user's ID
 
   const renderSection = () => {
@@ -49,7 +40,7 @@ function Settings() {
       case 'vendors':
         return <VendorsSection />;
       case 'profile':
-        return <Profile userId={userId} profilePictures={profilePictures} />;
+        return <Profile userId={userId} updateProfilePictureIndex={updateProfilePictureIndex} />;
       case 'alerts':
         return <SecurityAlerts />;
       default:

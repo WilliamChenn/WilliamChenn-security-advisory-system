@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
 import NavigationBar from './NavigationBar.js';
-import { useUserProfile } from '../App'; // Import the context
+import { useUserProfile } from '../App';
 import dog from '../images/dog.png';
 import cat from '../images/cat.png';
 import capybara from '../images/capybara.png';
@@ -11,12 +11,11 @@ import katherine from '../images/katherine.png';
 import unicorn from '../images/unicorn.png';
 import unicorn1 from '../images/unicorn1.png';
 
+const profilePictures = [dog, cat, capybara, kelly, katherine, unicorn, unicorn1];
+
 const Header = () => {
   const { profilePicture, updateProfilePictureIndex } = useUserProfile();
-
   const [dropdownVisible, setDropdownVisible] = useState(false);
-
-  const profilePictures = [dog, cat, capybara, kelly, katherine, unicorn, unicorn1];
 
   const handleProfilePictureClick = () => {
     setDropdownVisible(!dropdownVisible);
@@ -73,4 +72,3 @@ const Header = () => {
 };
 
 export default Header;
-

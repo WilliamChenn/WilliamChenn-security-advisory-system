@@ -1,3 +1,4 @@
+// src/App.js
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import axios from 'axios';
@@ -19,22 +20,18 @@ import katherine from './images/katherine.png';
 import unicorn from './images/unicorn.png';
 import unicorn1 from './images/unicorn1.png';
 
+const profilePictures = [dog, cat, capybara, kelly, katherine, unicorn, unicorn1];
 
-const profilePictures = [dog, cat, capybara, kelly, katherine, unicorn, unicorn1]; 
-
-// Create the context
 const UserProfileContext = createContext();
 
 export const useUserProfile = () => {
   return useContext(UserProfileContext);
 };
 
-// Create the provider component
 const UserProfileProvider = ({ children }) => {
   const [profilePictureIndex, setProfilePictureIndex] = useState(null);
 
   useEffect(() => {
-    // Fetch the profile picture index from the backend
     const fetchProfilePictureIndex = async () => {
       try {
         const response = await axios.get('http://localhost:3001/api/v3/users/get_profile_picture_index', { withCredentials: true });
@@ -81,12 +78,10 @@ function App() {
       });
   }, []);
 
-  // Handle the waiting for an answer
   if (isAuthenticated === null) {
-    return <div>Loading...</div>; // Or a loading spinner
+    return <div>Loading...</div>;
   }
 
-  // Conditionally render Auth component inside the useEffect
   if (isAuthenticated === false) {
     return <Auth />;
   }

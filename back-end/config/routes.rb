@@ -1,5 +1,4 @@
 # config/routes.rb
-
 Rails.application.routes.draw do
   get '/auth/saml', to: 'application#saml_auth', as: :saml_auth
   post '/saml', to: 'application#saml_consume', as: :saml_consume
@@ -63,7 +62,7 @@ Rails.application.routes.draw do
       end
 
       resources :users, only: [] do
-        member do
+        collection do
           post 'upload_png'
           get 'get_png'
           post 'logout'
@@ -74,6 +73,9 @@ Rails.application.routes.draw do
           get 'email_and_uid_and_name', to: 'users#show_email_and_uid_and_name'
         end
       end
+
+
+
       #/api/v3//api/v3/user/upload_png
       #/api/v3/user/get_png
 

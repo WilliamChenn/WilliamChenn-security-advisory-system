@@ -1,10 +1,10 @@
 # app/services/fetch_remediation_url_service.rb
-
+ 
 require 'httparty'
-
+ 
 class FetchRemediationUrlService
   BASE_REMEDIATION_API_URL = 'https://www.cvedetails.com/api/v1/vulnerability/mentions?cveId='
-
+ 
   def self.call(cve_id)
     token =  ENV["CVEDETAILS_TOKEN"]
     
@@ -20,10 +20,10 @@ class FetchRemediationUrlService
     else
         return {
             status: response.code,
-            message: response.message,
+            message:" response.message",
             body: response.body
           }
     end
-
+ 
   end
 end
