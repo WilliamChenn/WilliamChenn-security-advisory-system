@@ -24,7 +24,6 @@ function CVEpage() {
         }
         const data = await response.json();
         setVulnerability(data.data.attributes);
-
         try {
           const remediationResponse = await fetch(`http://localhost:3001/api/v1/remediation_url/${cveId}`);
           if (!remediationResponse.ok) {
@@ -45,7 +44,6 @@ function CVEpage() {
         } catch (error) {
           console.warn(`An error occurred: ${error.message}`);
         }
-        
 
         const remediationGetResponse = await fetch(`http://localhost:3001/api/v1/remediation/${cveId}`);
         if (!remediationGetResponse.ok) {
