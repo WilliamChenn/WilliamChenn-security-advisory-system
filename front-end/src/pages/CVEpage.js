@@ -25,14 +25,27 @@ function CVEpage() {
         const data = await response.json();
         setVulnerability(data.data.attributes);
 
-        const remediationResponse = await fetch(`http://localhost:3001/api/v1/remediation_url/${cveId}`);
-        if (!remediationResponse.ok) {
-          throw new Error('Failed to fetch remediation URL');
+        try {
+          const remediationResponse = await fetch(`http://localhost:3001/api/v1/remediation_url/${cveId}`);
+          if (!remediationResponse.ok) {
+            console.warn(`Failed to fetch remediation URL: ${remediationResponse.statusText}`);
+            return;
+          }
+        
+          const remediationData = await remediationResponse.json();
+          
+          // Check if the remediationData is an object and has the correct property
+          if (typeof remediationData === 'object' && remediationData !== null && 'remediation_url' in remediationData) {
+            setRemediationUrl(remediationData.remediation_url);
+          } else if (remediationData.errors && remediationData.errors.error) {
+            console.warn(`Error from API: ${remediationData.errors.error_description || remediationData.errors.error}`);
+          } else {
+            console.warn('Unexpected data format');
+          }
+        } catch (error) {
+          console.warn(`An error occurred: ${error.message}`);
         }
-        const remediationData = await remediationResponse.json();
-        if (remediationData.remediation_url) {
-          setRemediationUrl(remediationData.remediation_url);
-        }
+        
 
         const remediationGetResponse = await fetch(`http://localhost:3001/api/v1/remediation/${cveId}`);
         if (!remediationGetResponse.ok) {
