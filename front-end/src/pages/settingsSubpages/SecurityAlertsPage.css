@@ -1,4 +1,4 @@
-.security-alerts-container {
+.security-alerts-container1 {
     max-width: 600px;
     margin: auto;
     padding: 20px;
@@ -6,77 +6,77 @@
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-  }
-  
-  h2 {
+}
+
+.h21 {
     text-align: center;
-  }
-  
-  button {
+}
+
+.button1 {
     margin-bottom: 10px;
-  }
-  
-  form {
+}
+
+.form1 {
     display: flex;
     flex-direction: column;
-  }
-  
-  label {
+}
+
+.label1 {
     margin-bottom: 10px;
-  }
-  
-  input[type="text"],
-  input[type="time"],
-  select {
+}
+
+.input1[type="text"],
+.input1[type="time"],
+.select1 {
     width: 100%;
     padding: 8px;
     box-sizing: border-box;
     border-radius: 4px;
     border: 1px solid #ccc;
     margin-bottom: 10px;
-  }
-  
-  .form-buttons {
+}
+
+.form-buttons1 {
     margin-top: 10px;
-  }
-  
-  .alerts-list {
+}
+
+.alerts-list1 {
     margin-top: 20px;
-  }
-  
-  ul {
+}
+
+.ul1 {
     list-style-type: none;
     padding: 0;
-  }
-  
-  .vendor-list {
+}
+
+.vendor-list1 {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-  }
-  
-  .alert-item {
+}
+
+.alert-item1 {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 10px;
     width: 30%;
     text-align: center;
-  }
-  
-  .vendor-info {
+}
+
+.vendor-info1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-  
-  .vendor-logo {
+}
+
+.vendor-logo1 {
     width: 120px;
     height: 50px;
     margin-bottom: 5px;
-  }
-  
-  #delete-button {
+}
+
+#delete-button1 {
     margin-top: 5px;
     padding: 5px 10px;
     background-color: #8e2c25;
@@ -85,68 +85,65 @@
     border-radius: 4px;
     cursor: pointer;
     font-size: .9em;
-  }
-  
-  #delete-button:hover {
+}
+
+#delete-button1:hover {
     background-color: #bb6b66;
-  }
-  
-  .frequency-selection {
+}
+
+.frequency-selection1 {
     margin-bottom: 20px;
-  }
-  
-  .frequency-status {
+}
+
+.frequency-status1 {
     margin-top: 10px;
     font-size: 1.2em;
     font-weight: bold;
     text-align: center;
-  }
-  
-  .severity-selection {
+}
+
+.severity-selection1 {
     margin-bottom: 20px;
-  }
-  
-  .severity-status {
+}
+
+.severity-status1 {
     margin-top: 10px;
     font-size: 1.2em;
     font-weight: bold;
     text-align: center;
-  }
-  
-  .blue-text {
+}
+
+.blue-text1 {
     color: blue;
-  }
-  
-  .vendor-list {
+}
+
+.vendor-list1 {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start; /* Change this line */
-  }
-  
-  .alert-item {
+}
+
+.alert-item1 {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 10px;
     width: 30%;
     text-align: center;
-  }
-  
-  .vendor-info {
+}
+
+.vendor-info1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-  
-  
-  .add-vendor-button {
-    font-size:1.2em;
+}
+
+.add-vendor-button1 {
+    font-size: 1.2em;
     margin-left: 5px;
     padding: 5px 10px;
     background-color: #0417aa;
     color: white;
     border-radius: 6px;
     cursor: pointer;
-  }
-  
-  
+}

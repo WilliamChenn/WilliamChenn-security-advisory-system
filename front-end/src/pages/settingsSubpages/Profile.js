@@ -1,4 +1,3 @@
-// src/pages/settingsSubpages/Profile.js
 import React, { useState, useEffect, useCallback } from 'react';
 import './Profile.css';
 import { useUserProfile } from '../../App';
@@ -65,14 +64,6 @@ const Profile = ({ userId }) => {
 
   return (
     <div className="profile-container">
-      <div className="profile-sidebar">
-        <div className="profile-greeting">
-          <h2>Hello, {profile.userName}!</h2>
-          <p>This is your profile page. You can see the vendors you have selected and want to receive notifications from.</p>
-          <button className="edit-profile-button">Edit Profile</button>
-        </div>
-      </div>
-
       <div className="profile-info">
         <div className="profile-details">
           <h2>User Profile</h2>

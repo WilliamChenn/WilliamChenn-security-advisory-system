@@ -30,7 +30,7 @@ const handleLogout = async () => {
 };
 
 function Settings() {
-  const [activeSection, setActiveSection] = useState('vendors');
+  const [activeSection, setActiveSection] = useState('profile'); // Set default to 'profile'
   const [showSidebar, setShowSidebar] = useState(false);
   const { profilePicture, updateProfilePictureIndex } = useUserProfile();
   const userId = 1; // Replace this with the actual logic to get the current user's ID

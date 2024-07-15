@@ -1,16 +1,18 @@
 .header {
   z-index: 1000; /* Higher value than sidebar */
+  background-color: #012169; /* Ensure the header color matches the sidebar */
 }
 
 .footer {
   z-index: 1000; /* Same as header to ensure it's above the sidebar */
+  background-color: #012169; /* Ensure the footer color matches the sidebar */
 }
 
 .settings-page {
   display: flex;
   flex-direction: column;
   min-height: 100vh; /* Ensure the settings page takes the full viewport height */
-  overflow-y: auto; /* Allow scrolling on the entire page */
+  background-color: #012169; /* Ensure the background color matches the header and sidebar */
 }
 
 .sidebar-toggle {
@@ -22,15 +24,15 @@
 }
 
 .sidebar {
-  position: fixed;
-  top: 100px; /* Adjusted to start from the top of the viewport */
+  position: fixed; /* Fix the sidebar position */
+  top: 100px; /* Adjust to start from the top of the viewport */
   left: 0;
   width: 250px;
   height: calc(100vh - 110px); /* Takes full viewport height minus the header height */
   background-color: #012169;
   padding-top: 20px;
   transition: 0.3s;
-  overflow-y: auto;
+  overflow-y: auto; /* Enable scrolling within the sidebar */
   z-index: 500; /* Lower than the header and footer */
 }
 
@@ -65,7 +67,8 @@
   transition: margin-left 0.3s;
   padding: 20px;
   flex-grow: 1;
-  overflow-y: auto;
+  overflow-y: auto; /* Allow scrolling on the content */
+  background-color: white; /* Add this to contrast the content area from the header and sidebar */
 }
 
 .content.shifted {
@@ -121,8 +124,8 @@
 }
 
 .vendor-logo-small {
-  width: 50px; /* Adjusted width for a smaller size */
-  height: 50px; /* Adjusted height for a smaller size */
+  width: 80px; /* Adjusted width for a larger size */
+  height: 80px; /* Adjusted height for a larger size */
   object-fit: contain;
   border-radius: 5px;
   margin-left: 5px; /* Reduced margin for smaller spacing */
