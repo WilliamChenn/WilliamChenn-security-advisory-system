@@ -33,9 +33,9 @@ function CVEpage() {
           }
         
           const remediationData = await remediationResponse.json();
-          
-          // Check if the remediationData is an object and has the correct property
-          if (typeof remediationData === 'object' && remediationData !== null && 'remediation_url' in remediationData) {
+        
+          // Check if remediationData.remediation_url is a string
+          if (typeof remediationData.remediation_url === 'string') {
             setRemediationUrl(remediationData.remediation_url);
           } else if (remediationData.errors && remediationData.errors.error) {
             console.warn(`Error from API: ${remediationData.errors.error_description || remediationData.errors.error}`);
