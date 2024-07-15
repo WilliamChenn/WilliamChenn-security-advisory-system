@@ -13,53 +13,54 @@
 .cve-content-wrapper {
     display: flex;
     flex-direction: column;
-    padding: 20px;
-    padding-top: 100px; /* Add padding to prevent header overlap */
+    padding: 2rem;
+    padding-top: 10vh; /* Adjusted for responsive padding */
     overflow-x: hidden;
     flex-grow: 1; /* Allow this to grow to fill available space */
-    margin-bottom: 100px; /* Add margin at the bottom for footer */
+    margin-bottom: 10vh; /* Adjusted for responsive margin at the bottom */
 }
 
 .cve-content-container {
     flex: 1;
-    padding: 0 180px 0 40px; /* Adjusted padding: left 20px, right 60px */
+    padding: 0 10vw 0 5vw; /* Adjusted padding for responsiveness */
     color: #012169;
     font-family: "Open Sans";
-    font-size: 1.2em;
+    font-size: 1.2rem; /* Adjusted for responsive font size */
 }
 
 .cve-text-content h1 {
     flex: 1;
-    padding-top: 70px;
-    padding-bottom: 50px;
+    padding-top: 7vh; /* Adjusted for responsive padding */
+    padding-bottom: 5vh; /* Adjusted for responsive padding */
     color: #012169;
     font-weight: bold;
-    font-size: 2em;
+    font-size: 2rem; /* Adjusted for responsive font size */
+}
+
+.cve-text-content h2 {
+    color: #012169;
+    text-align: left;
+    font-weight: normal;
+    font-size: 1.6rem; /* Adjusted for responsive font size */
 }
 
 .title-with-image {
     display: flex;
     align-items: center; /* Align items vertically in flex container */
-    margin-bottom: 20px; /* Adjust margin as needed */
+    margin-bottom: 2rem; /* Adjusted for responsive margin */
 }
 
 .vendor-logo {
-    width: 150px; /* Adjust the width of the vendor logo */
-    height: auto; /* Adjust spacing between logo and title */
-    margin-top: 40px;
-    padding-left: 10px; /* Decrease padding on the left */
-    margin-left: 20px; /* Decrease margin on the left */
-}
-
-.cve-text-content h2 {
-    color: #012169;
-    font-size: 1.6em;
-    font-family: 'Open Sans';
+    width: 15vw; /* Adjusted for responsive width */
+    height: auto; /* Maintain aspect ratio */
+    margin-top: 4vh; /* Adjusted for responsive margin */
+    padding-left: 1vw; /* Adjusted for responsive padding */
+    margin-left: 2vw; /* Adjusted for responsive margin */
 }
 
 .cve-text-content h4 {
     color: #012169;
-    font-size: 1.6em;
+    font-size: 1.6rem; /* Adjusted for responsive font size */
     font-family: 'Open Sans';
 }
 
@@ -67,43 +68,42 @@
     display: flex;
     justify-content: flex-start; /* Align circular progress to the left */
     align-items: flex-start; /* Align circular progress to the top */
-    padding-top: 40px;
-    padding-right: 40px;
-    margin-left: 0px; /* Adjust margin to move closer to the left */
+    padding-top: 4vh; /* Adjusted for responsive padding */
+    padding-right: 4vw; /* Adjusted for responsive padding */
+    margin-left: 0; /* Adjust margin to move closer to the left */
 }
 
 .remediation-container {
     background-color: #F1EDEA;
-    padding: 1px; /* Reduce padding to make the box less tall */
+    padding: 0.1rem; /* Adjusted for responsive padding */
     border-radius: 20px; /* Increase border-radius for more rounded corners */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
+    margin-top: 2vh; /* Adjusted for responsive margin */
     width: 100%;
     box-sizing: border-box;
 }
 
 .remediation-header {
-    padding: 10px;
+    padding: 1rem; /* Adjusted for responsive padding */
     border-radius: 5px;
-    margin-bottom: -10px; /* Add margin to separate from content */
+    margin-bottom: -1rem; /* Adjusted for responsive margin */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
 }
 
 .remediation-header h4 {
     margin: 0;
-    font-size: 1.6em;
+    font-size: 1.6rem; /* Adjusted for responsive font size */
 }
 
 .remediation-content p {
-    font-size: 1.2em;
+    font-size: 1.2rem; /* Adjusted for responsive font size */
     line-height: 1.6; /* Adjust line height for better spacing */
-    margin: 0 0 10px; /* Adjust margin for better spacing */
-    padding: 0 10px; /* Add padding for better readability */
+    margin: 0 0 1rem; /* Adjusted for responsive margin */
+    padding: 0 1rem; /* Adjusted for responsive padding */
     box-sizing: border-box; /* Ensure padding is included in total width and height */
-    text-align: left; /* Change to left-align if justified spacing is too spread out */
+    text-align: left; /* Change to left-align */
     color: #012169;
     font-family: "Open Sans";
 }
@@ -111,7 +111,7 @@
 .remediation-content a {
     color: #007bff; /* Adjust link color as needed */
     text-decoration: none;
-    padding: 0 10px; /* Add padding for better readability */
+    padding: 0 1rem; /* Adjusted for responsive padding */
 }
 
 .remediation-content a:hover {
@@ -119,10 +119,10 @@
 }
 
 p {
-    font-size: 18px;
+    font-size: 1.2rem; /* Adjusted for responsive font size */
     line-height: 1.8;
-    margin: 0 0 20px; /* Adjust margin for spacing */
-    padding: 0 10px; /* Add padding for better readability */
+    margin: 0 0 2rem; /* Adjusted for responsive margin */
+    padding: 0 1rem; /* Adjusted for responsive padding */
     box-sizing: border-box; /* Include padding in the element's total width and height */
     text-align: justify;
 }
@@ -137,7 +137,7 @@ p {
 
     .cve-text-content {
         flex: 3;
-        padding-right: 40px; /* Add padding to create space between text and circular progress */
+        padding-right: 4vw; /* Adjusted for responsive padding */
     }
 
     .cve-circular-progress-container {
@@ -163,11 +163,10 @@ p {
     background-color: #012169;
     color: white;
     border: none;
-    padding: 5px 10px;
+    padding: 0.5rem 1rem; /* Adjusted for responsive padding */
     cursor: pointer;
-    margin-bottom: -30px;
-    margin-left: 170px;
-    padding-top: 0.5%;
+    margin-bottom: -3rem; /* Adjusted for responsive margin */
+    margin-left: 17vw; /* Adjusted for responsive margin */
     border-radius: 5px;
 }
 
@@ -176,14 +175,11 @@ p {
 }
 
 .clear-button {
-    margin-left: 10px; /* Add margin to separate from the Edit button */
+    margin-left: 1rem; /* Add margin to separate from the Edit button */
 }
 
 .footer {
     margin-top: auto; /* Push the footer to the bottom of the page */
 }
 
-
-
-  
 

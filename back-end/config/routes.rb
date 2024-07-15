@@ -62,19 +62,20 @@ Rails.application.routes.draw do
       end
 
       resources :users, only: [] do
-        member do
+        collection do
           post 'upload_png'
           get 'get_png'
+          post 'logout'
           put 'set_profile_picture_index'
           get 'get_profile_picture_index'
-        end
-        collection do
-          post 'logout'
         end
         member do
           get 'email_and_uid_and_name', to: 'users#show_email_and_uid_and_name'
         end
       end
+
+
+
       #/api/v3//api/v3/user/upload_png
       #/api/v3/user/get_png
 
