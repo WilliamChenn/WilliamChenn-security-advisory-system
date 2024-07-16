@@ -7,8 +7,6 @@ import Sidebar from '../components/Sidebar';
 import styled from 'styled-components';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-  
-
 
 const TableContainer = styled.div`
   margin: 20px;
@@ -29,13 +27,12 @@ const HeaderContainer = styled.div`
   z-index: 100; /* Ensure the header is above other elements */
 `;
 
-const FilterButtonWrapper = styled.div`
+const FilterAndRefreshWrapper = styled.div`
   display: flex;
   justify-content: flex-end; /* Align to the right */
-  margin: 0px 0px 0px; /* Margin to position below the header and add spacing */
   margin-top: 130px;
   margin-right: 50px;
-  z-index: 101; /* Ensure the button is above other elements */
+  z-index: 101; /* Ensure the buttons are above other elements */
 `;
 
 const FilterButton = styled.button`
@@ -52,6 +49,7 @@ const FilterButton = styled.button`
   justify-content: center;
   transition: background-color 0.3s ease;
   z-index: 102; /* Ensure the button is above other elements */
+  margin-left: 10px; /* Add margin to separate the buttons */
 
   &:hover {
     background-color: #ddd;
@@ -60,6 +58,33 @@ const FilterButton = styled.button`
   img {
     width: 20px;
     margin-left: 10px;
+  }
+`;
+
+const RefreshButton = styled.button`
+  background-color: white;
+  border: none;
+  color: #0417aa;
+  width: 40px; /* Make the button square */
+  height: 40px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  z-index: 102; /* Ensure the button is above other elements */
+  margin-left: 10px; /* Add margin to separate the buttons */
+  padding: 0; /* Remove padding for square shape */
+
+  &:hover {
+    background-color: #ddd;
+  }
+
+  img {
+    width: 20px; /* Adjust the size of the refresh logo */
   }
 `;
 
@@ -96,6 +121,7 @@ const Table = () => {
     searchQuery: '',
     vendors: [], 
   });
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -191,6 +217,36 @@ const Table = () => {
   );
 
   const showSidebar = () => setSidebar(!sidebar);
+  const handleRefresh = async () => {
+    setLoading(true);
+    try {
+      const response = await fetch('http://localhost:3001/api/v3/vendors/refresh_vendors', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to refresh vendors');
+      }
+
+      // Re-fetch data after refreshing vendors
+      const updatedDataResponse = await fetch('http://localhost:3001/api/v3/cves/recent?time_range=year', {
+        credentials: 'include',
+      });
+      if (!updatedDataResponse.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const updatedData = await updatedDataResponse.json();
+      setData(updatedData);
+    } catch (error) {
+      console.error('Error refreshing vendors:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleFilterChange = (event) => {
     const { name, value, type, checked } = event.target;
@@ -221,15 +277,25 @@ const Table = () => {
   return (
     <Wrapper>
       <Header />
-      <FilterButtonWrapper>
+      <FilterAndRefreshWrapper>
         <FilterButton onClick={showSidebar} sidebar={sidebar}>
           Filter Here
           <img
             src="https://static.thenounproject.com/png/4800805-200.png"
-            alt="desc"
+            alt="filter"
           />
         </FilterButton>
-      </FilterButtonWrapper>
+        <RefreshButton onClick={handleRefresh}>
+          {loading ? (
+            <div className="spinner"></div>
+          ) : (
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/61/61225.png"
+              alt="refresh"
+            />
+          )}
+        </RefreshButton>
+      </FilterAndRefreshWrapper>
       <TableContainer sidebar={sidebar}>
         <table {...getTableProps()} className="Table">
           <thead>
@@ -305,4 +371,3 @@ const Table = () => {
 };
 
 export default Table;
-

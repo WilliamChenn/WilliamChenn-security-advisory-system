@@ -161,3 +161,69 @@
   cursor: not-allowed;
 }
 
+.FilterWrapper, .RefreshButtonWrapper {
+  display: flex;
+  align-items: center;
+  margin-top: 20px; /* Adjust margin to align buttons */
+  z-index: 101; /* Ensure the buttons are above other elements */
+}
+
+.FilterWrapper {
+  justify-content: flex-start; /* Align to the left */
+  margin-left: 50px;
+}
+
+.RefreshButtonWrapper {
+  justify-content: flex-end; /* Align to the right */
+  margin-right: 50px;
+}
+
+.FilterButton, .RefreshButton {
+  background-color: white;
+  border: none;
+  color: #0417aa;
+  padding: 10px 10px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  z-index: 102; /* Ensure the button is above other elements */
+}
+
+.FilterButton img, .RefreshButton img {
+  width: 20px;
+  margin-left: 10px;
+}
+
+.FilterButton:hover, .RefreshButton:hover {
+  background-color: #ddd;
+}
+
+.RefreshButton {
+  width: 40px; /* Make the button square */
+  height: 40px;
+  padding: 0; /* Remove padding for square shape */
+}
+
+/* Spinner styles */
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #0417aa;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto; /* Center the spinner */
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
