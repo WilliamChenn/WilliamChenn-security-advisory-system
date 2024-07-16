@@ -1,7 +1,7 @@
 .settings-container {
   display: flex;
   margin-left: 60px; /* Add margin to compensate for the sidebar */
-  margin-top: 20px;
+  margin-top: 50px; 
 }
 
 .left-section {

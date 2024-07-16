@@ -31,7 +31,6 @@ const handleLogout = async () => {
 
 function Settings() {
   const [activeSection, setActiveSection] = useState('profile'); // Set default to 'profile'
-  const [showSidebar, setShowSidebar] = useState(false);
   const { profilePicture, updateProfilePictureIndex } = useUserProfile();
   const userId = 1; // Replace this with the actual logic to get the current user's ID
 
@@ -50,16 +49,18 @@ function Settings() {
 
   return (
     <div className="settings-page">
-      <div className={`sidebar ${showSidebar ? 'show' : ''}`}>
-        <ul>
-          <li onClick={() => setActiveSection('profile')}>Profile</li>
-          <li onClick={() => setActiveSection('vendors')}>Vendors</li>
-          <li onClick={() => setActiveSection('alerts')}>Security Alerts</li>
-          <li onClick={handleLogout}>Logout</li>
-        </ul>
-      </div>
-      <div className={`content ${showSidebar ? 'shifted' : ''}`}>
-        {renderSection()}
+      <div className="settings-container">
+        <div className="sidebar">
+          <ul>
+            <li onClick={() => setActiveSection('profile')}>Profile</li>
+            <li onClick={() => setActiveSection('vendors')}>Vendors</li>
+            <li onClick={() => setActiveSection('alerts')}>Security Alerts</li>
+            <li onClick={handleLogout}>Logout</li>
+          </ul>
+        </div>
+        <div className="content">
+          {renderSection()}
+        </div>
       </div>
     </div>
   );
