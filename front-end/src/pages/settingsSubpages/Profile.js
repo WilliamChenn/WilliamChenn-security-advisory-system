@@ -1,4 +1,3 @@
-// src/pages/settingsSubpages/Profile.js
 import React, { useState, useEffect, useCallback } from 'react';
 import './Profile.css';
 import { useUserProfile } from '../../App';
@@ -50,13 +49,32 @@ const Profile = ({ userId }) => {
   };
 
   const handleProfilePictureSelect = async (index) => {
-    await updateProfilePictureIndex(index);
-    setProfile((prevProfile) => ({
-      ...prevProfile,
-      profilePictureIndex: index,
-      profilePicture: profilePictures[index]
-    }));
-    setDropdownVisible(false);
+    try {
+      // Call the backend to update the profile picture index
+      const response = await fetch('http://localhost:3001/api/v3/users/set_profile_picture_index', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+        body: JSON.stringify({ profile_picture_index: index }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to update profile picture index');
+      }
+
+      // Update the local state after successful backend update
+      await updateProfilePictureIndex(index);
+      setProfile((prevProfile) => ({
+        ...prevProfile,
+        profilePictureIndex: index,
+        profilePicture: profilePictures[index]
+      }));
+      setDropdownVisible(false);
+    } catch (error) {
+      console.error('Error updating profile picture:', error);
+    }
   };
 
   useEffect(() => {
@@ -68,8 +86,6 @@ const Profile = ({ userId }) => {
       <div className="profile-sidebar">
         <div className="profile-greeting">
           <h2>Hello, {profile.userName}!</h2>
-          <p>This is your profile page. You can see the vendors you have selected and want to receive notifications from.</p>
-          <button className="edit-profile-button">Edit Profile</button>
         </div>
       </div>
 

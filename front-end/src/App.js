@@ -1,4 +1,3 @@
-// src/App.js
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import axios from 'axios';
@@ -45,11 +44,11 @@ const UserProfileProvider = ({ children }) => {
   }, []);
 
   const updateProfilePictureIndex = async (index) => {
-    setProfilePictureIndex(index);
     try {
       await axios.put('http://localhost:3001/api/v3/users/set_profile_picture_index', {
         profile_picture_index: index
       }, { withCredentials: true });
+      setProfilePictureIndex(index); // Update the state after a successful request
     } catch (error) {
       console.error('Error setting profile picture index:', error);
     }

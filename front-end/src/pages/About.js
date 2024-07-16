@@ -8,7 +8,7 @@ function About() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImage(prevImage => (prevImage === 1 ? 2 : 1));
+      setCurrentImage(prevImage => (prevImage === 1 ? 4 : 1));
     }, 2000); // Switch image every 4 seconds
 
     return () => clearInterval(interval);

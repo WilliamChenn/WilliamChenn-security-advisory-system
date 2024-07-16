@@ -185,7 +185,6 @@ function SecurityAlerts() {
             console.error('Error updating severity:', error);
         }
     };
-    
 
     const handleAddClick = () => {
         setShowForm(true);
@@ -273,13 +272,13 @@ function SecurityAlerts() {
     };
 
     return (
-        <div className="security-alerts-container">
-            <h2>Email Notification Preferences</h2>
-            <div className="frequency-selection">
+        <div className="security-alerts-container1">
+            <h2 className="h21">Email Notification Preferences</h2>
+            <div className="frequency-selection1">
                 <br />
-                <h3>Frequency:</h3>
-                {frequencyStatus && <p className="frequency-status">Current frequency: <strong style={{ color: '#0417aa' }}>{frequencyStatus}</strong></p>}
-                <select value={frequency} onChange={(e) => handleFrequencyChange(e.target.value)}>
+                <h3 className="h31">Frequency:</h3>
+                {frequencyStatus && <p className="frequency-status1">Current frequency: <strong style={{ color: '#0417aa' }}>{frequencyStatus}</strong></p>}
+                <select className="select1" value={frequency} onChange={(e) => handleFrequencyChange(e.target.value)}>
                     <option value="daily">Daily</option>
                     <option value="weekly">Weekly</option>
                     <option value="biweekly">Biweekly</option>
@@ -287,11 +286,11 @@ function SecurityAlerts() {
                 </select>
             </div>
 
-            <div className="severity-selection">
+            <div className="severity-selection1">
                 <br />
-                <h3>CVE Severity:</h3>
-                {severityStatus && <p className="severity-status">Current severity: <strong style={{ color: '#0417aa' }}>{severityStatus}</strong></p>}
-                <select value={severity} onChange={(e) => handleSeverityChange(e.target.value)}>
+                <h3 className="h31">CVE Severity:</h3>
+                {severityStatus && <p className="severity-status1">Current severity: <strong style={{ color: '#0417aa' }}>{severityStatus}</strong></p>}
+                <select className="select1" value={severity} onChange={(e) => handleSeverityChange(e.target.value)}>
                     <option value="all">All (CVSS: 1-10)</option>
                     <option value="medium">Medium and up (CVSS: 4-10)</option>
                     <option value="high">High and up (CVSS: 7-10)</option>
@@ -299,19 +298,19 @@ function SecurityAlerts() {
                 </select>
             </div>
 
-            <div className="alerts-list">
-                <h3>Vendors:</h3>
+            <div className="alerts-list1">
+                <h3 className="h31">Vendors:</h3>
                 {alerts.length === 0 ? (
                     <p>No Vendors Selected.</p>
                 ) : (
-                    <ul className="vendor-list">
+                    <ul className="vendor-list1">
                         {alerts.map((alert, index) => (
-                            <li key={alert.id} className="alert-item">
-                                <div className="vendor-info">
-                                    <img src={alert.vendor.logo} alt={alert.vendor.name} className="vendor-logo" />
+                            <li key={alert.id} className="alert-item1">
+                                <div className="vendor-info1">
+                                    <img src={alert.vendor.logo} alt={alert.vendor.name} className="vendor-logo1" />
                                     <p><strong>{alert.vendor.name}</strong></p>
                                 </div>
-                                <button id="delete-button" onClick={() => handleDeleteAlert(index, alert.vendor.id)}>Delete</button>
+                                <button className="button1" id="delete-button1" onClick={() => handleDeleteAlert(index, alert.vendor.id)}>Delete</button>
                             </li>
                         ))}
                     </ul>
@@ -319,14 +318,14 @@ function SecurityAlerts() {
 
             </div>
 
-            <button className="add-vendor-button" onClick={handleAddClick}>Add Vendor</button>
+            <button className="add-vendor-button1" onClick={handleAddClick}>Add Vendor</button>
 
             {showForm && (
-                <form onSubmit={handleSubmit}>
-                    <label>
+                <form className="form1" onSubmit={handleSubmit}>
+                    <label className="label1">
                         <br />
                         Vendor:
-                        <select value={vendor} onChange={(e) => setVendor(e.target.value)} required>
+                        <select className="select1" value={vendor} onChange={(e) => setVendor(e.target.value)} required>
                             <option value="">Select Vendor</option>
                             {vendorList.map((v) => (
                                 <option key={v.id} value={v.name}>
@@ -336,19 +335,20 @@ function SecurityAlerts() {
                         </select>
                     </label>
 
-                    <div className="form-buttons">
-                    <button type="submit" className="form-button">Submit</button>
-                    <button type="button" className="form-button" onClick={handleCancelClick}>Cancel</button>
-                    </div>    
-                    </form>
-                )}
+                    <div className="form-buttons1">
+                        <button className="button1" type="submit">Submit</button>
+                        <button className="button1" type="button" onClick={handleCancelClick}>
+                            Cancel
+                        </button>
+                    </div>
+                </form>
+            )}
 
             {duplicateVendorWarning && (
-             <div className="popup">
-             <p>Vendor has already been added.</p>
-             <button className="popup-ok-button" onClick={handleDismissWarning}>OK</button>
-         </div>
-         
+                <div className="popup1">
+                    <p>Vendor has already been added.</p>
+                    <button className="button1" onClick={handleDismissWarning}>OK</button>
+                </div>
             )}
         </div>
     );
@@ -356,4 +356,3 @@ function SecurityAlerts() {
 }
 
 export default SecurityAlerts;
-
