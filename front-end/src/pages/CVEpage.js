@@ -128,7 +128,6 @@ function CVEpage() {
 
   return (
     <div className="cve-page-container">
-      <Header />
       <div className="cve-content-container">
         <div className="cve-content-wrapper">
           <div className="cve-text-content">
@@ -167,7 +166,6 @@ function CVEpage() {
           </div>
         </div>
       </div>
-      <Footer className="footer" />
     </div>
   );
 }

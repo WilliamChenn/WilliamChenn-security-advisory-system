@@ -8,14 +8,21 @@
   z-index: 100; /* Ensure the header is above other elements */
   position: relative; /* Ensure the header stays on top */
 }
-
+.main-content{
+  padding: 50px;
+  margin-top: 80px; 
+}
+.table-main-content{
+  padding: 50px;
+  margin-top: 80px; 
+}
 .title {
   font-size: 2.1em;
   margin: 20px 0 10px;
 }
 
 .Table {
-  margin: 0px auto;
+  margin: 0 auto;
   width: 97%; /* Adjust to full width */
 }
 
@@ -164,7 +171,6 @@
 .FilterWrapper, .RefreshButtonWrapper {
   display: flex;
   align-items: center;
-  margin-top: 20px; /* Adjust margin to align buttons */
   z-index: 101; /* Ensure the buttons are above other elements */
 }
 
@@ -225,5 +231,3 @@
     transform: rotate(360deg);
   }
 }
-
-

@@ -5,8 +5,6 @@ import { COLUMNS } from './TableColumns';
 import './Table.css';
 import Sidebar from '../components/Sidebar';
 import styled from 'styled-components';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 
 const TableContainer = styled.div`
   margin: 20px;
@@ -20,19 +18,13 @@ const Wrapper = styled.div`
   width: 100%;
 `;
 
-const HeaderContainer = styled.div`
-  padding: 20px;
-  text-align: center;
-  background: #f8f8f8;
-  z-index: 100; /* Ensure the header is above other elements */
-`;
-
 const FilterAndRefreshWrapper = styled.div`
   display: flex;
   justify-content: flex-end; /* Align to the right */
-  margin-top: 130px;
-  margin-right: 50px;
+  margin: 10px 50px 10px 50px; /* Reduced top margin to shift buttons closer to the table */
   z-index: 101; /* Ensure the buttons are above other elements */
+  gap: 10px; /* Add gap between buttons to avoid overlap */
+  flex-wrap: wrap; /* Ensure buttons wrap if the screen size is reduced */
 `;
 
 const FilterButton = styled.button`
@@ -49,7 +41,6 @@ const FilterButton = styled.button`
   justify-content: center;
   transition: background-color 0.3s ease;
   z-index: 102; /* Ensure the button is above other elements */
-  margin-left: 10px; /* Add margin to separate the buttons */
 
   &:hover {
     background-color: #ddd;
@@ -76,7 +67,6 @@ const RefreshButton = styled.button`
   justify-content: center;
   transition: background-color 0.3s ease;
   z-index: 102; /* Ensure the button is above other elements */
-  margin-left: 10px; /* Add margin to separate the buttons */
   padding: 0; /* Remove padding for square shape */
 
   &:hover {
@@ -268,15 +258,14 @@ const Table = () => {
       return { ...prevFilters, [name]: value };
     });
   };
-  
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pageIndex]);
-
+  
   return (
     <Wrapper>
-      <Header />
+      <main className="table-main-content">
       <FilterAndRefreshWrapper>
         <FilterButton onClick={showSidebar} sidebar={sidebar}>
           Filter Here
@@ -359,13 +348,13 @@ const Table = () => {
           </button>
         </div>
       </TableContainer>
-      <Footer />
       <Sidebar
         sidebar={sidebar}
         showSidebar={showSidebar}
         handleFilterChange={handleFilterChange}
         filters={filters}
       />
+      </main>
     </Wrapper>
   );  
 };

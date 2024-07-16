@@ -50,10 +50,6 @@ function Settings() {
 
   return (
     <div className="settings-page">
-      <Header />
-      <button className="sidebar-toggle" onClick={() => setShowSidebar(!showSidebar)}>
-        ☰
-      </button>
       <div className={`sidebar ${showSidebar ? 'show' : ''}`}>
         <ul>
           <li onClick={() => setActiveSection('profile')}>Profile</li>
@@ -65,7 +61,6 @@ function Settings() {
       <div className={`content ${showSidebar ? 'shifted' : ''}`}>
         {renderSection()}
       </div>
-      <Footer />
     </div>
   );
 }

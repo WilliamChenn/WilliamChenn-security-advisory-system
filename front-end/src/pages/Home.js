@@ -3,9 +3,6 @@ import { Link } from 'react-router-dom';
 import './Home.css';
 import BarGraph from '../components/BarGraph';
 import DotPlot from '../components/DotPlot'; // Import the DotPlot component
-import Header from '../components/Header.js';
-import Footer from '../components/Footer.js';
-import Vendors from '../components/Vendors.js';
 import VulnerabilityCard from '../components/Card.js';
 import { getTopVulnerabilities } from '../components/TopThree.js';
 
@@ -27,8 +24,7 @@ function Home() {
 
   return (
     <div className="Home">
-      <Header />
-      <main className="main-content">
+      <main className="home-main-content">
         <div className="subtitle1">Duke’s database for open source vulnerabilities and cloud misconfigurations</div>
 
         <div className="flex-container">
@@ -58,7 +54,6 @@ function Home() {
           <Link to="/table" className="view">View all</Link>
         </div>
       </main>
-      <Footer />
     </div>
   );
 }
