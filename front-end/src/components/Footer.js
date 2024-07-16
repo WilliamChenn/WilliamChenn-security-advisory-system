@@ -28,7 +28,7 @@ const Footer = () => {
                 <a href="#" className="footer-link">Accessibility</a>
                 <a href="#" className="footer-link">Privacy Statement</a>
               </div>
-              <div className="footer-live-chat">Live Chat</div>
+
             </div>
           </div>
         </footer>

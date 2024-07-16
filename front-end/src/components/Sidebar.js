@@ -90,23 +90,7 @@ const Sidebar = ({ sidebar, showSidebar, handleFilterChange, filters }) => {
               />
               <br />
               <br />
-              <label>Vendors</label>
-              <label>
-                <input type="checkbox" name="vendors" value="vendor1" checked={filters.vendors.includes('vendor1')} />
-                Vendor 1
-              </label>
-              <label>
-                <input type="checkbox" name="vendors" value="vendor2" checked={filters.vendors.includes('vendor2')} />
-                Vendor 2
-              </label>
-              <label>
-                <input type="checkbox" name="vendors" value="vendor3" checked={filters.vendors.includes('vendor3')} />
-                Vendor 3
-              </label>
-              <label>
-                <input type="checkbox" name="vendors" value="vendor4" checked={filters.vendors.includes('vendor4')} />
-                Vendor 4
-              </label>
+              
             </FilterForm>
           </SidebarWrap>
         </SidebarNav>

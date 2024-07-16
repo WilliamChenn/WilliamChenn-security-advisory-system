@@ -7,155 +7,147 @@
     flex-direction: column;
     min-height: 100vh;
     width: 100vw;
-    overflow-x: hidden; /* Prevent horizontal scrolling */
+    overflow-x: hidden;
 }
 
 .cve-content-wrapper {
     display: flex;
     flex-direction: column;
     padding: 2rem;
-    padding-top: 10vh; /* Adjusted for responsive padding */
+    padding-top: 10vh;
     overflow-x: hidden;
-    flex-grow: 1; /* Allow this to grow to fill available space */
-    margin-bottom: 10vh; /* Adjusted for responsive margin at the bottom */
+    flex-grow: 1;
+    margin-bottom: 10vh;
 }
 
 .cve-content-container {
     flex: 1;
-    padding: 0 10vw 0 5vw; /* Adjusted padding for responsiveness */
+    padding: 0 10vw 0 5vw;
     color: #012169;
     font-family: "Open Sans";
-    font-size: 1.2rem; /* Adjusted for responsive font size */
+    font-size: 1.2rem;
 }
 
 .cve-text-content h1 {
-    flex: 1;
-    padding-top: 7vh; /* Adjusted for responsive padding */
-    padding-bottom: 5vh; /* Adjusted for responsive padding */
+    padding-top: 7vh;
+    padding-bottom: 5vh;
     color: #012169;
     font-weight: bold;
-    font-size: 2rem; /* Adjusted for responsive font size */
+    font-size: 2rem;
 }
 
 .cve-text-content h2 {
     color: #012169;
     text-align: left;
     font-weight: normal;
-    font-size: 1.6rem; /* Adjusted for responsive font size */
+    font-size: 1.6rem;
 }
 
 .title-with-image {
     display: flex;
-    align-items: center; /* Align items vertically in flex container */
-    margin-bottom: 2rem; /* Adjusted for responsive margin */
+    align-items: center;
+    margin-bottom: 2rem;
 }
 
 .vendor-logo {
-    width: 15vw; /* Adjusted for responsive width */
-    height: auto; /* Maintain aspect ratio */
-    margin-top: 4vh; /* Adjusted for responsive margin */
-    padding-left: 1vw; /* Adjusted for responsive padding */
-    margin-left: 2vw; /* Adjusted for responsive margin */
+    width: 15vw;
+    height: auto;
+    margin-top: 4vh;
+    padding-left: 1vw;
+    margin-left: 2vw;
 }
 
 .cve-text-content h4 {
     color: #012169;
-    font-size: 1.6rem; /* Adjusted for responsive font size */
-    font-family: 'Open Sans';
+    font-size: 1.6rem;
 }
 
 .cve-circular-progress-container {
     display: flex;
-    justify-content: flex-start; /* Align circular progress to the left */
-    align-items: flex-start; /* Align circular progress to the top */
-    padding-top: 4vh; /* Adjusted for responsive padding */
-    padding-right: 4vw; /* Adjusted for responsive padding */
-    margin-left: 0; /* Adjust margin to move closer to the left */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
 }
 
 .remediation-container {
     background-color: #F1EDEA;
-    padding: 0.1rem; /* Adjusted for responsive padding */
-    border-radius: 20px; /* Increase border-radius for more rounded corners */
+    padding: 1rem;
+    border-radius: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-top: 2vh; /* Adjusted for responsive margin */
+    margin-top: 2vh;
     width: 100%;
     box-sizing: border-box;
 }
 
 .remediation-header {
-    padding: 1rem; /* Adjusted for responsive padding */
-    border-radius: 5px;
-    margin-bottom: -1rem; /* Adjusted for responsive margin */
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 1rem;
 }
 
 .remediation-header h4 {
     margin: 0;
-    font-size: 1.6rem; /* Adjusted for responsive font size */
+    font-size: 1.6rem;
 }
 
 .remediation-content p {
-    font-size: 1.2rem; /* Adjusted for responsive font size */
-    line-height: 1.6; /* Adjust line height for better spacing */
-    margin: 0 0 1rem; /* Adjusted for responsive margin */
-    padding: 0 1rem; /* Adjusted for responsive padding */
-    box-sizing: border-box; /* Ensure padding is included in total width and height */
-    text-align: left; /* Change to left-align */
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin: 0 0 1rem;
+    padding: 0 1rem;
+    box-sizing: border-box;
+    text-align: left;
     color: #012169;
-    font-family: "Open Sans";
 }
 
 .remediation-content a {
-    color: #007bff; /* Adjust link color as needed */
+    color: #007bff;
     text-decoration: none;
-    padding: 0 1rem; /* Adjusted for responsive padding */
 }
 
 .remediation-content a:hover {
-    text-decoration: underline; /* Add underline on hover */
+    text-decoration: underline;
 }
 
 p {
-    font-size: 1.2rem; /* Adjusted for responsive font size */
+    font-size: 1.2rem;
     line-height: 1.8;
-    margin: 0 0 2rem; /* Adjusted for responsive margin */
-    padding: 0 1rem; /* Adjusted for responsive padding */
-    box-sizing: border-box; /* Include padding in the element's total width and height */
+    margin: 0 0 2rem;
+    padding: 0 1rem;
+    box-sizing: border-box;
     text-align: justify;
 }
 
-/* Add fullscreen styles */
 @media (min-width: 1200px) {
     .cve-content-wrapper {
         flex-direction: row;
-        justify-content: space-between; /* Ensure space between content and circular progress */
-        align-items: flex-start; /* Align items at the start */
+        justify-content: space-between;
+        align-items: flex-start;
     }
 
     .cve-text-content {
         flex: 3;
-        padding-right: 4vw; /* Adjusted for responsive padding */
+        padding-right: 4vw;
     }
 
     .cve-circular-progress-container {
         flex: 1;
-        justify-content: flex-start; /* Align to the left */
-        align-items: flex-start; /* Align to the top */
+        justify-content: flex-start;
+        align-items: flex-start;
     }
 
     .cve-text-content h1 {
-        font-size: 2rem; /* Adjust the font size as needed */
+        font-size: 2rem;
     }
 
     .cve-text-content h2 {
-        font-size: 2rem; /* Adjust the font size as needed */
+        font-size: 2rem;
     }
 
     .cve-text-content p {
-        font-size: 1.2rem; /* Adjust the font size as needed */
+        font-size: 1.2rem;
     }
 }
 
@@ -163,10 +155,9 @@ p {
     background-color: #012169;
     color: white;
     border: none;
-    padding: 0.5rem 1rem; /* Adjusted for responsive padding */
+    padding: 0.5rem 1rem;
     cursor: pointer;
-    margin-bottom: -3rem; /* Adjusted for responsive margin */
-    margin-left: 17vw; /* Adjusted for responsive margin */
+    margin-left: 1rem;
     border-radius: 5px;
 }
 
@@ -175,11 +166,9 @@ p {
 }
 
 .clear-button {
-    margin-left: 1rem; /* Add margin to separate from the Edit button */
+    margin-left: 1rem;
 }
 
 .footer {
-    margin-top: auto; /* Push the footer to the bottom of the page */
+    margin-top: auto;
 }
-
-
