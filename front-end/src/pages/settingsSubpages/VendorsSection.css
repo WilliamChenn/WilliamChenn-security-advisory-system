@@ -17,7 +17,7 @@
 .vendor-list {
   list-style: none;
   padding: 0;
-  max-height: 58vh; /* Set max height relative to viewport height */
+  max-height: 75vh; /* Set max height relative to viewport height */
   overflow-y: auto; /* Enable vertical scrolling when needed */
 }
 
