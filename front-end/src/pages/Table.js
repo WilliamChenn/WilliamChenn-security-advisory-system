@@ -8,23 +8,25 @@ import styled from 'styled-components';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure the wrapper takes full viewport height */
+`;
+
+const Content = styled.div`
+  flex: 1; /* Take up remaining space to push footer down */
+  display: flex;
+  flex-direction: column;
+  margin-top: 100px; /* Adjust as necessary for header spacing */
+  z-index: 1; /* Ensure it's below the sidebar but above the footer */
+`;
+
 const TableContainer = styled.div`
   margin: 20px;
   transition: margin-left 0.3s ease;
   margin-left: ${({ sidebar }) => (sidebar ? '270px' : '20px')}; /* Adjusted margin to accommodate the sidebar */
-`;
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-`;
-
-const HeaderContainer = styled.div`
-  padding: 20px;
-  text-align: center;
-  background: #f8f8f8;
-  z-index: 100; /* Ensure the header is above other elements */
+  z-index: 10; /* Ensure it stays below the sidebar */
 `;
 
 const FilterAndRefreshWrapper = styled.div`
@@ -359,13 +361,13 @@ const Table = () => {
           </button>
         </div>
       </TableContainer>
-      <Footer />
       <Sidebar
         sidebar={sidebar}
         showSidebar={showSidebar}
         handleFilterChange={handleFilterChange}
         filters={filters}
       />
+      <Footer />
     </Wrapper>
   );  
 };

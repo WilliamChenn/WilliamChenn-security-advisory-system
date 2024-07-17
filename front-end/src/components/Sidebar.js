@@ -5,13 +5,14 @@ import { IconContext } from 'react-icons/lib';
 const SidebarNav = styled.nav`
   background: white;
   width: 180px;
-  height: calc(100vh - 670px);
-  position: absolute; /* Changed from fixed to absolute */
+  height: 100px; /* Full height to cover the entire viewport */
+  position: absolute; 
   top: 150px; /* Adjust this as necessary for your layout */
   left: ${({ sidebar }) => (sidebar ? '0' : '-250px')};
   transition: 350ms;
-  z-index: 20;
+  z-index: 3000;
   padding: 25px;
+  overflow-y: auto; /* Add scroll if content exceeds height */
 `;
 
 const SidebarWrap = styled.div`

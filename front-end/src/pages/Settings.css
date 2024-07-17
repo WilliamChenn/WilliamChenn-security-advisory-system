@@ -1,43 +1,34 @@
 .header {
   z-index: 1000; /* Higher value than sidebar */
   background-color: #012169; /* Ensure the header color matches the sidebar */
-}
-
-.footer {
-  z-index: 1000; /* Same as header to ensure it's above the sidebar */
-  background-color: #012169; /* Ensure the footer color matches the sidebar */
+  padding: 20px;
+  color: white; /* Text color for header */
 }
 
 .settings-page {
   display: flex;
   flex-direction: column;
   min-height: 100vh; /* Ensure the settings page takes the full viewport height */
-  background-color: #012169; /* Ensure the background color matches the header and sidebar */
+  background-color: #f2f2f2; /* Light background color for the page */
+  overflow-x: hidden; /* Prevent horizontal scrollbar */
 }
 
 .sidebar-toggle {
-  font-size: 30px;
-  cursor: pointer;
-  background: none;
-  border: none;
-  margin: 10px;
+  display: none; /* Hide the sidebar toggle button */
 }
 
 .sidebar {
   position: fixed; /* Fix the sidebar position */
-  top: 100px; /* Adjust to start from the top of the viewport */
+  top: 0; /* Start from the top of the viewport */
   left: 0;
   width: 250px;
   height: 100vh; /* Takes full viewport height */
   background-color: #012169;
   padding-top: 20px;
-  transition: 0.3s;
+  transition: none; /* Remove transition to keep sidebar always visible */
   overflow-y: auto; /* Enable scrolling within the sidebar */
   z-index: 500; /* Lower than the header and footer */
-}
-
-.sidebar.show {
-  left: 0;
+  color: white; /* Text color for sidebar */
 }
 
 .sidebar ul {
@@ -49,30 +40,25 @@
   padding: 20px;
   text-align: center;
   font-size: 21px;
-  color: white;
   cursor: pointer;
   position: relative;
   margin-top: 10px; /* Adjust as needed */
 }
 
 .sidebar ul li:hover {
-  color: #012169;
   background-color: #ffffff;
+  color: #012169;
   border: 2px solid #ffffff;
-  box-sizing: border-box;
   border-radius: 10%;
 }
 
 .content {
-  transition: margin-left 0.3s;
+  margin-top: 120px;
+  margin-left: 250px; /* Ensure the main content is pushed to the right when sidebar is visible */
   padding: 20px;
   flex-grow: 1;
   overflow-y: auto; /* Allow scrolling on the content */
-  background-color: white; /* Add this to contrast the content area from the header and sidebar */
-}
-
-.content.shifted {
-  margin-left: 250px; /* Ensure the main content is pushed to the right when sidebar is visible */
+  background-color: #f2f2f2; /* Light background color for the content */
 }
 
 .settings-container {
@@ -210,6 +196,10 @@
 }
 
 @media (max-width: 768px) {
+  .content {
+    margin-left: 0; /* Adjust for smaller screens */
+  }
+
   .left-section {
     flex: 1; /* Allow full width for smaller screens */
     margin-left: 20px;

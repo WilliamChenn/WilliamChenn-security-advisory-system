@@ -31,7 +31,7 @@ const handleLogout = async () => {
 
 function Settings() {
   const [activeSection, setActiveSection] = useState('profile'); // Set default to 'profile'
-  const [showSidebar, setShowSidebar] = useState(false);
+  const [showSidebar, setShowSidebar] = useState(true); // Always show sidebar by default
   const { profilePicture, updateProfilePictureIndex } = useUserProfile();
   const userId = 1; // Replace this with the actual logic to get the current user's ID
 
@@ -51,9 +51,6 @@ function Settings() {
   return (
     <div className="settings-page">
       <Header />
-      <button className="sidebar-toggle" onClick={() => setShowSidebar(!showSidebar)}>
-        ☰
-      </button>
       <div className={`sidebar ${showSidebar ? 'show' : ''}`}>
         <ul>
           <li onClick={() => setActiveSection('profile')}>Profile</li>
@@ -62,7 +59,7 @@ function Settings() {
           <li onClick={handleLogout}>Logout</li>
         </ul>
       </div>
-      <div className={`content ${showSidebar ? 'shifted' : ''}`}>
+      <div className="content">
         {renderSection()}
       </div>
       <Footer />
