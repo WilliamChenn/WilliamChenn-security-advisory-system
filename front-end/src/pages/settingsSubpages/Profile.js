@@ -25,7 +25,7 @@ const Profile = ({ userId }) => {
 
   const fetchProfile = useCallback(async () => {
     try {
-      const response = await fetch(`http://localhost:3001/api/v3/users/${userId}/email_and_uid_and_name`, {
+      const response = await fetch(`http://localhost:3001/api/v3/users/email_and_uid_and_name`, {
         credentials: 'include',
       });
       if (!response.ok) {

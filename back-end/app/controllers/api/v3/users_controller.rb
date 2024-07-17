@@ -27,7 +27,7 @@ module Api
       end
 
       def show_email_and_uid_and_name
-        user = User.find(params[:id])
+        user = current_user
         render json: { email: user.email, uid: user.uid, name: user.name, profile_picture_index: user.user_png.to_i }
       rescue ActiveRecord::RecordNotFound
         render json: { error: 'User not found' }, status: :not_found

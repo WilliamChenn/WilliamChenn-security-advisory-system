@@ -68,8 +68,6 @@ Rails.application.routes.draw do
           post 'logout'
           put 'set_profile_picture_index'
           get 'get_profile_picture_index'
-        end
-        member do
           get 'email_and_uid_and_name', to: 'users#show_email_and_uid_and_name'
         end
       end
