@@ -1,0 +1,19 @@
+CVE Alerts
+
+Dear <%= @user.name %>,
+
+Here are the latest CVE alerts for your selected vendors:
+
+<% @vendors.each do |vendor| %>
+<%= vendor.name %>
+
+<% @cves.select { |cve| cve.vendor_id == vendor.id }.each do |cve| %>
+  CVE ID: <%= cve.cve_id %>
+  Summary: <%= cve.summary %>
+  Score: <%= cve.max_cvss_base_score %>
+<% end %>
+
+<% end %>
+
+Best regards,
+Your Security Team
