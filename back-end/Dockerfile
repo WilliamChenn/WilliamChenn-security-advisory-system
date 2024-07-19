@@ -49,7 +49,7 @@ COPY --from=build /usr/local/bundle /usr/local/bundle
 COPY --from=build /app /app
 
 # Copy the entrypoint script
-COPY bin/docker-entrypoint /usr/bin/docker-entrypoint
+COPY ./back-end/bin/docker-entrypoint /usr/bin/docker-entrypoint
 RUN chmod +x /usr/bin/docker-entrypoint
 
 # Run and own only the runtime files as a non-root user for security
