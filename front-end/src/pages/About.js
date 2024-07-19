@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 import './About.css'; // Make sure to import your CSS file
 
 function About() {
@@ -16,8 +14,6 @@ function About() {
 
   return (
     <div className="about-container">
-      <Header />
-      
       <div className="hero-image" style={{
         backgroundImage: `url(${currentImage === 1 ? 'https://oit.duke.edu/sites/default/files/styles/large_2_5_1/public/web%20and%20app%20development.png?h=d1cb525d&itok=FaszV0D5' : 'https://oit.duke.edu/sites/default/files/styles/large_2_5_1/public/Security%20Hero.png?h=d1cb525d&itok=Zfusifek'})`
       }} role="img" aria-label="grid of colorful app icons">
@@ -89,8 +85,6 @@ function About() {
         </div>
         
       </div>
-      
-      <Footer />
     </div>
   );
 }
