@@ -22,7 +22,7 @@ RUN apt-get update -qq && \
 
 # Install application gems
 COPY ./back-end/Gemfile ./back-end/Gemfile.lock ./
-COPY Gemfile .
+COPY ./back-end/Gemfile .
 
 RUN bundle config set frozen false
 
