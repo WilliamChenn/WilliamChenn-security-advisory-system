@@ -30,7 +30,7 @@ include:
 
 test_frontend_build:
   variables:
-  DOCKERFILE_PATH: "./front-end/Dockerfile"
+    DOCKERFILE_PATH: "./front-end/Dockerfile"
   extends:
     - .test_env
     - .common_env
