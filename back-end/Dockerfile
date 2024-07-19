@@ -49,8 +49,8 @@ COPY --from=build /usr/local/bundle /usr/local/bundle
 COPY --from=build /app /app
 
 # Copy the entrypoint script
-COPY ./back-end/bin/docker-entrypoint /usr/bin/docker-entrypoint
-RUN chmod +x /usr/bin/docker-entrypoint
+COPY ./back-end/bin/docker-entrypoint /app/bin/docker-entrypoint
+RUN chmod +x /app/bin/docker-entrypoint
 
 # Run and own only the runtime files as a non-root user for security
 RUN useradd rails --create-home --shell /bin/bash 

@@ -11,7 +11,7 @@ include:
 .common_backend_env:
   variables:
     PROJECT_NAME: "backend"
-    CONTAINER_PORT: "3000"
+    CONTAINER_PORT: "3001"
 
 ###                         ###
   # Test environment setup  #
