@@ -21,7 +21,7 @@ RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential git libpq-dev libvips pkg-config
 
 # Install application gems
-COPY Gemfile Gemfile.lock ./
+COPY ./back-end/Gemfile ./back-end/Gemfile.lock ./
 COPY Gemfile .
 
 RUN bundle config set frozen false
