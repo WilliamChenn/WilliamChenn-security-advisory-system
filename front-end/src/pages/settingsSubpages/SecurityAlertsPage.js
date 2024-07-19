@@ -186,6 +186,60 @@ function SecurityAlerts() {
         }
     };
 
+    const handleUnsubscribe = async () => {
+        try {
+            // Delete from user_severities
+            await fetch('http://localhost:3001/api/v1/user_severities', {
+                method: 'DELETE',
+                headers: {
+                    Authorization: `Bearer ${getAuthToken()}`,
+                },
+                credentials: 'include',
+            });
+    
+            // Delete from user_frequencies
+            await fetch('http://localhost:3001/api/v1/user_frequencies', {
+                method: 'DELETE',
+                headers: {
+                    Authorization: `Bearer ${getAuthToken()}`,
+                },
+                credentials: 'include',
+            });
+    
+            // Fetch all vendor notifications for the user
+            const response = await fetch('http://localhost:3001/api/v1/user_notification_vendors', {
+                credentials: 'include',
+                headers: {
+                    Authorization: `Bearer ${getAuthToken()}`,
+                },
+            });
+            
+            if (response.ok) {
+                const vendors = await response.json();
+    
+                // Delete each vendor notification
+                for (const vendor of vendors) {
+                    await fetch(`http://localhost:3001/api/v1/user_notification_vendors/${vendor.vendor_id}`, {
+                        method: 'DELETE',
+                        headers: {
+                            Authorization: `Bearer ${getAuthToken()}`,
+                        },
+                        credentials: 'include',
+                    });
+                }
+            }
+    
+            // Update state to reflect changes
+            setFrequency('none');
+            setFrequencyStatus('None');
+            setSeverity('none');
+            setSeverityStatus('None');
+            setAlerts([]);
+        } catch (error) {
+            console.error('Error unsubscribing:', error);
+        }
+    };    
+
     const handleAddClick = () => {
         setShowForm(true);
         setDuplicateVendorWarning(false);
@@ -350,6 +404,10 @@ function SecurityAlerts() {
                     <button className="button1" onClick={handleDismissWarning}>OK</button>
                 </div>
             )}
+            <br /> <br /> <br/>
+            <button className="unsubscribe-button" onClick={handleUnsubscribe}>
+                Unsubscribe from All Notifications
+            </button>
         </div>
     );
 

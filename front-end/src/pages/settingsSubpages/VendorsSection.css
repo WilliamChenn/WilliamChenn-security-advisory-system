@@ -1,7 +1,7 @@
 .settings-container {
   display: flex;
   margin-left: 60px; /* Add margin to compensate for the sidebar */
-  margin-top: 20px;
+  margin-top: 50px; 
 }
 
 .left-section {
@@ -17,7 +17,7 @@
 .vendor-list {
   list-style: none;
   padding: 0;
-  max-height: 58vh; /* Set max height relative to viewport height */
+  max-height: 75vh; /* Set max height relative to viewport height */
   overflow-y: auto; /* Enable vertical scrolling when needed */
 }
 
