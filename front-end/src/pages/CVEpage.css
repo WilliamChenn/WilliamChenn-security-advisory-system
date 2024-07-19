@@ -51,7 +51,7 @@
 }
 
 .vendor-logo {
-    width: 15vw; /* Adjusted for responsive width */
+    width: 10vw; /* Adjusted for responsive width */
     height: auto; /* Maintain aspect ratio */
     margin-top: 4vh; /* Adjusted for responsive margin */
     padding-left: 1vw; /* Adjusted for responsive padding */
