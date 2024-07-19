@@ -18,7 +18,7 @@ include:
 ###                         ###
 .test_env:
   only:
-    - main
+    - okd4
   environment:
     name: test
     url: "https://securityadvisory.com"
