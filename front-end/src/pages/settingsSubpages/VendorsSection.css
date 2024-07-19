@@ -1,6 +1,7 @@
 .settings-container {
   display: flex;
-  margin-left: 60px; /* Add margin to compensate for the sidebar */
+  justify-content: center; /* Center the whole container horizontally */
+  margin-left: 30px; /* Add margin to compensate for the sidebar */
   margin-top: 50px; 
 }
 
@@ -17,20 +18,24 @@
 .vendor-list {
   list-style: none;
   padding: 0;
-  max-height: 75vh; /* Set max height relative to viewport height */
+  max-height: 85vh; /* Set max height relative to viewport height */
   overflow-y: auto; /* Enable vertical scrolling when needed */
 }
 
 .vendor-list-item {
-  width: 20%;
+  width: 100%;
   padding: 10px;
   margin-bottom: 15px;
   position: relative; /* Position relative for absolute positioning of logo */
+  display: flex; /* Use flexbox to center items */
+  align-items: center;
+  justify-content: center; /* Center horizontally */
 }
 
 .vendor-item-wrapper {
   display: flex;
   align-items: center;
+  justify-content: center; /* Center horizontally */
 }
 
 .vendor-checkbox {
@@ -43,10 +48,12 @@
 }
 
 .vendor-logo-small {
-  width: 10px;
-  height: 10px;
-  margin-left: auto;
+  width: 20px;
+  height: 20px;
   object-fit: contain;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center within the parent container */
 }
 
 .middle-section {

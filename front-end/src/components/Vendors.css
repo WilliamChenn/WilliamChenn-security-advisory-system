@@ -12,7 +12,7 @@ h2 {
   grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); /* Smaller min width for each card */
   gap: 10px;
   padding: 0px;
-  align-items: center;
+  justify-items: center; /* Center the grid items */
 }
 
 .vendor-card {
@@ -24,6 +24,7 @@ h2 {
   position: relative; /* Ensure the spinner is positioned correctly */
   height: 100px; /* Smaller fixed height for all cards */
   width: 100px; /* Fixed width for all cards */
+  text-align: center; /* Ensure the text is centered */
 }
 
 .vendor-card.loading {
@@ -31,15 +32,13 @@ h2 {
 }
 
 .vendor-logo {
-  display: flex;
-  justify-content: center;
-  align-items: center; /* Center vertically */
   max-width: 90%;
   max-height: 90%; /* Adjust as needed */
   object-fit: contain; /* Ensure the image fits within the box without distortion */
-  position: relative;
-  bottom: 21px;/* You can also use left, right, bottom to move the logo accordingly */
-  right: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto; /* Center the logo within the card */
 }
 
 .add-vendor {
