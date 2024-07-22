@@ -21,8 +21,7 @@ RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential git libpq-dev libvips pkg-config
 
 # Install application gems
-COPY ./back-end/Gemfile ./back-end/Gemfile.lock ./
-COPY ./back-end/Gemfile .
+COPY . ./
 
 RUN bundle config set frozen false
 
@@ -49,8 +48,8 @@ COPY --from=build /usr/local/bundle /usr/local/bundle
 COPY --from=build /app /app
 
 # Copy the entrypoint script
-COPY ./back-end/bin/docker-entrypoint /app/bin/docker-entrypoint
-RUN chmod +x /app/bin/docker-entrypoint
+#COPY . ./
+#RUN chmod +x /usr/bin/docker-entrypoint
 
 # Run and own only the runtime files as a non-root user for security
 RUN useradd rails --create-home --shell /bin/bash 

@@ -4,7 +4,8 @@ FROM node:18-alpine
 WORKDIR /app
 
 # Copy package.json and package-lock.json to leverage Docker cache
-COPY ./front-end/package.json ./front-end/package-lock.json ./
+COPY . ./
+
 
 # Copy the rest of the application files
 COPY . .
