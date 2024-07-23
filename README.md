@@ -56,7 +56,7 @@ Every project is different, so consider which of these sections apply to yours. 
 Security Advisory Notification System
 
 ## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+This project is a React-based web application designed to assist Duke IT professionals in managing security advisories and remediation information. The application includes user authentication and profile management, leveraging a context for user profile data. It features a responsive interface with routing handled by react-router-dom, providing various pages such as Home, About, Settings, and detailed CVE information. The Table component offers paginated and sortable views of CVE data, with filters and dynamic sidebar functionality. The application integrates with backend services for data fetching and user authentication, ensuring a seamless and secure user experience. The UI is enhanced with custom CSS for a polished and professional look, making it intuitive for IT professionals to navigate and use.
 
 ## Badges
 On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
