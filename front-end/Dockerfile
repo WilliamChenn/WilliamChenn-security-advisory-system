@@ -4,11 +4,10 @@ FROM node:18-alpine
 WORKDIR /app
 
 # Copy package.json and package-lock.json to leverage Docker cache
-COPY . ./
-
+COPY ./front-end/package.json ./front-end/package-lock.json ./
 
 # Copy the rest of the application files
-COPY . .
+COPY ./front-end ./
 
 # Install dependencies
 RUN npm install
