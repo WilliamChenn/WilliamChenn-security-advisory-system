@@ -21,8 +21,8 @@ RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential git libpq-dev libvips pkg-config
 
 # Install application gems
-COPY Gemfile Gemfile.lock ./
-COPY Gemfile .
+COPY ./back-end/Gemfile ./back-end/Gemfile.lock ./
+COPY ./back-end/Gemfile .
 
 RUN bundle config set frozen false
 
@@ -31,7 +31,7 @@ RUN bundle install && \
     bundle exec bootsnap precompile --gemfile
 
 # Copy application code
-#COPY . .
+COPY ./back-end .
 
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile app/ lib/
@@ -49,8 +49,8 @@ COPY --from=build /usr/local/bundle /usr/local/bundle
 COPY --from=build /app /app
 
 # Copy the entrypoint script
-COPY bin/docker-entrypoint /usr/bin/docker-entrypoint
-RUN chmod +x /usr/bin/docker-entrypoint
+COPY ./back-end/bin/docker-entrypoint /app/bin/docker-entrypoint
+RUN chmod +x /app/bin/docker-entrypoint
 
 # Run and own only the runtime files as a non-root user for security
 RUN useradd rails --create-home --shell /bin/bash 

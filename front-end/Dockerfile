@@ -3,11 +3,16 @@ FROM node:18-alpine
 # Set the working directory
 WORKDIR /app
 
+# Change permissions to allow all users read, write, and execute access
+RUN chmod -R 777 /app
+
 # Copy package.json and package-lock.json to leverage Docker cache
-COPY package.json package-lock.json ./
+COPY ./front-end/package.json ./front-end/package-lock.json ./
 
 # Copy the rest of the application files
-COPY . .
+COPY ./front-end ./
+
+
 
 # Install dependencies
 RUN npm install
@@ -21,4 +26,3 @@ EXPOSE 3000
 
 # Command to run the application
 CMD ["npm", "run", "dev"]
-
