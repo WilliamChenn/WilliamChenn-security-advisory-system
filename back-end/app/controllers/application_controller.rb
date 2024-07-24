@@ -5,7 +5,7 @@ class ApplicationController < ActionController::API
     SP_CERT = File.read('config/saml/certificate.crt')
     SP_KEY = File.read('config/saml/privateKey.key')
     SP_ENTITIY_ID = "https://securityadvisory.com" # this value must start with http:// or https BUT does not have to be a "real" url (i.e. does not have to resolve).
-    SP_ACS = "http://localhost:3001/saml" # this is going to be where you want the IDP to send the data after the user logs in.
+    SP_ACS = ENV['REACT_APP_BACKEND_URL'] + "/saml" # this is going to be where you want the IDP to send the data after the user logs in.
   
 
     def saml_auth
@@ -46,7 +46,7 @@ class ApplicationController < ActionController::API
                 #secure: Rails.env.production?, # Set to true in production for security
                 #same_site: :strict
               }
-            redirect_to "http://localhost:3000"
+            redirect_to ENV['FRONT_END_URL']
         else
             raise StandardError
         end
