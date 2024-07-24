@@ -5,36 +5,26 @@ import { COLUMNS } from './TableColumns';
 import './Table.css';
 import Sidebar from '../components/Sidebar';
 import styled from 'styled-components';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh; /* Ensure the wrapper takes full viewport height */
-`;
-
-const Content = styled.div`
-  flex: 1; /* Take up remaining space to push footer down */
-  display: flex;
-  flex-direction: column;
-  margin-top: 100px; /* Adjust as necessary for header spacing */
-  z-index: 1; /* Ensure it's below the sidebar but above the footer */
-`;
 
 const TableContainer = styled.div`
   margin: 20px;
   transition: margin-left 0.3s ease;
   margin-left: ${({ sidebar }) => (sidebar ? '270px' : '20px')}; /* Adjusted margin to accommodate the sidebar */
-  z-index: 10; /* Ensure it stays below the sidebar */
+`;
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 `;
 
 const FilterAndRefreshWrapper = styled.div`
   display: flex;
   justify-content: flex-end; /* Align to the right */
-  margin-top: 130px;
-  margin-right: 50px;
+  margin: 10px 50px 10px 50px; /* Reduced top margin to shift buttons closer to the table */
   z-index: 101; /* Ensure the buttons are above other elements */
+  gap: 10px; /* Add gap between buttons to avoid overlap */
+  flex-wrap: wrap; /* Ensure buttons wrap if the screen size is reduced */
 `;
 
 const FilterButton = styled.button`
@@ -51,7 +41,6 @@ const FilterButton = styled.button`
   justify-content: center;
   transition: background-color 0.3s ease;
   z-index: 102; /* Ensure the button is above other elements */
-  margin-left: 10px; /* Add margin to separate the buttons */
 
   &:hover {
     background-color: #ddd;
@@ -78,7 +67,6 @@ const RefreshButton = styled.button`
   justify-content: center;
   transition: background-color 0.3s ease;
   z-index: 102; /* Ensure the button is above other elements */
-  margin-left: 10px; /* Add margin to separate the buttons */
   padding: 0; /* Remove padding for square shape */
 
   &:hover {
@@ -270,15 +258,14 @@ const Table = () => {
       return { ...prevFilters, [name]: value };
     });
   };
-  
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pageIndex]);
-
+  
   return (
     <Wrapper>
-      <Header />
+      <main className="table-main-content">
       <FilterAndRefreshWrapper>
         <FilterButton onClick={showSidebar} sidebar={sidebar}>
           Filter Here
@@ -367,7 +354,7 @@ const Table = () => {
         handleFilterChange={handleFilterChange}
         filters={filters}
       />
-      <Footer />
+      </main>
     </Wrapper>
   );  
 };

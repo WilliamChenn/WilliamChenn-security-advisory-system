@@ -4,12 +4,10 @@ import { useUserProfile } from '../../App';
 import dog from '../../images/dog.png';
 import cat from '../../images/cat.png';
 import capybara from '../../images/capybara.png';
-import kelly from '../../images/kelly.png';
-import katherine from '../../images/katherine.png';
 import unicorn from '../../images/unicorn.png';
 import unicorn1 from '../../images/unicorn1.png';
 
-const profilePictures = [dog, cat, capybara, kelly, katherine, unicorn, unicorn1];
+const profilePictures = [dog, cat, capybara, unicorn, unicorn1];
 
 const Profile = ({ userId }) => {
   const { profilePicture, updateProfilePictureIndex } = useUserProfile();
@@ -25,7 +23,7 @@ const Profile = ({ userId }) => {
 
   const fetchProfile = useCallback(async () => {
     try {
-      const response = await fetch(`http://localhost:3001/api/v3/users/${userId}/email_and_uid_and_name`, {
+      const response = await fetch(`http://localhost:3001/api/v3/users/email_and_uid_and_name`, {
         credentials: 'include',
       });
       if (!response.ok) {
@@ -49,32 +47,13 @@ const Profile = ({ userId }) => {
   };
 
   const handleProfilePictureSelect = async (index) => {
-    try {
-      // Call the backend to update the profile picture index
-      const response = await fetch('http://localhost:3001/api/v3/users/set_profile_picture_index', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        credentials: 'include',
-        body: JSON.stringify({ profile_picture_index: index }),
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to update profile picture index');
-      }
-
-      // Update the local state after successful backend update
-      await updateProfilePictureIndex(index);
-      setProfile((prevProfile) => ({
-        ...prevProfile,
-        profilePictureIndex: index,
-        profilePicture: profilePictures[index]
-      }));
-      setDropdownVisible(false);
-    } catch (error) {
-      console.error('Error updating profile picture:', error);
-    }
+    await updateProfilePictureIndex(index);
+    setProfile((prevProfile) => ({
+      ...prevProfile,
+      profilePictureIndex: index,
+      profilePicture: profilePictures[index]
+    }));
+    setDropdownVisible(false);
   };
 
   useEffect(() => {
@@ -83,12 +62,6 @@ const Profile = ({ userId }) => {
 
   return (
     <div className="profile-container">
-      <div className="profile-sidebar">
-        <div className="profile-greeting">
-          <h2>Hello, {profile.userName}!</h2>
-        </div>
-      </div>
-
       <div className="profile-info">
         <div className="profile-details">
           <h2>User Profile</h2>

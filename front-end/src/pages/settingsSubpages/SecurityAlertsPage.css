@@ -2,6 +2,7 @@
     max-width: 600px;
     margin: auto;
     padding: 20px;
+    margin-top: 60px; 
     background-color: #f9f9f9;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -52,8 +53,7 @@
 .vendor-list1 {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Center the items */
-    gap: 20px; /* Add spacing between items */
+    justify-content: space-between;
 }
 
 .alert-item1 {
@@ -61,9 +61,8 @@
     flex-direction: column;
     align-items: center;
     margin-bottom: 10px;
-    width: 45%; /* Adjust width for responsiveness */
+    width: 30%;
     text-align: center;
-    box-sizing: border-box; /* Ensure padding/border are included in the width */
 }
 
 .vendor-info1 {
@@ -73,10 +72,9 @@
 }
 
 .vendor-logo1 {
-    max-width: 120px;
-    max-height: 50px;
-    display: block;
-    margin: 0 auto 5px;
+    width: 120px;
+    height: 50px;
+    margin-bottom: 5px;
 }
 
 #delete-button1 {
@@ -118,6 +116,27 @@
 
 .blue-text1 {
     color: blue;
+}
+
+.vendor-list1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* Change this line */
+}
+
+.alert-item1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+    width: 30%;
+    text-align: center;
+}
+
+.vendor-info1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .add-vendor-button1 {
