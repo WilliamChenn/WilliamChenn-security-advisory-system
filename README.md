@@ -116,7 +116,7 @@ Submit a pull request.
 - Duke University IT Security Office
 
 ## License
-For open source projects, say how it is licensed.
+GNU General Public License
 
 ## Project status
 Active development. We are continuously adding new features and improving the application. If you are interested in contributing, please contact us!
