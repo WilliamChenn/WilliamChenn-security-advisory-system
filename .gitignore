@@ -41,3 +41,8 @@
 
 *.key/back-end/log/development.log
 /back-end/tmp/cache/bootsnap/load-path-cache
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
