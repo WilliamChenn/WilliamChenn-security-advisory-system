@@ -58,6 +58,11 @@ test_backend_deploy:
     - .common_backend_env
     - .deploy_image_using_library_template
 
+test_shib_apache_deploy:
+  extends:
+    - .test_env
+    - .common_env
+    - .deploy_shib_apache
 
 
 
