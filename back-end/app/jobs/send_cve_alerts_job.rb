@@ -3,15 +3,15 @@ class SendCVEAlertsJob < ApplicationJob
 
   def perform
     frequencies = {
-      'Daily' => 1.day,
-      'Weekly' => 1.week,
-      'Biweekly' => 2.weeks,
-      'Monthly' => 1.month
+      'daily' => 1.day,
+      'weekly' => 1.week,
+      'biweekly' => 2.weeks,
+      'monthly' => 1.month
     }
-    
-#For each value of frequency it refers to user_frequencies table to note the frequency for each user
+
     frequencies.each do |label, interval|
       users = User.joins(:user_frequency).where(user_frequencies: { frequency: label })
+      puts "Processing #{users.count} users for frequency: #{label}"
       send_emails_to_users(users)
     end
   end
