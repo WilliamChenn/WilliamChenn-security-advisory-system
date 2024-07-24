@@ -3,8 +3,8 @@ version: "3.8"
 services:
   frontend:
     build:
-      context: ./front-end
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ./front-end/Dockerfile
     restart: unless-stopped
     ports:
       - "3000:3000"
@@ -19,8 +19,8 @@ services:
     
   backend:
     build:
-      context: ./back-end
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ./back-end/Dockerfile
     ports:
       - "3001:3001"
     volumes:
