@@ -9,6 +9,9 @@ COPY ./front-end/package.json ./front-end/package-lock.json ./
 # Copy the rest of the application files
 COPY ./front-end ./
 
+# Change permissions to allow all users read, write, and execute access
+RUN chmod -R 777 /app
+
 # Install dependencies
 RUN npm install
 # Ensure the @mui/material package is installed
