@@ -1,36 +1,29 @@
 .header {
   z-index: 1000; /* Higher value than sidebar */
+  background-color: #012169; /* Ensure the header color matches the sidebar */
 }
 
 .footer {
   z-index: 1000; /* Same as header to ensure it's above the sidebar */
+  background-color: #012169; /* Ensure the footer color matches the sidebar */
 }
 
 .settings-page {
   display: flex;
-  flex-direction: column;
   min-height: 100vh; /* Ensure the settings page takes the full viewport height */
-  overflow-y: auto; /* Allow scrolling on the entire page */
+  background-color: #012169; /* Ensure the background color matches the header and sidebar */
 }
 
-.sidebar-toggle {
-  font-size: 30px;
-  cursor: pointer;
-  background: none;
-  border: none;
-  margin: 10px;
-}
 
 .sidebar {
-  position: fixed;
-  top: 100px; /* Adjusted to start from the top of the viewport */
+  margin-top: 50px; 
   left: 0;
-  width: 250px;
-  height: calc(100vh - 110px); /* Takes full viewport height minus the header height */
+  width: 150px;
+  height: 100%; /* Takes full height */
   background-color: #012169;
   padding-top: 20px;
   transition: 0.3s;
-  overflow-y: auto;
+  overflow-y: auto; /* Enable scrolling within the sidebar */
   z-index: 500; /* Lower than the header and footer */
 }
 
@@ -45,8 +38,9 @@
 
 .sidebar ul li {
   padding: 20px;
-  text-align: center;
+
   font-size: 21px;
+  text-align: left; /* Align text to the left */
   color: white;
   cursor: pointer;
   position: relative;
@@ -62,14 +56,10 @@
 }
 
 .content {
-  transition: margin-left 0.3s;
   padding: 20px;
   flex-grow: 1;
-  overflow-y: auto;
-}
-
-.content.shifted {
-  margin-left: 250px;
+  overflow-y: auto; /* Allow scrolling on the content */
+  background-color: white; /* Add this to contrast the content area from the header and sidebar */
 }
 
 .settings-container {
@@ -121,8 +111,8 @@
 }
 
 .vendor-logo-small {
-  width: 50px; /* Adjusted width for a smaller size */
-  height: 50px; /* Adjusted height for a smaller size */
+  width: 80px; /* Adjusted width for a larger size */
+  height: 80px; /* Adjusted height for a larger size */
   object-fit: contain;
   border-radius: 5px;
   margin-left: 5px; /* Reduced margin for smaller spacing */

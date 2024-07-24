@@ -7,9 +7,9 @@ function SecurityAlerts() {
     const [alerts, setAlerts] = useState([]);
     const [vendorList, setVendorList] = useState([]);
     const [duplicateVendorWarning, setDuplicateVendorWarning] = useState(false);
-    const [frequency, setFrequency] = useState('');
+    const [frequency, setFrequency] = useState('none');
     const [frequencyStatus, setFrequencyStatus] = useState('');
-    const [severity, setSeverity] = useState('');
+    const [severity, setSeverity] = useState('none');
     const [severityStatus, setSeverityStatus] = useState('');
 
     useEffect(() => {
@@ -145,7 +145,7 @@ function SecurityAlerts() {
             const responseCheck = await fetch('http://localhost:3001/api/v1/user_severities', {
                 credentials: 'include',
             });
-    
+
             if (responseCheck.ok) {
                 // There is an existing severity entry, so delete it
                 await fetch('http://localhost:3001/api/v1/user_severities', {
@@ -161,7 +161,7 @@ function SecurityAlerts() {
                 console.error('Failed to check severity:', responseCheck.statusText);
                 return;
             }
-    
+
             // Create new severity entry
             const response = await fetch('http://localhost:3001/api/v1/user_severities', {
                 method: 'POST',
@@ -174,7 +174,7 @@ function SecurityAlerts() {
                 }),
                 credentials: 'include',
             });
-    
+
             if (response.ok) {
                 setSeverity(selectedSeverity);  // Update severity state
                 setSeverityStatus(selectedSeverity);  // Update severityStatus state if needed
@@ -185,7 +185,60 @@ function SecurityAlerts() {
             console.error('Error updating severity:', error);
         }
     };
+
+    const handleUnsubscribe = async () => {
+        try {
+            // Delete from user_severities
+            await fetch('http://localhost:3001/api/v1/user_severities', {
+                method: 'DELETE',
+                headers: {
+                    Authorization: `Bearer ${getAuthToken()}`,
+                },
+                credentials: 'include',
+            });
     
+            // Delete from user_frequencies
+            await fetch('http://localhost:3001/api/v1/user_frequencies', {
+                method: 'DELETE',
+                headers: {
+                    Authorization: `Bearer ${getAuthToken()}`,
+                },
+                credentials: 'include',
+            });
+    
+            // Fetch all vendor notifications for the user
+            const response = await fetch('http://localhost:3001/api/v1/user_notification_vendors', {
+                credentials: 'include',
+                headers: {
+                    Authorization: `Bearer ${getAuthToken()}`,
+                },
+            });
+            
+            if (response.ok) {
+                const vendors = await response.json();
+    
+                // Delete each vendor notification
+                for (const vendor of vendors) {
+                    await fetch(`http://localhost:3001/api/v1/user_notification_vendors/${vendor.vendor_id}`, {
+                        method: 'DELETE',
+                        headers: {
+                            Authorization: `Bearer ${getAuthToken()}`,
+                        },
+                        credentials: 'include',
+                    });
+                }
+            }
+    
+            // Update state to reflect changes
+            setFrequency('none');
+            setFrequencyStatus('None');
+            setSeverity('none');
+            setSeverityStatus('None');
+            setAlerts([]);
+        } catch (error) {
+            console.error('Error unsubscribing:', error);
+        }
+    };    
 
     const handleAddClick = () => {
         setShowForm(true);
@@ -273,60 +326,60 @@ function SecurityAlerts() {
     };
 
     return (
-        <div className="security-alerts-container">
-            <h2>Email Notification Preferences</h2>
-            <div className="frequency-selection">
-                <br />
-                <h3>Frequency:</h3>
-                {frequencyStatus && <p className="frequency-status">Current frequency: <strong style={{ color: '#0417aa' }}>{frequencyStatus}</strong></p>}
-                <select value={frequency} onChange={(e) => handleFrequencyChange(e.target.value)}>
+        <div className="security-alerts-container1">
+            <h2 className="h21">Email Notification Preferences</h2>
+            <br />
+            <div className="frequency-selection1">
+                <h3 className="h31">Frequency:</h3>
+                {frequencyStatus && <p className="frequency-status1">Current frequency: <strong style={{ color: '#0417aa' }}>{frequencyStatus}</strong></p>}
+                <select className="select1" value={frequency} onChange={(e) => handleFrequencyChange(e.target.value)}>
+                    <option value="none">None</option>
                     <option value="daily">Daily</option>
                     <option value="weekly">Weekly</option>
                     <option value="biweekly">Biweekly</option>
                     <option value="monthly">Monthly</option>
                 </select>
-            </div>
 
-            <div className="severity-selection">
-                <br />
-                <h3>CVE Severity:</h3>
-                {severityStatus && <p className="severity-status">Current severity: <strong style={{ color: '#0417aa' }}>{severityStatus}</strong></p>}
-                <select value={severity} onChange={(e) => handleSeverityChange(e.target.value)}>
-                    <option value="all">All (CVSS: 1-10)</option>
-                    <option value="medium">Medium and up (CVSS: 4-10)</option>
-                    <option value="high">High and up (CVSS: 7-10)</option>
-                    <option value="critical">Critical (CVSS: 9-10)</option>
-                </select>
+                <div className="severity-selection1">
+                    <br />
+                    <h3 className="h31">CVE Severity:</h3>
+                    {severityStatus && <p className="severity-status1">Current severity: <strong style={{ color: '#0417aa' }}>{severityStatus}</strong></p>}
+                    <select className="select1" value={severity} onChange={(e) => handleSeverityChange(e.target.value)}>
+                        <option value="none">None</option>
+                        <option value="all">All (CVSS: 1-10)</option>
+                        <option value="medium">Medium and up (CVSS: 4-10)</option>
+                        <option value="high">High and up (CVSS: 7-10)</option>
+                        <option value="critical">Critical (CVSS: 9-10)</option>
+                    </select>
+                </div>
             </div>
-
-            <div className="alerts-list">
-                <h3>Vendors:</h3>
+            <div className="alerts-list1">
+                <h3 className="h31">Vendors:</h3>
                 {alerts.length === 0 ? (
                     <p>No Vendors Selected.</p>
                 ) : (
-                    <ul className="vendor-list">
+                    <ul className="vendor-list1">
                         {alerts.map((alert, index) => (
-                            <li key={alert.id} className="alert-item">
-                                <div className="vendor-info">
-                                    <img src={alert.vendor.logo} alt={alert.vendor.name} className="vendor-logo" />
+                            <li key={alert.id} className="alert-item1">
+                                <div className="vendor-info1">
+                                    <img src={alert.vendor.logo} alt={alert.vendor.name} className="vendor-logo1" />
                                     <p><strong>{alert.vendor.name}</strong></p>
                                 </div>
-                                <button id="delete-button" onClick={() => handleDeleteAlert(index, alert.vendor.id)}>Delete</button>
+                                <button className="button1" id="delete-button1" onClick={() => handleDeleteAlert(index, alert.vendor.id)}>Delete</button>
                             </li>
                         ))}
                     </ul>
                 )}
-
             </div>
 
-            <button className="add-vendor-button" onClick={handleAddClick}>Add Vendor</button>
+            <button className="add-vendor-button1" onClick={handleAddClick}>Add Vendor</button>
 
             {showForm && (
-                <form onSubmit={handleSubmit}>
-                    <label>
+                <form className="form1" onSubmit={handleSubmit}>
+                    <label className="label1">
                         <br />
                         Vendor:
-                        <select value={vendor} onChange={(e) => setVendor(e.target.value)} required>
+                        <select className="select1" value={vendor} onChange={(e) => setVendor(e.target.value)} required>
                             <option value="">Select Vendor</option>
                             {vendorList.map((v) => (
                                 <option key={v.id} value={v.name}>
@@ -336,19 +389,25 @@ function SecurityAlerts() {
                         </select>
                     </label>
 
-                    <div className="form-buttons">
-                    <button type="submit" className="form-button">Submit</button>
-                    <button type="button" className="form-button" onClick={handleCancelClick}>Cancel</button>
-                    </div>    
-                    </form>
-                )}
+                    <div className="form-buttons1">
+                        <button className="button1" type="submit">Submit</button>
+                        <button className="button1" type="button" onClick={handleCancelClick}>
+                            Cancel
+                        </button>
+                    </div>
+                </form>
+            )}
 
             {duplicateVendorWarning && (
-                <div className="popup">
+                <div className="popup1">
                     <p>Vendor has already been added.</p>
-                    <button onClick={handleDismissWarning}>OK</button>
+                    <button className="button1" onClick={handleDismissWarning}>OK</button>
                 </div>
             )}
+            <br /> <br /> <br/>
+            <button className="unsubscribe-button" onClick={handleUnsubscribe}>
+                Unsubscribe from All Notifications
+            </button>
         </div>
     );
 

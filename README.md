@@ -1,93 +1,122 @@
 # Security Advisory System
 
 
+## 👋 Introduction
+This project is a React-based web application designed to assist Duke IT professionals in managing security advisories and remediation information. The application includes user authentication and profile management, leveraging a context for user profile data. It features a responsive interface with routing handled by react-router-dom, providing various pages such as Home, About, Settings, and detailed CVE information. The Table component offers paginated and sortable views of CVE data, with filters and dynamic sidebar functionality. The application integrates with backend services for data fetching and user authentication, ensuring a seamless and secure user experience. The UI is enhanced with custom CSS for a polished and professional look, making it intuitive for IT professionals to navigate and use.
 
-## Getting started
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+## 👩 User functionality
+### 💻 Homepage
+The Home component of a React application serves as the main dashboard for Duke's database of open-source vulnerabilities and cloud misconfigurations. It features two graphical representations: a bar graph depicting the number of CVEs for different CVSS scores and a dot plot illustrating CVEs for CVSS and EPSS scores.
+The component dynamically fetches and displays the top vulnerabilities of the past month, updating every 5 seconds. Each vulnerability is showcased in a card format with a title, summary, CVSS base score, and a link to learn more. Users can view all vulnerabilities by clicking the "View all" link.
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+<img src="front-end/public/Screenshotofhomepage.png" alt="image info" width="500">
 
-## Add your files
+### 📊 Vulnerabilities Table
+The Table component in this React application displays a paginated and sortable table of recent CVEs. It includes a sidebar for filtering vulnerabilities by severity, date range, search query, and vendors. Users can refresh the data and view details of each CVE by clicking on its ID. The component utilizes React Table for sorting and pagination and dynamically fetches data from an API endpoint. The layout and style are managed with styled-components and CSS, ensuring a responsive and user-friendly interface.
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+<img src="front-end/public/Screenshotoftable.png" alt="image info" width="500">
 
-```
-cd existing_repo
-git remote add origin https://gitlab.oit.duke.edu/codeplus/security-advisory-system.git
-git branch -M main
-git push -uf origin main
-```
 
-## Integrate with your tools
+### 📄 CVE Details Page
 
-- [ ] [Set up project integrations](https://gitlab.oit.duke.edu/codeplus/security-advisory-system/-/settings/integrations)
+This React component, CVEpage, fetches and displays detailed information about a specific CVE (Common Vulnerabilities and Exposures) identified by its cveId. It includes an overview, remediation details, and vendor information. The component fetches data from various endpoints and handles both display and editing of remediation information, allowing users to update or clear this data. It also features a textbox for editing remediation information and displays a circular progress indicator for the CVSS base score. Error handling and loading states are managed within the component to ensure a smooth user experience.
 
-## Collaborate with your team
+<img src="front-end/public/Screenshotoflearnmore.png" alt="image info" width="500">
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+### ✅ Vendor Selection
 
-## Test and Deploy
+The Vendors Section component in React manages the selection of vendors for a user. It fetches the list of available vendors and the user's current vendors from an API, storing them in state. Users can check or uncheck vendors to add or remove them from their list, with the changes reflected in the backend via API requests. The component renders available vendors with checkboxes and user vendors using a Vendors component. Vendor logos are displayed next to their names for better visualization. The component handles errors gracefully and provides a clean interface for managing vendor selections.
 
-Use the built-in continuous integration in GitLab.
+<img src="front-end/public/Screenshotofvendors.png" alt="image info" width="500">
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+### 🔊 Security Alerts
+The SecurityAlerts component in React provides a user interface for managing email notification preferences related to security alerts from various vendors. It includes several features:
 
-***
+- Vendor Management: Users can add and remove vendors from their notification list. When adding a vendor, the component ensures that duplicates are not added.
 
-# Editing this README
+- Frequency and Severity Settings: Users can set how frequently they receive notifications (daily, weekly, etc.) and the severity level of the alerts (none, all, medium, high, critical).
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
+- Data Fetching and State Management: The component fetches the list of vendors and user-specific notification settings from an API and manages these data within the state.
 
-## Suggestions for a good README
+- Unsubscribe Option: Users have the option to unsubscribe from all notifications, which deletes their frequency and severity settings as well as all vendor notifications.
 
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+- Form Handling: A form is shown to add new vendors, and there is handling for duplicate vendor warnings and form cancellation.
+This setup allows for a dynamic and user-friendly way to manage security alert notifications efficiently.
 
-## Name
-Security Advisory Notification System
+<img src="front-end/public/Screenshotofnotifications.png" alt="image info" width="500">
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+# 💻 Tech Stack
+- Database: **PostgreSQL**
+- Data visualization: **PGAdmin**
+- Backend: **Ruby on Rails**
+- Frontend: **ReactJS**
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+### APIs
+- **CVEDetails**: used to get CVE IDs, summary, CVSS and EPSS scores and remediation information.
+- **KEVCatalog**: CVE IDs, summary, CVSS and EPSS scores and remediation information. Used KEV catalog to have more vendors other than those on the CVE Details page.
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+
+
+
+
+
+
+
+
+
+
+## 👩🏻‍🏫 Application Architecture
+<img src="front-end/public/ProjectPhases.png" alt="image info" width="500">
+
+
+
 
 ## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+We have Dockerfiles set up for both the frontend (React) and backend (Rails) directories. These are independent applications that are managed together using Docker Compose.
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+To build and start the project, run the following commands in the root directory:
+`docker-compose build`
+`docker-compose up`
+This will install all necessary dependencies and start the project.
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+Once the containers are up and running, you can access the react application in your browser at http://localhost:3000
+Provide the app with credentials to access the database and other external systems. The .env file should include the following variables:
+```
+POSTGRES_USER
+POSTGRES_PASSWORD
+POSTGRES_DB
+POSTGRES_HOST
+RAILS_ENV
+CVEDETAILS_TOKEN
+BACKEND_URL
+```
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+
+## Future Development
+- Integration of User Authorization to only permit certain groups to configure remediation messages.
+- Add a list of effected products for each Vulnerbility
+- Create mobile interface
+- Support more sources of Data beyong CVE Details and CISA KEV catalog
 
 ## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+We welcome contributions! Please follow these steps:
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+Fork the repository.
+Create a new branch (`git checkout -b feature-branch`).
+Make your changes.
+Submit a pull request.
 
 ## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+- Kelly Shahu - Initial Work - 
+- William Chen - Initial Work - WilliamChenn
+- Brian Kim - Initial Work - 
+- Katherine Yu - Initial Work - 
+- Ananya Agrawal - Initial Work - 
+- Duke University IT Security Office
 
 ## License
-For open source projects, say how it is licensed.
+GNU General Public License
 
 ## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+Active development. We are continuously adding new features and improving the application. If you are interested in contributing, please contact us!

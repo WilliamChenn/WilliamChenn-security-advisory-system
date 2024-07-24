@@ -1,9 +1,16 @@
-// src/pages/settingsSubpages/Profile.js
 import React, { useState, useEffect, useCallback } from 'react';
 import './Profile.css';
-import dog from '../../images/dog.png'; // Default profile picture if needed
+import { useUserProfile } from '../../App';
+import dog from '../../images/dog.png';
+import cat from '../../images/cat.png';
+import capybara from '../../images/capybara.png';
+import unicorn from '../../images/unicorn.png';
+import unicorn1 from '../../images/unicorn1.png';
 
-const Profile = ({ userId, profilePictures }) => {
+const profilePictures = [dog, cat, capybara, unicorn, unicorn1];
+
+const Profile = ({ userId }) => {
+  const { profilePicture, updateProfilePictureIndex } = useUserProfile();
   const [profile, setProfile] = useState({
     profilePictureIndex: 0,
     profilePicture: dog,
@@ -12,9 +19,11 @@ const Profile = ({ userId, profilePictures }) => {
     userNetID: ''
   });
 
+  const [dropdownVisible, setDropdownVisible] = useState(false);
+
   const fetchProfile = useCallback(async () => {
     try {
-      const response = await fetch(`http://localhost:3001/api/v3/users/${userId}/email_and_uid_and_name`, {
+      const response = await fetch(`http://localhost:3001/api/v3/users/email_and_uid_and_name`, {
         credentials: 'include',
       });
       if (!response.ok) {
@@ -31,29 +40,20 @@ const Profile = ({ userId, profilePictures }) => {
     } catch (error) {
       console.error('Error fetching profile:', error);
     }
-  }, [userId, profilePictures]);
+  }, [userId]);
 
-  const updateProfilePictureIndex = async (index) => {
-    try {
-      const response = await fetch(`http://localhost:3001/api/v3/users/set_profile_picture_index`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ profile_picture_index: index }),
-        credentials: 'include',
-      });
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      setProfile((prevProfile) => ({
-        ...prevProfile,
-        profilePictureIndex: index,
-        profilePicture: profilePictures[index]
-      }));
-    } catch (error) {
-      console.error('Error updating profile picture:', error);
-    }
+  const handleProfilePictureClick = () => {
+    setDropdownVisible(!dropdownVisible);
+  };
+
+  const handleProfilePictureSelect = async (index) => {
+    await updateProfilePictureIndex(index);
+    setProfile((prevProfile) => ({
+      ...prevProfile,
+      profilePictureIndex: index,
+      profilePicture: profilePictures[index]
+    }));
+    setDropdownVisible(false);
   };
 
   useEffect(() => {
@@ -62,14 +62,6 @@ const Profile = ({ userId, profilePictures }) => {
 
   return (
     <div className="profile-container">
-      <div className="profile-sidebar">
-        <div className="profile-greeting">
-          <h2>Hello, {profile.userName}!</h2>
-          <p>This is your profile page. You can see the vendors you have selected and want to receive notifications from.</p>
-          <button className="edit-profile-button">Edit Profile</button>
-        </div>
-      </div>
-
       <div className="profile-info">
         <div className="profile-details">
           <h2>User Profile</h2>
@@ -87,7 +79,22 @@ const Profile = ({ userId, profilePictures }) => {
           </div>
         </div>
         <div className="profile-picturepage-wrapper">
-          <img src={profile.profilePicture} alt="Profile" className="profile-picturepage" />
+          <div className="profile-picture-container" onClick={handleProfilePictureClick}>
+            <img src={profile.profilePicture} alt="Profile" className="profile-picturepage" />
+          </div>
+          {dropdownVisible && (
+            <div className="profile-dropdown" onMouseLeave={() => setDropdownVisible(false)}>
+              {profilePictures.map((picture, index) => (
+                <img
+                  key={index}
+                  src={picture}
+                  alt={`Profile option ${index + 1}`}
+                  className={`profile-thumbnail ${profile.profilePictureIndex === index ? 'selected' : ''}`}
+                  onClick={() => handleProfilePictureSelect(index)}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -27,7 +27,7 @@ module Api
       end
 
       def show_email_and_uid_and_name
-        user = User.find(params[:id])
+        user = current_user
         render json: { email: user.email, uid: user.uid, name: user.name, profile_picture_index: user.user_png.to_i }
       rescue ActiveRecord::RecordNotFound
         render json: { error: 'User not found' }, status: :not_found
@@ -35,13 +35,21 @@ module Api
 
       def logout
         if current_user
-          current_user.update(auth_token: nil)
+          Rails.logger.info("Logging out user: #{current_user.email}")
+          if current_user.update(auth_token: nil)
+            Rails.logger.info("Successfully cleared auth_token for user: #{current_user.email}")
+          else
+            Rails.logger.error("Failed to clear auth_token for user: #{current_user.email} - Errors: #{current_user.errors.full_messages}")
+          end
           cookies.delete(:auth_token)
+          reset_session # This clears the session
           render json: { message: 'Logged out successfully' }, status: :ok
         else
+          Rails.logger.error("Logout attempt with invalid token")
           render json: { error: 'Invalid token' }, status: :unauthorized
         end
       end
+
 
       private
 
@@ -59,4 +67,3 @@ module Api
     end
   end
 end
-

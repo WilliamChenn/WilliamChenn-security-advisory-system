@@ -1,4 +1,3 @@
-// src/pages/settingsSubpages/VendorsSection.js
 import React, { useState, useEffect } from 'react';
 import './VendorsSection.css';
 import Vendors from '../../components/Vendors';

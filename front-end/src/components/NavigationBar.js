@@ -53,7 +53,7 @@ function NavigationBar() {
         <Nav className="flex-column">
           <Nav.Link as={Link} to="/" onClick={() => setNavVisible(false)}>Home</Nav.Link>
           <Nav.Link as={Link} to="/about" onClick={toggleVideo}>About</Nav.Link>
-          <Nav.Link as={Link} to="/table" onClick={() => setNavVisible(false)}>Search</Nav.Link>
+          <Nav.Link as={Link} to="/table" onClick={() => setNavVisible(false)}>Advisories</Nav.Link>
           <Nav.Link as={Link} to="/settings" onClick={() => setNavVisible(false)}>Settings</Nav.Link>
           <Nav.Link onClick={handleLogout}>Logout</Nav.Link> {/* Updated Logout Button */}
         </Nav>

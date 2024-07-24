@@ -1,0 +1,63 @@
+include:
+  - project: 'essweb/gitlab-ci-base'
+    ref: main
+    file: '/ci-base-template.yml'
+
+.common_env:
+  variables:
+    PROJECT_NAME: "frontend"
+    CONTAINER_PORT: "3000"
+
+.common_backend_env:
+  variables:
+    PROJECT_NAME: "backend"
+    CONTAINER_PORT: "3000"
+
+###                         ###
+  # Test environment setup  #
+###                         ###
+.test_env:
+  only:
+    - main
+  environment:
+    name: test
+    url: "https://securityadvisory.com"
+  variables:
+    K8S_ENV: "okd4-dev"
+    K8S_NAMESPACE: "essweb-codeplus-security-advisory"
+    VAULT_SHIB_SECRET_PATH: "ess-web/kv/data/apps/security_advisory/shib/acceptance"
+    VAULT_OKD_ROLE: "ess-web-codeplus_security_advisory_test_okd4"
+
+test_frontend_build:
+  variables:
+    DOCKERFILE_PATH: "./front-end/Dockerfile"
+  extends:
+    - .test_env
+    - .common_env
+    - .build_image_using_library_template
+
+test_backend_build:
+  variables:
+    DOCKERFILE_PATH: "./back-end/Dockerfile"
+  extends:
+    - .test_env
+    - .common_backend_env
+    - .build_image_using_library_template
+
+test_frontend_deploy:
+  extends:
+    - .test_env
+    - .common_env
+    - .deploy_image_using_library_template
+
+test_backend_deploy:
+  variables:
+    HELM_CHART_FOLDER_LOCATION: "helm-chart-backend"
+  extends:
+    - .test_env
+    - .common_backend_env
+    - .deploy_image_using_library_template
+
+
+
+

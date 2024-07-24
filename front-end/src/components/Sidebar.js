@@ -4,14 +4,15 @@ import { IconContext } from 'react-icons/lib';
 
 const SidebarNav = styled.nav`
   background: white;
-  width: 180px;
-  height: calc(100vh - 670px);
-  position: absolute; /* Changed from fixed to absolute */
+  width: 250px; /* Increased width for more content */
+  height: calc(100vh - 150px); /* Adjusted height to fit remaining viewport space */
+  position: absolute; /* Fixed position to keep sidebar visible */
   top: 150px; /* Adjust this as necessary for your layout */
   left: ${({ sidebar }) => (sidebar ? '0' : '-250px')};
   transition: 350ms;
-  z-index: 20;
+  z-index: 3000;
   padding: 25px;
+  overflow-y: auto; /* Add scroll if content exceeds height */
 `;
 
 const SidebarWrap = styled.div`
@@ -27,7 +28,9 @@ const FilterForm = styled.form`
     margin: 10px 0 5px;
   }
 
-  select, input[type="date"], input[type="checkbox"] {
+  select,
+  input[type='date'],
+  input[type='checkbox'] {
     padding: 8px;
     margin-bottom: 15px;
     border: 1px solid #ddd;
@@ -44,19 +47,39 @@ const Sidebar = ({ sidebar, showSidebar, handleFilterChange, filters }) => {
             <FilterForm onChange={handleFilterChange}>
               <label>Severity Levels</label>
               <label>
-                <input type="checkbox" name="severity" value="low" checked={filters.severity.includes('low')} />
+                <input
+                  type="checkbox"
+                  name="severity"
+                  value="low"
+                  checked={filters.severity.includes('low')}
+                />
                 Low
               </label>
               <label>
-                <input type="checkbox" name="severity" value="medium" checked={filters.severity.includes('medium')} />
+                <input
+                  type="checkbox"
+                  name="severity"
+                  value="medium"
+                  checked={filters.severity.includes('medium')}
+                />
                 Medium
               </label>
               <label>
-                <input type="checkbox" name="severity" value="high" checked={filters.severity.includes('high')} />
+                <input
+                  type="checkbox"
+                  name="severity"
+                  value="high"
+                  checked={filters.severity.includes('high')}
+                />
                 High
               </label>
               <label>
-                <input type="checkbox" name="severity" value="critical" checked={filters.severity.includes('critical')} />
+                <input
+                  type="checkbox"
+                  name="severity"
+                  value="critical"
+                  checked={filters.severity.includes('critical')}
+                />
                 Critical
               </label>
               <br />
@@ -81,32 +104,15 @@ const Sidebar = ({ sidebar, showSidebar, handleFilterChange, filters }) => {
               <br />
               <br />
               <label>Search</label>
-              <input 
-                type="text" 
-                name="searchQuery" 
-                value={filters.searchQuery} 
-                onChange={handleFilterChange} 
-                placeholder="Search..." 
+              <input
+                type="text"
+                name="searchQuery"
+                value={filters.searchQuery}
+                onChange={handleFilterChange}
+                placeholder="Search..."
               />
               <br />
               <br />
-              <label>Vendors</label>
-              <label>
-                <input type="checkbox" name="vendors" value="vendor1" checked={filters.vendors.includes('vendor1')} />
-                Vendor 1
-              </label>
-              <label>
-                <input type="checkbox" name="vendors" value="vendor2" checked={filters.vendors.includes('vendor2')} />
-                Vendor 2
-              </label>
-              <label>
-                <input type="checkbox" name="vendors" value="vendor3" checked={filters.vendors.includes('vendor3')} />
-                Vendor 3
-              </label>
-              <label>
-                <input type="checkbox" name="vendors" value="vendor4" checked={filters.vendors.includes('vendor4')} />
-                Vendor 4
-              </label>
             </FilterForm>
           </SidebarWrap>
         </SidebarNav>

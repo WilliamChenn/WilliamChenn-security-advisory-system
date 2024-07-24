@@ -1,0 +1,313 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
+
+/* TableContainer Styles */
+.table-container {
+  margin: 20px;
+  transition: margin-left 0.3s ease;
+}
+
+.table-container.sidebar {
+  margin-left: 270px; /* Adjusted margin to accommodate the sidebar */
+}
+
+/* Wrapper Styles */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* FilterAndRefreshWrapper Styles */
+.filter-refresh-wrapper {
+  display: flex;
+  justify-content: flex-end; /* Align to the right */
+  margin: 10px 50px; /* Reduced top margin to shift buttons closer to the table */
+  z-index: 101; /* Ensure the buttons are above other elements */
+  gap: 10px; /* Add gap between buttons to avoid overlap */
+  flex-wrap: wrap; /* Ensure buttons wrap if the screen size is reduced */
+}
+
+/* FilterButton Styles */
+.filter-button {
+  background-color: white;
+  border: none;
+  color: #0417aa;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  z-index: 102; /* Ensure the button is above other elements */
+}
+
+.filter-button:hover {
+  background-color: #ddd;
+}
+
+.filter-button img {
+  width: 20px;
+  margin-left: 10px;
+}
+
+/* RefreshButton Styles */
+.refresh-button {
+  background-color: white;
+  border: none;
+  color: #0417aa;
+  width: 40px; /* Make the button square */
+  height: 40px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  z-index: 102; /* Ensure the button is above other elements */
+  padding: 0; /* Remove padding for square shape */
+}
+
+.refresh-button:hover {
+  background-color: #ddd;
+}
+
+.refresh-button img {
+  width: 20px; /* Adjust the size of the refresh logo */
+}
+
+.Header {
+  background-color: #f2f2f2;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 100; /* Ensure the header is above other elements */
+  position: relative; /* Ensure the header stays on top */
+}
+.main-content{
+  padding: 50px;
+  margin-top: 80px; 
+}
+.table-main-content{
+  padding: 50px;
+  margin-top: 80px; 
+}
+.title {
+  font-size: 2.1em;
+  margin: 20px 0 10px;
+}
+
+.Table {
+  margin: 0 auto;
+  width: 97%; /* Adjust to full width */
+}
+
+.TableContainer {
+  width: 100%;
+  margin-top: 0;
+  transition: margin-left 0.3s ease; /* Add transition for smooth resizing */
+}
+
+.TableContainer.with-sidebar {
+  margin-left: 100px; /* Adjust margin when sidebar is visible */
+}
+
+.Table table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 18px;
+}
+
+.Table td, .Table th {
+  border: 1px solid #ddd;
+  padding: 10px; /* Reduced padding */
+}
+
+.Table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.Table tr:hover {
+  background-color: #ddd;
+}
+
+.Table th {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  text-align: center;
+  background-color: #012169;
+  color: white;
+}
+
+.Table td.severityCell {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.Table td.severityCell button {
+  font-size: 14px;
+  width: 55px;
+  height: 30px;
+  margin-left: 8px;
+}
+
+.tooltip-target {
+  cursor: pointer;
+}
+
+#Low-severity,
+#Medium-severity,
+#High-severity,
+#Critical-severity, 
+#Low-probability,
+#Medium-probability,
+#High-probability,
+#Very-high-probability,
+#n-a{
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  color: white;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+
+#Low-severity, #Low-probability {
+  background-color: rgb(106, 168, 106);
+}
+
+#Medium-severity, #Medium-probability {
+  background-color: rgb(230, 166, 45);
+}
+
+#High-severity, #High-probability {
+  background-color: rgb(216, 95, 95);
+}
+
+#Critical-severity, #Very-high-probability {
+  background-color: rgb(133, 57, 57);
+}
+
+#n-a {
+  color: black;
+}
+
+.cve-title a {
+  text-decoration: none;
+}
+
+.cve-title a:hover {
+  text-decoration: underline;
+}
+
+.truncate-two-lines {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
+
+.pagination {
+  display: flex;
+  justify-content: flex-end;
+  margin: 30px 30px;
+}
+
+.pagination button {
+  background-color: #012169;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  margin: 0 3px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.pagination button.active {
+  background-color: #6d77be;
+}
+
+.pagination button:hover:not(.active) {
+  background-color: #012169;
+}
+
+.pagination button:disabled {
+  background-color: #012169;
+  cursor: not-allowed;
+}
+
+.FilterWrapper, .RefreshButtonWrapper {
+  display: flex;
+  align-items: center;
+  z-index: 101; /* Ensure the buttons are above other elements */
+}
+
+.FilterWrapper {
+  justify-content: flex-start; /* Align to the left */
+  margin-left: 50px;
+}
+
+.RefreshButtonWrapper {
+  justify-content: flex-end; /* Align to the right */
+  margin-right: 50px;
+}
+
+.FilterButton, .RefreshButton {
+  background-color: white;
+  border: none;
+  color: #0417aa;
+  padding: 10px 10px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  z-index: 102; /* Ensure the button is above other elements */
+}
+
+.FilterButton img, .RefreshButton img {
+  width: 20px;
+  margin-left: 10px;
+}
+
+.FilterButton:hover, .RefreshButton:hover {
+  background-color: #ddd;
+}
+
+.RefreshButton {
+  width: 40px; /* Make the button square */
+  height: 40px;
+  padding: 0; /* Remove padding for square shape */
+}
+
+/* Spinner styles */
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #0417aa;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto; /* Center the spinner */
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

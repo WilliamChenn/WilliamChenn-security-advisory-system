@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 import './About.css'; // Make sure to import your CSS file
 
 function About() {
@@ -8,7 +6,7 @@ function About() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImage(prevImage => (prevImage === 1 ? 2 : 1));
+      setCurrentImage(prevImage => (prevImage === 1 ? 4 : 1));
     }, 2000); // Switch image every 4 seconds
 
     return () => clearInterval(interval);
@@ -16,8 +14,6 @@ function About() {
 
   return (
     <div className="about-container">
-      <Header />
-      
       <div className="hero-image" style={{
         backgroundImage: `url(${currentImage === 1 ? 'https://oit.duke.edu/sites/default/files/styles/large_2_5_1/public/web%20and%20app%20development.png?h=d1cb525d&itok=FaszV0D5' : 'https://oit.duke.edu/sites/default/files/styles/large_2_5_1/public/Security%20Hero.png?h=d1cb525d&itok=Zfusifek'})`
       }} role="img" aria-label="grid of colorful app icons">
@@ -50,8 +46,8 @@ function About() {
                 <div id="paragraph__content_24a21b86-93a4-5add-818f-ebd5415451fb">
                   <section className="paragraph__wysiwyg">
                     <h4 className="heading" role="heading" aria-level="2">Vulnerabilities Sorting</h4>
-                    <p>End users can select specific vendors by activating the 'Available vendors' checkbox in the settings section to receive CVEs.</p>
-                    <p>End users have the capability to utilize the 'Filter here' sidebar to categorize CVEs based on severity levels, date ranges, search criteria, and vendors. Click 'view all' to access the table displaying CVE ID, summaries, and criticality scores.</p>
+                    
+                    <p>End users have the capability to utilize the 'Filter here' sidebar to categorize CVEs based on severity levels, date ranges, search criteria, and vendors. Click 'view all' to access the table displaying CVE IDs.</p>
                     {/* Display screenshot under Vulnerabilities Sorting */}
                     <img src="/Screenshotoftable.png" alt="Screenshot of Vulnerabilities Sorting table" />
                   </section>
@@ -75,8 +71,9 @@ function About() {
               <div className="light-grey-container">
                 <section className="paragraph__wysiwyg">
                   <h4 className="heading" role="heading" aria-level="2">Receive CVE Notifications</h4>
-                  <p>End users will be able to receive daily notifications about security updates, ensuring they can promptly update affected products.</p>
-                  <img src="https://support.ajax.systems/wp-content/uploads/2019/05/en-phone-notification.jpg" alt="Phone Notification" />
+                  <p>
+                  End users will benefit from daily notifications about security updates, ensuring they can promptly update affected products. These timely updates provide immediate awareness, allowing users to take prompt actions to secure their products. By minimizing vulnerabilities and staying protected, users can manage their security efficiently. </p>
+                  <img src="/Screenshotofnotifications.png" alt="Phone Notification" />
                 </section>
               </div>
             </div>
@@ -89,8 +86,6 @@ function About() {
         </div>
         
       </div>
-      
-      <Footer />
     </div>
   );
 }

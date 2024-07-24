@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom';
 import { COLUMNS } from './TableColumns';
 import './Table.css';
 import Sidebar from '../components/Sidebar';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+
 
 const matchesSearchQuery = (item, query) => {
   if (!query) return true;
@@ -31,7 +30,7 @@ const getSeverityClass = (cvss) => {
 
 const Table = () => {
   const [data, setData] = useState([]);
-  const [sidebar, setSidebar] = useState(false);
+  const [sidebarVisible, setSidebarVisible] = useState(false);
   const [filters, setFilters] = useState({
     severity: [],
     dateRange: 'default',
@@ -88,7 +87,7 @@ const Table = () => {
       startDate.setDate(currentDate.getDate() - 14);
       endDate = currentDate;
     }
-
+  
     return data.filter(item => {
       const severityLevel = getSeverityClass(item.max_cvss_base_score);
       const severityMatch = filters.severity.length === 0 || filters.severity.includes(severityLevel);
@@ -135,28 +134,7 @@ const Table = () => {
     usePagination
   );
 
-  const showSidebar = () => setSidebar(!sidebar);
-
-  const handleFilterChange = (event) => {
-    const { name, value, type, checked } = event.target;
-    setFilters((prevFilters) => {
-      if (type === 'checkbox') {
-        if (name === 'severity') {
-          const updatedSeverity = checked
-            ? [...prevFilters.severity, value]
-            : prevFilters.severity.filter(severity => severity !== value);
-          return { ...prevFilters, severity: updatedSeverity };
-        }
-        if (name === 'vendors') {
-          const updatedVendors = checked
-            ? [...prevFilters.vendors, value]
-            : prevFilters.vendors.filter(vendor => vendor !== value);
-          return { ...prevFilters, vendors: updatedVendors };
-        }
-      }
-      return { ...prevFilters, [name]: value };
-    });
-  };
+  const showSidebar = () => setSidebarVisible(!sidebarVisible);
 
   const handleRefresh = async () => {
     setLoading(true);
@@ -189,107 +167,116 @@ const Table = () => {
     }
   };
 
+  const handleFilterChange = (event) => {
+    const { name, value, type, checked } = event.target;
+    setFilters((prevFilters) => {
+      if (type === 'checkbox') {
+        if (name === 'severity') {
+          const updatedSeverity = checked
+            ? [...prevFilters.severity, value]
+            : prevFilters.severity.filter(severity => severity !== value);
+          return { ...prevFilters, severity: updatedSeverity };
+        }
+      }
+      return { ...prevFilters, [name]: value };
+    });
+  };
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pageIndex]);
-
+  
   return (
-    <div className="Wrapper">
-      <Header />
-      <div className="FilterButtonWrapper">
-        <button className="RefreshButton" onClick={handleRefresh}>
-          {loading ? (
-            <div className="spinner"></div>
-          ) : (
-            <>
-              Refresh Vendors
-              <img
-                src="https://static.thenounproject.com/png/4800805-200.png"
-                alt="refresh"
-              />
-            </>
-          )}
-        </button>
-        <button className="FilterButton" onClick={showSidebar} sidebar={sidebar}>
-          Filter Here
-          <img
-            src="https://static.thenounproject.com/png/4800805-200.png"
-            alt="desc"
-          />
-        </button>
-      </div>
-      <div className={`TableContainer ${sidebar ? 'with-sidebar' : ''}`}>
-        <table {...getTableProps()} className="Table">
-          <thead>
-            {headerGroups.map((headerGroup) => (
-              <tr {...headerGroup.getHeaderGroupProps()}>
-                {headerGroup.headers.map((column) => (
-                  <th
-                    {...column.getHeaderProps(column.getSortByToggleProps())}
-                    style={column.id === 'cve_id' ? { width: column.width } : {}}
-                  >
-                    {column.render('Header')}
-                    <span>
-                      {column.isSorted ? (column.isSortedDesc ? (
-                        <img src="https://cdn2.iconfinder.com/data/icons/arrows-236/14/Polygon-1-1024.png" alt="desc" style={{ width: '20px', marginLeft: '10px' }} />
-                      ) : (
-                        <img src="https://cdn2.iconfinder.com/data/icons/arrows-236/14/Polygon-1024.png" alt="asc" style={{ width: '20px', marginLeft: '10px' }} />
-                      )) : ""}
-                    </span>
-                  </th>
-                ))}
-              </tr>
-            ))}
-          </thead>
-          <tbody {...getTableBodyProps()}>
-            {page.map((row) => {
-              prepareRow(row);
-              return (
-                <tr {...row.getRowProps()}>
-                  {row.cells.map((cell) => (
-                    <td
-                      {...cell.getCellProps()}
-                      style={cell.column.id === 'cve_id' ? { width: cell.column.width } : {}}
-                    >
-                      {cell.column.id === 'cve_id' ? (
-                        <Link to={`/learn-more/${cell.row.original.cve_id}`}>{cell.render('Cell')}</Link>
-                      ) : (
-                        cell.render('Cell')
-                      )}
-                    </td>
-                  ))}
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-        <div className="pagination">
-          <button onClick={() => previousPage()} disabled={!canPreviousPage}>
-            Previous
+     <div>
+      <main className="table-main-content">
+        <div className="filter-refresh-wrapper">
+          <button className="filter-button" onClick={showSidebar}>
+            Filter Here
+            <img src="https://static.thenounproject.com/png/4800805-200.png" alt="filter" />
           </button>
-          {pageOptions.map((pageNumber) => (
-            <button
-              key={pageNumber}
-              onClick={() => gotoPage(pageNumber)}
-              className={pageIndex === pageNumber ? 'active' : ''}
-            >
-              {pageNumber + 1}
-            </button>
-          ))}
-          <button onClick={() => nextPage()} disabled={!canNextPage}>
-            Next
+          <button className="refresh-button" onClick={handleRefresh}>
+            {loading ? (
+              <div className="spinner"></div>
+            ) : (
+              <img src="https://cdn-icons-png.flaticon.com/512/61/61225.png" alt="refresh" />
+            )}
           </button>
         </div>
-      </div>
-      <Footer />
-      <Sidebar
-        sidebar={sidebar}
-        showSidebar={showSidebar}
-        handleFilterChange={handleFilterChange}
-        filters={filters}
-      />
+
+        <div className={sidebarVisible ? 'sidebar-visible' : ''}>
+        <div className="table-container">        <table {...getTableProps()} className="Table">
+            <thead>
+              {headerGroups.map((headerGroup) => (
+                <tr {...headerGroup.getHeaderGroupProps()}>
+                  {headerGroup.headers.map((column) => (
+                    <th
+                      {...column.getHeaderProps(column.getSortByToggleProps())}
+                      style={column.id === 'cve_id' ? { width: column.width } : {}}
+                    >
+                      {column.render('Header')}
+                      <span>
+                        {column.isSorted ? (column.isSortedDesc ? (
+                          <img src="https://cdn2.iconfinder.com/data/icons/arrows-236/14/Polygon-1-1024.png" alt="desc" style={{ width: '20px', marginLeft: '10px' }} />
+                        ) : (
+                          <img src="https://cdn2.iconfinder.com/data/icons/arrows-236/14/Polygon-1024.png" alt="asc" style={{ width: '20px', marginLeft: '10px' }} />
+                        )) : ""}
+                      </span>
+                    </th>
+                  ))}
+                </tr>
+              ))}
+            </thead>
+            <tbody {...getTableBodyProps()}>
+              {page.map((row) => {
+                prepareRow(row);
+                return (
+                  <tr {...row.getRowProps()}>
+                    {row.cells.map((cell) => (
+                      <td
+                        {...cell.getCellProps()}
+                        style={cell.column.id === 'cve_id' ? { width: cell.column.width } : {}}
+                      >
+                        {cell.column.id === 'cve_id' ? (
+                          <Link to={`/learn-more/${cell.row.original.cve_id}`}>{cell.render('Cell')}</Link>
+                        ) : (
+                          cell.render('Cell')
+                        )}
+                      </td>
+                    ))}
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+          <div className="pagination">
+            <button onClick={() => previousPage()} disabled={!canPreviousPage}>
+              Previous
+            </button>
+            {pageOptions.map((pageNumber) => (
+              <button
+                key={pageNumber}
+                onClick={() => gotoPage(pageNumber)}
+                className={pageIndex === pageNumber ? 'active' : ''}
+              >
+                {pageNumber + 1}
+              </button>
+            ))}
+            <button onClick={() => nextPage()} disabled={!canNextPage}>
+              Next
+            </button>
+          </div>
+        </div>
+        <Sidebar
+          sidebar={sidebarVisible}
+          showSidebar={showSidebar}
+          handleFilterChange={handleFilterChange}
+          filters={filters}
+        />
+        </div>
+      </main>
     </div>
-  );  
+  );
 };
 
 export default Table;
+

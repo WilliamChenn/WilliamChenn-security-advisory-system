@@ -1,0 +1,6 @@
+app_deployment:
+  healthcheck_httpGet_Enabled: false
+app_issuer:
+  enabled: false
+app_route:
+  enabled: false

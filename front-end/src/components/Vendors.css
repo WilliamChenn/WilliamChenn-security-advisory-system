@@ -1,6 +1,6 @@
 .vendors {
   text-align: center;
-  padding: 20px;
+  padding: 0px;
 }
 
 h2 {
@@ -39,7 +39,7 @@ h2 {
   object-fit: contain; /* Ensure the image fits within the box without distortion */
   position: relative;
   bottom: 21px;/* You can also use left, right, bottom to move the logo accordingly */
-  right: 10px;
+  right: 32px;
 }
 
 .add-vendor {

@@ -1,4 +1,105 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
+/* Define a CSS variable for the sidebar visibility */
+:root {
+  --sidebar-visible-margin: 270px; /* Adjust this value to match the sidebar width */
+  --sidebar-hidden-margin: 20px; /* Default margin when sidebar is hidden */
+}
+
+/* TableContainer Styles */
+.table-container {
+  margin: 20px;
+  transition: margin-left 0.3s ease; /* Smooth transition for margin change */
+  margin-left: var(--sidebar-hidden-margin); /* Default margin */
+}
+
+/* Adjust margin when the sidebar is visible */
+.sidebar-visible .table-container {
+  margin-left: var(--sidebar-visible-margin);
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px; /* Sidebar width */
+  height: 100%;
+  background-color: #f8f9fa;
+  overflow-x: hidden;
+  transition: transform 0.3s ease;
+  transform: translateX(-100%);
+  z-index: 100; /* Ensure it's above other elements */
+}
+
+.sidebar-visible .sidebar {
+  transform: translateX(0);
+}
+
+/* Ensure the table container adjusts its margin when the sidebar visibility changes */
+.table-main-content {
+  padding: 50px;
+  margin-top: 80px; 
+}
+
+.filter-refresh-wrapper {
+  display: flex;
+  justify-content: flex-end; /* Align to the right */
+  margin: 10px 50px; /* Adjust top margin as needed */
+  gap: 10px; /* Space between buttons */
+  flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+  z-index: 101; /* Ensure buttons are above other elements */
+}
+
+/* FilterButton Styles */
+.filter-button {
+  background-color: white;
+  border: none;
+  color: #0417aa;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  z-index: 102; /* Ensure the button is above other elements */
+}
+
+.filter-button:hover {
+  background-color: #ddd;
+}
+
+.filter-button img {
+  width: 20px;
+  margin-left: 10px;
+}
+
+/* RefreshButton Styles */
+.refresh-button {
+  background-color: white;
+  border: none;
+  color: #0417aa;
+  width: 40px; /* Make the button square */
+  height: 40px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  z-index: 102; /* Ensure the button is above other elements */
+  padding: 0; /* Remove padding for square shape */
+}
+
+.refresh-button:hover {
+  background-color: #ddd;
+}
+
+.refresh-button img {
+  width: 20px; /* Adjust the size of the refresh logo */
+}
 
 .Header {
   background-color: #f2f2f2;
@@ -9,25 +110,20 @@
   position: relative; /* Ensure the header stays on top */
 }
 
+.main-content,
+.table-main-content {
+  padding: 50px;
+  margin-top: 80px; 
+}
+
 .title {
   font-size: 2.1em;
   margin: 20px 0 10px;
 }
 
 .Table {
-  margin: 0px auto;
+  margin: 0 auto;
   width: 97%; /* Adjust to full width */
-}
-
-.TableContainer {
-  width: 100%;
-  margin-top: 0;
-  transition: margin-left 0.3s ease; /* Add transition for smooth resizing */
-  margin-left: 20px; /* Default margin */
-}
-
-.TableContainer.with-sidebar {
-  margin-left: 270px; /* Adjust margin when sidebar is visible */
 }
 
 .Table table {
@@ -83,7 +179,7 @@
 #Medium-probability,
 #High-probability,
 #Very-high-probability,
-#n-a{
+#n-a {
   border: none;
   padding: 5px 10px;
   cursor: pointer;
@@ -162,75 +258,7 @@
   cursor: not-allowed;
 }
 
-.FilterButtonWrapper {
-  display: flex;
-  justify-content: flex-end; /* Align to the right */
-  margin: 0px 0px 0px; /* Margin to position below the header and add spacing */
-  margin-top: 130px;
-  margin-right: 50px;
-  z-index: 101; /* Ensure the button is above other elements */
-}
-
-.FilterButton, .RefreshButton {
-  background-color: white;
-  border: none;
-  color: #0417aa;
-  padding: 10px 10px;
-  cursor: pointer;
-  font-size: 15px;
-  font-weight: bold;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.3s ease;
-  z-index: 102; /* Ensure the button is above other elements */
-}
-
-.FilterButton:hover, .RefreshButton:hover {
-  background-color: #ddd;
-}
-
-.FilterButton img, .RefreshButton img {
-  width: 20px;
-  margin-left: 10px;
-}
-
-.RefreshButton {
-  margin-left: 10px; /* Space between the filter and refresh buttons */
-}
-
-.RefreshButton {
-  background-color: white;
-  border: none;
-  color: #0417aa;
-  padding: 10px 10px;
-  cursor: pointer;
-  font-size: 15px;
-  font-weight: bold;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.3s ease;
-  z-index: 102; /* Ensure the button is above other elements */
-  margin-left: 10px; /* Space between the filter and refresh buttons */
-}
-
-.FilterButtonWrapper {
-  display: flex;
-  justify-content: flex-end; /* Align to the right */
-  margin: 0px 0px 0px; /* Margin to position below the header and add spacing */
-  margin-top: 130px;
-  margin-right: 50px;
-  z-index: 101; /* Ensure the button is above other elements */
-}
-
-.RefreshButton img, .FilterButton img {
-  width: 20px;
-  margin-left: 10px;
-}
-
+/* Spinner styles */
 .spinner {
   border: 4px solid rgba(0, 0, 0, 0.1);
   border-left-color: #0417aa;
@@ -238,7 +266,7 @@
   width: 16px;
   height: 16px;
   animation: spin 1s linear infinite;
-  margin-left: 10px;
+  margin: 0 auto; /* Center the spinner */
 }
 
 @keyframes spin {
