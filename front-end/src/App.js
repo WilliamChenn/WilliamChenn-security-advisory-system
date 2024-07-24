@@ -2,7 +2,6 @@ import React, { createContext, useState, useEffect, useContext } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import axios from "axios";
 import Home from "./pages/Home";
-import NavigationBar from "./components/NavigationBar";
 import "./App.css";
 import Table from "./pages/Table";
 import CveDetail from "./pages/CveDetail";
