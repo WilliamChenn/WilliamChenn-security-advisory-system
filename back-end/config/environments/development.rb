@@ -56,6 +56,17 @@ Rails.application.configure do
   # Highlight code that enqueued background job in logs.
   config.active_job.verbose_enqueue_logs = true
 
+  Rails.application.configure do
+    # Other configurations...
+  
+    # Configure ActionMailer to use Mailcatcher
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      address: '127.0.0.1',
+      port: 1025
+    }
+    config.action_mailer.raise_delivery_errors = true
+  end
 
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
@@ -68,5 +79,18 @@ Rails.application.configure do
 
   # Raise error when a before_action's only/except options reference missing actions
   config.action_controller.raise_on_missing_callback_actions = true
+  config.action_mailer.perform_deliveries = true
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.duke.edu', # Replace with your university's SMTP server address
+    port: 25,
+    domain: 'duke.edu',
+    user_name: ENV['MAIL_USERNAME'], # Replace with your university email username
+    password: ENV['MAIL_PASSWORD'],  # Replace with your university email password
+    authentication: 'plain',
+    enable_starttls_auto: true
+  }
+
 end
 

@@ -8,8 +8,9 @@
 /.bundle
 
 # Ignore all environment files (except templates).
-/.env*
+/.env
 !/.env*.erb
+.env
 
 # Ignore all logfiles and tempfiles.
 /log/*
@@ -31,9 +32,17 @@
 !/tmp/storage/
 !/tmp/storage/.keep
 
+#Ignore development.log and cache
+/back-end/log/development.log
+/back-end/tmp/cache/bootsnap/load-path-cache
+
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
-#.env
+*.key/back-end/log/development.log
+/back-end/tmp/cache/bootsnap/load-path-cache
 
-*.key
+# dependencies
+/node_modules
+/.pnp
+.pnp.js

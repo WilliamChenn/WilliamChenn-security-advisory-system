@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>CVE Alerts</h1>
+    <p>Dear <%= @user.name %>,</p>
+    <p>Here are the latest CVE alerts for your selected vendors:</p>
+    
+    <% @vendors.each do |vendor| %>
+      <h2><%= vendor.name %></h2>
+      <ul>
+        <% @cves.select { |cve| cve.vendor_id == vendor.id }.each do |cve| %>
+          <li>
+            <strong>CVE ID:</strong> <%= cve.cve_id %><br>
+            <strong>Summary:</strong> <%= cve.summary %><br>
+            <strong>Score:</strong> <%= cve.max_cvss_base_score %><br>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+    
+    <p>Best regards,<br>Duke University | IT Security Office</p>
+  </body>
+</html>
