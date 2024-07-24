@@ -10,24 +10,25 @@ This project is a React-based web application designed to assist Duke IT profess
 The Home component of a React application serves as the main dashboard for Duke's database of open-source vulnerabilities and cloud misconfigurations. It features two graphical representations: a bar graph depicting the number of CVEs for different CVSS scores and a dot plot illustrating CVEs for CVSS and EPSS scores.
 The component dynamically fetches and displays the top vulnerabilities of the past month, updating every 5 seconds. Each vulnerability is showcased in a card format with a title, summary, CVSS base score, and a link to learn more. Users can view all vulnerabilities by clicking the "View all" link.
 
-![image info](front-end/public/Screenshotofhomepage.png) {: width="100px"}
+<img src="front-end/public/Screenshotofhomepage.png" alt="image info" width="500">
 
 ### 📊 Vulnerabilities Table
 The Table component in this React application displays a paginated and sortable table of recent CVEs. It includes a sidebar for filtering vulnerabilities by severity, date range, search query, and vendors. Users can refresh the data and view details of each CVE by clicking on its ID. The component utilizes React Table for sorting and pagination and dynamically fetches data from an API endpoint. The layout and style are managed with styled-components and CSS, ensuring a responsive and user-friendly interface.
 
-![image info](front-end/public/Screenshotoftable.png) {: width="100px"}
+<img src="front-end/public/Screenshotoftable.png" alt="image info" width="500">
+
 
 ### 📄 CVE Details Page
 
 This React component, CVEpage, fetches and displays detailed information about a specific CVE (Common Vulnerabilities and Exposures) identified by its cveId. It includes an overview, remediation details, and vendor information. The component fetches data from various endpoints and handles both display and editing of remediation information, allowing users to update or clear this data. It also features a textbox for editing remediation information and displays a circular progress indicator for the CVSS base score. Error handling and loading states are managed within the component to ensure a smooth user experience.
 
-![image info](front-end/public/Screenshotoflearnmore.png) {: width="100px"}
+<img src="front-end/public/Screenshotoflearnmore.png" alt="image info" width="500">
 
 ### ✅ Vendor Selection
 
 The Vendors Section component in React manages the selection of vendors for a user. It fetches the list of available vendors and the user's current vendors from an API, storing them in state. Users can check or uncheck vendors to add or remove them from their list, with the changes reflected in the backend via API requests. The component renders available vendors with checkboxes and user vendors using a Vendors component. Vendor logos are displayed next to their names for better visualization. The component handles errors gracefully and provides a clean interface for managing vendor selections.
 
-![image info](front-end/public/Screenshotofvendors.png) {: width="100px"}
+<img src="front-end/public/Screenshotofvendors.png" alt="image info" width="500">
 
 ### 🔊 Security Alerts
 The SecurityAlerts component in React provides a user interface for managing email notification preferences related to security alerts from various vendors. It includes several features:
@@ -43,7 +44,7 @@ The SecurityAlerts component in React provides a user interface for managing ema
 - Form Handling: A form is shown to add new vendors, and there is handling for duplicate vendor warnings and form cancellation.
 This setup allows for a dynamic and user-friendly way to manage security alert notifications efficiently.
 
-![image info](front-end/public/Screenshotofnotifications.png) {: width="100px"}
+<img src="front-end/public/Screenshotofnotifications.png" alt="image info" width="500">
 
 # 💻 Tech Stack
 - Database: **PostgreSQL**
@@ -66,7 +67,7 @@ This setup allows for a dynamic and user-friendly way to manage security alert n
 
 
 ## 👩🏻‍🏫 Application Architecture
-![image info](front-end/public/ProjectPhases.png)
+<img src="front-end/public/ProjectPhases.png" alt="image info" width="500">
 
 
 
