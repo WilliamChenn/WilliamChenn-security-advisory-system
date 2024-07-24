@@ -21,13 +21,12 @@ include:
     - main
   environment:
     name: test
-    url: "https://securityadvisory.com"
+    url: "https://securityadvisory-test.oit.duke.edu"
   variables:
     K8S_ENV: "okd4-dev"
     K8S_NAMESPACE: "essweb-codeplus-security-advisory"
     VAULT_SHIB_SECRET_PATH: "ess-web/kv/data/apps/security_advisory/shib/acceptance"
     VAULT_OKD_ROLE: "ess-web-codeplus_security_advisory_test_okd4"
-    SHIB_ENTITY_ID: "https://securityadvisory.com"
 
 test_frontend_build:
   variables:
