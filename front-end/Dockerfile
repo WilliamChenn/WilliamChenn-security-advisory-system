@@ -12,14 +12,12 @@ COPY ./front-end/package.json ./front-end/package-lock.json ./
 # Copy the rest of the application files
 COPY ./front-end ./
 
-
+RUN chmod -R g+rwxs /app
 
 # Install dependencies
 RUN npm install
 # Ensure the @mui/material package is installed
 #RUN npm install @mui/material
-
-
 
 # Expose the port your app runs on
 EXPOSE 3000
