@@ -4,79 +4,7 @@ import { Link } from 'react-router-dom';
 import { COLUMNS } from './TableColumns';
 import './Table.css';
 import Sidebar from '../components/Sidebar';
-import styled from 'styled-components';
 
-const TableContainer = styled.div`
-  margin: 20px;
-  transition: margin-left 0.3s ease;
-  margin-left: ${({ sidebar }) => (sidebar ? '270px' : '20px')}; /* Adjusted margin to accommodate the sidebar */
-`;
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-`;
-
-const FilterAndRefreshWrapper = styled.div`
-  display: flex;
-  justify-content: flex-end; /* Align to the right */
-  margin: 10px 50px 10px 50px; /* Reduced top margin to shift buttons closer to the table */
-  z-index: 101; /* Ensure the buttons are above other elements */
-  gap: 10px; /* Add gap between buttons to avoid overlap */
-  flex-wrap: wrap; /* Ensure buttons wrap if the screen size is reduced */
-`;
-
-const FilterButton = styled.button`
-  background-color: white;
-  border: none;
-  color: #0417aa;
-  padding: 10px 10px;
-  cursor: pointer;
-  font-size: 15px;
-  font-weight: bold;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.3s ease;
-  z-index: 102; /* Ensure the button is above other elements */
-
-  &:hover {
-    background-color: #ddd;
-  }
-
-  img {
-    width: 20px;
-    margin-left: 10px;
-  }
-`;
-
-const RefreshButton = styled.button`
-  background-color: white;
-  border: none;
-  color: #0417aa;
-  width: 40px; /* Make the button square */
-  height: 40px;
-  cursor: pointer;
-  font-size: 15px;
-  font-weight: bold;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.3s ease;
-  z-index: 102; /* Ensure the button is above other elements */
-  padding: 0; /* Remove padding for square shape */
-
-  &:hover {
-    background-color: #ddd;
-  }
-
-  img {
-    width: 20px; /* Adjust the size of the refresh logo */
-  }
-`;
 
 const matchesSearchQuery = (item, query) => {
   if (!query) return true;
@@ -102,14 +30,14 @@ const getSeverityClass = (cvss) => {
 
 const Table = () => {
   const [data, setData] = useState([]);
-  const [sidebar, setSidebar] = useState(false);
+  const [sidebarVisible, setSidebarVisible] = useState(false);
   const [filters, setFilters] = useState({
     severity: [],
     dateRange: 'default',
     startDate: '',
     endDate: '',
     searchQuery: '',
-    vendors: [], 
+    vendors: [],
   });
   const [loading, setLoading] = useState(false);
 
@@ -206,7 +134,8 @@ const Table = () => {
     usePagination
   );
 
-  const showSidebar = () => setSidebar(!sidebar);
+  const showSidebar = () => setSidebarVisible(!sidebarVisible);
+
   const handleRefresh = async () => {
     setLoading(true);
     try {
@@ -248,12 +177,6 @@ const Table = () => {
             : prevFilters.severity.filter(severity => severity !== value);
           return { ...prevFilters, severity: updatedSeverity };
         }
-        if (name === 'vendors') {
-          const updatedVendors = checked
-            ? [...prevFilters.vendors, value]
-            : prevFilters.vendors.filter(vendor => vendor !== value);
-          return { ...prevFilters, vendors: updatedVendors };
-        }
       }
       return { ...prevFilters, [name]: value };
     });
@@ -264,99 +187,96 @@ const Table = () => {
   }, [pageIndex]);
   
   return (
-    <Wrapper>
+     <div>
       <main className="table-main-content">
-      <FilterAndRefreshWrapper>
-        <FilterButton onClick={showSidebar} sidebar={sidebar}>
-          Filter Here
-          <img
-            src="https://static.thenounproject.com/png/4800805-200.png"
-            alt="filter"
-          />
-        </FilterButton>
-        <RefreshButton onClick={handleRefresh}>
-          {loading ? (
-            <div className="spinner"></div>
-          ) : (
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/61/61225.png"
-              alt="refresh"
-            />
-          )}
-        </RefreshButton>
-      </FilterAndRefreshWrapper>
-      <TableContainer sidebar={sidebar}>
-        <table {...getTableProps()} className="Table">
-          <thead>
-            {headerGroups.map((headerGroup) => (
-              <tr {...headerGroup.getHeaderGroupProps()}>
-                {headerGroup.headers.map((column) => (
-                  <th
-                    {...column.getHeaderProps(column.getSortByToggleProps())}
-                    style={column.id === 'cve_id' ? { width: column.width } : {}}
-                  >
-                    {column.render('Header')}
-                    <span>
-                      {column.isSorted ? (column.isSortedDesc ? (
-                        <img src="https://cdn2.iconfinder.com/data/icons/arrows-236/14/Polygon-1-1024.png" alt="desc" style={{ width: '20px', marginLeft: '10px' }} />
-                      ) : (
-                        <img src="https://cdn2.iconfinder.com/data/icons/arrows-236/14/Polygon-1024.png" alt="asc" style={{ width: '20px', marginLeft: '10px' }} />
-                      )) : ""}
-                    </span>
-                  </th>
-                ))}
-              </tr>
-            ))}
-          </thead>
-          <tbody {...getTableBodyProps()}>
-            {page.map((row) => {
-              prepareRow(row);
-              return (
-                <tr {...row.getRowProps()}>
-                  {row.cells.map((cell) => (
-                    <td
-                      {...cell.getCellProps()}
-                      style={cell.column.id === 'cve_id' ? { width: cell.column.width } : {}}
-                    >
-                      {cell.column.id === 'cve_id' ? (
-                        <Link to={`/learn-more/${cell.row.original.cve_id}`}>{cell.render('Cell')}</Link>
-                      ) : (
-                        cell.render('Cell')
-                      )}
-                    </td>
-                  ))}
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-        <div className="pagination">
-          <button onClick={() => previousPage()} disabled={!canPreviousPage}>
-            Previous
+        <div className="filter-refresh-wrapper">
+          <button className="filter-button" onClick={showSidebar}>
+            Filter Here
+            <img src="https://static.thenounproject.com/png/4800805-200.png" alt="filter" />
           </button>
-          {pageOptions.map((pageNumber) => (
-            <button
-              key={pageNumber}
-              onClick={() => gotoPage(pageNumber)}
-              className={pageIndex === pageNumber ? 'active' : ''}
-            >
-              {pageNumber + 1}
-            </button>
-          ))}
-          <button onClick={() => nextPage()} disabled={!canNextPage}>
-            Next
+          <button className="refresh-button" onClick={handleRefresh}>
+            {loading ? (
+              <div className="spinner"></div>
+            ) : (
+              <img src="https://cdn-icons-png.flaticon.com/512/61/61225.png" alt="refresh" />
+            )}
           </button>
         </div>
-      </TableContainer>
-      <Sidebar
-        sidebar={sidebar}
-        showSidebar={showSidebar}
-        handleFilterChange={handleFilterChange}
-        filters={filters}
-      />
+
+        <div className={sidebarVisible ? 'sidebar-visible' : ''}>
+        <div className="table-container">        <table {...getTableProps()} className="Table">
+            <thead>
+              {headerGroups.map((headerGroup) => (
+                <tr {...headerGroup.getHeaderGroupProps()}>
+                  {headerGroup.headers.map((column) => (
+                    <th
+                      {...column.getHeaderProps(column.getSortByToggleProps())}
+                      style={column.id === 'cve_id' ? { width: column.width } : {}}
+                    >
+                      {column.render('Header')}
+                      <span>
+                        {column.isSorted ? (column.isSortedDesc ? (
+                          <img src="https://cdn2.iconfinder.com/data/icons/arrows-236/14/Polygon-1-1024.png" alt="desc" style={{ width: '20px', marginLeft: '10px' }} />
+                        ) : (
+                          <img src="https://cdn2.iconfinder.com/data/icons/arrows-236/14/Polygon-1024.png" alt="asc" style={{ width: '20px', marginLeft: '10px' }} />
+                        )) : ""}
+                      </span>
+                    </th>
+                  ))}
+                </tr>
+              ))}
+            </thead>
+            <tbody {...getTableBodyProps()}>
+              {page.map((row) => {
+                prepareRow(row);
+                return (
+                  <tr {...row.getRowProps()}>
+                    {row.cells.map((cell) => (
+                      <td
+                        {...cell.getCellProps()}
+                        style={cell.column.id === 'cve_id' ? { width: cell.column.width } : {}}
+                      >
+                        {cell.column.id === 'cve_id' ? (
+                          <Link to={`/learn-more/${cell.row.original.cve_id}`}>{cell.render('Cell')}</Link>
+                        ) : (
+                          cell.render('Cell')
+                        )}
+                      </td>
+                    ))}
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+          <div className="pagination">
+            <button onClick={() => previousPage()} disabled={!canPreviousPage}>
+              Previous
+            </button>
+            {pageOptions.map((pageNumber) => (
+              <button
+                key={pageNumber}
+                onClick={() => gotoPage(pageNumber)}
+                className={pageIndex === pageNumber ? 'active' : ''}
+              >
+                {pageNumber + 1}
+              </button>
+            ))}
+            <button onClick={() => nextPage()} disabled={!canNextPage}>
+              Next
+            </button>
+          </div>
+        </div>
+        <Sidebar
+          sidebar={sidebarVisible}
+          showSidebar={showSidebar}
+          handleFilterChange={handleFilterChange}
+          filters={filters}
+        />
+        </div>
       </main>
-    </Wrapper>
-  );  
+    </div>
+  );
 };
 
 export default Table;
+
