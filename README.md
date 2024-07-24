@@ -65,7 +65,7 @@ This setup allows for a dynamic and user-friendly way to manage security alert n
 
 
 
-## 👩🏻‍🏫 Project Phases
+## 👩🏻‍🏫 Application Architecture
 ![image info](front-end/public/ProjectPhases.png)
 
 
