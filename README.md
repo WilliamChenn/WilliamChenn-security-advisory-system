@@ -5,7 +5,8 @@
 This project is a React-based web application designed to assist Duke IT professionals in managing security advisories and remediation information. The application includes user authentication and profile management, leveraging a context for user profile data. It features a responsive interface with routing handled by react-router-dom, providing various pages such as Home, About, Settings, and detailed CVE information. The Table component offers paginated and sortable views of CVE data, with filters and dynamic sidebar functionality. The application integrates with backend services for data fetching and user authentication, ensuring a seamless and secure user experience. The UI is enhanced with custom CSS for a polished and professional look, making it intuitive for IT professionals to navigate and use.
 
 
-
+#### Project Phases
+![image info](front-end/public/Projectphases.png)
 #### Home Page
 ![image info](front-end/public/Screenshotofhomepage.png)
 #### CVE Page
