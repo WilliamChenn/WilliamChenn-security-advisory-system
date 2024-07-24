@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 
 function Auth() {
+  const backendUrl = process.env.REACT_APP_BACKEND_URL;
   useEffect(() => {
-    window.location.href = 'http://localhost:3001/auth/saml';
+    window.location.href = `${backendUrl}/auth/saml`;
   }, []);
 
   return (
