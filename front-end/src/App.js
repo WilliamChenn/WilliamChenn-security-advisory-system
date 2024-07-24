@@ -14,8 +14,6 @@ import Settings from "./pages/Settings";
 import dog from "./images/dog.png";
 import cat from "./images/cat.png";
 import capybara from "./images/capybara.png";
-import kelly from "./images/kelly.png";
-import katherine from "./images/katherine.png";
 import unicorn from "./images/unicorn.png";
 import unicorn1 from "./images/unicorn1.png";
 
@@ -26,8 +24,6 @@ const profilePictures = [
   dog,
   cat,
   capybara,
-  kelly,
-  katherine,
   unicorn,
   unicorn1,
 ];
