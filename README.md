@@ -6,7 +6,7 @@ This project is a React-based web application designed to assist Duke IT profess
 
 
 #### Project Phases
-![image info](front-end/public/Projectphases.png)
+![image info](front-end/public/ProjectPhases.png)
 #### Home Page
 ![image info](front-end/public/Screenshotofhomepage.png)
 #### CVE Page
