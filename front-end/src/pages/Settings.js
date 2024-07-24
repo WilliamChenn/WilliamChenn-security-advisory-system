@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
-import Header from '../components/Header';
 import VendorsSection from './settingsSubpages/VendorsSection';
 import Profile from './settingsSubpages/Profile';
 import SecurityAlerts from './settingsSubpages/SecurityAlertsPage';
 import './Settings.css';
-import Footer from '../components/Footer';
 import { useUserProfile } from '../App';
 
 const handleLogout = async () => {
@@ -30,9 +28,9 @@ const handleLogout = async () => {
 };
 
 function Settings() {
-  const [activeSection, setActiveSection] = useState('profile'); // Set default to 'profile'
+  const [activeSection, setActiveSection] = useState('profile'); 
   const { profilePicture, updateProfilePictureIndex } = useUserProfile();
-  const userId = 1; // Replace this with the actual logic to get the current user's ID
+  const userId = 1; 
 
   const renderSection = () => {
     switch (activeSection) {
@@ -50,7 +48,7 @@ function Settings() {
   return (
     <div className="settings-page">
       <div className="settings-container">
-        <div className="sidebar">
+        <div className="sidebar"> 
           <ul>
             <li onClick={() => setActiveSection('profile')}>Profile</li>
             <li onClick={() => setActiveSection('vendors')}>Vendors</li>

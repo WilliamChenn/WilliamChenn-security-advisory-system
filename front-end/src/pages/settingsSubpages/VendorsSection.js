@@ -10,6 +10,7 @@ const VendorsSection = () => {
   useEffect(() => {
     const fetchAvailableVendors = async () => {
       try {
+        // use vendors controller to fetch database vendors
         const response = await fetch('http://localhost:3001/api/v1/vendors', {
           credentials: 'include',
         });
@@ -31,6 +32,7 @@ const VendorsSection = () => {
   useEffect(() => {
     const fetchUserVendors = async () => {
       try {
+        // use users_vendors controller to fetch users' selected vendors
         const response = await fetch('http://localhost:3001/api/v1/user_vendors', {
           credentials: 'include',
         });
@@ -53,6 +55,7 @@ const VendorsSection = () => {
 
     if (checked) {
       try {
+        //each time vendor is selected, add it to user_vendors database under that user
         const response = await fetch(`http://localhost:3001/api/v3/vendors/${vendorId}/add_user`, {
           method: 'POST',
           headers: {
@@ -82,6 +85,7 @@ const VendorsSection = () => {
       }
     } else {
       try {
+        //same thing as above but removes it when the user unchecks the box
         const response = await fetch(`http://localhost:3001/api/v3/vendors/${vendorId}/remove_user`, {
           method: 'DELETE',
           credentials: 'include',

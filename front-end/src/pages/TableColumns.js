@@ -2,6 +2,8 @@ import { convertLength } from "@mui/material/styles/cssUtils";
 import Tooltip from '@mui/material/Tooltip';
 import { Link } from 'react-router-dom';
 
+//helper methods to turn cvss and epss numerical score into level
+
 const getSeverityClass = (cvss) => {
     if (cvss > 0 && cvss < 4) {
         return "Low-severity";
@@ -45,7 +47,7 @@ export const COLUMNS = [
       Cell: ({ value }) => (
         <Link to={`/learn-more/${value}`}>{value}</Link>
       ),
-      width: 160, // Adjust this value as needed
+      width: 160,
     },
     {
       Header: 'Summary',
@@ -121,32 +123,3 @@ export const COLUMNS = [
       },
     }
   ];
-  
-    // {
-    //     Header: 'Criticality',
-    //     accessor: row => `${row.cvss} - ${row.epss}`, // Custom accessor to combine cvss and epss
-    //     Cell: ({ row }) => {
-    //         const cvss = row.original.cvss;
-    //         const epss = row.original.epss;
-    //         return (
-    //             <div className="severityCell">
-    //                 <Tooltip title="Severity of security vulnerabilities (scale of 1-10)" placement="top" arrow>
-    //                     <span className="tooltip-target">CVSS:</span>
-    //                 </Tooltip>
-    //                 <button id={getSeverityClass(cvss)}>
-    //                     <Tooltip title={getSeverityClass(cvss)} placement="top" arrow>
-    //                         <span className="tooltip-target">{cvss}</span>
-    //                     </Tooltip>
-    //                 </button>
-    //                 <Tooltip title="Likelihood of the vulnerability being exploited in the wild within the next 30 days" placement="top" arrow>
-    //                     <span className="tooltip-target">EPSS:</span>
-    //                 </Tooltip>
-    //                 <button id={getEpssClass(epss)}>
-    //                     <Tooltip title={getEpssClass(epss)} placement="top" arrow>
-    //                         <span className="tooltip-target">{epss}%</span>
-    //                     </Tooltip>
-    //                 </button>
-    //             </div>
-    //         );
-    //     }
-    // 

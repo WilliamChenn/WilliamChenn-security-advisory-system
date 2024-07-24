@@ -5,7 +5,7 @@ import { COLUMNS } from './TableColumns';
 import './Table.css';
 import Sidebar from '../components/Sidebar';
 
-
+//helper method that returns entries that match search
 const matchesSearchQuery = (item, query) => {
   if (!query) return true;
   const lowerCaseQuery = query.toLowerCase();
@@ -14,6 +14,7 @@ const matchesSearchQuery = (item, query) => {
   );
 };
 
+//helper method
 const getSeverityClass = (cvss) => {
   if (cvss > 0 && cvss < 4) {
     return "low";
@@ -44,6 +45,7 @@ const Table = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        //fetches cves from the last year
         const response = await fetch('http://localhost:3001/api/v3/cves/recent?time_range=year', {
           credentials: 'include',
         });
@@ -83,7 +85,7 @@ const Table = () => {
       startDate = new Date(filters.startDate);
       endDate = new Date(filters.endDate);
     } else {
-      startDate = new Date(0); // For 'all' or any other unspecified ranges
+      startDate = new Date(0); 
       startDate.setDate(currentDate.getDate() - 14);
       endDate = currentDate;
     }
@@ -108,7 +110,7 @@ const Table = () => {
         desc: true,
       },
     ],
-    pageSize: 30, // Initial page size
+    pageSize: 30, 
   };
 
   const {
@@ -139,6 +141,7 @@ const Table = () => {
   const handleRefresh = async () => {
     setLoading(true);
     try {
+      // backend controller that posts new vendors as needed
       const response = await fetch('http://localhost:3001/api/v3/vendors/refresh_vendors', {
         method: 'POST',
         headers: {
@@ -151,7 +154,6 @@ const Table = () => {
         throw new Error('Failed to refresh vendors');
       }
 
-      // Re-fetch data after refreshing vendors
       const updatedDataResponse = await fetch('http://localhost:3001/api/v3/cves/recent?time_range=year', {
         credentials: 'include',
       });

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './About.css'; // Make sure to import your CSS file
+import './About.css'; 
 
 function About() {
   const [currentImage, setCurrentImage] = useState(1);
@@ -7,7 +7,7 @@ function About() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImage(prevImage => (prevImage === 1 ? 4 : 1));
-    }, 2000); // Switch image every 4 seconds
+    }, 2000); 
 
     return () => clearInterval(interval);
   }, []);
@@ -17,16 +17,12 @@ function About() {
       <div className="hero-image" style={{
         backgroundImage: `url(${currentImage === 1 ? 'https://oit.duke.edu/sites/default/files/styles/large_2_5_1/public/web%20and%20app%20development.png?h=d1cb525d&itok=FaszV0D5' : 'https://oit.duke.edu/sites/default/files/styles/large_2_5_1/public/Security%20Hero.png?h=d1cb525d&itok=Zfusifek'})`
       }} role="img" aria-label="grid of colorful app icons">
-        <div className="container">
-          {/* Content inside the hero image */}
-        </div>
       </div>
       <div className="header-background"></div>
       <div className="content-wrapper">
         <h1>Overview of Services & Tools</h1>
         <p>The Security Advisory Ingestion And Notification System dashboard focuses on aggregating data sources from advisory dashboards and announcements from vendors or software that Duke utilizes. The aggregated data is presented in a unified output for end users to filter based on criticality and relevancy.</p>
         
-        {/* Add more content as needed */}
         <section className="paragraph__twocolumn">
           <div className="row">
             <div className="col-md-6">
@@ -35,7 +31,6 @@ function About() {
                   <section className="paragraph__wysiwyg">
                     <h4 className="heading" role="heading" aria-level="2">Vendor Selection</h4>
                     <p>End users possess the capability to designate particular vendors. Within the settings section, navigate to the Available vendors checkbox to specify the vendors from whom you wish to receive CVEs.</p>
-                    {/* Display screenshot under Vendor Selection */}
                     <img src="/Screenshotofvendors.png" alt="Screenshot of Available vendors" />
                   </section>
                 </div>
@@ -48,14 +43,12 @@ function About() {
                     <h4 className="heading" role="heading" aria-level="2">Vulnerabilities Sorting</h4>
                     
                     <p>End users have the capability to utilize the 'Filter here' sidebar to categorize CVEs based on severity levels, date ranges, search criteria, and vendors. Click 'view all' to access the table displaying CVE IDs.</p>
-                    {/* Display screenshot under Vulnerabilities Sorting */}
                     <img src="/Screenshotoftable.png" alt="Screenshot of Vulnerabilities Sorting table" />
                   </section>
                 </div>
               </div>
             </div>
             
-            {/* New column for CVE detailed information */}
             <div className="col-md-6">
               <div className="light-grey-container">
                 <section className="paragraph__wysiwyg">
@@ -66,7 +59,6 @@ function About() {
               </div>
             </div>
 
-            {/* New column for Receive CVE Notifications */}
             <div className="col-md-6">
               <div className="light-grey-container">
                 <section className="paragraph__wysiwyg">

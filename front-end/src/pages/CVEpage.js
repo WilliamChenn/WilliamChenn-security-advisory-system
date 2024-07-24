@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 import CircularProgress from '../components/CircularProgress';
 import './CVEpage.css';
 import Chatbot from '../components/Chatbot';
@@ -42,7 +40,7 @@ function CVEpage() {
         if (remediationGetData.remediation) {
           setRemediation(remediationGetData.remediation);
         } else {
-          setRemediation(null); // Set to null instead of 'No remediation information available'
+          setRemediation(null); 
         }
       } catch (error) {
         console.error('Error fetching vulnerability:', error);
@@ -90,7 +88,7 @@ function CVEpage() {
         throw new Error('Failed to save remediation');
       }
 
-      setRemediation(newRemediation || ''); // Set to empty string instead of 'No remediation information available'
+      setRemediation(newRemediation || ''); 
       setIsEditing(false);
     } catch (error) {
       console.error('Error saving remediation:', error);
@@ -111,7 +109,7 @@ function CVEpage() {
         throw new Error('Failed to clear remediation');
       }
 
-      setRemediation(''); // Clear remediation information
+      setRemediation(''); 
     } catch (error) {
       console.error('Error clearing remediation:', error);
       setError(error.message);
