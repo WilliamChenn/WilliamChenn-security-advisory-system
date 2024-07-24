@@ -19,6 +19,9 @@ RUN npm install
 # Ensure the @mui/material package is installed
 #RUN npm install @mui/material
 
+RUN chmod -R 777 /app/node_modules
+
+
 # Expose the port your app runs on
 EXPOSE 3000
 
