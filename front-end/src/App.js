@@ -5,7 +5,6 @@ import Home from "./pages/Home";
 import NavigationBar from "./components/NavigationBar";
 import "./App.css";
 import Table from "./pages/Table";
-import CveDetail from "./pages/CveDetail";
 import CVEpage from "./pages/CVEpage";
 import Auth from "./components/Auth";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -117,7 +116,6 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/table" element={<Table />} />
               <Route path="/settings" element={<Settings />} />
-              <Route path="/cve/:cveNumber" element={<CveDetail />} />
               <Route path="/learn-more/:cveId" element={<CVEpage />} />
             </Routes>
         </Router>

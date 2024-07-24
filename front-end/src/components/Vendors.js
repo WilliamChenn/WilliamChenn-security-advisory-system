@@ -1,7 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import './Vendors.css';
 import { FaPlus, FaTrash } from 'react-icons/fa';
-import LoadingSpinner from './LoadingSpinner'; // Import the LoadingSpinner component
+import Spinner from 'react-bootstrap/Spinner';
+import './Vendors.css';
+
+const LoadingSpinner = () => (
+  <div className="loading-spinner">
+    <Spinner animation="border" role="status" size="sm">
+      <span className="sr-only"></span>
+    </Spinner>
+  </div>
+);
 
 function Vendors({ vendors, setVendors, loadingVendor, setLoadingVendor }) {
   const [newVendor, setNewVendor] = useState({ name: '' });

@@ -20,7 +20,7 @@ const DotPlot = () => {
         .filter(item => item.epss_score !== null && item.epss_score !== undefined) // Ensure EPSS scores are valid
         .map(item => ({
           cvssScore: item.max_cvss_base_score,
-          epssScore: item.epss_score * 1000 // Scale up EPSS scores
+          epssScore: item.epss_score  // Scale up EPSS scores
         }));
 
       console.log("Chart Data:", chartData); // Debugging: Check chart data

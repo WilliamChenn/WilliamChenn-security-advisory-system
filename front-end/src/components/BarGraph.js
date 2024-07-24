@@ -6,14 +6,21 @@ const BarGraph = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch('http://localhost:3001/api/v3/cves/recent?time_range=month', {
+      const backendUrl = process.env.REACT_APP_BACKEND_URL;
+      console.log('Backend URL:', backendUrl); // Log the backend URL
+
+      const response = await fetch(`${backendUrl}/api/v3/cves/recent?time_range=month`, {
         credentials: 'include',
       });
+
+
+      // Check if the response is ok
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
+
+      // Parse the response as JSON
       const parsedData = await response.json();
-      console.log("Fetched Data:", parsedData);
 
       const scoreRanges = {
         '0-1': { count: 0, color: '#00FF00' }, // Green
@@ -42,15 +49,11 @@ const BarGraph = () => {
         else if (score >= 9) scoreRanges['9+'].count++;
       });
 
-      console.log("Score Ranges:", scoreRanges); // Debugging: Check processed data
-
       const chartData = Object.keys(scoreRanges).map(range => ({
         scoreRange: range,
         count: scoreRanges[range].count,
         fill: scoreRanges[range].color
       }));
-
-      console.log("Chart Data:", chartData); // Debugging: Check chart data
 
       setData(chartData);
     } catch (error) {
@@ -61,7 +64,7 @@ const BarGraph = () => {
   useEffect(() => {
     fetchData(); // Initial fetch
 
-    const interval = setInterval(fetchData, 3000); // Fetch every 5 seconds
+    const interval = setInterval(fetchData, 3000); // Fetch every 3 seconds
 
     return () => clearInterval(interval); // Cleanup on unmount
   }, []);

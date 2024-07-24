@@ -22,7 +22,8 @@
     "styled-components": "^6.1.11",
     "web-vitals": "^2.1.4",
     "js-cookie": "^3.0.1",
-    "axios": "^0.21.1" 
+    "axios": "^0.21.1", 
+    "dotenv": "^10.0.0"
   },
   "scripts": {
     "start": "react-scripts start",

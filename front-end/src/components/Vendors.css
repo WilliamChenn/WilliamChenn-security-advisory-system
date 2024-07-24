@@ -1,3 +1,5 @@
+/* Vendors.css */
+
 .vendors {
   text-align: center;
   padding: 0px;
@@ -105,5 +107,13 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 10;
+}
+
+.loading-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 10;
 }
