@@ -4,10 +4,12 @@ import { useUserProfile } from '../../App';
 import dog from '../../images/dog.png';
 import cat from '../../images/cat.png';
 import capybara from '../../images/capybara.png';
+import kelly from '../../images/kelly.png';
+import katherine from '../../images/katherine.png';
 import unicorn from '../../images/unicorn.png';
 import unicorn1 from '../../images/unicorn1.png';
 
-const profilePictures = [dog, cat, capybara, unicorn, unicorn1];
+const profilePictures = [dog, cat, capybara, kelly, katherine, unicorn, unicorn1];
 
 const Profile = ({ userId }) => {
   const { profilePicture, updateProfilePictureIndex } = useUserProfile();
@@ -23,7 +25,10 @@ const Profile = ({ userId }) => {
 
   const fetchProfile = useCallback(async () => {
     try {
-      const response = await fetch(`http://localhost:3001/api/v3/users/email_and_uid_and_name`, {
+      const backendUrl = process.env.REACT_APP_BACKEND_URL;
+      console.log('Backend URL:', backendUrl); // Log the backend URL
+
+      const response = await fetch(`${backendUrl}/api/v3/users/email_and_uid_and_name`, {
         credentials: 'include',
       });
       if (!response.ok) {

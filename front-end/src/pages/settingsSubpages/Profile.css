@@ -1,74 +1,73 @@
 .profile-container {
-    display: flex;
-  }
-  
-  .profile-sidebar {
-    flex: 1;
-    padding: 20px;
-  }
-  
-  .profile-greeting {
-    text-align: center;
-    margin-bottom: 20px;
-    padding: 20px;
-    border-radius: 10px;
-    width: 100%;
-  }
-  
-  .profile-info {
-    flex: 2;
-    padding: 20px;
-  }
-  
-  .profile-details {
-    margin-bottom: 20px;
-  }
-  
-  .profile-row {
-    margin-bottom: 10px;
-  }
-  
-  .profile-picturepage-wrapper {
-    text-align: center;
-    position: relative;
-  }
-  
-  .profile-picturepage {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    cursor: pointer;
-  }
-  
-  .profile-dropdown {
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    padding: 10px;
-    z-index: 1000;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
-  .profile-thumbnail {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    cursor: pointer;
-    margin: 5px;
-    transition: transform 0.3s;
-  }
-  
-  .profile-thumbnail:hover {
-    transform: scale(1.1);
-  }
-  
-  .profile-thumbnail.selected {
-    border: 2px solid #0417aa;
-  }
-  
+  display: flex;
+}
+
+.profile-sidebar {
+  flex: 1;
+  padding: 20px;
+}
+
+.profile-greeting {
+  text-align: center;
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.profile-info {
+  flex: 2;
+  padding: 20px;
+}
+
+.profile-details {
+  margin-bottom: 20px;
+}
+
+.profile-row {
+  margin-bottom: 10px;
+}
+
+.profile-picturepage-wrapper {
+  text-align: center;
+  position: relative;
+}
+
+.profile-picturepage {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.profile-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 10px;
+  z-index: 1000;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.profile-thumbnail {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  cursor: pointer;
+  margin: 5px;
+  transition: transform 0.3s;
+}
+
+.profile-thumbnail:hover {
+  transform: scale(1.1);
+}
+
+.profile-thumbnail.selected {
+  border: 2px solid #0417aa;
+}

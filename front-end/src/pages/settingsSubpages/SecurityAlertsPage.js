@@ -15,7 +15,10 @@ function SecurityAlerts() {
     useEffect(() => {
         const fetchVendors = async () => {
             try {
-                const response = await fetch('http://localhost:3001/api/v1/vendors', {
+                const backendUrl = process.env.REACT_APP_BACKEND_URL;
+                console.log('Backend URL:', backendUrl); // Log the backend URL
+
+                const response = await fetch(`${backendUrl}/api/v1/vendors`, {
                     credentials: 'include',
                 });
                 const data = await response.json();
@@ -34,7 +37,10 @@ function SecurityAlerts() {
 
         const fetchUserNotificationVendors = async () => {
             try {
-                const response = await fetch('http://localhost:3001/api/v1/user_notification_vendors', {
+                const backendUrl = process.env.REACT_APP_BACKEND_URL;
+                console.log('Backend URL:', backendUrl); // Log the backend URL
+
+                const response = await fetch(`${backendUrl}/api/v1/user_notification_vendors`, {
                     credentials: 'include',
                 });
                 if (response.ok) {
@@ -58,7 +64,10 @@ function SecurityAlerts() {
 
         const fetchUserFrequency = async () => {
             try {
-                const response = await fetch('http://localhost:3001/api/v1/user_frequencies', {
+                const backendUrl = process.env.REACT_APP_BACKEND_URL;
+                console.log('Backend URL:', backendUrl); // Log the backend URL
+
+                const response = await fetch(`${backendUrl}/api/v1/user_frequencies`, {
                     credentials: 'include',
                 });
                 if (response.ok) {
@@ -75,7 +84,10 @@ function SecurityAlerts() {
 
         const fetchUserSeverity = async () => {
             try {
-                const response = await fetch('http://localhost:3001/api/v1/user_severities', {
+                const backendUrl = process.env.REACT_APP_BACKEND_URL;
+                console.log('Backend URL:', backendUrl); // Log the backend URL
+
+                const response = await fetch(`${backendUrl}/api/v1/user_severities`, {
                     credentials: 'include',
                 });
                 if (response.ok) {
@@ -104,8 +116,11 @@ function SecurityAlerts() {
 
     const handleFrequencyChange = async (selectedFrequency) => {
         try {
-            // First delete existing frequency
-            await fetch('http://localhost:3001/api/v1/user_frequencies', {
+            const backendUrl = process.env.REACT_APP_BACKEND_URL;
+            console.log('Backend URL:', backendUrl); // Log the backend URL
+
+
+            await fetch(`${backendUrl}/api/v1/user_frequencies`, {
                 method: 'DELETE',
                 headers: {
                     Authorization: `Bearer ${getAuthToken()}`,
@@ -114,7 +129,7 @@ function SecurityAlerts() {
             });
 
             // Then create new frequency
-            const response = await fetch('http://localhost:3001/api/v1/user_frequencies', {
+            const response = await fetch(`${backendUrl}/api/v1/user_frequencies`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -141,14 +156,14 @@ function SecurityAlerts() {
 
     const handleSeverityChange = async (selectedSeverity) => {
         try {
-            // Check if there's an existing severity entry
-            const responseCheck = await fetch('http://localhost:3001/api/v1/user_severities', {
+            const backendUrl = process.env.REACT_APP_BACKEND_URL;
+            const responseCheck = await fetch(`${backendUrl}/api/v1/user_severities`, {
                 credentials: 'include',
             });
 
             if (responseCheck.ok) {
                 // There is an existing severity entry, so delete it
-                await fetch('http://localhost:3001/api/v1/user_severities', {
+                await fetch(`${backendUrl}/api/v1/user_severities`, {
                     method: 'DELETE',
                     headers: {
                         Authorization: `Bearer ${getAuthToken()}`,
@@ -163,7 +178,7 @@ function SecurityAlerts() {
             }
 
             // Create new severity entry
-            const response = await fetch('http://localhost:3001/api/v1/user_severities', {
+            const response = await fetch(`${backendUrl}/api/v1/user_severities`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -188,8 +203,9 @@ function SecurityAlerts() {
 
     const handleUnsubscribe = async () => {
         try {
+            const backendUrl = process.env.REACT_APP_BACKEND_URL;
             // Delete from user_severities
-            await fetch('http://localhost:3001/api/v1/user_severities', {
+            await fetch(`${backendUrl}/api/v1/user_severities`, {
                 method: 'DELETE',
                 headers: {
                     Authorization: `Bearer ${getAuthToken()}`,
@@ -198,7 +214,7 @@ function SecurityAlerts() {
             });
     
             // Delete from user_frequencies
-            await fetch('http://localhost:3001/api/v1/user_frequencies', {
+            await fetch(`${backendUrl}/api/v1/user_frequencies`, {
                 method: 'DELETE',
                 headers: {
                     Authorization: `Bearer ${getAuthToken()}`,
@@ -207,7 +223,7 @@ function SecurityAlerts() {
             });
     
             // Fetch all vendor notifications for the user
-            const response = await fetch('http://localhost:3001/api/v1/user_notification_vendors', {
+            const response = await fetch(`${backendUrl}/api/v1/user_notification_vendors`, {
                 credentials: 'include',
                 headers: {
                     Authorization: `Bearer ${getAuthToken()}`,
@@ -219,7 +235,8 @@ function SecurityAlerts() {
     
                 // Delete each vendor notification
                 for (const vendor of vendors) {
-                    await fetch(`http://localhost:3001/api/v1/user_notification_vendors/${vendor.vendor_id}`, {
+                    
+                    await fetch(`${backendUrl}/api/v1/user_notification_vendors/${vendor.vendor_id}`, {
                         method: 'DELETE',
                         headers: {
                             Authorization: `Bearer ${getAuthToken()}`,
@@ -263,7 +280,8 @@ function SecurityAlerts() {
         }
 
         try {
-            const response = await fetch('http://localhost:3001/api/v1/user_notification_vendors', {
+            const backendUrl = process.env.REACT_APP_BACKEND_URL;
+            const response = await fetch(`${backendUrl}/api/v1/user_notification_vendors`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -298,7 +316,8 @@ function SecurityAlerts() {
 
     const handleDeleteAlert = async (index, vendorId) => {
         try {
-            const response = await fetch(`http://localhost:3001/api/v1/user_notification_vendors/${vendorId}`, {
+            const backendUrl = process.env.REACT_APP_BACKEND_URL;
+            const response = await fetch(`${backendUrl}/api/v1/user_notification_vendors/${vendorId}`, {
                 method: 'DELETE',
                 headers: {
                     Authorization: `Bearer ${getAuthToken()}`,
@@ -414,4 +433,3 @@ function SecurityAlerts() {
 }
 
 export default SecurityAlerts;
-

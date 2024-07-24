@@ -16,14 +16,17 @@ function CVEpage() {
   useEffect(() => {
     const fetchVulnerability = async () => {
       try {
-        const response = await fetch(`http://localhost:3001/api/v1/cves/${cveId}`);
+        const backendUrl = process.env.REACT_APP_BACKEND_URL;
+        console.log('Backend URL:', backendUrl); 
+      
+        const response = await fetch(`${backendUrl}/api/v1/cves/${cveId}`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
         const data = await response.json();
         setVulnerability(data.data.attributes);
 
-        const remediationResponse = await fetch(`http://localhost:3001/api/v1/remediation_url/${cveId}`);
+        const remediationResponse = await fetch(`${backendUrl}/api/v1/remediation_url/${cveId}`);
         if (!remediationResponse.ok) {
           throw new Error('Failed to fetch remediation URL');
         }
@@ -32,7 +35,7 @@ function CVEpage() {
           setRemediationUrl(remediationData.remediation_url);
         }
 
-        const remediationGetResponse = await fetch(`http://localhost:3001/api/v1/remediation/${cveId}`);
+        const remediationGetResponse = await fetch(`${backendUrl}/api/v1/remediation/${cveId}`);
         if (!remediationGetResponse.ok) {
           throw new Error('Failed to fetch remediation');
         }
@@ -54,7 +57,8 @@ function CVEpage() {
   useEffect(() => {
     const fetchVendors = async () => {
       try {
-        const response = await fetch('http://localhost:3001/api/v1/vendors');
+        const backendUrl = process.env.REACT_APP_BACKEND_URL;
+        const response = await fetch(`${backendUrl}/api/v1/vendors`);
         const data = await response.json();
         const vendorData = data.find(vendor => vendor.id === vulnerability?.vendor_id);
         if (vendorData) {
@@ -76,7 +80,8 @@ function CVEpage() {
 
   const handleSaveRemediation = async (newRemediation) => {
     try {
-      const response = await fetch(`http://localhost:3001/api/v1/remediation/${cveId}`, {
+      const backendUrl = process.env.REACT_APP_BACKEND_URL;
+      const response = await fetch(`${backendUrl}/api/v1/remediation/${cveId}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -98,7 +103,8 @@ function CVEpage() {
 
   const handleClearRemediation = async () => {
     try {
-      const response = await fetch(`http://localhost:3001/api/v1/remediation/${cveId}`, {
+      const backendUrl = process.env.REACT_APP_BACKEND_URL;
+      const response = await fetch(`${backendUrl}/api/v1/remediation/${cveId}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',

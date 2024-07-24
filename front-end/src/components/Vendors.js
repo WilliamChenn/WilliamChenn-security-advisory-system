@@ -9,7 +9,10 @@ function Vendors({ vendors, setVendors, loadingVendor, setLoadingVendor }) {
 
   const fetchVendors = async () => {
     try {
-      const response = await fetch('http://localhost:3001/api/v3/vendors', {
+      const backendUrl = process.env.REACT_APP_BACKEND_URL;
+      console.log('Backend URL:', backendUrl); // Log the backend URL
+
+      const response = await fetch(`${backendUrl}/api/v3/vendors`, {
         credentials: 'include',
       });
       const data = await response.json();
@@ -63,8 +66,10 @@ function Vendors({ vendors, setVendors, loadingVendor, setLoadingVendor }) {
     console.log('New vendor to add:', newVendor.name);
 
     try {
-      // Attempt to fetch the vendor ID from the backend
-      let vendorResponse = await fetch(`http://localhost:3001/api/v3/vendors?name=${newVendor.name}`, {
+      const backendUrl = process.env.REACT_APP_BACKEND_URL;
+      console.log('Backend URL:', backendUrl); // Log the backend URL
+
+      let vendorResponse = await fetch(`${backendUrl}/api/v3/vendors?name=${newVendor.name}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -76,7 +81,7 @@ function Vendors({ vendors, setVendors, loadingVendor, setLoadingVendor }) {
 
       if (vendorResponse.status === 404 || !vendorData.id) {
         // If vendor not found, create the vendor first
-        vendorResponse = await fetch(`http://localhost:3001/api/v1/vendors/${newVendor.name}`, {
+        vendorResponse = await fetch(`${backendUrl}/api/v1/vendors/${newVendor.name}`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -86,7 +91,7 @@ function Vendors({ vendors, setVendors, loadingVendor, setLoadingVendor }) {
         if (!vendorResponse.ok) {
           throw new Error('Failed to create vendor');
         } else {
-          vendorResponse = await fetch(`http://localhost:3001/api/v3/vendors?name=${newVendor.name}`, {
+          vendorResponse = await fetch(`${backendUrl}/api/v3/vendors?name=${newVendor.name}`, {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',
@@ -100,7 +105,7 @@ function Vendors({ vendors, setVendors, loadingVendor, setLoadingVendor }) {
       const vendorId = vendorData.id; // Assuming the response contains the vendor ID
 
       // Add the user-vendor association using the fetched vendor ID
-      const response = await fetch(`http://localhost:3001/api/v3/vendors/${vendorId}/add_user`, {
+      const response = await fetch(`${backendUrl}/api/v3/vendors/${vendorId}/add_user`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -136,7 +141,10 @@ function Vendors({ vendors, setVendors, loadingVendor, setLoadingVendor }) {
 
   const handleDelete = async (vendorId) => {
     try {
-      const response = await fetch(`http://localhost:3001/api/v3/vendors/${vendorId}/remove_user`, {
+      const backendUrl = process.env.REACT_APP_BACKEND_URL;
+      console.log('Backend URL:', backendUrl); // Log the backend URL
+
+      const response = await fetch(`${backendUrl}/api/v3/vendors/${vendorId}/remove_user`, {
         method: 'DELETE',
         credentials: 'include',
       });

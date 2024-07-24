@@ -19,7 +19,10 @@ function NavigationBar() {
 
   const handleLogout = async () => {
     try {
-      const response = await fetch('http://localhost:3001/api/v3/users/logout', {
+      const backendUrl = process.env.REACT_APP_BACKEND_URL;
+      console.log('Backend URL:', backendUrl); // Log the backend URL
+
+      const response = await fetch(`${backendUrl}/api/v3/users/logout`, {
         method: 'POST',
         credentials: 'include', // Ensure cookies are included in the request
       });

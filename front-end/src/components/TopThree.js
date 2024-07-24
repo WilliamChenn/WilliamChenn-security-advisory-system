@@ -2,9 +2,13 @@ import React, { useState, useEffect } from 'react';
 
 export const getTopVulnerabilities = async () => {
   try {
-    const response = await fetch('http://localhost:3001/api/v3/cves/recent?time_range=month', {
+    const backendUrl = process.env.REACT_APP_BACKEND_URL;
+    console.log('Backend URL:', backendUrl); 
+
+    const response = await fetch(`${backendUrl}/api/v3/cves/recent?time_range=month`, {
       credentials: 'include',
     });
+
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }
